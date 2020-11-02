@@ -1,0 +1,38 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>BistroMath v4 port to Open Source application in Lazarus/FreePascal</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="history,program evolution;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>BistroMath v4 port to Open Source application in Lazarus/FreePascal</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>general description&nbsp;</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="delphi7.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Up to v3.30 BistroMath was developed in Borland Delphi v7.2. Although that platform is old, it was convenient for this application.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">But it has become challenging to install it on Windows 7 and above. For the sake of the future of the concepts embedded in this application it was decided to leave Delphi with some sadness and port it to an open source environment.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://www.lazarus-ide.org/"><IMG SRC="laztitle.png" BORDER="0"></A></FONT><BR>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://www.lazarus-ide.org/">Lazarus</A></FONT><FONT FACE="Arial" SIZE="2"> is a Integrated Development Environment (IDE) with a large visual components library (LCL) and uses the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://www.freepascal.org">Free Pascal Compiler</A></FONT><FONT FACE="Arial" SIZE="2"> (FPC). The latter was initiated as an open source alternative to the highly popular Borland Delpi Pascal visual component library (VCL) and compiler. Both Lazarus LCL and FPC offer a high compatibility with Borland Delphi. This reduced the amount of work drastically. Borland added the Steema TeeChart library for charting. In Lazarus this is offered through </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="http://wiki.lazarus.freepascal.org/TAChart">TAChart</A></FONT><FONT FACE="Arial" SIZE="2">&nbsp; which originates from the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="http://teleauto.org/indexEn.php">TeleAuto</A></FONT><FONT FACE="Arial" SIZE="2"> project. The differences between those are significant. Therefore the user interface itself needs to be rewritten, but a lot of code can still be reused. Moreover, large portions of the user interface have been copied/pasted from Delphi to Lazarus, which reduced the work also.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">During development Lcl 2.0.6/FPC 3.0.2, Lcl 2.0.8/FPC3.0.4 and Lcl 2.0.10/FPC 3.2.0 were used. Upgrades introduced no problems.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Therefore:</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://fr.wikipedia.org/wiki/Le_roi_est_mort,_vive_le_roi_!">&nbsp;<IMG SRC="Charles_VII_by_Jean_Fouquet_1445_1450.gif" BORDER="0"></A></FONT><BR>
+<BR>
+<FONT FACE="Times New Roman" COLOR="#FF0000" SIZE="5">&nbsp;Le roi est mort, vive le roi !</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs925.htm">Known limitations</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

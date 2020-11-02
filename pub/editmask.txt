@@ -1,0 +1,35 @@
+ These are the special characters used in the first field of the mask:
+Character Meaning in mask 
+!  If a ! character appears in the mask, optional characters are represented in the text as leading blanks. If a ! character is not present, optional characters are represented in the text as trailing blanks.  
+>  If a > character appears in the mask, all characters that follow are in uppercase until the end of the mask or until a < character is encountered.  
+<  If a < character appears in the mask, all characters that follow are in lowercase until the end of the mask or until a > character is encountered.  
+<> If these two characters appear together in a mask, no case checking is done and the data is formatted with the case the user uses to enter the data.  
+\  The character that follows a \ character is a literal character. Use this character to use any of the mask special characters as a literal in the data.  
+L  The L character requires an alphabetic character only in this position. For the US, this is A-Z, a-z.  
+l  The l character permits only an alphabetic character in this position, but doesn't require it.  
+A  The A character requires an alphanumeric character only in this position. For the US, this is A-Z, a-z, 0-9.  
+a  The a character permits an alphanumeric character in this position, but doesn't require it.  
+C  The C character requires an arbitrary character in this position.  
+c  The c character permits an arbitrary character in this position, but doesn't require it.  
+0  The 0 character requires a numeric character only in this position.  
+9  The 9 character permits a numeric character in this position, but doesn't require it.  
+#  The # character permits a numeric character or a plus or minus sign in this position, but doesn't require it.  
+:  The : character is used to separate hours, minutes, and seconds in times. If the character that separates hours, minutes, and seconds is different in the regional settings of the Control Panel utility on your computer system, that character is used instead.  
+/  The / character is used to separate months, days, and years in dates. If the character that separates months, days, and years is different in the regional settings of the Control Panel utility on your computer system, that character is used instead.  
+;  The ; character is used to separate the three fields of the mask.  
+_  The _ character automatically inserts spaces into the text. When the user enters characters in the field, the cursor skips the _ character.  
+
+
+Any character that does not appear in the preceding table can appear in the first part of the mask as a literal character. Literal characters must be matched exactly in the edit control. They are inserted automatically, and the cursor skips over them during editing. The special mask characters can also appear as literal characters if preceded by a backslash character (\). 
+
+The second field of the mask is a single character that indicates whether literal characters from the mask should be included as part of the text for the edit control. For example, the mask for a telephone number with area code could be the following string: 
+
+(000)_000-0000;0;* 
+
+The 0 in the second field indicates that the Text property for the edit control would consist of the 10 digits that were entered, rather than the 14 characters that make up the telephone number as it appears in the edit control. 
+
+A 0 in the second field indicates that literals should not be included, any other character indicates that they should be included. The character that indicates whether literals should be included can be changed in the Edit Mask property editor, or programmatically by changing the MaskNoSave typed constant. 
+
+The third field of the mask is the character that appears in the edit control for blanks (characters that have not been entered). By default, this is the same as the character that stands for literal spaces. The two characters appear the same in an edit window. However, when a user edits the text in a masked edit control, the cursor selects each blank character in turn, and skips over the space character.
+Note: When working with multibyte character sets, each special mask character represents a single byte. To specify multi-byte characters using the L, l, A, a, C, or c specifiers, the mask characters must be duplicated as well. For example, LL would represent two single-byte alphabetic characters or a one double-byte character. Only single-byte literal characters are supported.
+ 

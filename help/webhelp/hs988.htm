@@ -1,0 +1,29 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Upgrading from version 3.xx to 4.xx</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="history,program evolution;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Upgrading from version 3.xx to 4.xx</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>general description&nbsp;</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Significant changes in configuration files</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">With the port to the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs980.htm">Lazarus/FreePascal</A></FONT><FONT FACE="Arial" SIZE="2"> platform all code has been reviewed. Large portions of the the user interface were reorganised and/or rebuild. Consequently visual elements were renamed or replaced with other structures. As configuration files use the name of the visual elements for storage, old configuration files, including presets, are not completely reliable. For renamed elements this is corrected automatically with the installed repair file </FONT><FONT FACE="Courier New" SIZE="2">BM<I>nnn</I>_renamed_elements.ini</FONT><FONT FACE="Arial" SIZE="2">, were <I>nnn</I> is the build number.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>After upgrading</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">During installation there is the option to repair all configuration files. When this option is used the repair file (see above) can be removed.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">If the repair file is found by BistroMath this file will be applied on the in-memory version of loaded configuration files when needed; nothing will be written to disk.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">In all cases the user should check that all settings are as expected.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Manually rewriting all configuration files</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When all configuration files are openend, checked for their result on all settings and rewritten, these files will be free from redundant data. Rewriting the institute defaults file </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs14.htm">must be unlocked</A></FONT><FONT FACE="Arial" SIZE="2">.
+</FONT>
+</BODY></HTML>

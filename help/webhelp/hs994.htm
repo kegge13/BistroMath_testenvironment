@@ -1,0 +1,85 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>History v3.30 and subversions</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="history,program evolution;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>History v3.30 and subversions</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.30, 11/12/2018</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 649</I></FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">A fundamental feature of BistroMath, normalising data to (mostly) 100 at some position, can now be </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm#autoscaling">switched off completely</A></FONT><FONT FACE="Arial" SIZE="2">. Note that for any analysis this factor still is needed and used. Therefore switching Autoscaling <I>off</I> is only meaningful for the comparison of absolute data with a relative scaled data set and may be combined with the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs112.htm">measurement renormalisation</A></FONT><FONT FACE="Arial" SIZE="2"> feature.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">Support for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#OmniPro_v7">OmniPro v8</A></FONT><FONT FACE="Arial" SIZE="2"> (myQA platform).</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Changed parameters for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode2</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 650, 20/12/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: when a <I>potential </I>multiscan format, like the PTW .mcc, containing just one single scan, is used as reference from file, at reload of the scan this reference would be ignored. Now such a file is not marked as a multi-reference file.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Improvement: When in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">gamma analysis</A></FONT><FONT FACE="Arial" SIZE="2"> local dose is used as the base for the dose deviation, this is also displayed in the title on the vertical axis.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.30.01-20, 01/07/2020</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 651-684</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Several test builds are being made with simplified and more standard code to improve the portability towards Lazarus. No functional changes should show.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">All these changes are also incorporated in the upcoming version 4.00.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">An extra option is added to the file menu to save also the filtered version of a curve (if available).</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New:</FONT><FONT FACE="Arial" SIZE="2"> SpecialMode2 now also writes to the clipboard.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New:</FONT><FONT FACE="Arial" SIZE="2"> Output of SpecialMode3 resampled data is now optional.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New:</FONT><FONT FACE="Arial" SIZE="2"> In the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Processing menu</A></FONT><FONT FACE="Arial" SIZE="2"> an option is added to apply the calculated sigmoid fit to a copy of the measurement in the Buffer curve. This might be convenient to observe the results of the sigmoid fit.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">Beside of Advanced Mode a </FONT><FONT FACE="Arial" SIZE="2"><B><A HREF="hs140.htm#simple_mode">Simple Mode</A></B></FONT><FONT FACE="Arial" SIZE="2"> is introduced to hide a lot of features.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">The clipboard observer now ignores text data which start with "BistroMath" or are less or equal the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs940.htm#ini_only">configurable value</A></FONT><FONT FACE="Arial" SIZE="2"> <I>MinClipBoardBytes</I>.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">The add-mode for the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">panel elements configuration</A></FONT><FONT FACE="Arial" SIZE="2"> can now also be negative to clear all existing rules.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">Clicking on values in the Results panel will copy the result to the clipboard.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2"><B>Major design change</B></FONT><FONT FACE="Arial" SIZE="2">: The separate editor window is replaced by a raw data tab.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change</FONT><FONT FACE="Arial" SIZE="2">: In the reference information line the auto shift value is always displayed with a sign ("+" or "-").</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change:</FONT><FONT FACE="Arial" SIZE="2"> When background subtraction is needed, an empty modality type is acceptable.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change:</FONT><FONT FACE="Arial" SIZE="2"> More consistent behavior of the Zoom/Unzoom function.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change</FONT><FONT FACE="Arial" SIZE="2">: Rereading the configuration is avoided on change of the <I>Advanced Mode</I> status. Instead the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#OD2dose_item">OD conversion mode</A></FONT><FONT FACE="Arial" SIZE="2"> is enabled/disabled accordingly.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change</FONT><FONT FACE="Arial" SIZE="2">: The graph data for the <I>buffer </I>were not filled when the user set the <I>buffer </I>curve to invisible. Making the buffer visible again would have no effect until new data were read. This proved to be problematic with the port to Lazarus. Now the <I>buffer </I>graph data always contain valid data, even if not used. Also in the graph processing extra checks are inserted to assure valid data. As added bonus the View Buffer item now responds more intuitively.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change:</FONT><FONT FACE="Arial" SIZE="2"> Loading the raw data in a viewer in a tab owned by the main thread through a separate thread shows to be problematic and is abandoned at the cost of some speed loss.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change:</FONT><FONT FACE="Arial" SIZE="2"> The sigmoid fit of the penumbra proved to be faster (and therefore better) when done as a single process in the main thread only instead of multiple competing threads offering comparable results. The latter is now only done for the pdd fit where it offers significant speed to find a good result. [v16]</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change:</FONT><FONT FACE="Arial" SIZE="2"> in SpecialMode2 the scan number is added for a multiscan file. [v17]</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change:</FONT><FONT FACE="Arial" SIZE="2"> Sigmoid fitting is now limited to 2 times the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#edgedetectionlimit">sigmoid fit radius</A></FONT><FONT FACE="Arial" SIZE="2">. [v17]</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change:</FONT><FONT FACE="Arial" SIZE="2"> The initial slope of the sigmoid model as calculated from the data should have a minimal value to represent a normal penumbra. [v17]</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change:</FONT><FONT FACE="Arial" SIZE="2"> Due to </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1090.htm">discontinued support for 80 bit floating point</A></FONT><FONT FACE="Arial" SIZE="2"> values on Windows10/64, in this version a discretisation is built in the way BistroMath decides which points to use for the quadratic filtering and first derivative. Although the calculation differences are far beyond clinical relevance, this effect <I>can</I> change on a random basis which points to include. It will have some influences on field borders, at most 0.03 mm in the supplied test data. This new discretisation will also be used in the upcoming version 4 and therefore will show exactly reproducible result compared with this version. [v17]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: The key shortcut <B>&lt;Shift&gt;</B>+<B>&lt;0&gt;</B> (for the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#axis_preservation">Preserve original data on export</A></FONT><FONT FACE="Arial" SIZE="2"> measurement menu item blocked the usage of ")" for changing the size of the value points of the measurement curve. The new shortcut is <B>&lt;Shift&gt;</B>+<B>&lt;</B>-<B>&gt;</B>.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: With the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm">Values</A></FONT><FONT FACE="Arial" SIZE="2"> <I>off</I> BistroMath responded on the&nbsp; <B>&lt;left&gt;</B> and <B>&lt;right&gt;</B> keys with a tab change instead of a cursor change.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: Out of boundary access of data in <I>Derive</I> filter. Did never show up in execution.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: Autoshift in SpecialMode3 messed up alignment. Now fixed.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode2</A></FONT><FONT FACE="Arial" SIZE="2"> was not working when configured with a curve curve selector due to a different order in the code.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: Opening a binary data file activated the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm#ignore_clipboard">Ignore Clipboard Item</A></FONT><FONT FACE="Arial" SIZE="2"> in the File menu.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: When subtracting background, the filtered curve was not updated.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: In some workflows it was possible to start the display of results without a valid filtered version of the measurement data, which is used as base for a lot of result values. Now this is checked an recalculated when needed.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: Integer overflow error when writing wms data from non-wms origin. [v17]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: When Sigmoid analysis was not forced in the settings, invalid results were given with SpecialMode2 output. [v17]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: The sigmoid slope value for the left slope had the wrong sign, leading to poor start and possibly fit faillure. Also a better esitmate is chosen now. [v17]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#edgedetectionlimit">sigmoid analysis radius</A></FONT><FONT FACE="Arial" SIZE="2"> was actually never used but its default value of 10 mm. [v17]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: In subversion 16 an error was introduced by checking on text contents of the clipboard when it had no text format. This lead clipboard error messages. [v18]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug revealed design flaws, introduced by SpecialMode2. When key 'H' was pressed <I>and</I> SpecialMode2 was used <I>and</I> the border position at user's level was asked for in this mode <I>and</I> the user's level was not equal to 50%, the standard 50% level would change because it now showed the user's level result without further notice. This was not foreseen in the evaluation engine and the results panel processing. [v19]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: In december 2019 the sigmoid slope was added to the result panel rules. In the actual code this would also use the <I>un</I>filtered data as source for the 80-20 penumbra width. It was always intended to use (for the better or worse) the filtered version of the data. The effect is subtle. This is repaired now to make it compatible with the soon upcoming major release in Lazarus/Freepascal. [v20]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">{26/05/2020 apply variable wInflectionSigmoidRadiusCm instead of fixed constant twcDefSigmoidRadiusCm}</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug repair: While porting the analysis engine in earlier subversions of 330.x an error was introduced in a statistics library, ultimately discarding the results of the derivative function. This also blocked the sigmoid function and messed up the right border of the In-Field area.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug repair: Disabling panels (grouped items) on a disabled tab, because they <I>looked</I> enabled, made labels permanently invisible. Now only the color is set to gray. [v15]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug repair: With the setting "Assign origin to all 2D array lines" (currently only implemented for the StarcheckMaxi) switched <I>on</I>, the origin value was not preserved <I>for the reference only</I> when the already available reference data were reused. Instead a zero value was inserted, leading to a sharp edge in the middle and effectively two halved profiles. This is typically the case when the next profile from a multi-profile set is viewed. Now this origin value is both preserved and only used when larger than zero.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug repair: A change in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#extsym">Extendend Symmetry</A></FONT><FONT FACE="Arial" SIZE="2"> submenu was not reflected in the Results panel (if Extended Symmetry was defined as panel rule) until this change was stored in a configuration and the program was restarted. Now this is reflected immediately for the next data input.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Some possibly non-printable characters are now avoided on the screen.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">More checks on invalid clipboard data.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Improvement: Now BistroMath checks whether the decimal separator on the Windows system is the point symbol ("."). If not, the program will immediately exit after a message is shown.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Improvement: The triggering of the "user's dose level" annotation is now triggered by both the explicit </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs44.htm">menu choice</A></FONT><FONT FACE="Arial" SIZE="2"> and the application of the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm#evaluation_types">evaluation type</A></FONT><FONT FACE="Arial" SIZE="2"> "u".</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Improvement: A call to a ClearScreen procedure is guaranteed on reading data through any route, to avoid the impression of a success while the analysis actually failed.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Speed improvement: to check file types now only once per file the file is opened. Early checks on small clipboard texts which cannot represent any data.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs990.htm">History v1.00 - v1.99</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs991.htm">History v2.00 - v2.69</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs992.htm">History v2.70 - v2.98</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs993.htm">History v3.00 - v3.25</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

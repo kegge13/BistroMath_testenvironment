@@ -1,0 +1,85 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Concepts</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Applied methods and algoritms;configuration;flatness,relative flatness;Local Peak Analysis;Presets;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs23.htm">Previous</A>
+ - <A HREF="hs7.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Concepts</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> general description&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="3"><B>Reliable results</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">BistroMath is highly adaptable and configurable to users needs. This might also be a pitfall when multiple users are using the same software for a common basic task.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This can be managed with several strategies:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">saving all </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">preferences</A></FONT><FONT FACE="Arial" SIZE="2"> in the predefined, "protected", </FONT><FONT FACE="Courier10 BT" SIZE="2">institute.ini</FONT><FONT FACE="Arial" SIZE="2"> or any other user-defined configuration file when used with </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs16.htm">command-line parameters</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT>
+<LI><FONT FACE="Arial" SIZE="2">using </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs180.htm">presets</A></FONT><FONT FACE="Arial" SIZE="2"> to set for specific tasks, optionally loaded at start with </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs16.htm">command line parameters</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT>
+<LI><FONT FACE="Arial" SIZE="2">using </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs16.htm">command line parameters</A></FONT><FONT FACE="Arial" SIZE="2"> to overrule several critical features.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">a configurable </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs13.htm">graphical representation</A></FONT><FONT FACE="Arial" SIZE="2"> to comply with the water phantom software.&nbsp;</FONT>
+<LI><FONT FACE="Arial" SIZE="2">blocking most settings at startup in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm#advanced_mode">standard mode</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="3"><B>Configurable output to screen and file</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">All visible analysis results can </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">be configured</A></FONT><FONT FACE="Arial" SIZE="2"> from </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm#evaluation_types">this list</A></FONT><FONT FACE="Arial" SIZE="2"> In the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs910.htm">special modes</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> additional output can be written to a file and/or the clipboard.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Also less used features can be </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm">hidden for the user</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="3"><B>Multiple data input routes for multiple files</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A key concept of BistroMath is the observation of the Windows clipboard for plain text data. This clipboard interception can be switched off/on. Data less or equal to the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs940.htm#ini_only">configurable value</A></FONT><FONT FACE="Arial" SIZE="2"> <I>MinClipBoardBytes</I> or starting with "BistroMath" are ignored. When recognised as valid data they will be used. Also files can be dropped or opened in the classical way. Multiple files can be dropped or opened when the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">history list</A></FONT><FONT FACE="Arial" SIZE="2"> is activated.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="3"><B>Multiple data formats</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm">lot of data formats</A></FONT><FONT FACE="Arial" SIZE="2"> of all major water phantom suppliers, including some binary formats, are supported.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="3"><B>Data correction</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Probably not much used, but data can be converted to dose with user defined parameters and/or corrected for background. These parameters are </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">related to different file types</A></FONT><FONT FACE="Arial" SIZE="2">.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="3"><B>Depth dose analysis</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The correct normalisation position is set according to the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs80.htm">user settings</A></FONT><FONT FACE="Arial" SIZE="2">. Note that fixed depths might be used here. Dependent on these settings "PDD" values might be presented as "RDD"values. Next (p|r)DD</FONT><FONT FACE="Arial" SIZE="1">10</FONT><FONT FACE="Arial" SIZE="2"> and (p|r)DD</FONT><FONT FACE="Arial" SIZE="1">20</FONT><FONT FACE="Arial" SIZE="2"> positions are calculated. On top of the objective depth dose at certain levels the graphical normalisation point is relevant when the measurement is compared with a reference. Especially for generic beams the depth of standard dosimetry should be taken for normalisation. Now dose differences in the measurement compared to the reference depth curve will be zero at the (grapical) reference depth in stead of dose maximum. The maximum is fitted with a quadratic fit to evaluate the position and height of the maximum. The same code is used for standard filtering with identical settings.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="3"><B>Relative curves</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="selftest_027.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">A key concept of BistoMath is the comparison of a measurement with its reference curve. Please read the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs2.htm">overview</A></FONT><FONT FACE="Arial" SIZE="2">. Reference curves are </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm#save_reference">stored by the user</A></FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">as default</A></FONT><FONT FACE="Arial" SIZE="2"> loaded automatically, based on machine name, modality, energy, wedge status, field size and depth. The machine name of the reference can be overruled at load time by using a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">alias</A></FONT><FONT FACE="Arial" SIZE="2">. </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Temporary references</A></FONT><FONT FACE="Arial" SIZE="2"> can be used also.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">In the image above a </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">measurement</FONT><FONT FACE="Arial" SIZE="2"> is </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">divided</FONT><FONT FACE="Arial" SIZE="2"> with a symmetry corrected </FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">reference</FONT><FONT FACE="Arial" SIZE="2"> profile after profile alignment based on matching because of missing penumbras. Both aligment and symmetry correction are noted in the </FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">reference information text</FONT><FONT FACE="Arial" SIZE="2">. For the same reason all results based on the field borders are </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">red</FONT><FONT FACE="Arial" SIZE="2">. The flatness of the measurement itself is 2.0% but when compared to the reference the range of differences, the relatve flatness, is limited to 1.2%.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Profile alignment</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a reference is loaded, the center of the reference is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">optionally</A></FONT><FONT FACE="Arial" SIZE="2"> moved towards the center of the measurement. This can be problematic when a field border is missing in measurement and/or reference. Then fallback strategies are used, based on the first derivative or </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">matching</A></FONT><FONT FACE="Arial" SIZE="2"> as last resort.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Symmetry correction</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Also, the reference profile might be slightly asymmetrical, which </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">optionally</A></FONT><FONT FACE="Arial" SIZE="2"> can be corrected. The slope of a straight line, fitted on the data with the In-Field area is applied to the data, starting at the field center.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Comparison</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The result of the comparison with a reference curve, the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">calculated curve</FONT><FONT FACE="Arial" SIZE="2">, is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">user defined</A></FONT><FONT FACE="Arial" SIZE="2">. The primary design target was to calculate the difference as </FONT><FONT FACE="Times New Roman" SIZE="2">measured/reference</FONT><FONT FACE="Arial" SIZE="2">, normalised to 100% in the normalisation point. In that case the flatness of the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">calculated curve</FONT><FONT FACE="Arial" SIZE="2"> also can be evaluated: the relative flatness.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Alternatively a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">gamma calculation</A></FONT><FONT FACE="Arial" SIZE="2"> can be applied.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The reference may also be used to combine it with the reference to </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs137.htm">one summed curve</A></FONT><FONT FACE="Arial" SIZE="2">. This can simulate the effect of abutted fields.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="concepts_division"></A></FONT><FONT FACE="Arial" SIZE="2"><I>Division of measurement and reference</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the comparison is chosen to be the division of measurement and reference the calculation starts with the raw data of both measurement and reference. After quadratic filtering to temporary buffers the center of both profiles is calculated. Then the divison is calculated on points with the same relative position to the center in their data set. The result curve is passed through a median filter.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Field types</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Profiles are classified as <I>Standard</I>, <I>FFF</I>, <I>Wedge</I> or <I>Small</I>. This concept is further explained on the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs23.htm">Field types page</A></FONT><FONT FACE="Arial" SIZE="2">. All related parameers can be found on the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">Field Types tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="3"><B>Multiple-data files</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Files with several measurements in one single file come in two variants:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A series of profiles with no predefined ordening. These are mostly data sets from water phantom like the IBA </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#RFA300">RFA300 format (*.asc)</A></FONT><FONT FACE="Arial" SIZE="2">, </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#OmniPro_rfb">OmniPro 6 binary (*.rbf)</A></FONT><FONT FACE="Arial" SIZE="2">, </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#mcc_ascii">PTW (*.mcc)</A></FONT><FONT FACE="Arial" SIZE="2">. Any profile in such a set is treated as individual profile.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A fixed, organised data set, mostly from a specific detector like a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">2D array</A></FONT><FONT FACE="Arial" SIZE="2">. The data can be used as indivdual profiles, but the set as such can be stored as reference in the original format. This makes it possible to automatically </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#DeviceSpecificReference">extract the appropriate curve</A></FONT><FONT FACE="Arial" SIZE="2"> as reference.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For multiple-data files the </FONT><FONT FACE="Courier New" SIZE="2"><A HREF="hs19.htm">&lt;PageUP&gt;/&lt;PageDown&gt;</A></FONT><FONT FACE="Arial" SIZE="2"> keys are used to browse through the file.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="3"><B>Temporary references</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Any scan can be used as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">temporary reference</A></FONT><FONT FACE="Arial" SIZE="2">, which can be handy to compare two variants of beam settings/machines/fields. Also a check on the scan type can be switched off. When a temporary reference is active, no other reference will be loaded automatically.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1020.htm">Calculation details</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs2.htm">Comparison with References</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs916.htm">Quik Start guide</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs128.htm">Center of Field and Normalisation of profiles</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs8.htm">normalisation of depth dose curves</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">Results panel</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

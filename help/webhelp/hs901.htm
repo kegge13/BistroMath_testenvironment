@@ -1,0 +1,27 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Internal data representation</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="scan angle;StarcheckMaxi;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Internal data representation and scan angle</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">All data are internally represented in an extendend version of the OmniPro v6 format. The axis representations are from G to T, A to B and U to D repectively. Through time date structures were adden when needed. Therefore all file types are converted into this format on read time. For relevant file types like the MCC format separate data objects were written to hold the data in their original format.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The direction of the data along the axes and/or the axis labels can be </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs13.htm">swapped</A></FONT><FONT FACE="Arial" SIZE="2"> by the user. Depending on the choices this might have consequences for `left` and `right` analysis values. As the same conventions are used for reference files this is of no consequence.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There is a caveat for the scan angle definition. The TA-GB diagonal nowadays is mostly noted as 45° angle with a positive T to G axis. In the OmniPro v6 format the positive direction is from G to T and hence the same diagonal is noted as 135°. This information is inserted in the reference file name and must be user independent. In short: the scan angle is always represented in the OmniPro v6 convention.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="scanangle.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">A test setup has been made with StarCheckMaxi. The data can be found in selftest31_BeamAdjust.mcc.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="selftest31_BeamAdjust.gif" BORDER="0">
+</FONT>
+</BODY></HTML>

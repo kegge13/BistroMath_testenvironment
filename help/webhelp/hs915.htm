@@ -1,0 +1,93 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Installation and configuration issues</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Problem solving;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs910.htm">Previous</A>
+ - <A HREF="hs925.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Installation and configuration issues</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>915</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Application</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Although BistroMath can be used as a stand-alone analysis tool it is intended as extension to water phantom systems in radiotherapy and therefore should agree with viewing conventions in the water phantom system. As BistroMath has many features this might become confusing when different users use one or more installations of the software over one or more Windows platforms. Mostly an institute wide default behavior on all installtions for all users might be preferred. This page tries to address all aspects of installation and configuration.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The names of some settings in the configuration files have been changed in version 2.53. This is corrected by the setup program in </FONT><FONT FACE="Courier10 BT" SIZE="1">bistomath.ini</FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Courier10 BT" SIZE="1">institute.ini</FONT><FONT FACE="Arial" SIZE="2">. for standard setups. When in doubt, check the settings and save them again.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">It is strongly advised to use a "." as decimal separator in the regional settings of Windows.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="update_configuration"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Configuration file consistency</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The installation program can convert all old parameters to the new standards in all configuration and preset files in the data directory. This feature can also be run without installing Bistromath on any other directory. Just run the installation file, select the data directory and deselect installation of BistroMath.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="install3.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="install4.gif" BORDER="0"></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Setup on different Windows platforms</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Starting with version 2.50 the datastructure is reorganised to conform with Windows standards. The setup program will adjust this automatically.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Windows XP</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">executable </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\Program Files\BistroMath</FONT><BR>
+<FONT FACE="Arial" SIZE="2">selftest data </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\Program Files\BistroMath</FONT><BR>
+<FONT FACE="Arial" SIZE="2">data&nbsp; </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\Documents and Settings\All Users\ApplicationData\BistroMath</FONT><BR>
+<FONT FACE="Arial" SIZE="2">institute.ini </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\Documents and Settings\All Users\ApplicationData\BistroMath</FONT><BR>
+<FONT FACE="Arial" SIZE="2">bistromath.ini </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\Documents and Settings\All Users\ApplicationData\BistroMath</FONT><BR>
+<FONT FACE="Arial" SIZE="2">references </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\Documents and Settings\All Users\ApplicationData\BistroMath\References</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Windows Vista and later</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">executable </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\Program Files(x86)\BistroMath</FONT><BR>
+<FONT FACE="Arial" SIZE="2">selftest data </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\Program Files(x86)\BistroMath</FONT><BR>
+<FONT FACE="Arial" SIZE="2">data&nbsp; </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\ProgramData\BistroMath</FONT><BR>
+<FONT FACE="Arial" SIZE="2">institute.ini </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\ProgramData\BistroMath</FONT><BR>
+<FONT FACE="Arial" SIZE="2">bistromath.ini </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\ProgramData\BistroMath</FONT><BR>
+<FONT FACE="Arial" SIZE="2">references </FONT><FONT FACE="Courier10 BT" SIZE="1">C:\ProgramData\BistroMath\References</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Installation on network</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The installation onto a network drive should be done manually.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">executable any path</FONT><BR>
+<FONT FACE="Arial" SIZE="2">selftest data same path as executable</FONT><BR>
+<FONT FACE="Arial" SIZE="2">institute.ini same path as executable</FONT><BR>
+<FONT FACE="Arial" SIZE="2">bistromath.ini same path as executable as default</FONT><BR>
+<FONT FACE="Arial" SIZE="2">data&nbsp; any path</FONT><BR>
+<FONT FACE="Arial" SIZE="2">references any path configured in ini file or on command line</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Startup logistics</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">At startup Bistromath will look for </FONT><FONT FACE="Courier New" SIZE="2">institute.ini</FONT><FONT FACE="Arial" SIZE="2"> in the standard datapath. If not found </FONT><FONT FACE="Courier10 BT" SIZE="1">bistromath.ini</FONT><FONT FACE="Arial" SIZE="2"> will be used. On a default installation Bistromath will start correct without any configuration file. Of course, settings will not be as expected.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Alternative configurations can be used on the command line: </FONT><FONT FACE="Courier New" SIZE="2">bistromath.exe -config path_to_ini_file</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The user can load </FONT><FONT FACE="Courier New" SIZE="2">bistromath.ini</FONT><FONT FACE="Arial" SIZE="2"> after program start. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs14.htm">Institute defaults configuration</A></FONT><FONT FACE="Arial" SIZE="2"> for more details.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The philosophy behind this behavior is to archive a uniform analysis outcome for all users on all platforms without losing the opportunity to store specific user settings. When a configuration file is opened, a line is written to the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs300.htm">messages tab</A></FONT><FONT FACE="Arial" SIZE="2">. Additional, a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs180.htm">preset</A></FONT><FONT FACE="Arial" SIZE="2"> can be loaded to support a dedicated task.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="logtab.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Lost information without any configuration file</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Depth dose curves </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs80.htm">might not be scaled as expected</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Command line</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The command line offers opportunities to use alternative configurations. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs16.htm">command line parameters</A></FONT><FONT FACE="Arial" SIZE="2"> for details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Interpetation of Depth dose curves</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Both analysis values as graphical representation are highly configurable and most problably should be set to institute wide preferences. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs80.htm">Depth dose interpretation</A></FONT><FONT FACE="Arial" SIZE="2"> for details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Various settings</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="aliases.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The most settings are described in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Graph view configuration: axis swapping</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="axisswap0.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For most users it is prefered that the graph view matches with the profiles as seen in the watertank software. Notably the GT-axis is handled inconsitent by different vendors or even different versions of one vendor. Therefore BistroMath offers </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs13.htm">Axis swapping</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs12.htm">Data axis conventions</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs80.htm">Depth dose interpretation</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings Tab</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs16.htm">Command line parameters</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs14.htm">Institute wide defaults</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

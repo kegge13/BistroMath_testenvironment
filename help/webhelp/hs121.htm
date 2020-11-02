@@ -1,0 +1,32 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Generic to PDD</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="origin;PDD;RDD;scaling;SSD;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs120.htm">Previous</A>
+ - <A HREF="hs122.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Generic/Free scan/Point to Point scans to PDD</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>measurement menu&nbsp;</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">When the option <B>Generic to PDD</B> is checked, a generic, untyped two-column data set is encountered this will be interpreted as PDD. As this is a 1D dataset, the conversion to pdd is trivial.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For Point to Point scans and Free scans the data are represented in a 3D set. When checked and the difference in depth between start of scan and end of scan is more than 3 cm, the correct path length is calculated along the scan axis. The zero position is set to the water level. The 3D data set is recalculated to represent a pure PDD preserving any offset along inplane and crossplane direction as refered to the water level.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">In the rather extreme example below the path length changes about 1%. For more realistic angles this effect is neglegible.</FONT><BR>
+<BR>
+<FONT FACE="Lucida Console" COLOR="#FF0000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Original file</FONT><FONT FACE="Lucida Console" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">Recalculated and stored</FONT><BR>
+<FONT FACE="Lucida Console" SIZE="2">Start Point [I,C,D] [cm]: </FONT><FONT FACE="Lucida Console" COLOR="#FF0000" SIZE="2">2.3904&nbsp; 3.5067&nbsp; 39.04</FONT><FONT FACE="Lucida Console" SIZE="2">&nbsp; Start Point [I,C,D] [cm]: </FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">2.00 -3.00 39.58</FONT><BR>
+<FONT FACE="Lucida Console" SIZE="2">End Point&nbsp;&nbsp; [I,C,D] [cm]: </FONT><FONT FACE="Lucida Console" COLOR="#FF0000" SIZE="2">1.9997 -3.0050&nbsp; -0.03</FONT><FONT FACE="Lucida Console" SIZE="2">&nbsp; End Point&nbsp;&nbsp; [I,C,D] [cm]: </FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">2.00 -3.00 -0.03</FONT><FONT FACE="Lucida Console" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Lucida Console" SIZE="2"><I>difference</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Lucida Console" COLOR="#FF0000" SIZE="2">0.3907&nbsp; 6.5117&nbsp; 39.07</FONT><FONT FACE="Lucida Console" SIZE="2">&nbsp; End Point&nbsp;&nbsp; [I,C,D] [cm]: </FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">0.00&nbsp; 0.00 39.61</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement options</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

@@ -1,0 +1,107 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Advanced Settings tab</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Advanced mode;alignment of fields;background;decimal point;double wedge profiles;edge detection;history,list of measurements;language;Penumbra;pips pixel size;settings;sigmoid analysis;user dose level;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs130.htm">Previous</A>
+ - <A HREF="hs131.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Advanced Settings tab</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> advanced settings tab&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="AdvancedSettingsTab.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">More advanced settings can be found here.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Add date and time to filename</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked the date and time will be added to the proposed file name. This option is also used for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialModes 2 and 3</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Advanced Mode at startup</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="advanced_startup"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When this option is checked <I>and</I> stored in a configuration file, the program will start in <I>Advanced Mode</I>.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="show_warnings"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Show warnings</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The status bar at the bottom will show extra information on the analysis process.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Use history list</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="history_list"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When this option is checked a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">series of data sets will be kept in memory</A></FONT><FONT FACE="Arial" SIZE="2">. Also multiple files can be dropped or opened at the same time, limited by the size of the history list. This checkbox is linked to the <I>Use History list</I> in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">File menu</A></FONT><FONT FACE="Arial" SIZE="2">. The number of files in the history can be set here.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Log Level</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When set to 0 all logging is stopped. The maximum level is 3.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Use always matching for profile alignment</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked always matching will be done to align measurement and reference profile, even when all penumbras are available.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Auto set decimal separator for: (a list of characters)</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="decimal_point"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In countries with the comma as standard numeric decimal point symbol files might be stored with the comma is separator. BistroMath expects a dot symbol as decimal separator and will not start when the localisation does not meet this requirement.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Still there can be files with the wrong format. When this option is checked, BistroMath will first count the number of occurences for each of the symbols given. The most-found symbol will be applied. The drawback is that this will be done for every ascii file which takes extra processing.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">A caveat might be that for a correctly formatted file wit a lot of commas in the header and few data points the wrong symbol is selected. Therefore it is advised to use this feature only when needed. When a file fails to open unexpectedly it will be retried when this option is checked and the user returns to the <I>Analysis</I> tab. Before deciding so please check the <I>raw data</I> tab whether this might be meaningful.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Filter width outlier analysis</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">With few points and much noise or gradient changes a second order fit may give unwanted results. When the fit is signifcantly outside the vertical range, several techniques are used to find a better estimation. When the used number of points exceeds the given number of points, no fallback methods are used.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="badpenumbra"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Bad penumbra</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the average of both penumbra's exceeds this limit, it is considered 'bad'. In the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">measurement menu</A></FONT><FONT FACE="Arial" SIZE="2"> these can be accepted or not. When not accepted you will get the message "Penumbra too wide". The original design goal of this rule was to discard nonsensical profiles. The mechanism is switched on/off through the <I>Measurement menu</I> option <I>Accept bad penumbra's</I>.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Pips pixel size</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Pips profiles are presented as a one dimensional array without explicit position information. The positition can be&nbsp; reconstructed when the effective pixel size at isocentre level is given in mm.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Origin min. level</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When due to missing penumbra(s) the center of field position is not valid the origin can be used for normalisation. This will only be done if the value at the origin is an acceptable fraction of the maximum. When not fullfilled, the maximum will be used.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Colors</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bothe grid color and background color of the graph panel can be changed. Also the background color for most oither panels can be set. These colors can be stored in a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs180.htm">presets file</A></FONT><FONT FACE="Arial" SIZE="2">, giving each "task" its own symbolic colors.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Axis remapping</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the measurement option </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs120.htm#alternative_axis">Alternative axis setup</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> is checked, the axis mapping of <B>I</B>nplane, <B>C</B>rossplane and <B>D</B>epth can be changed here when, for any reason, the data columns for the coordinates do not meet the file format conventions. When intentionally changed to non-standard also </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#alternative_axis">Alternative Axis setup</A></FONT><FONT FACE="Arial" SIZE="2"> in the File menu is checked.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="axis_remapping.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Match settings: Range divider</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">During each iteration cycle the total span of the profile is divided by the <I>Match Range divider</I>. Thus in the first cycle the measurement is shifted half this width. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">Profile matching</A></FONT><FONT FACE="Arial" SIZE="2"> for more details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Match settings: Step number</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The number of steps that is made over the Match Range. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">Profile matching</A></FONT><FONT FACE="Arial" SIZE="2"> for more details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Match settings: Normalisation Percentage</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The maximum amount that the normalisation value of the measurement is corrected for at each step to find the lowest cost function. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">Profile matching</A></FONT><FONT FACE="Arial" SIZE="2"> for more details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Match settings: Inclusion Limit</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The data point should exceed this limit to be included in the matching evaluation.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="doublewedge.gif" BORDER="0"></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="neldermead_settings"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>PDD fit</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><IMG SRC="pddfit_optimisation.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the option <I>Fit PDD to buffer</I> is checked, a model will be used to fill the buffer. Also the difference between data and model is plotted as dots. This difference also drives the model optimisation in the right direction.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For photons the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#JWmodel">model</A></FONT><FONT FACE="Arial" SIZE="2"> works extremely well, and the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#fittestresults">results</A></FONT><FONT FACE="Arial" SIZE="2"> of the (noise free) model can be used for analysis by checking <I>Use PDD-fit results</I> in the measurement menu option.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The difference between model and data is ultimately expressed into one single value: the cost function. It consists of several components:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The summed squares of the difference between model and data over all depths.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A buildup power factor in the model itself for the photon </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#JWmodel">model</A></FONT><FONT FACE="Arial" SIZE="2"> to avoid oscillation of the fit, which was sometimes observed. It can be set to a fixed value between 0 (now power factor) and 5. Alternatively the difference from 1 can be optimised.:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">pdd = I</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">1</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">*exp((-</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">1</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">+(</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">2</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">+(</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">3</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">+</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">4</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">*z)*z)*z)*z) - I</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">b</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">*exp(-mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">b</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">*z^</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">mub_power</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">)</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The summed squares can be weighted by depth by dividing each squared difference with </FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">z^z</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">_power</FONT><FONT FACE="Arial" SIZE="2">. A value of 0 sets the power funtion to 1 for all depths and a value of 1 equals the function to <I>z</I>. Increasing the z-power will shift the weight to lower depths.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The <I>Error to Noise Ratio</I> is an estimate of the slowly evolving differences between model and averaged data in relation to the noise level. In the cost function this is for speed reasons implemented by summing the squares of the summed signed differences within a small number of overlapping regions. In the final calculation after optimisation a sum of signed diferences is calculated within a individual region for each point. The noise level itself is calculated from the difference between data and a filtered version of the data. When this ENR is above the limit the fit will be restarted until the maximum number of restarts is reached. Since the inherent noise level in the data is highly dependent on detector characteristics, averaging (measuring speed, number of points) and electronics, no general advise can be given here.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The Nelder-Mead optimisation is an endless loop. The code has to decide how to stop it. In general there are three parameters involved: the rate of change of the cost function, the number of cycles and the calculation time. The latter two can be set. A zero value for the cycles is set to a default of 100+3^#parameters.</FONT>
+<LI><FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="NMenr"></A></FONT><FONT FACE="Arial" SIZE="2">The Nelder-Mead method may give much better results by restarting is several times. The actual applied number of restarts is somewhat fuzzy. At the start the number of restarts is calculated as: </FONT><FONT FACE="Lucida Console" COLOR="#008000" SIZE="1">EngineMaxRestarts:= Ceil(twcNMrestarts/Max(1,(Amoebes-1)/2));</FONT><FONT FACE="Arial" SIZE="2"> where the number of amoebes is set to the available CPU's (cores) minus 1. Afterwards the ENR is calculated. If this exceeds the set ENR criterium, the number of engine restarts is decreased by 1 and the loop is repeated until the number of restarts reaches zero or the ENR criterium is met. Always the total sum of restarts by engine and loop is reported.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The parameters mu3, mu4 and mx2 are related to the photon model and electron model respectively. When checked they will be given a meaningful start value and will be part of the optimisation. When unchecked their starting values are set to zero. The Nelder-Mead method will leave them unchanged as all changes are a (randomised) multiplier with the original value. In general the result will degrade significantly when pameters are switched off.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The buffer data are normalised to the dose maximum and can be </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">saved as selected curve</A></FONT><FONT FACE="Arial" SIZE="2">, including all fit parameters.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Starting with version 3.08 the optimisation engine is made multithreaded. On every restart the best result is distributed over all threads.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Note: the Nelder-Mead engine is also used for fitting the dose maximum of a pdd, the top of a FFF profile and the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs15.htm">sigmoid fit</A></FONT><FONT FACE="Arial" SIZE="2">, but in all these cases the number of parameters is low and with good starting values, these models are completely stable and will reach their optimum values quickly. Time and number of cycles are not relevant here.</FONT><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detection</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode</A></FONT><BR>
+
+</BODY></HTML>

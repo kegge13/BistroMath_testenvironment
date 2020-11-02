@@ -1,0 +1,44 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Conversion File Name Format</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs97.htm">Previous</A>
+ - <A HREF="hs44.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Conversion File Name Format</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> File conversion tab&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When selected, output file names will be generated according to a configurable format. There are three format strings: <I>general</I>, <I>photons</I> and <I>electrons</I>. An example is: "{X:SEEFddd}{E:SEEllddd}".&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The following syntax is used.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<B>Syntax Value&nbsp;&nbsp; Result</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;{ | }&nbsp; none&nbsp;&nbsp; grouping</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;X: | E:&nbsp; group label&nbsp; photons | electrons&nbsp; (optional)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;S&nbsp; scantype&nbsp; I&nbsp;&nbsp; (Inplane, GT)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C&nbsp;&nbsp; (Crossplane, AB)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D&nbsp;&nbsp; (PDD)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B&nbsp;&nbsp; (Fanline)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F&nbsp;&nbsp; (Freescan)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; P&nbsp;&nbsp; (Plane)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;EE&nbsp; Energy [MV/MeV] 2 digits</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;eee&nbsp; Energy [kV/keV] 3 digits</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;M&nbsp; Modality&nbsp; X | E | O</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;DD&nbsp; Profile depth [cm] 2 digits</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;ddd&nbsp; Profile depth [mm] 3 digits</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;LL|XX|YY Field Size [cm]&nbsp; 2 digits</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;ll|xx|yy&nbsp; Field Size [mm]&nbsp; 3 digits</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;I&nbsp; Detector&nbsp; (free text)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;F&nbsp; Field type&nbsp; W | O</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs97.htm">Conversion of groups of files</A></FONT><BR>
+
+</BODY></HTML>

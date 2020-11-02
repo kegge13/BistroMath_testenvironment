@@ -1,0 +1,70 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Depth dose interpretation</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="bitstromath.ini;institute.ini;PDD;RDD;SpecialMode;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs3.htm">Previous</A>
+ - <A HREF="hs15.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Depth dose interpretation</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> general description</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="configtab.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The most essential configuration for daily use is the reference depth and value for photon beams.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The reference depth is used to </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs8.htm">normalise depth dose scans</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">. </FONT><FONT FACE="Arial" SIZE="2">Thus all displayed analysis values are based on this normalisation&nbsp; ("</FONT><FONT FACE="Courier" SIZE="2">AbsDepth/AbsValue</FONT><FONT FACE="Arial" SIZE="2">"). The graphical display of the depth dose curve has its own normalisation ("</FONT><FONT FACE="Courier" SIZE="2">RelDepth/RelValue</FONT><FONT FACE="Arial" SIZE="2">"). When combined with a reference file calculated division will be normalised at the same depth. Although the shape of the division will not change drastically the found minimum and maximum will be different. When using generic beams or reference dosimetry at a specific depth this might be the optimal setup.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the dosimetrical system is based on a depth beyond dose maximum, all depth dose curves should be evaluated realative to this reference point. The text "PDD" is then changed to "RDD".</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are several possibilities to use this:</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B><I>No entries</I></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The program will normalise the depth dose curve to 100% at the depth of the found dose maximum.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="x06_000_100_000_100.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B><I>Normalise to maximum</I></B></FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;&nbsp; RelDepth RelValue AbsDepth AbsValue</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X6&nbsp; 0.0&nbsp; 100&nbsp; 0.0&nbsp; 100</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X10 0.0&nbsp; 100&nbsp; 0.0&nbsp; 100</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X18 0.0&nbsp; 100&nbsp; 0.0&nbsp; 100</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This is effectively the same as making no entries. See above.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B><I>Dose maximum definitions</I></B></FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;&nbsp; RelDepth RelValue AbsDepth AbsValue</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X6&nbsp; 1.6&nbsp; 100&nbsp; 1.6&nbsp; 100</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X10 2.0&nbsp; 100&nbsp; 2.0&nbsp; 100</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X18 3.0&nbsp; 100&nbsp; 3.0&nbsp; 100</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This is the setup for intended use in previous versions. The institute works with fixed depths for dose maximum. All curves are normalised to this depth and therefore (slightly) higher values may be found around this depth.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="x06_016_100_016_100.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B><I>Fixed reference dose at a given depth</I></B></FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;&nbsp; RelDepth RelValue AbsDepth AbsValue</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X6&nbsp; 10.0&nbsp; 67.2&nbsp; 10.0&nbsp; 67.2</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X10 10.0&nbsp; 72.8&nbsp; 10.0&nbsp; 72.8</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X18 10.0&nbsp; 78.8&nbsp; 10.0&nbsp; 78.8</FONT><BR>
+<FONT FACE="Arial" SIZE="2">With this setup curves are normalised to the dosimetry point in the planning system.&nbsp;</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="x06_100_672_100_672.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B><I>Mixed setup</I></B></FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;&nbsp; RelDepth RelValue AbsDepth AbsValue</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X6&nbsp; 1.6&nbsp; 100&nbsp; 0.0&nbsp; 100</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="x06_016_100_000_100.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;&nbsp; RelDepth RelValue AbsDepth AbsValue</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">&nbsp;X6&nbsp; 1.6&nbsp; 100&nbsp; 10.0&nbsp; 100</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="x06_016_100_100_100.gif" BORDER="0"></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">These values are joined with </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs40.htm">Dose Conversion parameters</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">.</FONT><FONT FACE="Arial" SIZE="2"> Because there can be different film types this may lead to multiple dose depth definitions for one energy. Starting with version 2.00 all definitions for one energy are kept uniform.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="bistromath_pdd.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">Save as Reference</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs14.htm">Institute defaults configuration</A></FONT><FONT FACE="Arial" SIZE="2">,
+</FONT>
+</BODY></HTML>

@@ -1,0 +1,56 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Flatness, Symmetry, Area Ratio, Elevation and Linac symmetry Error</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="area ratio;Elevation;field center;flatness;flatness,relative flatness;flattened area;Linac Symmetry error;relative flatness;symmetry;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs16.htm">Previous</A>
+ - <A HREF="hs6.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Flatness, Symmetry, Area Ratio, Elevation and Linac symmetry Error</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> general description&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="results1.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Definitions for flatness and symmetry</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The <B>Absolute flatness</B> is defined as </FONT><FONT FACE="Times New Roman" SIZE="3">maximum-minimum</FONT><FONT FACE="Arial" SIZE="2">, i.e. the vertical range, denoted by the two </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">red lines</FONT><FONT FACE="Arial" SIZE="2"> below. This value is presented for a filtered measurement and limited to the <B>In-Field area</B>, indicated by the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">vertical blue lines</FONT><FONT FACE="Arial" SIZE="2"> below. The In-Field area concept is based on conventional profiles. The same range however is still useful for non-flat profiles and then should be seen as <B><I>analysis area</I></B>. When a division of two curves is evaluated, the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>relative flatness</I></FONT><FONT FACE="Arial" SIZE="2"> as calculated from the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">blue "calculated" curve</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF profiles</A></FONT><FONT FACE="Arial" SIZE="2"> the the flatness is meaningless. When a such a profile is detected the flatness is annotated with (F) and expressed in percent per cm. When both absolute and relative flatness are given for a FFF-curve, the absolute flatness is followed by a "c" and must be read as "%/cm".</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The <B>symmetry</B> is defined as the largest ratio </FONT><FONT FACE="Times New Roman" SIZE="3">maximum</FONT><FONT FACE="Times New Roman" SIZE="2">[centre-x]</FONT><FONT FACE="Times New Roman" SIZE="3">-minimum</FONT><FONT FACE="Times New Roman" SIZE="2">[center+x]</FONT><FONT FACE="Arial" SIZE="2"> for a point and its mirrored position within the In-Field area as calculated on a filtered curve found at the </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">red arrows</FONT><FONT FACE="Arial" SIZE="2"> below.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">These definitions are based on the Dutch NCS protocol and comply with most international protocols.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Example</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="flatness.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The flattness is 2.0%, found as </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">maximum</FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">minimum</FONT><FONT FACE="Arial" SIZE="2"> within the In-Field area. The symmetry value is found as ratio of the points at the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">blue arrows</FONT><FONT FACE="Arial" SIZE="2">, giving 100.9%.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Elevation</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When all measurement points within the In-Field area are fed into a linear (first degree) model, the slope is a good measure for the symmetry as shown in the example above. The slope is recalculated to a normalised height difference over the In-Field area: </FONT><FONT FACE="Times New Roman" SIZE="3">100·slope·(In-Field area width) <B>/</B> (normalisation value)</FONT><FONT FACE="Arial" SIZE="2">. In the example above this is represented by the </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">red arrow</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Area Ratio</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="arearatio.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The area ratio is defined as </FONT><FONT FACE="Times New Roman" SIZE="3">2·(right half In-Field area - left half In-Field area) <B>/</B> (total In-Field area)</FONT><FONT FACE="Arial" SIZE="2">. This alternative measure for the symmetry is insensitive to noise, has signed result value and gives a clinically more relevant figure. There is a caveat however with the definition given here when the field is asymmetrical with respect to the field center. A asymmetrical range will then produce large effects with a perfectly flat field. Also a asymmetric distribution of the data points can have significant effects for small fields. Therefore a resampled, symmetrical range (with the length of the In-Field area) is taken around the <I>choosen</I> field center. The center of field might be the origin, the middle of the field borders or the top of a FFF field. In the example above the actual calculation is 2*(B - A) / (A + B). Since the center is significantly different from the origin, the area ratio value is annotated with a 'b'.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Linac symmetry error</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="elekta_servo_plates_a.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The internal ionization chamber of a linac compares the signal of two symmetric regions to evaluate the symmetry of the beam. For an Elekta machine segments of a ring shaped area with a inner radius of 7.3 cm (at isoc) and an outer diameter of about 15.3 cm, indicated with the </FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">green boxes</FONT><FONT FACE="Arial" SIZE="2"> below. By definition, the signal is averaged within each box ("</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"><B>L</B></FONT><FONT FACE="Arial" SIZE="2">" and "</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"><B>R</B></FONT><FONT FACE="Arial" SIZE="2">"). The <B>Linac symmetry error</B> is now </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#linacerror">calculated</A></FONT><FONT FACE="Arial" SIZE="2"> as 2*(</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"><B>L</B></FONT><FONT FACE="Arial" SIZE="2">-</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"><B>R</B></FONT><FONT FACE="Arial" SIZE="2">)/(</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"><B>L</B></FONT><FONT FACE="Arial" SIZE="2">+</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"><B>R</B></FONT><FONT FACE="Arial" SIZE="2">). For the calculation in BistroMath the evaluation is also limited by the field borders (the 50% positions or derivative based). Thus for smaller fields the Linac symmetry error possibly is not calculated at all. The boxes are corrected for actual SSD and measurement depth. It is displayed when the <I>Linac symmetry error</I> is selected in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement menu</A></FONT><FONT FACE="Arial" SIZE="2">. The inner and outer radius can be set in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm#linacsymsettings">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Relative flatness</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="relative_flatness.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When there is a reference available, a division of measurement and reference can be calculated. The relative flatness is found as </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">maximum</FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">minimum</FONT><FONT FACE="Arial" SIZE="2"> within the In-Field area for this line.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement menul</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">Results panel</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detecttion</A></FONT><BR>
+
+</BODY></HTML>

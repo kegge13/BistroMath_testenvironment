@@ -1,0 +1,87 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Configuration</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="bitstromath.ini;configuration;institute.ini;PDD;Presets;Problem solving;RDD;SpecialMode;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs3.htm">Previous</A>
+ - <A HREF="hs15.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Configuration</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> configuration</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Introduction</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">BistroMath offers a lot of possibilities which can become confusing for the user. Therefore the configuration is organised in three layers of ini-files which reside in the common application data directory&nbsp; (</FONT><FONT FACE="Courier New" SIZE="2">C:\Documents and Settings\All Users\Application Data\BistroMath</FONT><FONT FACE="Arial" SIZE="2"> or </FONT><FONT FACE="Courier New" SIZE="2">C:\ProgramData\BistroMath</FONT><FONT FACE="Arial" SIZE="2">). Storing configurations with free choice of name is locked and must be unlocked with </FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;+&lt;Alt&gt;+&lt;R&gt;</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">With wedged fields or likewise asymmetric fields should be verified that both direction and signs conform with the used water phantom software. Especially the GT/Inline/Inplane direction is inconsistent defined amongst different vendors and sometimes even different versions of one vendor.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="options_off.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Advanced Mode</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">To assure a uncomplicated standard mode almost all settings and menu's are locked and can be unlocked by checking <I>Advanced Mode</I>. However, loading presets can and will set all items regardless the state of <I>Advanced Mode</I>. The <I>Advanced Mode</I> state itself is not configurable. When advanced mode is preferred at startup this should be set in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#advanced_startup">Advanced Settings tab</A></FONT><FONT FACE="Arial" SIZE="2"> and stored in a configuration file.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">On returning to standard mode the last known configuration and preset will be restored from disk, ignoring the stored <I>Advanced Mode</I> preference.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Note that storing a configuration file with any other name than </FONT><FONT FACE="Courier New" SIZE="2">bistromath.ini</FONT><FONT FACE="Arial" SIZE="2"> is also blocked in standard mode. Therefore you need <I>Advanced Mode</I> to write </FONT><FONT FACE="Courier New" SIZE="2">institute.ini</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Simple Mode</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm#simple_mode">Simple Mode</A></FONT><FONT FACE="Arial" SIZE="2"> option hides a lot of features which should be carefully considered during configuration. Verify that this mode is unchecked ("<I>off</I>").</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="optionsmenu.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Configuration files</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="configuration_files"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bistromath does not depend on the Windows registry, but saves it own data in configuration files of the <I>.ini</I> type. In version 4 a lot of names were changed. To keep backward compatibility a conversionlist is used to convert any old elements (</FONT><FONT FACE="Courier New" SIZE="2">BM700_renamed_elements.ini</FONT><FONT FACE="Arial" SIZE="2">). This file can be removed if there are no ini-files written with previous versions.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Institute.ini</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When found this file will be taken as only file for all settings. This is intended as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs14.htm">reliable standard configuation</A></FONT><FONT FACE="Arial" SIZE="2"> for all users in one institute.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>BistroMath.ini</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When </FONT><FONT FACE="Courier New" SIZE="2">institute.ini</FONT><FONT FACE="Arial" SIZE="2"> is not found, </FONT><FONT FACE="Courier New" SIZE="2">bistromath.ini</FONT><FONT FACE="Arial" SIZE="2"> will be used. Also this file holds the full set of settings for the program. The difference is that this file has no protection and can be saved or loaded by any user.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Presets</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="presetsmenu.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Preset files contain a limited range of settings, mainly the menu options that can be checked/unchecked. There are a lot of meaningful combinations however that can be related to some "task". As tasks can change, another preset can be loaded. When a preset is loaded as command line parameter, the name is the file name without exclamation and extension (the file name </FONT><FONT FACE="Courier New" SIZE="2">compare!.ini</FONT><FONT FACE="Arial" SIZE="2"> would give "-preset compare").&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="overloading"></A></FONT><FONT FACE="Arial" SIZE="2"><B>Configuration file overloading</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For all <I>configuration</I> and <I>presets</I> files only the parameters found in the file are subject to any changes. All other settings remain unchanged. This implies that after starting BistroMath with a standard setup like </FONT><FONT FACE="Courier New" SIZE="2">institute.ini</FONT><FONT FACE="Arial" SIZE="2">, any stripped down configuration can be loaded on top of the basic setup.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Ini-files</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="configtab.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The most essential configuration data for daily use such as reference depth and normalisation values ar found in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm">Configuration tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The reference depth is used to </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs8.htm">normalise depth dose scans</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">. </FONT><FONT FACE="Arial" SIZE="2">Thus all displayed analysis values are based on this normalisation&nbsp; ("</FONT><FONT FACE="Courier" SIZE="2">AbsDepth/AbsValue</FONT><FONT FACE="Arial" SIZE="2">"). The graphical display of the depth dose curve has its own normalisation ("</FONT><FONT FACE="Courier" SIZE="2">RelDepth/RelValue</FONT><FONT FACE="Arial" SIZE="2">"). When combined with a reference file the calculated division will be normalised at the same depth. Although the shape of the division will not change drastically the found minimum and maximum will be different. When using generic beams or reference dosimetry at a specific depth this might be the optimal setup.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the dosimetrical system is based on a depth beyond dose maximum, all depth dose curves should be evaluated relative to this reference point. The text "PDD" is then changed to "RDD".</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Configuration tab is read-only when not in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm#advanced_mode">Advanced Mode</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">These values are joined with </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs40.htm">Dose Conversion parameters</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">.</FONT><FONT FACE="Arial" SIZE="2"> Because there can be different film types this may lead to multiple dose depth definitions for one energy. Starting with version 2.00 all definitions for one energy are kept uniform.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="bistromath_pdd.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Reference directory</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Reference directory is set at installation but </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs95.htm">can be changed</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Configuration data without user interface</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs940.htm#ini_only">Configuration files</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs915.htm">Installation and configuration</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs916.htm">Quik Start guide</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs940.htm">Configuration files</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">Save as Reference</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs180.htm">Presets menu</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs14.htm">Institute defaults configuration</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs16.htm">Command line options</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">2D-arrays</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs80.htm">Interpretation of depth doses</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">Aliases</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm">Configuration tab</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs13.htm">Axis swapping</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs901.htm">Scan angle definition</A></FONT><BR>
+<BR>
+
+</BODY></HTML>

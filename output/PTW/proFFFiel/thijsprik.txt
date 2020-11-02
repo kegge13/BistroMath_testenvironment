@@ -1,0 +1,13 @@
+Hoi Theo,
+
+Bijgevoegd een aantal profielen.
+Het zijn ASCII files dus je zou ze zo moeten kunnen lezen.
+De X07 is ons X06 FFF profiel.
+
+Ga uit van de naam van het profiel (X of Y). Inplane en crossplane draaien nl mee met een koprotatie (bugje in de software, alleen te zien als je zelf gaat inlezen, in hun eigen software is dit netjes opgelost.)
+Verder zijn negatieve waarden gelijk aan X1/Y1, en positieve waarden X2/Y2 (wat betreft scanrichting)
+
+Als je verder nog vragen hebt hoor ik dat wel.
+
+Waarschijnlijk gaan we deze week of volgende week weer FFF profielen meten op ons testtoestel. Je wilde toch ook een meekijken met een meting?
+Laat maar even weten of ik je op de hoogte moet houden wanneer.

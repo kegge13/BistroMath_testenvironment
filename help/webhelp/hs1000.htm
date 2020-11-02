@@ -1,0 +1,136 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Recent history</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="history,program evolution;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs940.htm">Previous</A>
+ - <A HREF="hs1100.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Recent history</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>history</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 4.05.3</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 720, 30/10/2020</I></FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Small code improvement:</FONT><FONT FACE="Arial" SIZE="2"> The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm#evaluation_types">evaluation type</A></FONT><FONT FACE="Arial" SIZE="2"> "u" which calls for the border postiton at <I>users</I> value, in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode2</A></FONT><FONT FACE="Arial" SIZE="2">-configuration can now be extended with any numeric value like "u<I>nn</I>" where <I>nn</I> will be replaced with the used dose level.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Efficiency improvement</FONT><FONT FACE="Arial" SIZE="2">: All raw data are first checked as potentially binary file type and, when not found to be of a known binary type, opened again in text mode. As remnant from the Delphi era both data streams were kept in memory. Now the binary data stream is copied in memory as raw bytes to a text stream. Then the binary stream is emptied, thus also avoiding to open the file twice.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Performance/bug repair: When in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement menu</A></FONT><FONT FACE="Arial" SIZE="2"> <I>User Dose Level</I> was selected as border evaluation level (and a reference was loaded and alignemnet of the reference was chosen), this was not calculated in due time, which sent BistroMath executing an extremely time consuming profile matching procedure, which might also give a subtle different shift result. Alse the field width at <I>user's level</I> failed to present although both borders were available. Now the shortcut of not calculating this value as default during profile analysis is removed. If not used, the user might configure the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs127.htm">User Dose Level</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> to 50%, which is also the default. Then the code will take this already obtained result for maximum efficiency.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A minor inconsistency was found: The Linac Error calculation still used a fixed d50 border instead of the border definition of the actual Field Type.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Some options, like <I>Detect diagonals</I> and <I>Ignore zero steps</I> were not passed timely to the actually used analysis object (also with no history list), failing some profiles to open.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">For OmniPro v8 files the by OmniPro added text " </FONT><FONT FACE="Consolas" SIZE="2">Accelerator</FONT><FONT FACE="Arial" SIZE="2">" was not chopped off, failing to identify a reference.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">In an attempt to move to standard FreePascal the axis sign correction data were accidently initialised to 0 and not to 1. This might nullify positions also and therefore failing to read the data. At a second attempt this would be repaired.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A recently introduced feature to chop off zero data points at the end of files (for Varian Eclipse data points outside the body contour) is now limited to depth doses. This intoduced a failure in the selftest.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Files of the w2CAD type failed to read (also found in the selftest).</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The selftest also failed unexpectedly on the edge detection of wedge profiles. This was tracked down to the derivative function where a valid result was set to invalid. This error was introduced between 2016 and 2018 and also found in the last Delphi releases.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">For a window larger then the minimum required height BistroMath would decrease the height due to a complete rebuild of the results panel every time another tab was selected. Now this instruction, introduced for good measure, is removed again from the tab switching code.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">When application of a reference fails, more details will be given if the loglevel is increased.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm#insert_origin">Insertion of the TG line origin</A></FONT><FONT FACE="Arial" SIZE="2"> in other scan lines for the StarCheckMaxi will be allowed only in DOSE mode.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 4.04</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 714, 16/10/2020</I></FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Bugfix for StarChck files</FONT><FONT FACE="Arial" SIZE="2">: Although not complety diagnosed, the combination of using the history list and opening a PTW StarCheck file might not present the inline profile initially and therefore not refresh the stored value for the central detector. When instead the crossline was shown first <I>and</I> the setting </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs127.htm">Assign origin to both 2D array lines</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> was checked, a wrong value for the central detector was applied. Now it is forced that always the first profile of a multi scan file is presented.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">Field Type</A></FONT><FONT FACE="Arial" SIZE="2"> <I>Electrons</I> is introduced.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: Legacy support for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#decimal_point">oddly formatted numbers</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Small code improvement</FONT><FONT FACE="Arial" SIZE="2">: When not frozen, for data sets a complete reprocess is forced upon cycling through the history list.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Field type name in axis title is not converted to lowercase and brackets are removed.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Corrected alignment of some text elements in Advanced Settings tab.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Edge fallback strategy still compared d50 and derivative instead primary and fallback method. Forcing makes no sense anymore. Just change the primary method.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 4.03</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 710, 12/10/2020</I></FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: file input-only support for the</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#Eclipse-format"> Varian Eclipse TPS</A></FONT><FONT FACE="Arial" SIZE="2"> output format.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: BistroMath uses now the SoundEx function to find month text values for multiple languages. For example 'may', 'mai' and 'mei' all give the same soundex function result. Therefore, when text is used for the month, the order 'MDY' and 'DMY' are now working irrespective the real order for day and month.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Small code improvement</FONT><FONT FACE="Arial" SIZE="2">: a temporary reference with lacking information parameters could not be passed through the history list as valid reference, even with <I>Check Temporary Scan type</I> switched off.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Small code improvement</FONT><FONT FACE="Arial" SIZE="2">: Eclipse files with multiple zero-value data points ate the end were found. This might give a large overshoot of the used quadratic filter at the very end of a pdd. This had only effects on the maxium of the graph but annoying anyway. Now those points are chopped off in an early stage.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 4.02</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 707, 03/10/2020</I></FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Important bugfix</FONT><FONT FACE="Arial" SIZE="2">: Due to a code revision error for the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">history list</A></FONT><FONT FACE="Arial" SIZE="2">, version 4.01 </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">accesses undefined memory locations</FONT><FONT FACE="Arial" SIZE="2"> <I>for SpecialMode2 handling only</I>. This is repaired.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Code improvement</FONT><FONT FACE="Arial" SIZE="2">: the history feature did not combine very well the temporary reference feature. Now the the latest temporary reference is transferred to the next data set (when</FONT><FONT FACE="Arial" SIZE="2"> not frozen). See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">details</A></FONT><FONT FACE="Arial" SIZE="2">. A complete review of the reference loading process was done. It is higly complicated by the multiple types of possible data types in both text and binary format and whether or not a data set is frozen upon cycling through the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">history list</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: When a temporary reference is set, this will now be applied immediately on the current data set.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: When a temporary reference is taken</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: When a large data set is defined as temporary reference, this may take a while. Progress messages will show on the statusbar.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: The sigmoid penumbra model can be plotted over the measurement or reference (if selected). This feature can be actived in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm">View menu</A></FONT><FONT FACE="Arial" SIZE="2">. This and many other grapical elements </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs9.htm">can be selected</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The <I>Indicators</I> item in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm">View menu</A></FONT><FONT FACE="Arial" SIZE="2"> is renamed to <I>In-Field Area indicators</I>.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">When paging through the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">history list</A></FONT><FONT FACE="Arial" SIZE="2">, the last analysis message stays visible although this might disagree with the newly displayed data set. Therefore now a message on the set </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs23.htm">Field Type</A></FONT><FONT FACE="Arial" SIZE="2"> is shown.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 4.01</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 704, 19/09/2020</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">In any saved configuration file (not presets) information on</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm"> SpecialMode</A></FONT><FONT FACE="Arial" SIZE="2"> items will be inserted.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode[2]Float[2]</A></FONT><FONT FACE="Arial" SIZE="2"> (wedge detection) is not used anymore; standard analysis will do this with the given settings on the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">Field Types tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The text format of the left axis markers is optimised for both Zoomed and Unzoomed mode.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">history list</A></FONT><FONT FACE="Arial" SIZE="2"> is introduced.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: Multiple files can be dropped or opened, limited by the size of the history list.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Added some condional compiler statements for the Fedora platform. By definition no effect for the here published Windows platform release.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 4.00</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 699, 14/08/2020</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">All changes, most of them initiated in the porting process, as published in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs994.htm">v3.30</A></FONT><FONT FACE="Arial" SIZE="2"> and subversions are ported to version 4.00. This is a long list as the last 3.30 subversion was published in july 2020.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Due to the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1090.htm">deprecated support of the x87 math processor</A></FONT><FONT FACE="Arial" SIZE="2"> in Windows10/64bits exact reproduction with previous versions before 3.30.18 is not possible.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">The sigmoid model may be used as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">alternative to calculate 50% border positions</A></FONT><FONT FACE="Arial" SIZE="2">. Also the <I>inflection point</I> is more precise calculated as the derivative function which amplifies the noise by its nature.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">The profile value at a position as percentage of the border to center of field is introduced (<I>Profile Evaluation Point</I>) as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm#evaluation_types">evaluation type</A></FONT><FONT FACE="Arial" SIZE="2"> "r" / "R" for the results panel and specialmode2.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1.htm">first page</A></FONT><FONT FACE="Arial" SIZE="2"> of this helpfile contains a clickable image for fast navigation.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">In the viewing menu an Auto Unzoom item is added for FFF profiles.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">All menu shortcuts can be changed through the configuration file.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">The right axis can be </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm">linked to the grid</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New: </FONT><FONT FACE="Arial" SIZE="2">A pdf print of the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">current window</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New:</FONT><FONT FACE="Arial" SIZE="2"> In the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">Result Panel rules</A></FONT><FONT FACE="Arial" SIZE="2"> two new conditions (N=Standard field type, S=Small field type, see below) and field size limits are introduced.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Changes in configuration file: a lot of elements were renamed. Backward compatibility is guaranteed with on-the-fly conversion. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm#configuration_files">configuration issues</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change</FONT><FONT FACE="Arial" SIZE="2">: The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs21.htm">statusbar</A></FONT><FONT FACE="Arial" SIZE="2"> is now split in two parts. At the right side the confirmed scan number in a multi scan file is shown; for a single data set the number of measurement points.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change</FONT><FONT FACE="Arial" SIZE="2">: The right axis labels are now aligned with the left axis grid at the minor costs of less nice numbers.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change</FONT><FONT FACE="Arial" SIZE="2">: The SelfTest is removed from standard release builds although the code is maintained and used during development. Therefore SpecialMode4 is also removed.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change</FONT><FONT FACE="Arial" SIZE="2">: Graph panel, graph grid and general panels (as a group) have configurable colors.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change</FONT><FONT FACE="Arial" SIZE="2">: When switching between tabs the shift of a curve is preserved; using <I>Load current data</I> in the <I>File</I> menu does not.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Design change</FONT><FONT FACE="Arial" SIZE="2">: Edge annotations which reflect the primary edge definition can be suppressed.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Design change:</FONT><FONT FACE="Arial" SIZE="2"> A <I>new information type</I> is introduced: the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs23.htm">Field type</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2">. This replaces the (unnamed) <I>default</I>, <I>Wedge</I> and <I>FFF </I>charcteristic with the new Field types <I>Standard</I>, <I>FFF</I>, <I>Small</I> and <I>Wedge</I>.</FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Design change</FONT><FONT FACE="Arial" SIZE="2">: The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm#annotations">annotation</A></FONT><FONT FACE="Arial" SIZE="2"> for edge values based on the sigmoid inflection point is changed from <B><I>s</I></B> to <B><I>i</I></B>nn, where nn is the actual dose level. A new 50%-level based on sigmoid analysis with annotation <B><I>s</I></B> is introduced. The evaluation types for these choices are 'i' and 'I' respectively. The sigmoid may also be used to find the position at user's level (evalution type 'U').</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug fix: For generic files the measurement option </FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">Generic to PDD</FONT><FONT FACE="Arial" SIZE="2"> failed.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug fix: The generic data reading object was too picky on empty lines and non-printable characters.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug fix: On changeover from a single scan to a array scan data set that started with the same scan type, SSD, field size and depth the single scan reference was maintained as "valid". Only when changing to the next scan in the data set the correct reference arrray scan was taken.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Small improvements for the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs17.htm">histogram</A></FONT><FONT FACE="Arial" SIZE="2"> presentation to get a better normalisation.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A lot of visual elements have been renamed or replaced with other structures completely.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>build 700, 07/09/2020</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">Advanced Setting tab</A></FONT><FONT FACE="Arial" SIZE="2"> are slightly reorganised.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug fix: A reporting message for the second or next reference of a multireference caused an unhandled error.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug fix: Added aliases were never used.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug fix: always the FFF radius was used for the Top model.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">:The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs23.htm">Field Type</A></FONT><FONT FACE="Arial" SIZE="2"> <I>MRlinac</I> is added.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: The application of the Top model is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">widened to all Field types</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: Added 'C' als </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm#evaluation_types">Evaluation Type</A></FONT><FONT FACE="Arial" SIZE="2">. to show the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#Topmodel_radius">curvature</A></FONT><FONT FACE="Arial" SIZE="2"> of the Top model.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<IMG SRC="curvature.gif" BORDER="0"></FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New:</FONT><FONT FACE="Arial" SIZE="2"> Actually applied aliases for the current measurment are marked in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">Aliases tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">inflection point based penumbra width</A></FONT><FONT FACE="Arial" SIZE="2"> is now supported according to NCS-33. Therefore the functionality of the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">Results Panel rule</A></FONT><FONT FACE="Arial" SIZE="2"> 'p' is also changed.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>build 701, 08/09/2020</I></FONT>
+<LI><FONT FACE="Arial" COLOR="#008000" SIZE="2">Minor design change</FONT><FONT FACE="Arial" SIZE="2">: Now </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs19.htm#multiple_profiles">autolooping</A></FONT><FONT FACE="Arial" SIZE="2"> (&lt;Ctrll&gt;+&lt;PgDown&gt;) ends effectively with the last valid scan in a multiscan file.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: Autocentering of a profile is now optional in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode3</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>build 702, 09/09/2020</I></FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Minor bug</FONT><FONT FACE="Arial" SIZE="2">: In the file </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs97.htm">Conversion tab</A></FONT><FONT FACE="Arial" SIZE="2"> the field to change the name template did not become visible.</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">New</FONT><FONT FACE="Arial" SIZE="2">: The .rfb file type is now also supported in the Conversion tab.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">For multi scan files there will be displayed one line per scan during conversion.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs990.htm">History v1.00 - v1.99</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs991.htm">History v2.00 - v2.69</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs992.htm">History v2.70 - v2.98</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs993.htm">History v3.00 - v3.25</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs994.htm">History v3.30</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs925.htm">Known limitations</A></FONT><BR>
+
+</BODY></HTML>

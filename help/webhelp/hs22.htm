@@ -1,0 +1,46 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Sigmoid analysis of penumbra</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="area ratio;Elevation;FFF;field center;flatness;flatness,relative flatness;flattened area;Linac Symmetry error;relative flatness;sigmoid analysis;symmetry;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs16.htm">Previous</A>
+ - <A HREF="hs6.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Sigmoid analysis of penumbra</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> general description&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="4PL-graph.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Introduction</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The penumbra region can with good approximation be modelled with a sigmoid function. The general description, also known as Richard's function, can be found in </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://en.wikipedia.org/wiki/Generalised_logistic_function">Wikipedia</A></FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://www.myassays.com/four-parameter-logistic-regression.html">MyAssays</A></FONT><FONT FACE="Arial" SIZE="2">.Here a reduced four parameter version is used:</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="4PL-function.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">where:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;A: the low level of the function</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;B: the approximate inflection point</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;C: the slope of the sigmoid</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;D: the high level</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The real inflection point can be found as:</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="4PL-inflection_point.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The inflection point correction is very small as the slope has typically a value in the order of 100.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The function does not perform well for x=0. Therfore the data are shifted if needed to guarantee that the whole range to fit does not include the origin. As the inflection point is closely related to the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">peak in the first derivative of the data</A></FONT><FONT FACE="Arial" SIZE="2"> this is an excellent initial value of B. Around this point a range of typically 2 cm is chosen. The first and last data point can used to low level (A), high level (D) and slope (C) as initial values for a fitting procedure. Such a procedure needs only a few loops to converge.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The inverse function can be used to calculate the position of other levels around then inflection point:</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="4PL-inverse_function.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Finding the function parameters</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The function parameters can easily be accurately initialised. As the inflection point is closely related to the peak in the first derivative of the data this is an excellent initial value of B. Around this point a range of typically 2 cm is chosen. The first and last data point can used to estimate the low level (A), high level (D) and slope (C). Then a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">Nelder-Mead</A></FONT><FONT FACE="Arial" SIZE="2"> procedure is started with the overal difference between data and function as penalty to optimise all parameters with very few cycles.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">Results panel</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detecttion</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">Nelder-Mead optimisation</A></FONT><BR>
+
+</BODY></HTML>

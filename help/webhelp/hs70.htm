@@ -1,0 +1,86 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Processing menu</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Auoscaling;Composite curves;Fit of Depth dose;Merging profiles;Mirror;Nelder-Mead;PDD;PDD,fit;Reference;sigmoid analysis;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs18.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Processing menu</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> processing menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="processingmenu.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Concepts</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In old versions of BistroMath the editor window was reread and processed when preferences or menu options were changed. This could also be enforced by the <I>File</I> menu option</FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs50.htm"> Load current data</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2">. For binary files with a single curve the data were converted to a text format and put in the editor for convenience and reload of the current data. For multiple curve binary formats like the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#OmniPro_rfb">rfb format</A></FONT><FONT FACE="Arial" SIZE="2"> this is not implemented. The Nelder-Mead PDD-fit introduced also the need for a reprocessing feature. This is covered in this menu. Also the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs71.htm">Use as Temporary reference</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> option is moved from the <I>File</I> menu to this menu.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="autoscaling"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Autoscaling</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This fundamental feature of BistroMath should normally be switched <I>on</I>. It renormalises data to (mostly) 100 at some point, both on the screen and before doing any comparison. There may be situations where an absolute data set is compared with another and no scaling is wanted. Note that with </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs112.htm">measurement renormalisation</A></FONT><FONT FACE="Arial" SIZE="2"> a data set can be made absolute. These renormalised data also can be set as Temporary Reference.</FONT><BR>
+<FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Note: Autoscaling is locked in its on state by default. Unlock it with </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="2">&lt;Ctrl&gt;+&lt;Alt&gt;+&lt;R&gt;</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Example with autoscaling switched off</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="E10_14x14_pdd.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In this example:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Autoscaling is unlocked</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Autoscaling is switched <I>off</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2"><A HREF="hs112.htm">Measurement Norm adjust mode</A></FONT><FONT FACE="Arial" SIZE="2"> is switched <I>on</I>&nbsp;</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm"> Calculation result</A></FONT><FONT FACE="Arial" SIZE="2"> is set to Gamma analysis</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A measured pdd is loaded</FONT>
+<LI><FONT FACE="Arial" SIZE="2">This pdd is normalised to give the expected dose at the reference point</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The normalised measurement is set as <I>Temporary Reference</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">The calculated pdd is loaded as measurement</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="apply_sigmoid"></A></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Apply sigmoid model on Buffer</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Normally the buffer contains the derivative of a profile to show the results of the edge detection algorithm. The next level of edge detection is the inflection point of a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs22.htm">sigmoid fit</A></FONT><FONT FACE="Arial" SIZE="2">. To show the performance of this strategy, all the used data points are replace with the sigmoid fit. Typically this will be visible in the shoulder area where the fit starts to deviate from the data. The penumbra itself should closely follow the data. Note that the inflection point still might become less reliable when applied on conventional profiles where the penumbra becomes an almost straight line.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Reprocess current data</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This will restart all processing on the raw data as read from file or editor window. The PDD-fit will be started with the current parameters for the best fit.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Reset Nelder-Mead fit</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A restart as above. The PDD-fit will be started with the initial default parameters.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="merging"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Merge Source with measurement</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This activates merging of two scans. See the item </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs72.htm">Merging of scans</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Set Measurement as Merge source ("stitching")</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This option sets the first part of the profile/depth dose to combined with (merged with, stichted to) a following scan.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Clear Merge source</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This option frees the <I>Unrelated</I> curve which is used to store the merge source and thus making it available again for other tasks.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="mirroring"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Mirrored measurement as Reference</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="selfmirror.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked, the current profile is copied to the background reference storage. Then this copied profile is mirrored around the Center of Field. Now the Temporary reference item is activated and the new reference loaded as any other temporary reference. The state of this item will not change until switched off again and will therefore work on any next profile. Taking any other temporary reference or clearing the temporary reference will also unset this option. See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs73.htm">separate item</A></FONT><FONT FACE="Arial" SIZE="2"> for details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Make synthetic profile</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This option activates the creation of a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs74.htm">virtual profile</A></FONT><FONT FACE="Arial" SIZE="2"> from a small(er) FFF-field and and a large FFF-field.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Set as Temporary reference </B></FONT><FONT FACE="Courier New" SIZE="2"><B>&lt;Ctrl&gt;+&lt;T&gt;</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a measurement is loaded this may be used as temporary comparison to all profiles/depth doses as long as this item is checked. The file is saved in memory. This option is not saved in the configuration file and defaults to "unchecked". See more details in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs71.htm">separate topic</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Clear Temporary reference </B></FONT><FONT FACE="Courier New" SIZE="2"><B>&lt;Ctrl&gt;+&lt;Shift&gt;+&lt;T&gt;</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The temporary reference buffer is cleared.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="ignore_treatment_unit"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Ignore name of Treatment Unit </B></FONT><FONT FACE="Courier New" SIZE="2"><B>&lt;Ctrl&gt;+&lt;U&gt;</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For a quick comparison of two linacs the name of the linac should be ignored in the check of the scan type. By ignoring the linac name it is impossible to select automatically the correct reference. Therefore this works only for temporary references. A more general approach offers the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">Aliases tab</A></FONT><FONT FACE="Arial" SIZE="2">. By making one name equal to another cross-referencing is automated.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="check_tempref_type"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Check Temporary Scan type</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When this item is checked the temporary reference is only used when its scan type equals the scan type of the measurement. If unchecked the reference can be compared with any scan.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>SpecialModes</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode</A></FONT><FONT FACE="Arial" SIZE="2"> entries are only visible in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm#advanced_mode">advanced mode</A></FONT><FONT FACE="Arial" SIZE="2">. Each state can be (de)activated here. These states are stored in any configuration file when saved. Can also be started from the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs16.htm">command line</A></FONT><FONT FACE="Arial" SIZE="2">. Note that </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">extra information</A></FONT><FONT FACE="Arial" SIZE="2"> should be configured in the actually used </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">configuration file</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs56.htm">Unlock/Lock critical options</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs72.htm">Merging of scans</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">Nelder-Mead fit</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detection</A></FONT><FONT FACE="Arial" SIZE="2">.&nbsp;
+</FONT>
+</BODY></HTML>

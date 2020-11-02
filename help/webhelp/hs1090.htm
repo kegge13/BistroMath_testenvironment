@@ -1,0 +1,32 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>On 80 bits and 64 bits floating points</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>On 80 bits and 64 bits floating points</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>general information&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Introduction</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Mirosoft has annouced not to support the x87 coprocessor on the Windows 10/64 bits platform. Its use is deprecated and can be stopped in the future. This can be relevant with context changes (i.e. the processor is going to do something else) and not all registers are preserved. However there are still a large number of 32 bits applications that need to be supported. The 80 bits extended floating point is dependent on the registers in the x87 coprocessor.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">A text value like '9.1' will be converted to exactly 9.1 on the Delphi 32 bits platform using the <I>Extended</I> 80 bits type.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Freepascal uses 64 bits</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Freepascal (FPC) follows the formal statements and silently changes the still existing <I>Extended</I> to the <I>Double</I> type, a 64 bits floating point type.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Now the FPC StrToFloat function will produce 9.09999999999996 for the string '9.1'. For other string values the actual numerical value migth be just over the intended value.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>So what?</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">BistroMath uses the distance between points to decide whether they are used to contribute to the local filtered value:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT FACE="Courier New" SIZE="2"> </FONT><FONT FACE="Courier New" COLOR="#008000" SIZE="2"><B>while Abs(twPosCm[P1]-twPosCm[Pc])&gt;cm2 do</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When points have a perfect regular spacing, in the distance between two positions there still is introduced a randomness by the 64 bits truncations which might make the difference a little bit smaller or larger. To avoid incomparable results a new discrete comparison is introduced in Delphi version 3.30.17 which can also be used in FPC:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT FACE="Courier New" SIZE="2"> </FONT><FONT FACE="Courier New" COLOR="#008000" SIZE="2"><B>while Round(twcDefDiscretisationMult*Abs(twPosCm[P1]-twPosCm[Pc]))&gt;kcm2 do</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This enables to show that both versions really perform identical.
+</FONT>
+</BODY></HTML>

@@ -1,0 +1,49 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Dose Conversion and Background tab</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Depth dose fit;Fit of Depth dose;Nelder-Mead;PDD;PDD,fit;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs300.htm">Previous</A>
+ - <A HREF="hs500.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Dose Conversion and Background tab</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> dose conversion tab&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="UseDoseConvTab.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In this tab </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm">configured Film to Dose settings</A></FONT><FONT FACE="Arial" SIZE="2"> are selected and can be activated per energy. Also the background offset can be set and activade here per energy. The purpose of this tab is to add flexibility to the configuration files.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">To work with Film to Dose settings:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A Film to Dose curve must be defined for tha actual energy.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">On the tab that energy must be selected.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The name of appropriate the film type must be selected.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The Dose conversion must be activated (checked) in this tab.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The general </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs120.htm">Measurement menu</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> option <I>OD to Dose conversion</I> must be activated.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Now Film to dose conversion will be applied for each activated and correctly configured energy.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The example below shows where this can be found in the configuration file.</FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#FFFFFF" SIZE="2"><B>[WellhoferOD2dose]</B></FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">X6.00</FONT><FONT FACE="Consolas" COLOR="#C00080" SIZE="2"><B>=</B></FONT><FONT FACE="Consolas" SIZE="2">EDR2|-163.990|611.910|-504.380|343.770|-84.840|1000.000</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">X10.00</FONT><FONT FACE="Consolas" COLOR="#C00080" SIZE="2"><B>=</B></FONT><FONT FACE="Consolas" SIZE="2">EDR2|-72.640|197.240|38.760|-45.010|11.200|1000.000</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">X18.00</FONT><FONT FACE="Consolas" COLOR="#C00080" SIZE="2"><B>=</B></FONT><FONT FACE="Consolas" SIZE="2">none|0.000|10.000|0.000|0.000|0.000|10.000</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">To work with Background subtraction:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Add a line in this tab and select the correct energy.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Set a background level.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Activate Background correction for selected energies</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The general </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs120.htm">Measurement menu</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> option <I>Background correction</I> must be activated.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm">Configuration tab</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs40.htm">OD to Dose conversion</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs124.htm">Background correction</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement menu</A></FONT><FONT FACE="Arial" SIZE="2">.
+</FONT>
+</BODY></HTML>

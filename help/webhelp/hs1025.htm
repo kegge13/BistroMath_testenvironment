@@ -1,0 +1,428 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Calculation details (3)</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Applied methods and algoritms;calculation;filtering;flatness;flattened area;Gamma analysis;Ionisatio to Dose conversion;relative flatness;symmetry;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs10.htm">Previous</A>
+ - <A HREF="hs12.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Calculation details</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="5"><B><HR></B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>general information&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>General remarks</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Omnipro software allows measuring points at irregular positions. Moreover, the measuring speed an therefore the measurement point density may be changed during a scan. This implicates that nowhere a regular interval may be expected which complicates all calculations severely. On this page relevant calculation details are explained and shown in (slightly simplified) Delphi code.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="detailslist"></A></FONT><FONT FACE="Arial" SIZE="2">Contents of this page:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1020.htm#datastructures">data structures</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1020.htm#prepareprofile">data preparation</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1030.htm#filtering">filtering and derivative</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#references">reference curves</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#analysis">curve analysis</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#generalstrategy">general strategy</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#normalisationofprofiles">normalisation of AB/GT-scans</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#normalisationofdepthdose">normalisation of depth dose scans</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#symmetrycorrection">symmetry correction of profiles</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#d50">profile evaluation</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#penumbra_evaluation">penumbra evaluation</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#flattenedarea">In-Field area</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#wedgefield">wedge field detection</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#flatness">flatness</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1025.htm#gamma">gamma analysis</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#symmetry">symmetry</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#linacerror">linac symmetry error</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1030.htm#matchingcode">matching (incomplete) profiles</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1030.htm#mergingcode">merging partial profiles</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1030.htm#quadfit">quadratic fits</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1025.htm#OD2dose">OD to dose conversion</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1025.htm#ion2dose">Ionisation to dose conversion</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1025.htm#mayneordcode">Mayneord transform</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="gamma"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Gamma Analysis</B></FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>(*</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>This function is original work of Theo van Soest.</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>A complete gamma analysis produces for each measured point</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>-the dose difference (DD) with the reference (optionally with interpolation)</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>-the distance to agreement (DTA)</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>-the shortest vector (Gamma) in dose/position space scaled to unit vectors {n}% dose and {d} mm distance.</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>DD might be scaled to a global level or local dose.</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>The shortest vector should be found with some interpolation mechanism after a searching step.</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>For 1D data sets as in this unit this is relatively simple: from a number of point the Gamma value is interpolated.</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>Any gamma analysis implementation needs a number of parameters and makes interpolation choices. Therefore each implementation is different.</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>In this implementation</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>-twcGammaLocalDosePerc&nbsp;&nbsp; : use local dose</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>-twcGammaCutoffPercent&nbsp;&nbsp; : cutoff for profiles</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>-twcGammaCutoffDepth&nbsp;&nbsp;&nbsp;&nbsp; : cutoff depth for pdd</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>-twcGammaDistCmStep&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : step size for searching between measurerment points</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>-twcGammaSearchMultiplier: limit search to Gamma-value at distance 0 multiplied with this factor</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>-twcGammaDosePercBase&nbsp;&nbsp;&nbsp; : unit vector for dose</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>-twcGammaDistCmBase&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : unit vecor distance</I></FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>See for instance</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>Li et al.: Investigation of gamma-index with surface based distance method; Med. Phys. 38 (12), December 2011</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3298565/</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>*)</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{20/07/2015 twComposite added}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{17/09/2015 preparedata: force postanalysis QuadFilter(-1,ACurve,ACurve,True)}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{14/10/2018</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; if InFieldAreaOnly AND (ScanType in twcHoriScans)</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; set all invalid/out of range data points to -1 }</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{26/11/2018 autoscaling, prefilter before scaling}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>function</B></FONT><FONT FACE="Consolas" SIZE="2"> TWellhoferData.GammaAnalysis(ASource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :twcDataSource=dsMeasured;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AReference&nbsp;&nbsp;&nbsp;&nbsp; :twcDataSource=dsReference;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ADestination&nbsp;&nbsp; :twcDataSource=dsCalculated;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; InFieldAreaOnly:Boolean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AutoScaling&nbsp;&nbsp;&nbsp; :Boolean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SourceScaling&nbsp; :twcFloatType =</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PreFilter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :Boolean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PostFilter&nbsp;&nbsp;&nbsp;&nbsp; :Boolean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =True): twcFloatType;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>var</B></FONT><FONT FACE="Consolas" SIZE="2"> tmpSCurve,tmpRCurve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : twCurveDataRec;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; fSource,fReference&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : twcDataSource;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; i,Lpos,Rpos,a1,a2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : integer;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; Gamma,StartLimit,Limit,LastGamma,Distance,UniformScaling: twcFloatType;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : TStatssampler;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; IsPDD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Boolean;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : TQuadFit;</FONT><BR>
+<BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{28/04/2020 initcurve}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>procedure</B></FONT><FONT FACE="Consolas" SIZE="2"> PrepareData(ACurve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :twcDataSource;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IsSource&nbsp;&nbsp;&nbsp; :Boolean;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>var</B></FONT><FONT FACE="Consolas" SIZE="2"> tmpCurve:twCurveDataRec);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; InitCurve(tmpCurve);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; CopyCurve(wSource[ACurve],tmpCurve);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> PreFilter </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; QuadFilter(-</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">,ACurve,ACurve,True);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>// When there is no Autoscaling at least the curves should be uniformly normalised to 100 at some reference point; therefore take this from the fSource value.</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; Multiply(</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">100</FONT><FONT FACE="Consolas" SIZE="2">*ifthen(IsSource,SourceScaling,</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">)/ifthen(AutoScaling,Max(twcMinNormVal,wSource[ACurve].twAppliedNormVal),UniformScaling),ACurve,ACurve);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>procedure</B></FONT><FONT FACE="Consolas" SIZE="2"> RestoreData(ACurve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :twcDataSource;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>var</B></FONT><FONT FACE="Consolas" SIZE="2"> tmpCurve:twCurveDataRec);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; CopyCurve(tmpCurve,wSource[ACurve]);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; ClearCurve(tmpCurve,True);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>function</B></FONT><FONT FACE="Consolas" SIZE="2"> Set_f(tSource:twcDataSource): twcDataSource;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> PreFilter </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><FONT FACE="Consolas" SIZE="2"> Result:= CheckAlternativeSource(tSource,True) </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{assures initialised source}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Result:= tSource;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>function</B></FONT><FONT FACE="Consolas" SIZE="2"> CalcGamma(p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :integer;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OffsetCm:twcFloatType): twcFloatType;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>var</B></FONT><FONT FACE="Consolas" SIZE="2"> x,y,s,</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nDistSqr,nDoseSqr: twcFloatType;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j,k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Integer;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{calculate normalised vector for x=pos[p]+offsetcm}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; x:= wSource[fSource].twPosCm[p]+OffsetCm;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; j:= NearestPosition(x,fReference);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; y:= </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>with</B></FONT><FONT FACE="Consolas" SIZE="2"> Q,wSource[fReference] </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; Lpos:= j-Ceil(CalcWidth_cm/Min(</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">,wSource[fSource].twStepSizeCm));</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> FindCalcRange(x,Lpos,Rpos,fReference) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>try</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Initialize;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := twData[j];</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> Lpos=Rpos </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; s:= x-twPosCm[j]; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{s is DTA for x and nearest point in reference}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> s&lt;&gt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{interpolation}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>for</B></FONT><FONT FACE="Consolas" SIZE="2"> k:= Max(twDataFirst,Pred(j)) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>to</B></FONT><FONT FACE="Consolas" SIZE="2"> Min(Succ(j),twDataLast) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> (k=j) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>or</B></FONT><FONT FACE="Consolas" SIZE="2"> ((twPosCm[k]-twPosCm[j])/s&gt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><FONT FACE="Consolas" SIZE="2"> Add_XY(twPosCm[k],twData[k]);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y:= FitLin(x);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{lpos=rpos}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>for</B></FONT><FONT FACE="Consolas" SIZE="2"> k:= Lpos </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>to</B></FONT><FONT FACE="Consolas" SIZE="2"> Rpos </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add_XY(twPosCm[k],twData[k]);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y:= FitQuad(x,wOutlierFilter);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>except</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lastgamma:= -</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{if,try}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y:= -</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; LastGamma:= y;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> FitValid </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (y&gt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> twcGammaDistCmBase&nbsp; &lt;=</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><FONT FACE="Consolas" SIZE="2"> nDistSqr:= </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nDistSqr:= Sqr(OffsetCm/twcGammaDistCmBase);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> twcGammaDosePercBase&lt;=</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><FONT FACE="Consolas" SIZE="2"> nDoseSqr:= </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> twcGammaLocalDosePerc </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><FONT FACE="Consolas" SIZE="2"> nDoseSqr:=&nbsp; Sqr(</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">100</FONT><FONT FACE="Consolas" SIZE="2">*(wSource[fSource].twData[p]/y-</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">)/twcGammaDosePercBase)</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nDoseSqr:=&nbsp; Sqr((&nbsp;&nbsp;&nbsp; wSource[fSource].twData[p]-y&nbsp; )/twcGammaDosePercBase);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LastGamma:= SqRt(nDistSqr+nDoseSqr);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LastGamma:= -</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; Result:= LastGamma;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{calcgamma}</I></FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">Inc(FActiveCnt);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">Gamma:= </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">IsPDD:= ScanType </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>in</B></FONT><FONT FACE="Consolas" SIZE="2"> [snPDD,snFanline];</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> wSource[ASource].twValid </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> wSource[AReference].twValid </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> AlignReference </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; AlignCurves(AReference,ASource);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := TStatsSampler.Create;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := TQuadFit.Create;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; fSource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := Set_f(ASource);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; fReference&nbsp;&nbsp;&nbsp; := Set_f(AReference);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; UniformScaling:= wSource[fSource].twAppliedNormVal; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{is used in PrepareData when Autoscaling is off}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; PrepareData(fSource&nbsp;&nbsp; ,True ,tmpSCurve);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; PrepareData(fReference,False,tmpRCurve);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; CopyCurve(ASource,ADestination);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>with</B></FONT><FONT FACE="Consolas" SIZE="2"> wSource[ASource] </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> InFieldAreaOnly </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (ScanType </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>in</B></FONT><FONT FACE="Consolas" SIZE="2"> twcHoriScans) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a1:= twInFieldArr[twcLeft];</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a2:= twInFieldArr[twcRight];</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>for</B></FONT><FONT FACE="Consolas" SIZE="2"> i:= twDataFirst </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>to</B></FONT><FONT FACE="Consolas" SIZE="2"> a1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[ADestination].twData[i]:= -</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{clear data out of range}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>for</B></FONT><FONT FACE="Consolas" SIZE="2"> i:= a2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>to</B></FONT><FONT FACE="Consolas" SIZE="2"> twDataLast </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[ADestination].twData[i]:= -</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a1:= twScanFirst;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a2:= twScanLast;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>for</B></FONT><FONT FACE="Consolas" SIZE="2"> i:= a1 </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>to</B></FONT><FONT FACE="Consolas" SIZE="2"> a2 </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> (IsPDD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>or</B></FONT><FONT FACE="Consolas" SIZE="2"> (twData[i] &gt;twcGammaCutoffPercent)) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ((</FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>not</B></FONT><FONT FACE="Consolas" SIZE="2"> IsPDD) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>or</B></FONT><FONT FACE="Consolas" SIZE="2"> (twPosCm[i]&gt;twcGammaCutoffDepth)&nbsp; ) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (GetQfittedValue(twPoscm[i],fReference)&gt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gamma&nbsp;&nbsp;&nbsp;&nbsp; := CalcGamma(i,</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{calculate gamma at distance=0}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Distance&nbsp; := -twcGammaDistCmStep;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; StartLimit:= Max(</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">,Gamma)*twcGammaSearchMultiplier;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Limit&nbsp;&nbsp;&nbsp;&nbsp; := StartLimit;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>while</B></FONT><FONT FACE="Consolas" SIZE="2"> InRange(CalcGamma(i,Distance),</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">,Limit) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{loop with small steps to left while (last)gamma sufficiently small}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> InRange(LastGamma,</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">,Gamma) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{if smaller set as lowest gamma}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gamma:= LastGamma;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Limit:= Max(</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">,Gamma)*twcGammaSearchMultiplier;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Distance:= Distance-twcGammaDistCmStep;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Distance:= twcGammaDistCmStep;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Limit&nbsp;&nbsp; := StartLimit;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>while</B></FONT><FONT FACE="Consolas" SIZE="2"> InRange(CalcGamma(i,Distance),</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">,Limit) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{loop with small steps to right}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> InRange(LastGamma,</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">,Gamma) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{if smaller set as lowest gamma}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gamma:= LastGamma;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Limit:= Max(</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">,Gamma)*twcGammaSearchMultiplier;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Distance:= Distance+twcGammaDistCmStep;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[ADestination].twData[i]:= Gamma;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; t.Add_X(Gamma);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[ADestination].twData[i]:= -</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; Gamma:= t.ConfidenceLimit;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>try</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FreeAndNil(t);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>except</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ExceptMessage(</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">'WH.GammaAnalysis:t!'</FONT><FONT FACE="Consolas" SIZE="2">);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{with asource}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>with</B></FONT><FONT FACE="Consolas" SIZE="2"> wSource[ADestination] </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>while</B></FONT><FONT FACE="Consolas" SIZE="2"> ((twDataFirst&lt;twDataLast ) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (twData[twDataFirst]&lt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">)) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inc(twDataFirst);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>while</B></FONT><FONT FACE="Consolas" SIZE="2"> ((twDataLast &gt;twDataFirst) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (twData[twDataLast ]&lt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">)) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dec(twDataLast );</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twScanFirst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := twDataFirst;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twScanLast&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := twDataLast;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twDataHistoryStg := twGammaCalcStg+</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">'('</FONT><FONT FACE="Consolas" SIZE="2">+wSource[ASource].twDataHistoryStg+</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">','</FONT><FONT FACE="Consolas" SIZE="2">+wSource[AReference].twDataHistoryStg+</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">')'</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twIsGamma&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twIsRelative&nbsp;&nbsp;&nbsp;&nbsp; := True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twComposite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twConfidenceLimit:= Gamma;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{with adestination}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; RestoreData(fSource&nbsp;&nbsp; ,tmpSCurve);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; RestoreData(fReference,tmpRCurve);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> PostFilter </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; MedianFilter(</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">,ADestination,ADestination,False,True);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; wSource[ADestination].twRelatedSource:= ASource;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; FastScan(ADestination);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>try</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; FreeAndNil(Q);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>except</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; ExceptMessage(</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">'WH.!GammaAnalysis:Q'</FONT><FONT FACE="Consolas" SIZE="2">);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">Dec(FActiveCnt);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">Result:= Gamma;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{~gammaanalysis}</I></FONT><BR>
+<BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1020.htm#detailslist">back to top</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="OD2dose"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>OD to Dose conversion</B></FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{02/05/2020 twcCoupledSources applied}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>function</B></FONT><FONT FACE="Consolas" SIZE="2"> TWellhoferData.OD2doseConversion(PreferedModality:</FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>String</B></FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">''</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PreferedFilmType:</FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>String</B></FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">''</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ASource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :twcDataSource=dsMeasured): Boolean;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>var</B></FONT><FONT FACE="Consolas" SIZE="2"> i: Integer;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; r: TModalityFilm;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; t: twcFloatType;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; n: twcFloatArray;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>with</B></FONT><FONT FACE="Consolas" SIZE="2"> wSource[ASource],twBeamInfo </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; r:= </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>nil</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> PreferedModality=</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">''</FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; PreferedModality:= FModFilmList.ModalityFormat(twBModality,twBEnergy);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; Result:= twValid </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (</FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>not</B></FONT><FONT FACE="Consolas" SIZE="2"> tw2DoseConv) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp; FModFilmList.FindModData(PreferedModality,PreferedFilmType,r);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> Result </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> ASource </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>in</B></FONT><FONT FACE="Consolas" SIZE="2"> twcFilterSources </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[twcCoupledSources[ASource]].twValid:= False;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>with</B></FONT><FONT FACE="Consolas" SIZE="2"> r.FilmRec </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> OD2dose[</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">6</FONT><FONT FACE="Consolas" SIZE="2">]&gt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; twFastScan&nbsp;&nbsp; := False;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tw2DoseConv&nbsp; := True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; twOD2doseFilm:= FilmType;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SetLength(n,twPoints);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>for</B></FONT><FONT FACE="Consolas" SIZE="2"> i:= twDataFirst </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>to</B></FONT><FONT FACE="Consolas" SIZE="2"> twDataLast </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>try</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; t&nbsp;&nbsp; := twData[i]/OD2dose[</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">6</FONT><FONT FACE="Consolas" SIZE="2">];</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n[i]:= (((OD2dose[</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">5</FONT><FONT FACE="Consolas" SIZE="2">]*t+OD2dose[</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">4</FONT><FONT FACE="Consolas" SIZE="2">])*t+OD2dose[</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">3</FONT><FONT FACE="Consolas" SIZE="2">])*t+OD2dose[</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">2</FONT><FONT FACE="Consolas" SIZE="2">])*t+OD2dose[</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">];</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>except</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tw2DoseConv:= False;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> tw2DoseConv </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; twData:= copy(n,</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">,twPoints);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Result:= tw2DoseConv;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{result}</I></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{~od2doseconversion}</I></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1020.htm#detailslist">back to top</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="ion2dose"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Ionisation to Dose conversion</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The conversion from Ionisation to Dose is only valid for electron beam data measured with a ionisation chamber. This should not be applied to diode or likewise solid state detectors. The detection of the detector type is unreliable and therefore ignored. The conversion is actively limited to unconverted depth dose curves or fanline curves of a electron beam or undefined beam. See also the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs125.htm">scientific backgrounds</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>(* Taken from NCS report 18, page 70:</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; The water to air mass stopping power ratios vary considerably with depth and in order to</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; derive a depth dose curve from a measured depth ionisation curve with an ionisation</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; chamber stopping power data as a function of beam quality and depth are needed. Burns et</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; al. [31] derived from the same Monte Carlo simulations that led to equation (35) a more</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; complicated equation for these data.</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; Rogers [74] showed that for a wide range of accelerators these data are accurate to within</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; 1.0% except at very shallow depths or depths beyond 1.1 z/R50.</I></FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; Calculation of R50,dose from R50,ion (page 25):</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; When departing from an ionisation curve, R50,dos is derived</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; from R50,ion, the 50% ionisation level beyond the ionisation maximum, using the following</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp; generic expressions [32].</I></FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp;All depth values should be interpreted as cm.</I></FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp;[31] Burns D.T., Ding G.X. and Rogers D.W.O., R50 as a beam quality specifier for</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; selecting stopping power ratios and reference depths for electron dosimetry, Med.</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Phys. 23 383-388, 1996.</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp;[32] Ding G.X., Rogers D.W.O., Mackie T.R., Calculation of stopping-power ratios using</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; realistic clinical electron beams, Med. Phys. 22 489-501, 1995.</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>*)</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{15/04/2015}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{20/07/2015 twComposite added}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{03/06/2018 initborders}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>function</B></FONT><FONT FACE="Consolas" SIZE="2"> TWellhoferData.Ionisation2Dose(ASource&nbsp;&nbsp;&nbsp;&nbsp; :twcDataSource=dsMeasured;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ADestination:twcDataSource=dsMeasured): Boolean;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>const</B></FONT><FONT FACE="Consolas" SIZE="2"> _a=</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1.075</FONT><FONT FACE="Consolas" SIZE="2">; _b= -</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0.5087</FONT><FONT FACE="Consolas" SIZE="2">; _c=</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0.0887</FONT><FONT FACE="Consolas" SIZE="2">; _d=-</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0.084</FONT><FONT FACE="Consolas" SIZE="2">; _e=-</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0.4281</FONT><FONT FACE="Consolas" SIZE="2">; _f=</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0.0646</FONT><FONT FACE="Consolas" SIZE="2">; _g=</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0.00309</FONT><FONT FACE="Consolas" SIZE="2">; _h=-</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0.125</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>var</B></FONT><FONT FACE="Consolas" SIZE="2"> R50ion,R50dose,ln_R50: twcFloatType;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Integer;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">Result:= (ScanType </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>in</B></FONT><FONT FACE="Consolas" SIZE="2"> twcVertScans) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (</FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>not</B></FONT><FONT FACE="Consolas" SIZE="2"> wSource[ASource].tw2DoseConv) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (BeamType </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>in</B></FONT><FONT FACE="Consolas" SIZE="2"> [Electrons,Other]);</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> Result </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; Analyse(ASource);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> ADestination&lt;&gt;ASource </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; CopyCurve(ASource,ADestination);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>with</B></FONT><FONT FACE="Consolas" SIZE="2"> wSource[ASource] </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; R50ion:= twLevelPos[d50].Penumbra[twcRight].Calc;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> R50ion&lt;=</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">10</FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><FONT FACE="Consolas" SIZE="2"> R50dose:= </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1.029</FONT><FONT FACE="Consolas" SIZE="2">*R50ion-</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0.06</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R50dose:= </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1.059</FONT><FONT FACE="Consolas" SIZE="2">*R50ion-</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0.37</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; ln_R50:= ln(R50dose);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>for</B></FONT><FONT FACE="Consolas" SIZE="2"> i:= twDataFirst </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>to</B></FONT><FONT FACE="Consolas" SIZE="2"> twDataLast </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[ADestination].twData[i]:=</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; twData[i]*</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (_a+_b*ln_R50+_c*Sqr(ln_R50)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +_d*twPosCm[i]/R50dose)/</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2">+_e*ln_R50+_f*Sqr(ln_R50)+_g*Power(ln_R50,</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">3</FONT><FONT FACE="Consolas" SIZE="2">)+_h*twPosCm[i]/R50dose);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; wSource[ADestination].twFastScan&nbsp;&nbsp;&nbsp;&nbsp; := False;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; wSource[ADestination].tw2DoseConv&nbsp;&nbsp;&nbsp; := True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; wSource[ADestination].twComposite&nbsp;&nbsp;&nbsp; := True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; wSource[ADestination].twRelatedSource:= ASource;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; InitBorders(ADestination);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; Analyse(ADestination);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{~ionisation2dose}</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1020.htm#detailslist">back to top</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="mayneordcode"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Mayneord transformation</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs77.htm">Mayneord topic</A></FONT><FONT FACE="Arial" SIZE="2"> for all theory.</FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{23/07/2015}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{27/07/2015 twComposite is set}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{11/07/2017 twMayneordApplied}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{09/08/2017 only apply if new differs from org, update twCurveIDString}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{27/08/2020 twMaxPosCm}</I></FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>function</B></FONT><FONT FACE="Consolas" SIZE="2"> TWellhoferData.Mayneord(SSD_org_cm,SSD_new_cm:twcFloatType;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dmax_org_cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :twcFloatType=</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ASource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :twcDataSource=dsMeasured): Boolean;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>var</B></FONT><FONT FACE="Consolas" SIZE="2"> MaxTerm: twcFloatType;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Integer;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>with</B></FONT><FONT FACE="Consolas" SIZE="2"> wSource[ASource],twBeamInfo </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SSD_org_cm&lt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><FONT FACE="Consolas" SIZE="2"> SSD_org_cm:= twSSD_cm</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>else</B></FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> SSD_new_cm&lt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">1</FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><FONT FACE="Consolas" SIZE="2"> SSD_new_cm:= twSSD_cm;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; Result:= twValid </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (ScanType </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>in</B></FONT><FONT FACE="Consolas" SIZE="2"> twcVertScans) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (twBModality=</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">'X'</FONT><FONT FACE="Consolas" SIZE="2">) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (</FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>not</B></FONT><FONT FACE="Consolas" SIZE="2"> twMayneordApplied) </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (SSD_org_cm&gt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">5</FONT><FONT FACE="Consolas" SIZE="2">)&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (SSD_new_cm&gt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">5</FONT><FONT FACE="Consolas" SIZE="2">)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>and</B></FONT><FONT FACE="Consolas" SIZE="2"> (SSD_org_cm&lt;&gt;SSD_new_cm);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> Result </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>begin</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>if</B></FONT><FONT FACE="Consolas" SIZE="2"> Dmax_org_cm&lt;</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Consolas" SIZE="2"> </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>then</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dmax_org_cm:= twMaxPosCm;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; MaxTerm:= Sqr((SSD_new_cm+Dmax_org_cm)/(SSD_org_cm+Dmax_org_cm));</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>for</B></FONT><FONT FACE="Consolas" SIZE="2"> i:= twDataFirst </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>to</B></FONT><FONT FACE="Consolas" SIZE="2"> twDataLast </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>do</B></FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; twData[i]:= twData[i]*MaxTerm*Sqr((SSD_org_cm+twPosCm[i])/(SSD_new_cm+twPosCm[i]));</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twSSD_cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := SSD_new_cm;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twMayneordApplied:= True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twDataHistoryStg := </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">'Mayneord('</FONT><FONT FACE="Consolas" SIZE="2">+twDataHistoryStg+</FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2">')'</FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twCurveIDString&nbsp; := MakeCurveName(False,True,wDefaultIgnoreSet,True,ASource);</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; twComposite&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; := True;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; </FONT><FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#000080" SIZE="2"><B>end</B></FONT><FONT FACE="Consolas" SIZE="2">; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"><I>{~mayneord}</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1020.htm#detailslist">back to top</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I>
+</I></FONT>
+</BODY></HTML>

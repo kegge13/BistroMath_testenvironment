@@ -1,0 +1,74 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Merging of scans ('stitching')</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Composite curves;Fit of Depth dose;Mayneord;Merging profiles;Nelder-Mead;PDD;PDD,fit;Reference;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs18.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Merging of scans ('stitching')</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> processing menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Partial scans</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The circular water phantom of Sun Nuclear uses already this concept to create a larger scan area with one single detector. This guarantees accuracy of measurement positions and normalisation.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For the Elekta MR-Linac a water phantom with a dual scanning head is developed to provide a reasonable scan width. With a horizontal beam also two partial depth dose curves can be created. Due to the nature of a dual scanning head the distance between the two detectors might not be fully accurate. Also the normalisation can be different.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The current implementation is based on the typical FFF-shape of the beam. Therefore a profile can be matched on the central part of the beam. A reasonable overlap is needed. A depth dose curve needs predefined information on the relative distance or consistent positional information in both scans. The merge procedure in principle offers both approaches. In future releases correct alignment might be set on base of the given field size.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">When the field to be measured is larger than the water phantom, it can be measured as two partial scans. In the MR-linac, due to the bore, the scan width is a trade-off with the wanted water depth. Therefore a dual scanning head was designed.&nbsp;</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="merge_sources.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A general example is given above where one single profile was split into two separate partial scans with some overlap. One of the two partial scans was also shifted and rescaled to 120%. To show both scans in one image, the right scan was loaded as temporary reference, while <I>Align with Measurement</I> in the Reference menu was switched off. Then the left scan was loaded as measurement. The difference in scaling is lost in this representation due to rescaling of BistroMath.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Now the Measurement (left scan) is copied to a background memory with the <I>Set measurement as Merge Source</I> option in the Processing menu. As a result this option will be shown as "Checked". Any next partial scan can be merged with the source using the <I>Merge Source with measurement</I> option. Note that both scans should have the same characteristics (treatment unit, energy, field size, depth). Failures are reported in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs300.htm">Messages tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="processingmenu.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Profiles</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the next loaded curve has identical parameters (amongst others scan type, scan depth, field size, energy and linac), the first measurement is merged with the second. When the merge procedure is completed succesfully the <I>Merge</I> option in the Processing menu is unchecked. In the overlap area the first curve is (optionally) resampled to the second curve. All other points are simple added to the second curve. With the data as presented above, this needs both shifting and rescaling. The shift can be any combination of a manual shift and a matching procedure. To get this working BistroMath needs to handle partial scans with just one penumbra correctly.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Try it yourself</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Open </FONT><FONT FACE="Courier New" SIZE="2">selftest33_FFF_p1.mcc</FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Set as <I>Merge Source</I> in the processing menu (</FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;+&lt;Alt&gt;+&lt;Q&gt;</FONT><FONT FACE="Arial" SIZE="2">).&nbsp;</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Open </FONT><FONT FACE="Courier New" SIZE="2">selftest33_FFF_p2.mcc</FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Shift it any distance you like with </FONT><FONT FACE="Courier New" SIZE="2">&lt;Shift&gt;+&lt;,&gt;</FONT><FONT FACE="Arial" SIZE="2"> or </FONT><FONT FACE="Courier New" SIZE="2">&lt;Shift&gt;+&lt;.&gt;</FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Activate Merge (</FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;+&lt;Q&gt;</FONT><FONT FACE="Arial" SIZE="2">).</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="merged_profiles.gif" BORDER="0"></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Depth doses</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This proces works also for depth dose curves but the two parts are never matched. The correct shift has to be provided in that case. This might be used to combine the first part from a standard vertical depth dose and the lower part sideways at a 90° degree gantry angle with a different SSD. Here the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs77.htm">Mayneord</A></FONT><FONT FACE="Arial" SIZE="2"> transform is applied automatically. This rather strange method is needed in the MR-linac where the available vertical scan range is limited.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the SSD's differ the lower part of the curve is added to the upper part. Therefore the header data of the upper part are conserved.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="merge_settings.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>Merge: Profile Shift (cm)</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Prior to the actual merging of two profiles, the profile to be merged can be shifted.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Merge: PDD Shift (cm)</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Prior to the actual merging of two depth does, the lower part can be shifted.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Merge: Use matching (cm)</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Prior to the actual merging of two profiles, the profile to be merged can be shifted by a matching procedure. The shape of the profile should be sufficient non-flat to work reliably. On the start of the match process the best result from either no shifting or preset shift is the goal to be improved.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Merge: Scale overlap area.</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Possible differences in normalisation at measurement time can be corrected. The ratio all summed values in the overlap area (after shifting and/or matching) is used to rescale the scan to be merged.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The final result is shown below for both a profile and a depth dose. Note the new description of the <I>measurement</I> curve which indicates both the composite nature and the applied shift of the data.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="merge_result.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="merge_pdd.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Implementation</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The profiles to be matched can be set in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">processing menu</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Limitations</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The matching of partial profiles is not trivial. The shape needs to be sufficient non-flat to be succesful.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Processing menu</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">Profile matching</A></FONT><FONT FACE="Arial" SIZE="2">.&nbsp;
+</FONT>
+</BODY></HTML>

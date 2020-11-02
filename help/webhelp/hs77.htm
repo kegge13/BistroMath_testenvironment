@@ -1,0 +1,53 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Mayneord transformation</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Composite curves;Fit of Depth dose;Mayneord;Merging profiles;Nelder-Mead;PDD;PDD,fit;Reference;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs18.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Mayneord transformation</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> processing menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Theory</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For both photon and elctron fields the fluence at the surface is ruled (with good approximation) by the inverse square law. Below the water surface the behavior splits in two branches.&nbsp;</FONT>
+<LI><FONT FACE="Arial" SIZE="2">All particles in a particle beam like electrons will loose energy over the whole path travelled from the surface into the water. This loss of energy is roughly constant and proportional with the elctron density of the material. Therefore the shape of a electron depth dose curve is almost independent of the source to surface distance (SSD).</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Photons is ruled by the probability of the first interaction with the material and is by first approximation ruled by an exponential decay function. But the number of photons with the first interaction at some depth is therefore also dependent on the inverse square law. Thus the shape of a photon depth dose curve is dependent on the SSD. After the first interaction released energy is redistributed by electrons. Because the electron paths are dominated by forward scattering, dose will be transferred somewhat further along the beam direction. Near the surface some electrons will escape, lowering the deposited dose significantly.&nbsp;</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="kerma_and_dose.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="1">Schematic plot of kerma and absorbed dose¹.</FONT><BR>
+<CENTER><FONT FACE="Arial" SIZE="2">[</FONT></CENTER><BR>
+<FONT FACE="Arial" SIZE="2"><B>Mayneord function</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Mayneord function handles the transformation of a photon depth dose curve from one SSD to another SSD. Almost all references to this function point to the (rather famous in radiotherapy physics) book of Khan</FONT><FONT FACE="Arial" SIZE="4">².</FONT><FONT FACE="Arial" SIZE="2"> </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://medicalphys.files.wordpress.com/2010/12/faiz-khans-02.pdf">Online versions</A></FONT><FONT FACE="Arial" SIZE="2"> of that book can be found</FONT><FONT FACE="Arial" SIZE="4">¹</FONT><FONT FACE="Arial" SIZE="2">. A quick overview of all formulas can be found at </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://en.wikibooks.org/wiki/Radiation_Oncology/Physics/Equations">wikibooks.org</A></FONT><FONT FACE="Arial" SIZE="4">³</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The depth dose curve (PDD) describes the dose as a function of depth (<I>d</I>) and is dependent on the type of material, photon energy (spectrum), field size and SSD. The relation between two PDD values at the same depth <I>d</I> in water at different <I>SSD</I>'s can be described by</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;PDD(<I>SSD</I></FONT><FONT FACE="Arial" SIZE="1"><I>2</I></FONT><FONT FACE="Arial" SIZE="2">,<I>d</I>) = PDD(<I>SSD</I></FONT><FONT FACE="Arial" SIZE="1"><I>1</I></FONT><FONT FACE="Arial" SIZE="2">,<I>d</I>) • <I>f</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">where <I>f</I> is the Mayneord factor.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="mayneordfactor.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="1">Mayneord factor taken from wikibooks³.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">As mentioned before, the full derivation of this result can be found in Khan</FONT><FONT FACE="Arial" SIZE="4">²</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Limitations</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The field size is rather problematic in the Mayneord factor. In general the best results are got when the field size at the surface is kept constant. But still the divergence of the beam will be different, leading to differences in scatter contributions. In general the Mayneord factor overestimates the PDD at a larger SSD. As scatter becomes more important at larger depths and lower energies, the Mayneord function may produce significant errors.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Implementation</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The transformation needs three parameters, <I>SSD</I></FONT><FONT FACE="Arial" SIZE="1"><I>1</I></FONT><FONT FACE="Arial" SIZE="2">, <I>SSD</I></FONT><FONT FACE="Arial" SIZE="1"><I>2</I></FONT><FONT FACE="Arial" SIZE="2">, and <I>D</I></FONT><FONT FACE="Arial" SIZE="1"><I>max</I></FONT><FONT FACE="Arial" SIZE="2">, which can all be derived from the measurment and general defaults. All can be set explicitely in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">[1]&nbsp; </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://medicalphys.files.wordpress.com/2010/12/faiz-khans-02.pdf">https://medicalphys.files.wordpress.com/2010/12/faiz-khans-02.pdf</A></FONT><FONT FACE="Arial" SIZE="2"> .</FONT><BR>
+<FONT FACE="Arial" SIZE="2">[2] Faiz M. Khan: The Physics of Radiation Therapy (5th edition); Wolters Kluwer (2014, ISBN 9781451182453)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">[3]&nbsp; </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://en.wikibooks.org/wiki/Radiation_Oncology/Physics/Equations">https://en.wikibooks.org/wiki/Radiation_Oncology/Physics/Equation</A></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Processing menu</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">Profile matching</A></FONT><FONT FACE="Arial" SIZE="2">.&nbsp;
+</FONT>
+</BODY></HTML>

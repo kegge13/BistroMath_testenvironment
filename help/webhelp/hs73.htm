@@ -1,0 +1,40 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Mirroring a measurement to Reference</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Mirroring a measurement to Reference</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>processing menu&nbsp;</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Logics</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked, the current profile is copied to the background reference storage. Then this copied profile is mirrored around the Center of Field. Now the Temporary reference item is activated and the new reference loaded as any other temporary reference. The state of this item will not change until switched off again and will therefore work on any next profile. Taking any other temporary reference or clearing the temporary reference will also unset this option.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Implementation</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">First the measurement is copied to the reference.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Any applied shift to the data is undone.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The <I>double</I> value of any given <I>rotation point</I> is added to the original shift value.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Then all position values are inverted, effectively mirroring around the origin.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The combined shift as defined above is applied, effectively mirroring around the given <I>rotation point</I>.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The data are re-ordered to a increasing position value.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The displayed name of the reference is changed to "composite(<I>original name and date</I>)"</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Postprocessing</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The new reference is handled as any reference according to the choices made in the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs135.htm">Reference</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> menu. The alignment to the measurement needs special attention here.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">If the reference is <I>not</I> to be aligned nothing is done to the position of the reference. Otherwise the chosen <B>Center of Field</B> definition for the measurement becomes important. The differerence in CoF between measurement en reference is applied to the reference.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Origin as CoF (all profile types): the reference will not be shifted.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Field edge as CoF (all profile types): basically the 50% points are used to determine the CoF. If a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#edgedetectionlimit">fallback strategy</A></FONT><FONT FACE="Arial" SIZE="2"> is set in the <I>Advanced settings</I> Tab this may be replaced by some "</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">highest gradient</A></FONT><FONT FACE="Arial" SIZE="2">" method.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Peak as CoF (FFF profiles only): the top position as derived from the Top model or the Slopes model is used.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The maximum is used as CoF (all profiles): this may have an unpredictable effect for most "real live" data.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Review for FFF fields</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When either the Origin or Field edges are used as CoF a solid comparison is possible. Because a deviation from the Top position from the origin (if coincident with the collimator rotation point) is strongly related to asymmetry this choice amplifies the difference in symmetry between both profiles.
+</FONT>
+</BODY></HTML>

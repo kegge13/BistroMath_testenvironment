@@ -1,0 +1,40 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Calculation methods</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Applied methods and algoritms;calculation;filtering;flatness;flattened area;Gamma analysis;Ionisatio to Dose conversion;relative flatness;symmetry;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs10.htm">Previous</A>
+ - <A HREF="hs12.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Calculation methods<HR></B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>general information&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>General remarks</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Omnipro software allows measuring points at irregular positions. Moreover, the measuring speed an therefore the measurement point density may be changed during a scan. This implicates that nowhere a regular interval may be expected which complicates all calculations severely.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="extracting_data"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Extracting data from profile</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Values like the maximum value or a position at a given level do generally not coincide with one single point in the curve data. Therefore some way of interpolation is needed. A further complication is the noise in the measurements giving need to include more points in the surroundings.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Two different methods are used in Bistromath.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Linear interpolation</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This is done on base of two points: the nearest point and the second nearest point. The interpolation between those two points is straightforward. This method is used for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">matching</A></FONT><FONT FACE="Arial" SIZE="2"> two curves and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs72.htm">merging</A></FONT><FONT FACE="Arial" SIZE="2"> two curves. In those case the goal is to stay as closely to the raw data as possible.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Quadratic fit</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When final analysis results need to be calculated, a best estimate is wanted for a noisy dataset. Therefore a number of points is taken in the neighbourhood of the nearest point. The number of points is derived from the (average) step size and user defined range called the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs127.htm#calculationwidth">Calculation width</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2">.&nbsp;&nbsp; This closely resembles the quadratic filter, which uses its own </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm#filterwidth">calculation range</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1020.htm">Calculation details</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">Advanced Settings</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detection</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+
+</BODY></HTML>

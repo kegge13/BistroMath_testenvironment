@@ -1,0 +1,22 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Data axis conventions</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs1030.htm">Previous</A>
+ - <A HREF="hs13.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Data axis conventions</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Using different file types and/or different tank setups might lead to a mixup of directions when comparing data and would lead to significant larger complexity of the code. Therefore, starting with version 2.20, the data point reading code for all file types was reviewed and partly rewritten in such a way that the data are stored internally always as G»T / A»B / U»D / L»R. As the interpretation of the data itself is not changed, this review should have no effect for any previously generated data file. However newly written data files represent the internal storage conventions as decribed above.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This reduced complexity has a small disadvantage. As data are not always presented anymore in the direction as measured, this might lead to an inverted bottom axis when compared side-by-side with the measuring system and can be corrected with </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs13.htm">Axis swapping</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Note that data are really inverted, when&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs13.htm">Axis swapping</A></FONT><FONT FACE="Arial" SIZE="2"> is used and rewritten to some file. The original data can always be saved from the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs3.htm">editor window</A></FONT><FONT FACE="Arial" SIZE="2">. When data are </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">stored as reference</A></FONT><FONT FACE="Arial" SIZE="2">, always the editor data are used.
+</FONT>
+</BODY></HTML>

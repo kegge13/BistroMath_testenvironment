@@ -1,0 +1,117 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Comparison with references (overview)</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Reference,Reference logics;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Comparison with references as QA method (overview)</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Introduction</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">All QA-protocols currently (2016) only describe classical flattened fields. Both the dose differences within the <I>In-Field area</I> (usually 80% of the nominal field width) and the width of the penumbra region should not exceed certain limits. New developments are upcoming however.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="Klein_TG142.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>presentation Eric Klein, chair of TG-142</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">This concept has several complications.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Small field accelerators like the Elekta Beam Modulator usually have a much more "dome-shaped" field. The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs5.htm">flatness parameter</A></FONT><FONT FACE="Arial" SIZE="2"> is typically is 4-5%. This is much more than the normal tolerances.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">It does not work at all for wedged fields.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">It does not work for flattening filter free (FFF) beams.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For all of those fields also the field size definition becomes problematic. As modern treatment planning systems (TPS) can handle non-flat fields effortlessly, linacs should reproduce the configured models in the TPS within tight limits. Both the general accepted tolerances for flatness and the intrinsic (non-)flatness are (much) higher the preferred range of differences with the TPS.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="relative_flatness"></A><IMG SRC="selftest_001.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Therefore a comparison of a (measured) field with a <I>reference</I> is the central element in BistroMath. Now a <I>relative flatness</I> can be derived from the calculated {measurement divided by reference} profile. With a good QA-regime this relative flatness can be held below 1% under standard conditions and 3% for all gantry angles. As alternative also a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">gamma calculation</A></FONT><FONT FACE="Arial" SIZE="2"> can be presented.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">To cope with limitations of the 50% definition for field size, BistroMath has two </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">alternative methods</A></FONT><FONT FACE="Arial" SIZE="2">, the maximum of the first derivative and sigmoid fitting.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Concepts of implementation</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Automatic loading</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Working with references becomes cumbersome and error-prone when this has to be done manually. Therefore Bistromath is able to load a reference from a library based on the name of the scan type, linac, beam, field size, depth and wedge state. This library is a number of files in the </FONT><FONT FACE="Courier New" SIZE="2">references</FONT><FONT FACE="Arial" SIZE="2"> directory. When </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">automatic loading of a reference</A></FONT><FONT FACE="Arial" SIZE="2"> is switched <I>on</I>, the appropriate file will be taken from this library, or when a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs71.htm">temporary reference is set</A></FONT><FONT FACE="Arial" SIZE="2">, that will be used.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Filling the reference library</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Of course, when you start using BistroMath, this library is empty. All needed references must be loaded once and then </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm#save_reference">stored as reference</A></FONT><FONT FACE="Arial" SIZE="2">. However, you should </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs56.htm">unlock this feature</A></FONT><FONT FACE="Arial" SIZE="2">, since it is locked at start.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Types of references</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Currently three types of references can be used:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Single scans, opened as any </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm">supported file type</A></FONT><FONT FACE="Arial" SIZE="2">, will be stored as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#OmniPro_v6">OmniPro v6 ascii</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">file in the library with a well-structured name.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Structured scan-sets for supported </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">2D-arrays</A></FONT><FONT FACE="Arial" SIZE="2"> will be stored in their original format in the library with a well-structured name that includes the type of 2D-array.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Unstructured multi reference files can be loaded as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs71.htm">temporary reference</A></FONT><FONT FACE="Arial" SIZE="2"> when </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#ReferenceIndexing">reference indexing</A></FONT><FONT FACE="Arial" SIZE="2"> is switched <I>on</I>. As unstructured files cannot be assigned with a well-structured name there is no automatic mode for loading these files. They can be opened </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">directly as reference</A></FONT><FONT FACE="Arial" SIZE="2"> however.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm#mirroring">mirrored version</A></FONT><FONT FACE="Arial" SIZE="2"> of the measurement.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="intro_BeamLists"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Cross-referencing by Generic Beam lists</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a clinic uses generic beam data to describe all beams of the same type (energy, brand, head type) in the clinic measurements of one machine might be compared with another. This can be done by adding an entry in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">aliases tab</A></FONT><FONT FACE="Arial" SIZE="2"> as explained below. This establishes a fixed relation between two treatment units. When for different beams also different treatment units are referenced, a separate list is needed. The list is activated in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#GenericBeams">Reference menu</A></FONT><FONT FACE="Arial" SIZE="2">. When active, this list is applied before the alias list.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="intro_Aliases"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Cross-referencing or correcting data by applying aliases</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a clinic uses generic beam data to describe all beams of the same type (energy, brand, head type) in the clinic measurements of one machine might be compared with another. This can be done by adding an entry in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">aliases tab</A></FONT><FONT FACE="Arial" SIZE="2">, putting the name of treatment unit of the measured data as "Key" and the equivalent reference unit as "Value". This alias is applied whenever any curve identification string is generated. This is fully compatible with automatic loading of references. Note that always the true name of the involved linac is displayed.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="intro_IngoreTU"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Cross-referencing by ignoring the treatment unit name</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">processing menu</A></FONT><FONT FACE="Arial" SIZE="2"> the option to ignore the name of the treatment unit can be activated. By definition this only works for temporary references as there is no way the know the alternatives.&nbsp;</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="reference_logics"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Reference logics</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The following rules are applied to use references.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>1</B>&nbsp; Check state of <I>Automatic Load of Reference</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When this first option in the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs135.htm">Reference menu</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> is <I>not</I> activated no comparison will be made.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<I>or</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">If this option is switched <I>on</I>, continue with step 2.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>2</B>&nbsp; Check temporary reference state</FONT><BR>
+<FONT FACE="Arial" SIZE="2">If temporary reference file is loaded then check whether this is a single curve ( » 4) or contains multiple scans ( » 3a).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<I>or</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">No temporary reference is available ( » 3b).</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>3a</B>&nbsp; A multiple scan reference is loaded</FONT><BR>
+<FONT FACE="Arial" SIZE="2">If </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#ReferenceIndexing">reference indexing</A></FONT><FONT FACE="Arial" SIZE="2"> is <I>on</I>, then use the internal index to find (and load when found) an alternative scan ( » 4).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<I>or</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The measurement and reference are of </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">a known structured multi reference type</A></FONT><FONT FACE="Arial" SIZE="2"> <I>and</I> the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs135.htm#DeviceSpecificReference">Device specific Reference</A></I></FONT><FONT FACE="Arial" SIZE="2"> option in <I>Reference menu</I> is switched <I>on</I> to load the scan with the same scan number. The reference name will be derived from a combination of measured values, given parameters in the measurement file and the measurement device name ( » 3b).</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>3b</B>&nbsp; The library is searched for a suitable reference</FONT><BR>
+<FONT FACE="Arial" SIZE="2">(Note that loading any file is based solely on the name of the file. When active, first the <I>Generic Beam list</I> is applied, then all aliases are applied in this stage.)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The measurement is not </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">a known structured multi reference type</A></FONT><FONT FACE="Arial" SIZE="2">: file identification is based on linac, scan type, beam, field size, depth and wedge state ( » 4).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<I>or</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs135.htm#DeviceSpecificReference">Device specific Reference</A></I></FONT><FONT FACE="Arial" SIZE="2"> option in <I>Reference menu</I> is switched <I>on</I>: file identification is based on linac, array identification, beam, field size, depth and wedge state. When this file search fails it is reported in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs300.htm#no_2D_ref">Messages tab</A></FONT><FONT FACE="Arial" SIZE="2">. Otherwise the appropriate scan number is loaded from that file ( » 4).</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>4</B>&nbsp; A reference file is loaded</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The characteristics of the reference are checked against the measurement. Note that all aliases are applied again with the contents of the file.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Both scans are seen as identical ( » 5)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<I>or</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Only the linac is different <I>and</I> the treatment unit name is set to be </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm#ignore_treatment_unit">ignored</A></FONT><FONT FACE="Arial" SIZE="2"> in the <I>Processing</I> menu ( » 5)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<I>or</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The files are not seen as matching <I>and</I> </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm#check_tempref_type">type checking is switched off</A></FONT><FONT FACE="Arial" SIZE="2"> in the <I>Processing</I> menu the user is willing to accept any outcome ( » 5)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<I>else</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">No comparison is made.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>5</B>&nbsp; The reference is processed.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Apply </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs134.htm">alignment of the reference</A></FONT><FONT FACE="Arial" SIZE="2"> if this option is switched <I>on</I> in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">reference menu</A></FONT><FONT FACE="Arial" SIZE="2">. Note that there are different methods for evaluation of the position of the profile. As last resort even profile matching can be applied. ( » 5)</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>6</B> Generate the <I>calculated</I> curve.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The reference menu offers four choices:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;- a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs133.htm">division</A></FONT><FONT FACE="Arial" SIZE="2"> of measurement and reference,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;- a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">gamma analysis</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;- </FONT><FONT FACE="Arial" SIZE="2">the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs137.htm">addition of measurement and reference</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;- none of the choices above.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="comparison_tests"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Tests</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">To replicate the tests some preparations must be taken.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Copy selftest02_real.txt to Unix.txt. Change the "</FONT><FONT FACE="Consolas" SIZE="2">Radiation device</FONT><FONT FACE="Arial" SIZE="2">" from "</FONT><FONT FACE="Consolas" SIZE="2">selftest</FONT><FONT FACE="Arial" SIZE="2">" to "</FONT><FONT FACE="Consolas" SIZE="2">Unix</FONT><FONT FACE="Arial" SIZE="2">" in this file. Open the file in BistroMath and save it as reference.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The following situations were tested. The order cannot be changed freely as some tests continue from previous states.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Open a single scan file (selftest02_real.txt). A reference is taken.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Reload the file (<I>Load curent data</I> in the <I>Fille</I> menu,</FONT><FONT FACE="Courier New" SIZE="1"> </FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;+&lt;L&gt;</FONT><FONT FACE="Arial" SIZE="2">). The in-memory reference is found, accepted and applied again.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Apply an alias (selftest=Unix). A reference from Unix is taken.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Activate <I>Ignore name of Treatment Unit</I> in the <I>Processing</I> menu and remove the alias <I>selftest=Unix</I>. Open selftest02_real.txt and set it as temporary reference. When opening Unix.txt, it will be compared with selftest.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Activate <I>Index multi reference</I> in the <I>Reference</I> menu. Open selftest31_BeamAdjust.mcc and set it as temporary reference. When opening selftest02_real.txt, it will be compared with the appropriate scan from the StarCheck data. Note that water phantom data are compared here with data from a 2D-array.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Open any unstructured multi-scan file and set it as temporary reference. When navigating through the file by using </FONT><FONT FACE="Courier New" SIZE="2">&lt;PageUp&gt;/&lt;PageDown&gt;</FONT><FONT FACE="Arial" SIZE="2">, always the the same file is taken as reference. Note that the first applicable scan is taken ast actual reference. With repeated scans in the file the reference might therefor differ form the measurement.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">When changing from one 2D-array file to another one with different characteristics (and not set as a temporary reference), the in-memory reference is discarded and a new one loaded. [Not replicable with standard selftest data.]
+</FONT>
+</BODY></HTML>

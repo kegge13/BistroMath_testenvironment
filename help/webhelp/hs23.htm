@@ -1,0 +1,58 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Field types</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="area ratio;Elevation;field center;Field Type;flatness;flatness,relative flatness;flattened area;Linac Symmetry error;relative flatness;sigmoid analysis;symmetry;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs16.htm">Previous</A>
+ - <A HREF="hs6.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Field Types</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> general description&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Introduction</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">During analysis are marked with a <I>Field type</I>:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Standard all profiles not assigned to another type and all depth dose curves,</FONT>
+<LI><FONT FACE="Arial" SIZE="2">FFF&nbsp; profiles with proven FFF characteristics,</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Small&nbsp; profiles with a field width smaller than the given limit,</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Wedge profiles with proven wedge characteristics.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bistromath makes </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs41.htm">no assumptions</A></FONT><FONT FACE="Arial" SIZE="2"> on the size and position of the profile in relation to the origin, nor the position of the normalisation point. This introduces the need for a dual loop analysis in which first provisional, on the maximum based, borders are evaluated to set a provisional center and or normalisation point. In the second loop all these values are finalised.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Field type assigment rules</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">With the exception of explicite wedge angle information are assigned to a non-standard type <I>only</I> when proven against the set rules.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>FFF</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">FFF detection</A></FONT><FONT FACE="Arial" SIZE="2"> must be activated.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The dose difference at both ends of the <I>analysis area</I> with the center value should be at at least <I>nn</I>%, with a default value of 10%</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The difference between 50% positions and derivative <I>edge</I> positions should be at least <I>xx </I>mm, with a default value of 1 mm.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Both <I>nn</I> and <I>xx</I> can be set in the <I>FFF detection and analysis</I> box on the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF profiles</A></FONT><FONT FACE="Arial" SIZE="2"> for more details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>MRlinac</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are no fail prove methods to distinguish a MRlinac profile in the data. Therefore a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">mapping is available</A></FONT><FONT FACE="Arial" SIZE="2"> to link treatment unit names to this field type.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Small field</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">Small field detection</A></FONT><FONT FACE="Arial" SIZE="2"> must be activated.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The field width should be smaller than <I>n </I>cm, with a default value of 2.5 cm.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This value can be set in the <I>Edge detection</I> box on the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">Field Types tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Wedge field</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">At least one of the criteria should be met:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The given wedge angle is non-zero.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><B><I>f</I></B><I> </I>* <I>Left</I> 90%-position is <I>larger</I> than the field center or <B><I>f</I></B><I> </I>* <I>Right</I> 90%-position is <I>smaller</I> than the field center.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The factor <B><I>f</I></B> has a default value of 1 and can be set in the <I>Edge detection</I> box on the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">Field Types tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">Field Types tab</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">Advanced settings tab</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurment menu</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detection</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF profiles</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

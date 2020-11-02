@@ -1,0 +1,179 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Measurement menu</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="alignment of fields;Elevation;FFF;field center;Ionisatio to Dose conversion;Linac Symmetry error;Nelder-Mead;origin;PDD,fit;Penumbra;Penumbra,Penumbra too wide;Rescaling;Rescaling,from SDD to SSD;Rescaling,to default SSD;scaling;Slopes (FFF);SSD;symmetry,symmetry correction;Top Model (FFF);">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+function popuplink(url) {
+  window.open(url, 'hspopup', 'width=500,height=400,resizable,scrollbars');
+}
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs112.htm">Previous</A>
+ - <A HREF="hs121.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Measurement menu</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> measurement menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="measmenu.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">All items in this menu can be (un)checked to (in)activate the option. For most options the current profile is automatically reloaded to reflect the changes.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Symmetry correction of Measurement</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="javascript:popuplink('hs131.htm')">Symmetry correction item</A></FONT><FONT FACE="Arial" SIZE="2"> for details. For the measurement it should stay unchecked mostly.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The <I>Flatness</I> and<I> Symmetry</I> label will get a "s" as annotation.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="move_to_origin"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Move profiles to origin</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked, for all profiles which are measured at one fixed depth, the Center of Field value will define the shift of the complete profile. The Center of Field is default at the symmetric 50%-values of the filtered profile, but might also be determined by the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">edge positions</A></FONT><FONT FACE="Arial" SIZE="2"> or the field maximum. This should not be confused with </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs123.htm">manually shifting profiles</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The <I>Center</I>, <I>Width</I>, <I>Left</I> and <I>Right</I> label will get a 'c' as annotation.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Mirror profile</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">measurement</FONT><FONT FACE="Arial" SIZE="2"> curve is mirrored. Analysis results are given for the mirrored profile.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Resample data</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This item must be checked to </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs122.htm">resample data</A></FONT><FONT FACE="Arial" SIZE="2"> to a fixed grid, which is defined in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Mayneord transform</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This applies a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs77.htm">Mayneord transform</A></FONT><FONT FACE="Arial" SIZE="2"> to the current photon depth dose curve. The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm#default_SSD">default SSD</A></FONT><FONT FACE="Arial" SIZE="2"> is the target value for the transformation.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="mayneord_annotation.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The application is clearly indicated in the lables.</FONT><BR>
+<hr><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Extended symmetry submenu</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="extsym"></A></B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="measmenu_extsym.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">One of the items will be displayed below the standard symmetry item in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">results panel</A></FONT><FONT FACE="Arial" SIZE="2">, all are evaluated every time however. See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs5.htm">explanatory item</A></FONT><FONT FACE="Arial" SIZE="2"> for details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>User Dose Level</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A non-standard level for field border detection may be defined in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs44.htm">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2"> but will be used only when menu item is checked.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Use PDD-fit results</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked, the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">fitted pdd</A></FONT><FONT FACE="Arial" SIZE="2"> will be used for data analysis.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This option is grayed out when the cpu-intensive pdd-fit is not activated in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#neldermead_settings">Settings Tab</A></FONT><FONT FACE="Arial" SIZE="2">. For the used model and backgrounds see </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">Nelder-Mead fit</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<hr><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Detect FFF</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="fff_center"></A></B><IMG SRC="measmenu_fff_top.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">set of rules</A></FONT><FONT FACE="Arial" SIZE="2"> is applied to find </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF-profiles</A></FONT><FONT FACE="Arial" SIZE="2">. The flatness is the slope in percent per cm.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>FFF Center of Field submenu</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="FFFCoF"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The center of the field can be derived from either the penumbras (Border/Edge), set to zero (Origin) or taken from the position of the peak (Peak). The center of the field is displayed as "Center" in the results panel. Note that the analysis region (<I>In-Field area</I>) dpends on the center position.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>FFF Normalisation submenu</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A separate setting for FFF fields, further identical to conventional field sub menu above.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>FFF peak submenu</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="CoF_FFF"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This submenu offers the possibility to calculate the top position with alternative methods. These alternative methods are only applied when a FFF profile is detected.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Top model: the top is fitted with a model. The position of the maximum is taken as center position.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Slopes: the crossing point of the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">calculated slopes</A></FONT><FONT FACE="Arial" SIZE="2"> is taken as center position.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Note that, as in the image above, for the non-default options the annotation and color for the center change.</FONT><BR>
+<hr><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Detect Small fields</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When fields are smaller than a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs23.htm">set limit</A></FONT><FONT FACE="Arial" SIZE="2">, they are treated as small fields.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Center of Small field submenu</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Appropriate choices can be made.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Normalisation Small field submenu</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Appropriate choices can be made.</FONT><BR>
+<hr><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Center of Wedge field submenu</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Appropriate choices can be made.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Normalisation Wedge field submenu</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Appropriate choices can be made.</FONT><BR>
+<hr><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Mirror to Buffer</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A mirrored version of the </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">measurement</FONT><FONT FACE="Arial" SIZE="2"> is copied to the </FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">buffer</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Local Peak Analysis at Cursor</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="javascript:popuplink('hs126.htm')">Local Peak Analysis item</A></FONT><FONT FACE="Arial" SIZE="2"> for details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Shift to Left / Right</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This is equivalent to to using "&lt;" and "&gt;" respectively and will </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs123.htm">shift the profile</A></FONT><FONT FACE="Arial" SIZE="2"> with a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">configurable step</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<hr><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="general_detection_strategy"></A></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>General detection strategy submenu</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="meas_general_strategy.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Detect diagonals</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">With "diagonals" are meant collimator angles of 45+n•90 degrees here for measurements along the main axes. When a value for the field width is given with the measurement data and the actual field size exceeds this value with more than 5%, then it is assumed the profile is a diagonal measurement or the collimator angle deviates more than 20 degrees from the principal directions (0, 90, 180, 270). The In-Field area for these measurements is 70% of the nominal width. When the diagonal-rule is used, the In-Field area indicators will be </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">red</FONT><FONT FACE="Arial" SIZE="2"> in stead of </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">blue</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Accept bad penumbra's</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked any value for the penumbra is displayed, otherwise a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#badpenumbra">configurable limit</A></FONT><FONT FACE="Arial" SIZE="2"> will be used. When the average of the penumbra's is above this limit, no punumbra information is displayed. You will also get the message "Penumbra too wide".</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Accept missing penumbra's</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked a best guess of the In-Field area is made to calculate the symmetry and flatness.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Accept zero steps</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked multiple contiguous data points with the same position/depth are acceptable.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="generic2pdd"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Generic to PDD</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a generic, untyped two-column data set, or a free scan is encountered this will be interpreted as PDD when checked.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Generic to Electron</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When unknown assume electrons when this item is checked, otherwise the default is photons.</FONT><BR>
+<BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>SSD scaling submenu</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="meas_ssd.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Profiles scaled from SDD to SSD</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked for all profiles which are measured at one fixed depth, the positions will be scaled back to the distance of the SSD, i.e. the water surface.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Field positions are denoted with "(r)". Note that only a geometrical scaling is applied.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="Meas2defaultSSD"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Profiles scaled to default SSD</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked for all profiles which are measured at some SDD, the positions will be scaled back to the default SSD. The default SSD can be configured in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">. When also the option <I>Reference at default SSD</I> in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#RefAtDefaultSSD">Reference menu</A></FONT><FONT FACE="Arial" SIZE="2"> is checked, profiles at some SSD can be compared with original profiles at the default SSD as shown above. Field positions are denoted with "(r)".&nbsp; Note that only a geometrical scaling is applied.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="meassignalcorrection"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Signal correction submenu</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="meas_signalcorrection.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Background correction</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="javascript:popuplink('hs124.htm')">Background correction item</A></FONT><FONT FACE="Arial" SIZE="2"> for details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="OD2dose_item"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>OD to Dose conversion</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">OD to Dose conversion may be used for several types of files in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">, but will be used only when menu item is checked.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Ionisation to Dose conversion</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;This menu item cannot be checked to activate it for all following data like other items in the <I>Measurement menu</I>. Its intended use is application by the user (</FONT><FONT FACE="Courier New" SIZE="2">&lt;Shift&gt;+&lt;D&gt;</FONT><FONT FACE="Arial" SIZE="2">) <I>after</I> the date have been read. When the conversion is succesfull the menu item will be checked to reflect the current state. It is always reset for the next curve. The user is responsible for applying this function to the appropriate data: electron depth dose curves measured with ionisation chambers. There is no way to detect the used detector type in BistroMath. The other two conditions (electrons, depth dose) will be checked however. This function can be applied only once on a data set. Returning to the original data is possible by rereading the data (</FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;+&lt;L&gt;</FONT><FONT FACE="Arial" SIZE="2">). See also the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs125.htm">scientific backgrounds</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Renormalise source data</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked the source data of the measurement will be normalised to the actual normalisation settings. This opens to possibility to save normalised data.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Axis manipulation submenu</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="meas_axismanipulation.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="axis_preservation"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Preserve original data on export</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This option in the Measurement menu regulates the effects of axis swapping on export. Its default state is <I>on</I>. Switching off this option introduces serious data integrity problems because swapped data will be interpreted as original, unswapped data when opened again from file. This can undermine institution wide conventions for data interpretation. Therefore the state of this menu item is always <I>on</I> at startup and is not taken from any configuration file. Moreover the item is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs56.htm">locked at program start</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Invert axis (axis swapping)</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="invert_axis"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The direction of the data representation on the screen may be inverted when comparing side by side with the measuring system. The axis designations and/or the axis direction might be wrong. With these inversion options the axis sign (direction) is inverted at file read time and is reflected in the </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">bottom axis labels</FONT><FONT FACE="Arial" SIZE="2">. This has effect on all relevant analysis results..</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Alternative axis setup</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="alternative_axis"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When, for any reason, the data columns for the coordinates do not meet the format conventions or are registered as the wrong scan type, this can be corrected by specifying the correct order of <B>I</B>nplane, <B>C</B>rossplane and <B>D</B>epth in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">advanced settings tab</A></FONT><FONT FACE="Arial" SIZE="2">. The feature is only used if <I>Alternative axis setup</I> checked. Axis swapping and axis sign inversion are applied as configured.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="axis_remapping.gif" BORDER="0"></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<A HREF="hs121.htm">Generic to PDD</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs128.htm">Center of Field and Normalisation of profiles</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<A HREF="hs13.htm">Axis swapping</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<A HREF="hs11.htm">Analysis results</A>
+</FONT>
+</BODY></HTML>

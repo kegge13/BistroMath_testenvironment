@@ -1,0 +1,1402 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Supported File Types</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="ascii;binairy;file type;Generic;hdf;IBA;Problem solving;PTW;Save file;Varian;Varian,Eclipse;Varian,w2CAD;Wellhöfer;WMS;WMS,wtx,wda;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs800.htm">Previous</A>
+ - <A HREF="hs902.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Supported File Types</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>900&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>Quick jumps:</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#OmniPro_v6">OmniPro v6 ascii</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.txt)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#OmniPro_v7">OmniPro v7 / v8 ascii</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.txt)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#OmniPro_rfb">OmniPro v6 binary</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.rfb)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#RFA300">OmniPro RFA300</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.asc)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#wms_ascii">Scanditronix ascii</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.wtx)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#wms_binary">Scanditronix binary</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.wda)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#mcc_ascii">PTW MCC</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.mcc)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#sna_ascii">Sun Nuclear IC Profiler ascii</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.txt)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#snc_ascii">Sun Nuclear ascii</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.snctxt)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#SNC_clipboard">Sun Nuclear clipboard</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.txt)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#hdf_ascii">hdf ascii-export</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.txt)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#pips_ascii">Pips ascii</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.dat)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#generic_ascii">generic ascii</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.txt)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#cms_ascii">CMS ascii export</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#w2CAD">Varian w2CAD</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.asc)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#Eclipse-format">Varian Eclipse export</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.txt)</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#schuster_ascii">Schuster ascii</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">(*.txt)</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="OmniPro_v6"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>OmniPro ascii v6</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Ascii files of OmniPro-Accept measuring system, versions 6.2A, 6.3 and 6.6c, can be read from file or clipboard and written to file. This file type is also used to import all other file types. Also versions with positional values denoted in mm were found in the wild.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">--------------cm-notation--------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Clinic: Radiotherapie</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Address: Academisch Ziekenhuis Utrecht</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Telephone:&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Email:&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Beam Description:</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Radiation device U03:Elekta SL25-18</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy 6 MV Photon</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Wedge:&nbsp; 0 °</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gantry 0 °(0°up, CW)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator 90 °</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SSD, SAD [cm]: 100 100</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Applicator: Undefined</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field size [cm x cm]: 40 x 40</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field position inline (min, max) [cm]: -20 20</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field position crossline (min, max) [cm]: -20 20</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Medium: Water</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">CurveType:&nbsp; Inline Profile</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Curve Description:</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement Time: 1999-01-26 13:26:17</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Modification Time: 2005-08-25 17:25:39</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Operator: RM, TvS, NR</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement comment:&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Setup comment:&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">commissioning</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Renormalise factor: 1,0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Curve offset [cm]: -</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Quantity: Relative Dose</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector Type: IC15&nbsp; Ion Chamber (Cylindrical) Offset to P eff [cm]: -0,18 Radius:0cm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Can be used for CA24 calibration: No</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electrometer</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electrometer type: CU500E</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement mode: Continuous</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference division: Yes</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference (avg, min, max): 0 0 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurements per point: 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Sampling time [ms]: -</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">HV type: Floated</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">normalisation value, field and reference: 98,8 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Dark current, field and reference: 0,3 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">High voltage, field and reference [V]: 300 300</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gain, field and reference: 26 29</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Range, field and reference: HIGH HIGH</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Servo</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Servo type: Acryl 48 48 48</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Speed [mm/s]: 10,5</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Water surface correction [cm]: 10,5</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Water offset correction [cm]: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Origin [X, Y, Z] [cm]: 0,13 0,47 18,05</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Servo axis [I, C, D]: X Y -Z</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Isocentre [I, C, D] [cm]: 0 0 -0,18</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">normalisation [I, C, D] [cm]: 0,01 0,01 1,6</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position A [I, C, D] [cm]: - - -</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position B [I, C, D] [cm]: - - -</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position C [I, C, D] [cm]: - - -</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position D [I, C, D] [cm]: - - -</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Number Of Points: 1601</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Start Point [I,C,D] [cm]: -24,11 0 5</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">End Point [I,C,D] [cm]: 23,89 0 5</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Points [cm]: Inline Crossline Depth Relative Dose</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-24,11 0 5 7,2</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-24,08 0 5 7,2</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-24,05 0 5 7,2</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;23,83 0 5 7,6</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;23,86 0 5 7,5</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;23,89 0 5 7,5</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Angle: 90</FONT><BR>
+<FONT FACE="Arial" SIZE="2">--------------mm-notation--------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Clinic: XXXX</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Address: Somewhere</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Telephone: +00 0000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Email:&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Beam Description:</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Rad Device: Nextdoor</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Radiation type and energy: Photon 10 MV</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Wedge:&nbsp; 0 °</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gantry Angle (0°-359°): 0 °(0°up, CW)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Angle: 0 °</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SAD, SSD [mm]: 1000 1000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Applicator: No Applicator</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field size [mm x mm]: 300 x 300</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field position inline (min, max) [mm]: -150 150</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field position crossline (min, max) [mm]: -150 150</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Medium: Water</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">CurveType:&nbsp; Depth Dose</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Curve Description:</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement Time: 2012-09-10 11:10:23</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Modification Time: 2013-09-24 12:11:04</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Operator: lars</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement comment:&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Setup comment: pdd's ssd 100 alle veldgroottes</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Renormalise factor: 1.0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Curve offset [mm]: -</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Quantity: Relative Dose</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector Type: CC04 liggend Ion Chamber (Cylindrical) Offset to P eff [mm]: -1.2 Radius:2mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Can be used for CA24 calibration: No</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electrometer</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electrometer type: CU500E</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement mode: Continuous</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference division: -</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference (avg, min, max): 1789 1781 1798</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurements per point: -</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Sampling time [ms]: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">HV type: -</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">normalisation value, field and reference: 1046 1087</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Dark current, field and reference: 16 -5</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">High voltage, field and reference [V]: -400 -400</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gain, field and reference: 38 32</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Range, field and reference: HIGH HIGH</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Servo</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Servo type: Blue 48 48 48</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Speed [mm/s]: 5.1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Water surface correction [mm]: 62</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Water offset correction [mm]: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Origin [X, Y, Z] [mm]: -1.3 5.1 182.3</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Servo axis [I, C, D]: Y -X -Z</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Isocentre [I, C, D] [mm]: 0 0 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">normalisation [I, C, D] [mm]: -245.2 238.7 399.2</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position A [I, C, D] [mm]: -5.1 -1.3 181.4</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position B [I, C, D] [mm]: -5.1 -1.3 181.4</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position C [I, C, D] [mm]: -5.1 -1.3 181.4</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position D [I, C, D] [mm]: -5.1 -1.3 181.4</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Number Of Points: 700</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Start Point [I,C,D] [mm]: 0 0 350</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">End Point [I,C,D] [mm]: 0 0 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Points [mm]: Inline Crossline Depth Relative Dose</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0 0 0.4 59.16</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0 0 0.9 61.07</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0 0 1.4 63.63</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0 0 348.9 27.35</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0 0 349.4 27.34</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0 0 349.9 27.33</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="OmniPro_v7"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>OmniPro ascii v7</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Ascii files of OmniPro-Accept measuring system version 7, contain far less data then previous versions. Inline and crossline are from T to G and A to B respectively. The <I>ratio</I> column (6) has a limited resolution. The raw field value (column 5) gives much more detail but is not scaled with the (unknown) reference signal. Wedge information is missing. The mdyHMS AM/PM date format is also supported.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Diagonals are noted as DiagonalPmMp and DiagonalMmPp for GA-to-TB and TA-to-GB respectively.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When data are made symmetrical in OmniPro, the <I>Normalised field</I> and <I>Current field</I> are set to zero.</FONT><BR>
+<BR>
+<FONT FACE="Times New Roman" SIZE="2">&nbsp;</FONT><FONT FACE="Times New Roman" COLOR="#0000FF" SIZE="2">The "Normalised field" is the value that uses the normalisation the user has performed (without reference division).</FONT><BR>
+<FONT FACE="Times New Roman" COLOR="#0000FF" SIZE="2">&nbsp;The "Ratio" is the normalised field value incl. the reference division.</FONT><BR>
+<FONT FACE="Times New Roman" COLOR="#0000FF" SIZE="2">&nbsp;The .rfb file format does not preserve the current or the reference signal values, only the relative one.</FONT><BR>
+<FONT FACE="Times New Roman" COLOR="#0000FF" SIZE="2">&nbsp; If you open an .rfb file in OmniPro Accept 7.x, and generate the ASCII output, the relative value is stored under the "Normalised field" column,</FONT><BR>
+<FONT FACE="Times New Roman" COLOR="#0000FF" SIZE="2">&nbsp; because there is no data to perform the reference division and fill in the "Ratio" column.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">-----OmniPro &lt;= v7.3---------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">06/12/2012 14:46:31 </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1"><I>{As date are also MMM-dd-(yy)yy and dd-MMM-(yy)yy accepted}</I></FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Radiation device: selftest</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy: 6 MV</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Controller: CCU</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement device: NWP484841</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field detector: Thimble</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference detector: Diode</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SAD: 1000 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SSD: 1000 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field size: 210 x 210 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gantry angle: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement medium: Water</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan type: Inline</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan mode: Continuous</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Points [mm] Inline Crossline Depth Normalised field Current field Ratio</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-200.0 0.0 50.0 1.3 1395 1.3</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-199.6 0.0 50.0 1.4 1400 1.3</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-198.8 0.0 50.0 1.3 1390 1.3</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;199.9 0.0 50.0 1.8 1814 1.7</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;200.1 0.0 50.0 1.8 1830 1.8</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;200.0 0.0 50.0 1.8 1821 1.7</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">-----OmniPro &gt;= v7.4---------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">4-5-2011 15:15:59 </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1"><I>{As date are also MMM-dd-(yy)yy and dd-MMM-(yy)yy accepted}</I></FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Radiation device: U03 Accelerator</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy: 6 MeV</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Controller: CU500E</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement device: BlueWP484841</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field detector: Diode</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference detector: Undefined</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SAD: 1000 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SSD: 1000 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field size: 60 x 100 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gantry angle: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement medium: Water</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan type: Inline</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan mode: Continuous</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Points [mm]:</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Inline Crossline Depth Normalised field Current field Ratio</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">71.0 0.0 13.0 0.8 0 0.0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">70.5 0.0 13.0 0.9 0 0.0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">70.1 0.0 13.0 0.8 0 0.0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">21.6 0.0 13.0 114.8 0 0.0</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">-----OmniPro &gt;= v7.4 composed (mathematics result)----------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">12/18/2013 6:20:08 PM </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1"><I>{As date are also MMM-dd-(yy)yy and dd-MMM-(yy)yy accepted}</I></FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Radiation device: U04 Accelerator</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy: 6 MV</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Controller: CCU</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement device: NWP484841</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field detector: Thimble</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference detector: Thimble</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SAD: 1000 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SSD: 1000 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field size: 100 x 100 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gantry angle: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement medium: Water</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan type: Crossline</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan mode: Continuous</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Points [mm]:</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Inline Crossline Depth Normalised field Current field Ratio</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.0 -73.6 50.0 0.0 0 4.3</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.0 -72.8 50.0 0.0 0 6.2</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.0 -72.7 50.0 0.0 0 6.2</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.0 73.4 50.0 0.0 0 5.8</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----OmniPro &gt;= v8 ----------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement time: 12/6/2018 12:00:35 PM </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1"><I>{As date are also MMM-dd-(yy)yy and dd-MMM-(yy)yy accepted}</I></FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Radiation device: U03 Accelerator</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy: 6 MV&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Controller: CCU</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement device: Blue Phantom 2&nbsp; (48*48*41)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field detector: CC 04</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference detector: Stealth_1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SAD: 1000 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SSD: 1000 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field size: 100 x 100 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gantry angle: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement medium: Water</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan type: Beam</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan mode: Continuous</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Wedge: none </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1"><I>{or integer value}</I></FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Points [mm]:</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Inline Crossline Depth Normalized field Current field Ratio</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.0 0.0 310.0 30.94 66880.5 30.88</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.0 0.0 309.1 33.26 71901.0 32.88</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="OmniPro_rfb"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>OmniPro RFB</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The binary rfb format is reconstructed from several sources (RFx2PTW/Bert van der Leije/DDHK Rotterdam and Radpy/Stephen Flounder) but has still some undocumented fields. It is complicated by design and changed multiple times with different versions of OmniPro.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Thanks to Bert van der Leije for the major parts of this reconstruction.</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">reconstruction of rfb files, Theo van Soest/UMC Utrecht, t.l.vansoest@umcutrecht.nl</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">based on RFx2PTW/Bert van der Leije/DDHK Rotterdam and Radpy/Stephen Flounder</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">++++++</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">syntax information:</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">*variables for structural information</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">UPPERCASE_WORD: variable with value to set conditions</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">*assignment</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">UPPERCASE_WORD:= value</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">*conditional blocks:</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (condition)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;..</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">*repeated structure:</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;&lt;MEASUREMENT REPEAT LOOP START&gt;&gt;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;..&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;N:= value&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;&lt;MEASUREMENT REPEAT LOOP UNTIL N=0&gt;&gt;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">*comments on structure</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">==DATA STRUCTURE START==</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">*used data types</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint signed integer 2 bytes (C++: int16_t)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">double&nbsp; double precision float 8 bytes</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">string&nbsp; length-prefixed strings (Pascal-type string, size stored in byte[0])</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">string2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; length-prefixed string with data starting at byte[2], byte[0]=length,byte[1]=0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">[]&nbsp; byte at current position of file pointer</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">*example:&nbsp; the structure starts with a string which takes 15 bytes,</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; followed by the number of groups as two-byte smallint</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">*type&nbsp; length contents&nbsp; description</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">string&nbsp; 1+14 'Version:6.3.14' VERSION:= 63; version string</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint 2 70&nbsp;&nbsp; GROUPS:= 70</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">++++++</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">==DATA STRUCTURE START==</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">*type&nbsp; length contents&nbsp; description</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">READ_SUBHEADER:= true</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">string&nbsp; 1+14 'Version:6.3.14' VERSION:= 63; version string</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint 2 70&nbsp;&nbsp; GROUPS:= 70</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint 2 -1&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">string2&nbsp; 1+1+5 $0'CBeam' [number of bytes|x0|CBeam] look for this structure</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;&lt;GROUP REPEAT LOOP START&gt;&gt;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">string&nbsp; 1+19 'U02'&nbsp;&nbsp; linac</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">?&nbsp; 2 ?&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">double&nbsp; 8 10&nbsp;&nbsp; energy [MeV]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint 2 0&nbsp;&nbsp; modality (Photon=0,Electron=1,Proton=2,Neutron=3,Cobalt=4,Isotope=5)</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (VERSION &lt; v60)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;?&nbsp; 2 ?&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8&nbsp;&nbsp; TG field size [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;?&nbsp; 2 ?&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8&nbsp;&nbsp; AB field size [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint 2 -1&nbsp;&nbsp; wedge type (0:Hard,1:Dynamic,2:Enhanced,3:Virtual,4:Soft)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">?&nbsp; 2 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint 2 0&nbsp;&nbsp; wedge angle</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">?&nbsp; 2 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint 2 0&nbsp;&nbsp; gantry angle</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">?&nbsp; 2 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint 2 90&nbsp;&nbsp; colimator angle</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">?&nbsp; 2 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">double&nbsp; 8 1000&nbsp;&nbsp; ssd [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">?&nbsp; 2 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">double&nbsp; 8 1000&nbsp;&nbsp; sad [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">string&nbsp; 1+9 'Undefined'&nbsp; APPLICATOR</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (VERSION &gt; v50) and ((APPLICATOR='') or (APPLICATOR[1]&lt;&gt;#0))</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 0&nbsp;&nbsp; medium (0:air,1:water,2:film)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (VERSION &gt; v53)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;string&nbsp; 1+13 'Radiotherapie' clinic</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;string&nbsp; 1+3 'UMC'&nbsp; adres</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;string&nbsp; 1+0 ''&nbsp; telefoon</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;string&nbsp; 1+0 ''&nbsp; e-mail</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;?&nbsp; 2 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 -200&nbsp; TGmin field setting [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;?&nbsp; 2 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 200&nbsp; TGplus field setting [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;?&nbsp; 2 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 -200&nbsp; ABmin field setting [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;?&nbsp; 2 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 200&nbsp; ABplus field setting [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 0&nbsp;&nbsp; gantryscale (0:CW_180_Down,1:CCW_180_Down,2CW_180_Up,3:CCW_180_Up)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">READ_SUBHEADER:= TRUE</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;&lt;MEASUREMENT REPEAT LOOP START&gt;&gt;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">==SUBHEADER START: USE IF READ_SUBHEADER=TRUE==&nbsp;&nbsp;&nbsp;&nbsp; $a8</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (READ_SUBHEADER = true)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---repeat</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; word 2 n</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;END_SUBHEADER:= (n&gt;=$8000);</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp; ---n&gt;0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ScanMax=ScanMax+n</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp; ---</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---until END_SUBHEADER</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; --- (n==$ffff)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ?&nbsp; 2 ?&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; string2 1+1+13 x0'CProfileCurve' MEASUREMENTTYPE</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">==SUBHEADER END==</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">===measurement start==</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">longword 4 (04/02/2002 14:19) measurement datetime 7-8 hour difference for Europe, where defined???</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">longword 4 (04/02/2002 14:19) modification datetime&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">byte&nbsp; 1 2&nbsp;&nbsp; quantity (1:Relative optical density,2:Relative dose,3:Relative ionisation,4:Absolute dose,5:Charge)</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (VERSION &gt; v50)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; radius *0.1 [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; calibration factor</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---if (VERSION &gt; v51)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; double 8 0&nbsp;&nbsp; temperature</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; double 8 0&nbsp;&nbsp; pressure</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; string 1+0 ''&nbsp;&nbsp; calibration date</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; double 8 -1&nbsp;&nbsp; detector offset [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (VERSION &lt;= v50)&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 ?&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 ?&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">string&nbsp; 1+4 'IC04'&nbsp;&nbsp; detector name</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint 2 4&nbsp;&nbsp; detector type (1:Single diode,2:LDA-11,3:LDA-25,4:Ion chamber (cylindrical),5:Ion chamber (plane parallel),6:Stereotactic,7:Film,8:CA24,9:BIS-2G')</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">string&nbsp; 1+7 'RM, JdK'&nbsp; operator</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">string&nbsp; 1+0 ''&nbsp;&nbsp; comment</FONT><BR>
+<BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (quantity=4) or (measurement type='CSinglePointCurve') {absolute dose measurement | untested!!!}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;?&nbsp; 6 ?&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 n&nbsp;&nbsp; number of measurements (NM)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;?&nbsp; 2 ?&nbsp;&nbsp; ?</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---if (VERSION &gt; v60)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ?&nbsp; 291 ?&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 value&nbsp; crossline</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 value&nbsp; inline</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 value&nbsp; beam</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 value&nbsp; crossline_ref</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 value&nbsp; inline_ref</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---if (VERSION &gt; v60)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; double 8 value&nbsp;&nbsp; crossline_ref</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 value&nbsp; beam_ref</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---if (VERSION &gt; v60)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; double 8 value&nbsp;&nbsp; inline_ref</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; double 8 0&nbsp;&nbsp; temperature</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; double 8 0&nbsp;&nbsp; pressure</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; double * NM 8 * NM values&nbsp;&nbsp; all measurements</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; --- ([] &lt;&gt; #0) {zero value is error}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ?&nbsp; 2 ?&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;--- (end absolute)</FONT><BR>
+<BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (VERSION &gt; v53)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 1&nbsp;&nbsp; mapping crossline: z_neg=-3, y_neg=-2, x_neg=-1, x_pos=1, y_pos=2, z_pos=3</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 -2&nbsp;&nbsp; mapping inline&nbsp;&nbsp; : z_neg=-3, y_neg=-2, x_neg=-1, x_pos=1, y_pos=2, z_pos=3</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 -3&nbsp;&nbsp; mapping beam&nbsp;&nbsp;&nbsp;&nbsp; : z_neg=-3, y_neg=-2, x_neg=-1, x_pos=1, y_pos=2, z_pos=3</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 1&nbsp;&nbsp; measurements per point</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 1 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 10.5&nbsp; scanspeed [mm/s]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 13&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 6&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 2438&nbsp;&nbsp; origin x&nbsp; (*0.1 [mm])</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 2425&nbsp;&nbsp; origin y&nbsp; all at bottom corner of tank</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 3620&nbsp;&nbsp; origin z&nbsp; center of tank is (2400,2400,2400)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; isocenter crossline&nbsp;&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; isocenter inline&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 -1&nbsp; isocenter&nbsp; beam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; normalisation crossline [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 2.5&nbsp; normalisation inline&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 121.4&nbsp; normalisation beam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 100&nbsp; norm value field</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; norm value reference&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; dark current field&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 -96.3&nbsp; dark current reference</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 300&nbsp; HV field</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 300&nbsp; HV reference</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 42&nbsp;&nbsp; gain field&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 45&nbsp;&nbsp; gain reference&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;string&nbsp; 1+4 'HIGH'&nbsp; range field</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;string&nbsp; 1+4 'HIGH'&nbsp; range reference</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 94&nbsp; water surface correction (motor unit) [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 2&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 1&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; reference min</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; reference max</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; reference avg</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 -1&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 4&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 1.09051254 renormalisation value</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 0&nbsp; curve offset, equal to detector offset</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;string&nbsp; 1+12 'commissioning' setup comment</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;smallint 2 0&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 -243.4&nbsp; point a: crossline [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 242.4&nbsp; point a: inline&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 18.9&nbsp; point a: beam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 -243.5&nbsp; point b: crossline [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 -237.5&nbsp; point b: inline&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 19.4&nbsp; point b: beam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 236.3&nbsp; point c: crossline [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 -237.5&nbsp; point c: inline&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 18.9&nbsp; point c: beam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 236.4&nbsp; point d: crossline [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 242.4&nbsp; point d: inline&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 18.9&nbsp; point d: beam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;?&nbsp; 10 ?&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (VERSION &lt;= v53)</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---if (VERSION &lt; v52)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ?&nbsp; 8 ?&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---if (VERSION &gt;= v52)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ?&nbsp; 10 ?&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">double&nbsp; 8 236.4&nbsp;&nbsp; crossline start [0.1 mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">double&nbsp; 8 0&nbsp;&nbsp; inline&nbsp;&nbsp;&nbsp; start [0.1 mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">double&nbsp; 8 50&nbsp;&nbsp; beam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start [0.1 mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">double&nbsp; 8 -243.2&nbsp;&nbsp; crossline end&nbsp;&nbsp; [0.1 mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">double&nbsp; 8 0&nbsp;&nbsp; inline&nbsp;&nbsp;&nbsp; end&nbsp;&nbsp; [0.1 mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">double&nbsp; 8 50&nbsp;&nbsp; beam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end&nbsp;&nbsp; [0.1 mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">smallint 2 1200&nbsp;&nbsp; number of points (NP)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;&lt;REPEAT START NP times&gt;&gt;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 -243.2 (first point) position [0.1 mm]</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;double&nbsp; 8 5.8 (first point) value</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;&lt;REPEAT END NP times&gt;&gt;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">byte&nbsp; 1 var&nbsp;&nbsp; N</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (N&gt;0)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---while ([]&lt;&gt;$80) and (([]&lt;&gt;$FF) or ([+1]&lt;&gt;$FF))</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; byte&nbsp; 1&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---if ([]=$FF)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; READ_SUBHEADER:= TRUE</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---if ([]&lt;&gt;$FF)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; READ_SUBHEADER:= FALSE</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; byte&nbsp; 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (N=0)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;READ_SUBHEADER:= TRUE</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---if (VERSION&gt;50)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; byte * 3 3 *&nbsp;&nbsp; ?</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; byte&nbsp; 1 3&nbsp;&nbsp; N&nbsp;&nbsp;&nbsp; $4d75</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; ---if (N&gt;0) and (VERSION&gt;63) and (MEASUREMENTTYPE='CTMRCurve')</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; READ_SUBHEADER:= FALSE</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; ---</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;NEXT_MEASUREMENT</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;&lt;MEASUREMENT REPEAT LOOP UNTIL N=0&gt;&gt;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">GROUPS:= GROUPS-1</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---if (GROUPS&gt;0)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; --- WHILE ([]&lt;&gt;$80)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; byte&nbsp; 1&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; byte&nbsp; 1&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;---</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;&lt;GROUP REPEAT LOOP UNTIL GROUPS=0&gt;&gt;</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;&lt;GROUP REPEAT LOOP UNTIL GROUPS=0&gt;&gt;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">==DATA STRUCTURE END==</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="RFA300"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>OmniPro RFA3000 export format</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Already existing for many years, there is also a "official" export format in OmniPro, the RFA300 format with default file extension .asc. It supports multiple profiles per file. BistroMath can read </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs19.htm#multiple_profiles">any profile</A></FONT><FONT FACE="Arial" SIZE="2"> contained in such a file. BistroMath can write single profiles into a rfa file.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">See also </FONT><FONT FACE="Times New Roman" COLOR="#0000FF" SIZE="2">http://www.iba-dosimetry.com/sites/default/files/dosimetry-products-overview/997-103_TN006_090130_OmniPro-Accept_ASCII_Format.pdf</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">:MSR&nbsp; 1&nbsp; # No. of measurement in file</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">:SYS BDS 0 # Beam Data Scanner System</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">#</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># RFA300 ASCII Measurement Dump ( BDS format )</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">#</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># Measurement number&nbsp; 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">#</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%VNR 1.0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%MOD&nbsp; RAT</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%TYP&nbsp; SCN&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%SCN&nbsp; DPT&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%FLD&nbsp; ION&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%DAT&nbsp; 12-09-2011&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%TIM&nbsp; 13:53:07&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%FSZ&nbsp; 100 100</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%BMT&nbsp; PHO&nbsp;&nbsp;&nbsp;&nbsp; 6.0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%SSD&nbsp; 1000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%BUP&nbsp; 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%BRD&nbsp; 1000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%FSH&nbsp; -1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%ASC&nbsp; 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%WEG&nbsp; 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%GPO&nbsp; 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%CPO&nbsp; 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%MEA&nbsp; 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%PRD&nbsp; 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%PTS&nbsp; 141</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%STS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp; 160.0 # Start Scan values in mm ( X , Y , Z )</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%EDS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp; -10.0 # End Scan values in mm ( X , Y , Z )</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">#</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">#&nbsp;&nbsp; X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Z&nbsp;&nbsp;&nbsp;&nbsp; Dose</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">#</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp; 160.0&nbsp;&nbsp;&nbsp; 49.8</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp; 159.0&nbsp;&nbsp;&nbsp; 50.0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp; 157.1&nbsp;&nbsp;&nbsp; 50.5</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp;&nbsp; -9.0&nbsp;&nbsp;&nbsp; 41.6</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp;&nbsp; -9.6&nbsp;&nbsp;&nbsp; 41.6</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp;&nbsp;&nbsp; 0.0&nbsp;&nbsp; -10.0&nbsp;&nbsp;&nbsp; 41.6</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">:EOM&nbsp; # End of Measurement</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">:EOF # End of File</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="wms_ascii"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Scanditronix WMS-ascii (wtx)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Ascii files of the wms system are used by Plato. These files can be read and written. The order of data field is exactly the same as the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#wms_binary">binary format</A></FONT><FONT FACE="Arial" SIZE="2"> (.wda). All fields are explained </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#wms_binary">there</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Clinic: Radiotherapie</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">"17-JUN-04"</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">"U08: Elek"</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">"15:53:10"</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">YXZ</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; 8430 10000&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">GG</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-2398&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp; 500&nbsp; 2387&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp; 500</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-2398&nbsp; 2387</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 0.0500000&nbsp;&nbsp; 1.5000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;100.0000000&nbsp;&nbsp; 0.0100000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 0.0100000 100.0000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">XO</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 0.0000000&nbsp;&nbsp; 6.0000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; 40.0000000&nbsp; 40.0000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 0.0000000&nbsp;&nbsp; 0.0000000&nbsp;&nbsp; 0.0000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp; 1.0000000&nbsp; 90.0000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 0.0000000 100.0000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">"u8"</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">""</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">""</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">""</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">""</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">""</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">""</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">""</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">"CU500E"</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">""</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">""</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 0.0000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">R&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">'</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 958</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0 -2398&nbsp;&nbsp; 500&nbsp;&nbsp; 680 10000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0 -2393&nbsp;&nbsp; 500&nbsp;&nbsp; 680 10000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0 -2388&nbsp;&nbsp; 500&nbsp;&nbsp; 690 10000</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 2377&nbsp;&nbsp; 500&nbsp;&nbsp; 720 10000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 2382&nbsp;&nbsp; 500&nbsp;&nbsp; 710 10000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; 2387&nbsp;&nbsp; 500&nbsp;&nbsp; 710 10000</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">***&nbsp; End of file&nbsp; ***</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="wms_binary"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Wms-binary (wda)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Binary files of the wms system are also used by Plato. These files can be read and written.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsCharConvRec= record case boolean of</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; true : (c:array[1..wmsMax_Char] of Char);</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; false: (s:string[Pred(wmsMax_Char)]);</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsTankAxis&nbsp;&nbsp; = 'X'..'Z';</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsIntType&nbsp;&nbsp;&nbsp; = SmallInt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {2 bytes!!}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsRealType&nbsp;&nbsp; = Single;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {4 bytes}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsComments&nbsp;&nbsp; = (wmhG1,wmhG2,wmhP0,wmhP1,wmhP2,wmhP3,wmhP4,wmhU1,wmhU2,wmhU3,wmhU4);</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsGrafNumType= real48;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsGrafPoint&nbsp; = packed record</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X,Y: wmsGrafNumType;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsGrafProfile= array of wmsGrafPoint;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">AxisIDArray&nbsp;&nbsp; = packed array[twMeasAxis ] of Char;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">AxisSignArray = packed array[wmsTankAxis] of wmsIntType;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsFileHeadRec=packed record&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhIaaa06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsIntType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {iaaa06=6 002}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhDate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : array[1..14] of CHAR;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {016}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhDevice,wmhTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : array[1..12] of CHAR;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {040}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhAxisID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : AxisIDArray;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {perm.'XYZ' 043}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhNOP1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : CHAR;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {#0 044}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhAxisSign&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : AxisSignArray;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {±1 050}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhFmax&nbsp; ,wmhRmax&nbsp; ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {Field/Ref max 054}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhFofs&nbsp; ,wmhRofs&nbsp; ,wmhFsign&nbsp;&nbsp; ,wmhRsign: wmsIntType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {Field/Ref offset,sign 062}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhKs&nbsp;&nbsp;&nbsp; ,wmhOrKs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : CHAR;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {scantype,(orgineel) U/P/D/G/A/L 064}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhBorders&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : array[1..2,twMeasAxis] of wmsIntType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {076}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhScan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : array[1..2] of wmsIntType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {*0.01 cm 080}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhMCm&nbsp;&nbsp; ,wmhCmSec ,wmhIsodose ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {stap (cm),snelh.(cm/s),100%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 092}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhMtime ,wmhNdose ,wmhNdosediv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsRealType; {meettijd, norm. dose,dose/ref 104}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhDRdiv ,wmhNsamp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsIntType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {boolean dose/ref, samples 108}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhRaType,wmhFdType&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : CHAR;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {'C/X/E', 'O/W/R/D/C' 110}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhASD&nbsp;&nbsp; ,wmhEnergy,wmhFdAB&nbsp;&nbsp;&nbsp; ,wmhFdGT,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {app-surface-dist,(MeV),veld (cm) 126}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhBRect1,wmhBRect2,wmhBDiam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsRealType;&nbsp;&nbsp;&nbsp;&nbsp; {0 of blok-afmetingen (cm) 138}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhWedgeAngle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsIntType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {140}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhTrayTr,wmhCollim,wmhGantry&nbsp; ,wmhSSD&nbsp; : wmsRealType;&nbsp;&nbsp;&nbsp;&nbsp; {tray transmissie,(°),(cm) 156}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhComs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : array[wmsComments,1..30] of CHAR;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {486}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhDosCon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsRealType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {dosisconversie=1&nbsp;&nbsp; 490}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhBShape,wmhNOP2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : CHAR;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {492}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhAIdent,wmhWIdent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsIntType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {accesory/wedge ident. 496}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhINOP3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : array[1..45] of wmsIntType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {586}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmhIzzz06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsIntType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {izzz06=6 588}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;end;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsFileHeaderBlock&nbsp;&nbsp; =packed record</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmsRecSize06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : word;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {wmssize06=588}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmsRec06&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsFileHeadRec;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;end;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsProfileHeaderRec&nbsp; =packed record</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmpIaaa07,wmpNpoints&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsIntType;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {wmsProfileType,aantal punten}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;end;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsProfileHeaderBlock=packed record&nbsp; {wmsrecsize07=wmpnpoints*wmspropointsize+wmsproheadsize}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmsRecSize07&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : word;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {= #punten*10+4}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmsRec07&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsProfileHeaderRec;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;end;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsProfilePoint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =packed record</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;case integer of</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; 1: (wmpPos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : array[wmsTankAxis] of wmsIntType;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wmpIfield,wmpIref&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsIntType);</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; 2: (wmpPointArray&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : array[1..5] of wmsIntType);</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; 3: (wmpAccPos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : array[twMeasAxis] of wmsIntType; {only when reorganised}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wmpField,wmpRef&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsIntType);</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;&nbsp; end;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsPlaneHeaderRec&nbsp;&nbsp;&nbsp; =packed record</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmpIaaa08,wmpPlane ,wmpLrow&nbsp; ,wmpLcol,&nbsp; {iaaa08=8,1..3,rijlengte,aantal rijen}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmpI1row ,wmpI2row ,wmpI1col ,wmpI2col,&nbsp;&nbsp; {row=a=X(=GT), col=ß=Y(=AB) *0.1 mm}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmpIcon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsIntType;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;end;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsPlaneHeaderBlock&nbsp; =packed record</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmsRecSize08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : WORD;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {wmsblocksize08=18}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmsRec08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsPlaneHeaderRec;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;end;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">wmsPlanePoint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =packed record</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp; wmpIfield,wmpIref&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wmsIntType;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">&nbsp;end;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="mcc_ascii"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>PTW ascii (mcc)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">PTW offers is a well establised platform. Multiple-profile files </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs19.htm#multiple_profiles">are supported</A></FONT><FONT FACE="Arial" SIZE="2"> for reading only. At this date the effects of phantom rotation have been checked (no influence on data).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">However, the data for the Starcheck do not follow the conventions as described. No ordering of labels within a measurement is expected. Unknown labels are ignored but should have no influence on the data interpretation.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">MCC files tend to represent absolute dose values in stead of relative dose values, thus leading to very small numbers (several orders of magnitude below 1). This messed up assumptions that can be made for relative profiles. Therefore, at conversion to the internal used data format, dose values are scaled to 100 when the maximum is below 50.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">(http://bistromath.kegge13.nl/MEPHYSTO_mcc_data_format_description.pdf).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">BEGIN_SCAN_DATA</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;FORMAT=CC-Export V1.9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;FILE_CREATION_DATE=29-Feb-2012 14:35:17</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;LAST_MODIFIED=29-Feb-2012 14:35:17</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;BEGIN_SCAN&nbsp; 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; TASK_NAME=tba PDD Profiles</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; PROGRAM=tbaScan</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; COMMENT=XXXX</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; MEAS_DATE=29-Feb-2012 14:33:28</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; LINAC=NoName</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; MODALITY=X</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ISOCENTER=1000.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; INPLANE_AXIS=X</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; CROSSPLANE_AXIS=Y</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DEPTH_AXIS=Depth</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; INPLANE_AXIS_DIR=GUN_TARGET</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; CROSSPLANE_AXIS_DIR=RIGHT_LEFT</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DEPTH_AXIS_DIR=UP_DOWN</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ENERGY=7.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; NOMINAL_DMAX=15.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SSD=1000.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SCD=450.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; BLOCK=0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; WEDGE_ANGLE=0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; FIELD_INPLANE=100.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; FIELD_CROSSPLANE=100.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; FIELD_TYPE=RECTANGULAR</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; GANTRY=0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; GANTRY_UPRIGHT_POSITION=0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; GANTRY_ROTATION=CW</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; COLL_ANGLE=90.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; COLL_OFFSET_INPLANE=0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; COLL_OFFSET_CROSSPLANE=0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SCAN_DEVICE=MP3</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SCAN_DEVICE_SETUP=BARA_GUN_TARGET</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; ELECTROMETER=TANDEM</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; RANGE_FIELD=MEDIUM</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; RANGE_REFERENCE=AUTO</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR=THIMBLE_CHAMBER</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_SUBCODE=SEMIFLEX</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_RADIUS=2.75</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_NAME=PTW 31010 Semiflex</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_SN=2107</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_CALIBRATION=304700000.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_IS_CALIBRATED=1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_REFERENCE=THIMBLE_CHAMBER</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_REFERENCE_SUBCODE=SEMIFLEX</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_REFERENCE_RADIUS=2.75</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_REFERENCE_NAME=PTW 31010 Semiflex</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_REFERENCE_SN=1726</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_REFERENCE_IS_CALIBRATED=1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_REFERENCE_CALIBRATION=304400000.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_HV=0.0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DETECTOR_REFERENCE_HV=350.0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; REF_FIELD_DEPTH=0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; REF_FIELD_DEFINED=ISOCENTER</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; REF_FIELD_INPLANE=100.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; REF_FIELD_CROSSPLANE=100.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; REF_SCAN_POSITIONS=0.00;1.50;3.00;4.50;...;295.00;300.00;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SCAN_CURVETYPE=PDD</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SCAN_OFFAXIS_INPLANE=0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SCAN_OFFAXIS_CROSSPLANE=0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SCAN_ANGLE=0.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">{this item is deemed unreliable}</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SCAN_DIAGONAL=NOT_DIAGONAL</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SCAN_DIRECTION=NEGATIVE</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; MEAS_MEDIUM=WATER</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; MEAS_PRESET=REFERENCE_DOSEMETER</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; MEAS_TIME=0.300</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; MEAS_UNIT=A.U.</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; SCAN_SPEEDS=20.00; 8.00;40.00; 25.00;100.00; 40.00;400.00; 50.00;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; DELAY_TIMES=20.00; 0.000;150.00; 0.000;400.00; 0.000;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; PRESSURE=1013.25</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; TEMPERATURE=20.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; NORM_TEMPERATURE=20.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; CORRECTION_FACTOR=1.0000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; EXPECTED_MAX_DOSE_RATE=16.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; BEGIN_DATA</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 0.00&nbsp; 2.6303E+00&nbsp; 7.9028E+00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 1.50&nbsp; 2.6554E+00&nbsp; 7.9174E+00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 3.00&nbsp; 3.2534E+00&nbsp; 7.9120E+00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 4.50&nbsp; 3.9161E+00&nbsp; 7.9083E+00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 6.00&nbsp; 4.3022E+00&nbsp; 7.8955E+00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 65.00&nbsp; 4.1937E+00&nbsp; 7.9211E+00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 70.00&nbsp; 4.0922E+00&nbsp; 7.9120E+00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 295.00&nbsp; 1.2460E+00&nbsp; 7.8791E+00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 300.00&nbsp; 1.2184E+00&nbsp; 7.9028E+00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; END_DATA</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;END_SCAN&nbsp; 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">END_SCAN_DATA</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="sna_ascii"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Sun Nuclear IC Profiler (.txt)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This is the exported output of the IC Profiler. In standard setup the X-axis runs from A to B and the Y-axis from T to G.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There is also a .prm format that stores multiple samples with all data points of the panel representing cumulative values on one single line per sample.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are no plans to support that in BistroMath yet.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Tab-Delimited Scan Output</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Filename&nbsp; c:\temp\test.prm&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">TimeStamp&nbsp; 8/14/2015 13:48:28&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Description&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Institution&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Software Version&nbsp; 3.2.0.1&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Machine Setup:</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Room&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Machine Type&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Machine Model&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Machine Serial Number&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Beam Type&nbsp; Undefined&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy&nbsp; -1&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Wedge Angle deg 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Wedge Type deg None&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gantry Angle deg 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Angle deg 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Left cm 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Right cm 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Top cm 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Bottom cm 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Rate MU/min 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Dose MU 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field Size MU 0 x 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">(Inplane x Crossplane)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collector Setup:</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Orientation&nbsp; Y Axis&nbsp;&nbsp; 0/0 mm shift&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">({[Inverted] {Y|X} Axis | Theta = <I>nn</I> deg} [{<I>n</I>/<I>n</I> mm shift}]) "Y Axis" == "Theta = 0"&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Tray Mount&nbsp; No&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SSD cm 100.000&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Alignment cm Light Field&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Buildup cm 0.000&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Buildup Type cm WaterEquiv&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Calibration File cm C:\SNC\Profiler\Factors\6264302\Slot-2 - 6 MV - 26-3-2012.cal&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collector Config:</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collector Model&nbsp; IC PROFILER&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collector Serial&nbsp; 6264302&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collector Revision&nbsp; F&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Firmware Version ms 2.5.1&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement Mode ms Pulsed&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Nominal Gain ms 4&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collection Interval ms 125&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">General Analysis</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">CAX Dose&nbsp; 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Photon Wedge Angle&nbsp; 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Analysis Config&nbsp; Custom&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Flatness type&nbsp; Variance&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Symmetry Type&nbsp; Area (sym)&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy Calibration&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy Analysis&nbsp; Intercept&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Penumbra Top&nbsp; 80&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Penumbra Bottom&nbsp; 20&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Flatness Field Percent&nbsp; 80&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Symmetry Field Percent&nbsp; 80&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Base Intensity Point&nbsp; MAX&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Intensity Field Percentage&nbsp; 50&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">X Axis Analysis</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field Size cm 19.8407&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Beam Center cm -0.59777&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Light/Rad Coinc. Bottom cm 0.518137&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Light/Rad Coinc. Top cm -0.677403&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Penumbra Bottom cm -2.4782&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Penumbra Top cm 18.1197&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Flatness Result perc 15.0413&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Symmetry Result perc 4.32286&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electron Energy Ep0&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electron Energy D80&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Y Axis Analysis</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field Size cm 19.8798&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Beam Center cm -0.466749&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Light/Rad Coinc. Bottom cm 0.40664&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Light/Rad Coinc. Top cm -0.526858&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Penumbra Bottom cm -1.71754&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Penumbra Top cm 25.5189&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Flatness Result perc 15.0804&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Symmetry Result perc 5.34266&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electron Energy Ep0&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electron Energy D80&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Positive Diagonal Analysis</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field Size cm 27.9239&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Beam Center cm -0.753221&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Light/Rad Coinc. Bottom cm 0.573028&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Light/Rad Coinc. Top cm -0.933414&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Penumbra Bottom cm -0.291774&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Penumbra Top cm -0.579187&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Flatness Result perc 22.4746&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Symmetry Result perc 6.40666&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electron Energy Ep0&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electron Energy D80&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Negative Diagonal Analysis</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field Size cm 26.8252&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Beam Center cm -0.109613&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Light/Rad Coinc. Bottom cm -0.619935&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Light/Rad Coinc. Top cm -0.839162&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Penumbra Bottom cm -0.724678&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Penumbra Top cm -0.901883&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Flatness Result perc 19.1264&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Symmetry Result perc 0.667473&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electron Energy Ep0&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electron Energy D80&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measured Data: Total Dose-Normalised (%)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Pulses:&nbsp; 765</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">TimerTics (1 uSec) 7661116</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector ID X Axis Position(cm) Set 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-16.00 6.165611383&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-15.50 1.279268725&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-1.50 99.17408188&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-1.00 99.75716951&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0.00 100&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;1.00 99.4268057&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;1.50 98.43851739&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;15.50 1.04591214&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;16.00 0.932427059&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector ID Y Axis Position(cm) Set 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-16.00 5.7533903644&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-15.50 5.9112313697&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-1.50 99.16716458&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-1.00 99.581086&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-0.50 100.5727846&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0.00 100&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0.50 100.584176&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;1.00 99.93478399&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;1.50 99.2994425&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;15.50 0.7892851596&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;16.00 0.687218501&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector ID Positive Diagonal Position(cm) Set 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-22.63 5.1917459202&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-21.92 5.2551743007&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-2.12 97.96335712&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-1.41 99.1924243&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0.00 100&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;1.41 99.74820621&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;21.92 0.2438958443&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;22.63 0.09906074965&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector ID Negative Diagonal Position(cm) Set 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-22.63 0.2447433998&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-21.92 0.2504168554&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-2.12 97.48068462&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-1.41 99.26192421&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;0.00 100&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;1.41 98.96933673&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;2.12 97.97737689&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;21.92 0.2569608708&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;22.63 5.1932210702&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="snc_ascii"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Sun Nuclear ascii (.snctxt)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Sun Nuclear is not well known on the Dutch market but offers an interesting water tank</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Tab-Delimited Scan Output</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">FILE HEADER</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">File Name test 22_03_2012.snctxt&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">File Date 03/26/2012 18:01&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">File Export Version 1.4.0.3216&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">File Version 2.0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">File Scan Count 1&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">BEGIN SCAN</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Summary Comments&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Summary Beam Type Photon&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Summary Energy (MV/MeV) 6.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Summary FieldSize X (cm) 40.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Summary FieldSize Y (cm) 40.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Summary Wedge Type Open Field&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Summary Wedge Angle (degrees) 0.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Summary Scan Type Crossline&nbsp;</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">BEGIN DOSE TABLE&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Action Initial Scan&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;X (cm) Y (cm) Z (cm) Relative Dose (%)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-25.971 -0.014 5 4.71918616758957</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-25.861 -0.014 5.001 4.80255899979677</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-25.751 -0.013 5.001 4.91166572174545</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-25.641 -0.013 5.001 4.98875170344958</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;-25.531 -0.013 5.001 5.12394256611857</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;25.724 -0.004 5.001 5.03370666050066</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;25.834 -0.005 5.001 4.97704821355911</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;25.944 -0.005 5.001 4.88959523205777</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;26 -0.005 5.001 4.79638982365823</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">END DOSE TABLE</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SCAN HEADER</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">FACILITY INFORMATION</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Institution UMC&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Delivery System selftest3&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Delivery System Manufacturer Elekta&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Delivery System Model #&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Delivery System Serial #&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field Detector Model # IC15 F&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field Detector Serial #&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference Detector Model # IC15 R&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference Detector Serial #&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SNC EQUIPMENT</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Application Programming Interface 1.4.0.3216&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Hardware Device Interface 1.4.0.34714&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">3D Scanner Model # Not Available&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">3D Scanner Serial #&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">3D Scanner Firmware&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Drive Factor Diameter (pulse/mm) 1350&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Drive Factor Vertical (pulse/mm) 630&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Drive Factor Ring (pulse/mm) 706.67&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electrometer Model # Not Available&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electrometer Serial #&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electrometer Firmware&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Leveling Platform Model # Not Available&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Leveling Platform Serial # Not Available&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Lift Table Model # Not Available&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Lift Table Serial # Not Available&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reservoir Model # Not Available&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reservoir Serial # Not Available&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">DELIVERY SYSTEM</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Beam Type Photon&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy (MV / MeV) 6.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gantry Angle (degrees) 0&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Angle (degrees) 0.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimation Type Jaws&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Wedge Type Open Field&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Wedge Angle (degrees) 0.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Wedge Direction&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field Size X (cm) 40.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field Size Y (cm) 40.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Position Jaws X1 (cm)&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Position Jaws X2 (cm)&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Position Jaws Y1 (cm)&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Position Jaws Y2 (cm)&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Position MLC X1 (cm)&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Position MLC X2 (cm)&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Position MLC Y1 (cm)&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator Position MLC Y2 (cm)&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SETUP PARAMETERS</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Ring Center (cm) 25.2190724278959&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Angle Offset (degrees) 4.1&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Hysteresis Minus (cm) 0.093802416407125&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Hysteresis Plus (cm) -0.094144434729505&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">MEASUREMENT DETAILS</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Comments&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Id 30&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Date 03/22/2012 16:28&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Type Crossline&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Medium Water&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Source to Surface Distance (cm) 100.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement Mode Continuous&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Speed (cm/s) 0.5 cm / second&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Diameter Drive Scan Direction False&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Half Beam False&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Additional Scan Range (cm) 5.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Integrated Measurement False&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Effective Point of Measurement (cm) 0.177&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector Bias Voltage (V) 299.77&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field Background Rate (counts/s) 0.00489790218161142&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference Background Rate (counts/s) 0.00625953893882111&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Normalisation Value (Field/Reference) 0.984774818258455&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electrometer Temperature (degrees C) 7.0010967095781666666666666672&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Probe Temperature (degrees C) 31.999694819562055555555555558&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Pressure (mbar) 1043.23940557632000&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">+5VA Sensor 5.07988929748535&nbsp;</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">BEGIN RAW DATA&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">(...ignored here)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">460</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">END RAW DATA</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">END SCAN&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Sun Nuclear clipboard format</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="SNC_clipboard"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Delivery System U09&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy 10 MV&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Type Crossline&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Depth 5.00&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field 21cm x 16cm (Jaws)&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Wedge Open Field&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Comments 26x26 cr&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;5.00 cm : ScanId=406&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">-18.075 2.44&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">-17.825 2.56&nbsp;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">17.175 2.97&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">17.425 2.77&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">17.675 2.59&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">17.925 2.45&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="hdf_ascii"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>hdf ascii (txt)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This file format is generated by volumeTool. These file can only be read. The first column gives the relative position as a fraction of the scanlength. Coördinates are given in meters. When for some reason the defined track does not coincide with the voxel center, the offset of the pixel center relative to the scan start is given. In the example below the X-value of the center of the first voxel in track coordinates is the track start value </FONT><FONT FACE="Courier New" COLOR="#008000" SIZE="2">{0.0134}</FONT><FONT FACE="Arial" SIZE="2"> + the fraction of the scanlength </FONT><FONT FACE="Courier New" COLOR="#008000" SIZE="2">{-0.000424}</FONT><FONT FACE="Arial" SIZE="2"> * (scanstop-scanstart) </FONT><FONT FACE="Courier New" COLOR="#008000" SIZE="2">{0.2494-0.0134}</FONT><FONT FACE="Courier New" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># Track: (0.013400, 0.140700, 5.0000E-4) -&gt; (0.249400, 0.141300, 5.0000E-4)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># Length: 0.236000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">-0.000423727 365 -0.0001</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">4.24E-04 368 1.00E-04</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.001271177 367 3.00E-04</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.997033916 348 0.235300774</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.997881368 343 0.235500773</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.99872882 343 0.235700773</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.999576273 344 0.235900772</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="pips_ascii"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Pips ascii (dat)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Pips profile is an export format from the Pips programme. The range of data is from 0 to 255. The data are inverted however, the background being at 255 and all other signals lower. The intrinsic pixel size is unknown and must be added separately.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Type of Cross-Section: row</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Index: 515</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Highest pixel: 254</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">At position: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Number of points: 1024</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">254</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">239</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">240</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">(... peak has low values)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">253</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">253</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">253</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="generic_ascii"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>generic ascii (txt)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This is an extremely basic file format for fast input and can only be read. The first colum gives the position in cm.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">-23.04&nbsp; 5.90</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">-23.00&nbsp; 6.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">-22.92&nbsp; 6.20</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">22.65&nbsp; 6.90</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">22.73&nbsp; 6.70</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">22.84&nbsp; 6.50</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="w2CAD"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Varian w2CAD (asc)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This format is used in Varian Eclipse for input of beam data. My documentation on this format is limited. More info is highly appreciated! </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs19.htm#multiple_profiles">Multiple profiles in a file</A></FONT><FONT FACE="Arial" SIZE="2"> is supported. The is no ordering expected data and labels within one measurement. Unknown labels are ignored.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For fast recognition the label "$STOM" should be within the first 255 bytes. Theoretically the top lines could be used for comments.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">As far as I know there is no field for the lnac name. BistroMath therefore assumes this is set into the comment.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">$NUMS 040&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">not mandatory!</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">$STOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">start of one measurement (indentifier for this file type)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">#</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># Comment:</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># Detector: CC 13 Field</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># Operator:</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">#</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%VERSION 02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">W2CAD version, not mandatory</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%DATE 20-09-2011&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">dd-mm-yyyy</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%DETY CHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">CHAmber|DIOde|DIAmond</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%BMTY PHO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">PHOtons|(ELEctrons??)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%FLSZ 030*030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">x,y IEC1217 in mm, format "030*030" or "30 * 30"</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%TYPE OPP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">OPD(open field pdd)|OPP(profile)|DPR (diagonal)|</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WDD(wedge pdd)|WDD_SSD80|WDD_SSD120|WDP(prof)|WLP(longitudinal)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%WDGL xx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">wedge name, 2 characters, (wedge angle?), wedge only</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%WDGD L&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">L (toe to neg X)|R (pos X) wedge direction, wedge only</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%AXIS X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">X,Y,Z,D (IEC1217?)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%PNTS 755</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%STEP 002&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">in 0.1 mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%SSD&nbsp; 1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">SSD in mm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">%DPTH 015&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">scan depth in mm for profiles only</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;-065.2 +000.0 +015.0 +000.5&gt;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">x,y,z (mm), dose (%)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;-064.9 +000.0 +015.0 +000.5&gt;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;+065.2 +000.0 +015.0 +000.5&gt;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&lt;+065.4 +000.0 +015.0 +000.5&gt;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">$ENOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">end of one measurement</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">$ENOF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">end of file</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="Eclipse-format"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Varian Eclipse output (*.txt)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This format is used in Varian Eclipse as output of the TPS. The format is only specified as "text output". This is not compltely correct however.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Patient Name: Water, Phantom&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">Actual string is xEFxBBxBF+'Patient Name:'.</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Patient ID: WP001&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">Patient ID in TPS</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Plan: QA1-6MV&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">Plan name</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Course: C1&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">course ID in TPS</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Date: 06 October 2020 11:41:15 AM </FONT><FONT FACE="Courier New" SIZE="1">Might be dependent on local settings.</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Exported by: xxxx</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Start: (-0.42, 4.78, 14.77)&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">Order is LR / UD / AP</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">End:&nbsp;&nbsp; (-0.42, 4.78, -14.77) </FONT><FONT FACE="Courier New" SIZE="1">Which translates to AB / Beam / TG</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;20x20-6MV&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">free field comments; BistroMath supports this format.</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.000000 6.259351</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.020008 6.288248</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">29.511242 6.251996</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">29.531250 6.223303</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="cms_ascii"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>CMS ascii (no extension)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This file format is generated by CMS XiO.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">00001090&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">(indentifier for this file type)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Patient ID: phantom</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Studyset ID: 40x40</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Plan ID: (null)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Doc: 19220100118.093907.001</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">S:&nbsp; 0.00 cm&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">(S=Inline; T=CrossLine)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Y:&nbsp; 0.00 cm&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">(Inline:Y; CrossLine or PDD:X)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Z: 10.00 cm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Angle:&nbsp; 0.00 deg. </FONT><FONT FACE="Courier New" SIZE="1">(0.00=Inline or CrossLine; 90.00=PDD)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Distance (cm) Dose (cGy)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; -20.000&nbsp;&nbsp;&nbsp;&nbsp; 0.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; -19.900&nbsp;&nbsp;&nbsp;&nbsp; 0.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; -19.800&nbsp;&nbsp;&nbsp;&nbsp; 0.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 19.800&nbsp;&nbsp;&nbsp;&nbsp; 0.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 19.900&nbsp;&nbsp;&nbsp;&nbsp; 0.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; 20.000&nbsp;&nbsp;&nbsp;&nbsp; 0.000</FONT><BR>
+<BR>
+<FONT FACE="Courier New" SIZE="1">Depth dose curve (XiO)&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">00001090</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Patient ID: phantom</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Studyset ID: 40x40</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Plan ID: (null)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Doc: 19220100118.093907.001</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">T:&nbsp; 0.00 cm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">X:&nbsp; 0.00 cm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Z: 20.00 cm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Angle: 90.00 deg.</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Distance (cm) Dose (cGy)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; -30.000&nbsp;&nbsp; 338.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp; -29.800&nbsp;&nbsp; 341.600</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; -1.600&nbsp; 1491.100</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; -1.400&nbsp; 1493.200&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">(maximum)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; -1.200&nbsp; 1488.100</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; -1.000&nbsp; 1469.700</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; -0.800&nbsp; 1427.900</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; -0.600&nbsp; 1347.300</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; -0.400&nbsp; 1212.900</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp; -0.200&nbsp; 1019.300</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; 213.000</FONT><BR>
+<BR>
+<FONT FACE="Courier New" SIZE="1">Depth dose curve (Monaco)&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">00001090</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Patient ID: 00000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Studyset ID: 00000000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Plan ID: 0000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Doc: 0000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">T: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">X: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Z: 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Angle: 90.00 deg.</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Distance (cm) Dose(cGy)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.00 0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.40 57.25</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0.80 81.79</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">1.20 91.72</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">1.60 98.14</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">2.00 99.52&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">(maximum)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">34.60 23.07</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">35.00 0.00</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="schuster_ascii"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Schuster ascii (txt)</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This file format is generated by the Schuster diode array.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">doserate=300</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Profile measured on 04/01/2006 14:15:32 </FONT><FONT FACE="Courier New" SIZE="1">(indentifier for file type)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;with Software BMS 2.202</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Linac: U9</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Photons at 6.0 MeV</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">crossplane</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Buildup: 5.0 cm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">doserate=300</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">449.1;567.4;(...);550.7&nbsp;&nbsp; </FONT><FONT FACE="Courier New" SIZE="1">(88 values)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-----------------------------------------------
+</FONT>
+</BODY></HTML>

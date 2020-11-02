@@ -1,0 +1,253 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>History v1.00 - v1.99</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="history,program evolution;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs940.htm">Previous</A>
+ - <A HREF="hs1100.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>History v1.00 - v1.99</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.99 25/01/2011</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This version is a precursor of version 2.00 with a full selftest feature.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">In this version only bugs are repaired which have been around for a indefinite time but stayed undetected due to their specific nature in hardly used features.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-parsing of floating point text-strings,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-unresponsiveness of "Accept zero steps" menu item when the same data were read,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-improved interpolation techniques for sparse data files,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-handling perfect vertical slopes en perfect horizontal profiles, see calculation details.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The usage of the OD to dose conversion parameters has been changed.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.98 17/01/2011</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Minor bug repair: the normalisation stategy in version 1.97 introduced a graphics-only inconsistent normalisation of reference profiles.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">As default name for the "File save" menu is now made from measurement parameters and measurement time.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Resolved bug: due to a bug in a library the extension of files was not set as expected.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Dutch/English translation mixup corrected.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.97 06/12/2010</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">An optional dual normalisation of depth dose curves is introduced to separate analysis and graphical representation. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">configuration</A></FONT><FONT FACE="Arial" SIZE="2"> for details.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">It is backward compatible with configuration files of previous versions.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.96 29/10/2010</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">normalisation of depth dose curves can now be done at a specific depth and normalisation value. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">configuration</A></FONT><FONT FACE="Arial" SIZE="2"> for details.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">It is made backward compatible with configuration files of previous versions.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">Alias tab</A></FONT><FONT FACE="Arial" SIZE="2"> now has a pop-up menu.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.95 13/09/2010</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A faster memory management utility with memory leak detection is introduced. No leaks were found.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Resampling of data to a fixed grid is now supported. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The majority of the menu items which can be (un)checked now report their status in the message bar.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The naming convention for reference files has been changed. The previous naming convention is still supported for backward compatibility.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.94 19/03/2010</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For SpecialMode2 the construct {<I>constan</I>t<I>}</I>*x|y{[-|+]<I>value</I>} is supported.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Also wedge information added. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialModes</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.93 09/03/2010</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">SpecialMode2 capabilities expanded: now for any <I>y</I> value the (right side only for pdd) <I>x</I> position is evaluated. In previous versions this was limited to 20, 50, 80, 90 en <I>dUser</I>.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Small speed optimizations were introduced.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Minor viewing bug repair: For pdd's the bottom axis minimum value sometimes was not reset when before a profile was displayed. To get a full window version again the unzoom or zoom command could be used. Now the bottomacxis is always set to the obeserved minimum and maximum position values.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.92 01/03/2010</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For noisy profiles with a low resolution the search strategy from center to outside for the penumbra values might end at the wrong calculation point because of the low slope in the beginning. Therefore now the search strategy is inverted: from outside to inside, which maximises the slope. Moreover a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1030.htm#quadfit">fallback to a linear fit</A></FONT><FONT FACE="Arial" SIZE="2"> is used when a quadratic fit might give extreme results. The number of&nbsp; points to calculate a dose in any curve using a second order fit is now </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">configurable</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Small speed optimizations were introduced.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.91 11/02/2010</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Wellhöfer scantype "Angle", used for diagonal profiles, is supported. However, when tested there where files found with missing axis definitions for the water tank. Therefore an extra entry is made in the </FONT><FONT FACE="Courier New" SIZE="1">[WellhoferObject]</FONT><FONT FACE="Arial" SIZE="2"> section of the ini-file to have default values: </FONT><FONT FACE="Courier New" SIZE="1">ICD=-YX-Z</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">More information is written to the status bar.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bug repair: due to changes in a base library the SpecialMode2 strings could not be handled.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The relative flatness is no longer displayed witin brackets but as a second value after a "/".</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The error tolerance for inconsistent data is improved.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.90 01/02/2010</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Files produced by CMS XiO are now supported.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">In SpecialMode3 the scan depth of a profile is inserted into the file name.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The upper and lower level definitions for both photons and electrons can now be adjusted in the settings tab as a percentage with a arbitrary value. In previous versions these values could only be changed in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">configuration file</A></FONT><FONT FACE="Arial" SIZE="2">. where they were stored as percentage. As (undescribed) design limitation these values were exclusively limited to the set values for d90, d80, d50 and d20. In this version these values are stored as fractions, but for backward compatibility values higher than 1 are interpereted as percentage.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For reference profiles the scan depth is now included in the file name to accommodate a wider range of references. When a file exists with the old name and no new one, the old file is renamed automatically.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.80 07/12/2009</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode2</A></FONT><FONT FACE="Arial" SIZE="2"> the scan depth of a profile and both x- and y-size are given.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">A temporary reference is only used for curves of the same scan type.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.79 11/11/2009</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The concepts of </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode2</A></FONT><FONT FACE="Arial" SIZE="2"> are changed.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bug repairs:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;In SpecialMode2 string#2 in stead of string#3 was used for pdd's.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;With the "File/Save as" menu item data were always written as Wellhöfer ascii.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.78 29/07/2009</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">An earlier revision of the shift-function introduced a bug.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.77 23/06/2009</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Now a derivative is calculated tot determine the field limits of a wedge field and therefore the effective field.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.76 01/03/2009</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In one installation the penumbra-settings were not correctly deduced from the configuration file. Decent values are forced here.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.75 26/01/2009</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">"SpecialMode"-options are introduced. See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">Special modes</A></FONT><FONT FACE="Arial" SIZE="2"> section.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.74 03/11/2008</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Minor bug: after swichting back from Settings tab to Analysis tab, the profile was reread with all menu's still in a blocked state. Therefore the current profile was not divided again by the reference profile. Now the menu's are enabled in due time.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.73 04/04/2008</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bistromath does not accept scans with a zero step. Now this can be overruled with a menu item.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.72 26/03/2008</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bug repair for version 1.7: when the missing penumbra option was switched on the analysis of electron depth dose curves went wrong. This option is now ignored for depth dose curves.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Minor bug repair for all previous versions: for non-wellhöfer data the filename of the imported file was not transfered.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Display issue: the plotscaling for the measured curve was also used to scale the filtered curve. This guarantees an optimal aligment of both plots. However, the normalisation point in the graph may be slightly different from the actual value. Therefore, now the filtered curve is scaled with the normalisation point.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Now extra information may by put on the clipboard (see </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">configuration</A></FONT><FONT FACE="Arial" SIZE="2">). This was made to produce data for the beam check.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.71 12/03/2008</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bug repairs in the conversion tab:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-the output type selection was messed up</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-the filepath edits did not respond to keys used as shortcut in the View menu.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Also the result reporting in the conversion tab is extended.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.7 03/03/2008</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The analysis is revised to support diagonal profiles and profiles with missing penumbra's. See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1020.htm">calculation details</A></FONT><FONT FACE="Arial" SIZE="2">. This is now also handled correctly for reference files.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.61 26/02/2008</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Support for Schuster profiles is added.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For stability more error-handling was added.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bug repair: symmetry values were calculated before an optional symmetry correction was done.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.60 15/02/2008</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A histogram page is added.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The minimum in the In-Field area is displayed when applicable.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.5.10 07/02/2008</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bugs repaired:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-due to duplication of variable names the file name was not transferred in the file conversion tab (occurred only in version 1.59)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-a binairy file could not be selected as reference</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-export to wms: mixup in coördinates</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-export from wms to wellhöfer format</FONT><BR>
+<FONT FACE="Arial" SIZE="2">With the introduction of a temporary reference it is possible to use references of other linacs. As in the current concept the reference is added tot the measurement data, a lot of information is shared, which possibly no longer is identical. For now this is repaired partially. In the next major version each curve will have its own information data.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Improvements:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-profiles are filtered before division now,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-the information on parsing errors is more accurate.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Added functionality:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-all profiles can be erased with the View/Clear menu item,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">-normalisation ont the field centre can now be enforced.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.59 28/01/2008</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Now a measurement can be used as temporary reference.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.58 30/11/2007</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Every curve has now its own position information. This leads to an improved positional accuracy when two curves are divided.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">A curve can be selected, which, in this version, has only visual effects.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.57 22/11/2007</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Wellhöferformat-fix: support for 'Point To Point scans'.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bug-fix in Filesave-dialog: the filename of the input was actually used.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.56 01/11/2007</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Generic-format-fix: read error on two columns.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.55 25/10/2007</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">WDA-format-fix: wda-files produced by recent Plato versions seem to produce a slightly different header. This is also accepted now.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.54 18/10/2007</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Position analysis at user dose levels can be toggled on/off.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The help file is extended.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the mouse is clicked in the graph window, the cursor is moved to that position.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bugfix: the vertical alignment of measurement and reference profiles could go wrong due to wrong normalisation values.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.51 09/10/2007</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Position analysis at user dose levels is introduced.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.50 09/09/2007</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">OD to dose conversion is added.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.41 03/09/2007</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Support for Pips profiles was added.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Editor window is set to <I>Plain Text</I> and <I>no Word wrap</I> explicitely before every read action.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.40 31/08/2007</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Support for generic profiles and hdf profiles was added. For selected file types a background may be subtracted.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The configuration will only be rewriiten at program exit if an autosave option is set.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Several minor bugs were repaired.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The clipboard may be ignored through a new item in the File menu.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.35 10/12/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The depth of dose maximum is given for pdd-curves.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.34 27/11/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Minor bug: when a file is read from the references directory it cannot be saved. An appropriate message is produced.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.33 22/11/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">More efficient use of resources.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Overwite file checkbox for file conversion.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Added "Extra" curve for a new facility in future.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.32 14/11/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Introduction of file name generation.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bug repaired in language library load procedure. Possible source of strange errors at startup in previous versions.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.31 13/11/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Addition of "force lower case names" on conversion page.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Addition of "Maximum within flatttened area" for profiles on analysis page.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.30 06/11/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Introduction of a multi-tabbed layout.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The wms-formats (*.wtx and *.wda) are supported in this version for import and export. On a separate page groups of files can be converted. </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">Aliases</A></FONT><FONT FACE="Arial" SIZE="2"> are introduced.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.22 16/08/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Minor bug fix.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.21 12/07/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The filter width can be accessed with a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm">menu option</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.20 05/05/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bug fix: the penumbra-high value was read from the low value, therefore the "20-20" value was calculated (correctly) as zero.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.19 18/03/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The penumbra definition is now split up in a electron value (default 90-50) and a photon value (default 80-20). Both have there own entry in the ini file and&nbsp; will be used when appropriate.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.18 18/03/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bottom axis title in larger and bold format.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.17 08/03/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For Measurement and Reference file, also the name of registrered linac is displayed.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.16 28/02/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bug repair: When there was no information on the reference directory, there was an incorrect default.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.15 02/02/2006</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bug repair: An error in the reading of the filter value could lead to zero output of the filter.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.14 22/12/2005</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Film-scanner files are now supported.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The filter width is made available within the program.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.13 19/12/2005</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For very narrow profiles the display-normalisation is improved.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.12 18/12/2005</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The BadPenumbra-limit is added to the configuration file. A menu item "Accept bad penumbra's"is added.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.11 14/12/2005</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The internal notation of the energy is changed to a floating type to accomodate kV-range energies. When the energy value (in MV) is less then 1, this value is presented as kilovolts.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 1.10 02/12/2005</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The color scheme is changed to a white background of the graph.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The value of any position in the curve can be displayed (values are interpolated as needed).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Profiles may be centered to make the 50%-point symmetric.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Profiles can be scaled to the surface-distance.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The total width of profiles is given.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1000.htm">Recent History</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs991.htm">History v2.00 - v2.69</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs992.htm">History v2.70 - v1.98</A></FONT><BR>
+
+</BODY></HTML>

@@ -1,0 +1,95 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Field Types tab</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="background;Curvature (of Top model);Depth dose fit;dynamic penumbra width;Field Type;flatness;Gamma analysis;inflection point based penumbra width;language;Linac Symmetry error;Merging profiles;Nelder-Mead;Normalisation;PDD,fit;pips pixel size;Resampling;Rescaling,to default SSD;settings;symmetry;Top Model (FFF);user dose level;volume correction;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs128.htm">Previous</A>
+ - <A HREF="hs129.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Field Types tab</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> field types tab&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="FieldTypesTab.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Field Type related settings for both detection and analysis for all defined types can be found here. See also the introduction to the concept of </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs23.htm">Field Types</A></FONT><FONT FACE="Arial" SIZE="2">.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>On Borders and Edges</B></FONT>
+<LI><FONT FACE="Arial" SIZE="2">A <I>Border</I> is defined as the position a certain fraction of the <I>normalisation</I> value on both sides of the penumbra. Therefore these points have by definition the same level. Possible values are 'dLow', 'dHigh', 'd20', 'd50', 'd80', 'd90' and 'dUser', where <I>dLow </I>and <I>dHigh </I>are configured as 20% and 80% respectively for photons and 50% and 90% respectively for electrons. <I>dUser</I> is open for the user to set at any level.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">An <I>Edge</I> is a position defined by some mathematical function at a (somewhat) variable, unknown, level. Possible values are </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">'Derivative'</A></FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs22.htm">'Inflection'</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">An in-between value is 'Sigmoid50' which is based on the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs22.htm">Sigmoid model</A></FONT><FONT FACE="Arial" SIZE="2">, but uses this function to calculate the 50% level. It should be very close to the classical <I>d50</I> position but more stable for sparse data.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Therefore a <I>Border</I> is dependent on the <I>Normalisation</I> position which might be also depend on the <I>Center of Field</I> definition. This basically is an endless loop as one might depend on the other. Bistromath resolves this complication by doing a dual loop analysis in which preliminary results lead to stable final results.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Detect</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Whether or not detection rules are applied for a certain field type. The <I>Standard</I> type is anything that is not assigned to another type. Therefore detection is not relevant for the <I>Standard</I> type.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Measurement symmetry correction</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Asymmetry of the measurement can be corrected. The methods are described in a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs131.htm">separate topic</A></FONT><FONT FACE="Arial" SIZE="2">. Normally this should be <I>off</I>. During beam adjustment it <I>might</I> be handy to separate energy effects and beam alignment affects. Note that this setting is <B>smart linked</B> to symmetry correction setting in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement menu</A></FONT><FONT FACE="Arial" SIZE="2">: changing it in the menu will be reflected om this page. With every new profile the menu setting is set to the state on this page for the detected field type.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Reference symmetry correction</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Also reference data might be prone to small assymmetry effects. These can be corrected. This is the most relevant for <I>Standard</I> profiles. This setting is <B>smart linked</B> to the Symmetry correction in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">Reference menu</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Dynamic penumbra width</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://radiationdosimetry.org/ncs/quality-control-for-linear-accelerators">NCS-33</A></FONT><FONT FACE="Arial" SIZE="2"> introduces the penumbra width based on levels scaled with the height of the inlection point:</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="NCS33_3-2-6.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">In Bistromath this is available as "dynamic penumbra width". For each field type a preference can be set. Note that this can be overridden in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">Results Panel</A></FONT><FONT FACE="Arial" SIZE="2"> (rule 'p'). When actively applied, the label is denoted with a asterisk ('<I>Left*80-20</I>).</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="result_dynamicpenumbra.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Primary border/edge definition</I> and <I>Fallback border/edge definition</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The primary definition of the field border is applied unless its application is overruled because the primary definition fails or defined rules for that Field type dictate to use the Fallback definition.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Center of Field definition</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="CoF"></A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">BistroMath leaves it to the user to use appropriate choices. Possible values are 'Border/Edge', 'Origin' and 'Maximum'. Please note the general remarks above on the recursive character.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Normalisation definition</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="normalisation"></A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">BistroMath leaves it to the user to use appropriate choices. Possible values are 'Center', 'Origin', 'Maximum' and 'In-Field area'. Please note the general remarks above on the recursive character.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The normalisation of depth dose curves has </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">its own rules and is highly configurable</A></FONT><FONT FACE="Arial" SIZE="2"> to local standards or protocols.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Center of field:</FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="norm_center_meas"></A> </B></FONT><FONT FACE="Arial" SIZE="2">This option forces the normalisation point, for profiles only, to be taken at the geometrical centre of the field. If unchecked the central axis is taken. When there are no data for the central axis (<I>origin</I>) or the central axis value is less then 10% of the maximum, also the centre of the field is taken.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><I>Maximum</I>: the maximum within the profile is taken as normalisation.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><I>Origin</I> (central axis): the standard in classical radiotherapy.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><I>Average In-Field area</I>: the normalisation value will be adjusted to the average over the In-Field area. </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">This feature produces results outside the scope of the current conventions in radiotherapy</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Center Model radius (cm)</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="Topmodel_radius"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The range of data around the maximum or center of a profile, always limited to the In-Field area, used to fit a second order polynomal function, the <I>Top model</I>. This feature is designed to describe the position and shape of the top of a FFF profile. The top of these profiles might differ from the field center as defined by the field borders. The difference can be used to adjust the beam parameters. For this application a radius of 2.5 cm is shown to work reliably. A value of zero will ignore this model.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There is a wider application for this model: it can be used to describe the overal shape of (a part) of the In-Field area of any profile. This might be used to set the volume correction for a detector. As such there is no advice for how to set the range; it depends highly on the intended use.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The display of highest order parameter, the curvature, can be configured in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">Results Panel</A></FONT><FONT FACE="Arial" SIZE="2">, but is not in the standard panel list.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;<IMG SRC="curvature.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>FFF detection</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="fff_detection"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">These parameters are described in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF profiles</A></FONT><FONT FACE="Arial" SIZE="2"> topic. Activation of these detection rules is governed above.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Edge Detection and related parameters</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="edgedetectionlimit"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">As base rule the field border is found at 50% of the normalisation value. For wedged fields this gives an unacceptable result. This is tackled by using a derivative function combined with statistical analysis to find the edges. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detection</A></FONT><FONT FACE="Arial" SIZE="2"> for details of this advanced process. The same can be done to detect non-flat beams like the FFF beams. Based on the found derivative edges a sigmoid function can be applied on the edges.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the the derivative edge position differs more from the 50% than a given value <I>Edge fallback (mm)</I>, and this function is activated the "fallback" method will be used. Center and border values are displayed in a teal color. For film data the difference limit is ignored and edge data is used when this option is checked.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Setting the difference limit to zero will force using the fallback method for any profile.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For double-wedge profiles this option should be switched <I>off</I> as for these profiles the steepest slope position might significantly differ from the 50% position. The latter is usually the objective for these profiles.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When Edge Detection results are actively applied, results are denoted with "(e)" for derivative, "(i<I>nn</I>)" for the sigmoid inflection point where <I>nn</I> is the level at the inflection point and "(s)" for the sigmoid based 50% value. These annotations </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm#no_edge_annotation">can be suppressed</A></FONT><FONT FACE="Arial" SIZE="2"> when used as primary method.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>Sigmoid radius</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For sparse data the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs22.htm">sigmoid model</A></FONT><FONT FACE="Arial" SIZE="2"> offfers slightly better results. The radius should (roughly) cover the full range of the penumbra region. The default of 10 mm showed to work fine for all tested cases.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="reverse_sigmoid"></A></FONT><FONT FACE="Arial" SIZE="2">For conventional profiles the sigmoid model may be used as an alternative model for the penumbra to calculate either the inflection point, the 50% level or even the <I>nn</I>% user's level. BistroMath has a reverse calculation model for this purpose. There are rules to use other levels than the inflection point: the ratio of requested level and low sigmoid level should be larger than 1.1, with the high sigmoid level smaller than 0.9 and within a range of 0.85-1.15 with the level at the inflection point. These rules will not be met for FFF profiles.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>Small field width</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Below this value fields will be assigned to the Small Field type.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>Wedge 90% level shift factor</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the <I>Right</I> 90% level position is on the <I>left</I> of the field center or the <I>Left</I> 90% level position is on the <I>right</I> of the field center, a field is considered to be of the Wedge type. A more negative value will increase the sensitivity, a zero or positive value will swicth off wedge detection.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>MRlinac detection</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">There is no fail safe profile based detection rule. Therefore the name of the treatment unit is compared against a comma separated list.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs124.htm">Background correction item</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">Matching profiles</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">Gamma analysis</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">Advanced Settings</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs22.htm">Sigmoid function</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detection</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

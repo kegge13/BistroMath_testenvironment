@@ -1,0 +1,36 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Symmetry correction of Measurement / Reference</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="flatness,relative flatness;relative flatness;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs129.htm">Previous</A>
+ - <A HREF="hs132.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Symmetry correction of Measurement / Reference</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>measurement / reference menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">If this item is checked a measurement profile will be corrected for asymmetry as far as this can be descibed with the slope of a straight line fitted over the data in the In-Field area (see </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#symmetrycorrection">Calculation details</A></FONT><FONT FACE="Arial" SIZE="2">) after this profile is loaded. This is meaningful in the process of adjusting beam parameters tot discriminate between several types of asymmetry.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are two limits involved here with no access through the user interface but available in the configuration files.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">[WellhoferObject]</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SymmetryCorrectionLimit=2.00 </FONT><FONT FACE="Arial" SIZE="2">When the symmetry is above this limit it will <I>not</I> be corrected to avoid extreme results.&nbsp;</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SymmetryCorrectionLevel=0.10 </FONT><FONT FACE="Arial" SIZE="2">The correction is clipped to the last value when the data fall below this level.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The method described above does not work well for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF-profiles</A></FONT><FONT FACE="Arial" SIZE="2">. In that case the slope is defined as the sum of the left and right slope of the FFF-profile. For symmetrical profiles the sum will be zero.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For reference profiles with some kind of asymmetry it may be useful to correct this before it is used as divisor on the measurement profile.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When symmetry correctien is applied to the measurement, the flatness and symmetry results are denoted with "(s)".</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="results_colors1.gif" BORDER="0"></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement options</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

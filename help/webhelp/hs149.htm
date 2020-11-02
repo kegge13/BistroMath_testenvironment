@@ -1,0 +1,60 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>FFF profiles</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="double wedge profiles;edge detection;FFF;sigmoid analysis;Slopes (FFF);Top Model (FFF);">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs143.htm">Previous</A>
+ - <A HREF="hs180.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>FFF profiles</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>settings tab, measurement menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>Introduction</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Flattening Filter Free beams are beams without a so-called flattening filter which produces a more or less homegeous ouput across the whole field. Essentially this is only optimal for a certain region of depths and large enough fields. With modern planning systems, the need for such a flattened field is not critical anymore. When the flattening filter is removed the output will typically be tripled resulting in much shorter treatment times. The main application is brain tumors, where small fields and high doses are needed. For wide fields the advantage disappears because the intensity has to be adapted by a beam shaping device like the MLCto get the correct dose at each position.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">By its nature the</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs5.htm"> Flatness parameter</A></FONT><FONT FACE="Arial" SIZE="2"> is meaningless for FFF beams. Also the symmetry calculation will perform different on these profiles. Handling these data needs specific detection and analysis.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There is also discussion on the definition of "center of field". The classical approch is to take the average of both field borders. For FFF beams </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#fff_center">alternative calculations</A></FONT><FONT FACE="Arial" SIZE="2"> can be chosen.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Detection</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are a lot of non-flat beams which are not FFF. Still the specific features of FFF-class beams need a special treatment.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Therefore a number of criteria are used which all have to be fullfilled. This behavior can be switched on/off as item the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">Field Types tab</A></FONT><FONT FACE="Arial" SIZE="2">.&nbsp;</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The field size must be at least 10 cm.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Both penumbra's must be found. Incomplete fields are ignored.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The scan should be of the AB, GT or Angle type. A diagonal scan with a shifted measuring device will become a "free scan" when the origin is not crossed within 0.5 cm. Shifted scan parallel to the main axes are acceptable.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The dose value at the edge of the "analysis area" (in flattened beams the "In-Field area") should drop at least with a given percentage [<I>Minimal dose difference (%)</I>].</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Inflection point should differ notacibly from 50% border [<I>Min. edge difference (mm)</I>].</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The latter two criteria are configurable and can be changed in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#fff_detection">Field Types tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>FFF beam tuning</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">There is a strong relation between symmetry and center of field. Therefore it can be extremely practical to </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">compare the profile with a mirrored version of itself</A></FONT><FONT FACE="Arial" SIZE="2"> in the <I>Processing menu</I>. Note that this <I>can</I> be combined with the measurement options for the <I>Center of Field</I>. There is no clear rule whether or not these should be combined. User discretion and insight is essential here.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="slopes_config"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Analysis and used parameters</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">There is not yet a general agreement on criteria for FFF beams. For QA comparing with a reference profile and evaluating the <I>relative</I> flatness, the core feature of Bistromath, is by far the best choice. For comparing different FFF beams some standard description is needed. The "roof shaped" area can be fitted with straight lines. The length of these lines represent also the calculation range for the <I>slope</I>. The central dome can be modelled with a second order function, in BistroMath called the <I>Top model</I>.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Both the maximum of the <I>Top model</I> or the intersection of&nbsp; the slopes can be used to define the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#fff_center">center of the field</A></FONT><FONT FACE="Arial" SIZE="2">. Alternatively, the top can be used as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#RefAlignTop">alignment criterium</A></FONT><FONT FACE="Arial" SIZE="2"> without choosing this as center definition.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The <I>slope</I> area is at the outside based on the definition of the In-Field area (for a flattened beam) and at the inner side on the radius of the central dome shape. An extension value [<I>In-Field area extension (cm)</I>] in the <I>Settings</I> tab can push the outer side further outwards or inwards with negative values.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The gradient is a measure for the FFF shape. The difference in measure can be a measure for the symmetry.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Thus the average of the (absolute) slope is presented in percent per cm. The symmetry is calculated conventionally. Symmetry correction is done by applying the average of upward and downward slope over the whole profile.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The definition of </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs5.htm">relative flatness</A></FONT><FONT FACE="Arial" SIZE="2"> remains unchanged.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The related graphical objects can be hidden through the view menu.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="FFF_analysis.gif" BORDER="0"></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs6.htm">Concepts</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">Results panel</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs44.htm">User dose level</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement menu</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Processing menu</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings Tabl</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">Advanced Settings Tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+
+</BODY></HTML>

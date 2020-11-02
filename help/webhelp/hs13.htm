@@ -1,0 +1,44 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Axis swapping</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs12.htm">Previous</A>
+ - <A HREF="hs19.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Axis swapping</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>view menu&nbsp; | measurement menu</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">For most users it is prefered that the graph view matches with the profiles as seen in the water phantom software. Notably the GT-axis is handled inconsitent by different vendors or even different versions of one vendor. Therefore here the GT (inline/inplane) axis is taken as example. The axis designations and/or the axis direction (sign) might be wrong. Therefore both can be altered independentty.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">BistroMath is carefully designed to preserve the original data on export. Therefore axis swapping normally will not effect the export at all.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Preserve original data on export</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This option in the Measurement menu regulates the effects of axis swapping on export. Its default state is <I>on</I>. Switching off this option introduces serious data integrity problems because swapped data will be interpreted as original, unswapped data when opened again from file. This can undermine institution wide conventions for data interpretation. Therefore the state of this menu item is always <I>on</I> at startup and is not taken from any configuration file. Moreover the item is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs56.htm">locked at program start</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="axisswap0.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The direction of the data representation on the screen may be inverted when comparing side by side with the measuring system. BistroMath by default uses the standard directions from G / A / U / L to T / B / D / R for Inline, crossline, beam and diagonal scans respectively.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="axisswap1.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The GT / AB / UD / LR designations can be swapped as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm">viewing options</A></FONT><FONT FACE="Arial" SIZE="2"> and is reflected in the </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">bottom axis title</FONT><FONT FACE="Arial" SIZE="2"> color. Note that this will <I>not</I> influence the graph itself nor the subsequent analysis.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="axisswap2.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The axis sign (direction) can be inverted at read time as a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">measurement option</A></FONT><FONT FACE="Arial" SIZE="2"> and is reflected in the </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">bottom axis labels</FONT><FONT FACE="Arial" SIZE="2"> color. This swaps all data from left to right and vice versa and has effect on all relevant analysis results but is <I>not reflected by any color in the results panel</I>. </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm#panel_colors">Colors in the results panel</A></FONT><FONT FACE="Arial" SIZE="2"> have other meanings.</FONT><BR>
+<BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs12.htm">Data axis conventions</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm">Viewing options</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement options</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm#panel_colors">Results panel colors</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs915.htm">Installation and configuration issues</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><BR>
+
+</BODY></HTML>

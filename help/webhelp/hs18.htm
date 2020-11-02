@@ -1,0 +1,426 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Results panel rules</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="alignment of fields;Annotations to results;Colors;Composite curves;dynamic penumbra width;edge detection;FFF;field center;flatness;flatness,relative flatness;flattened area;Gamma analysis;inflection point based penumbra width;Normalisation;PDD;RDD;relative flatness;Results;Results,filtering, NCS, flatness, normalis;Results panel;sigmoid analysis;Simple mode;Top Model (FFF);">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs77.htm">Previous</A>
+ - <A HREF="hs3.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Results panel rules</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>&nbsp;</I> <I>configuration</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Starting with version 3.20 all results in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">Results panel</A></FONT><FONT FACE="Arial" SIZE="2"> are completely configurable. This page explains the mechanism and how to set up your own rules.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Default rule setup</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">All panel rules must be introduced through a configuration or preset file. If no rules are given BistroMath will take its own default.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">In version 3.20 it designed to reflect the previous version as closely as possible.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Startup logics</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">At startup the Results panel is empty. No analysis results will be displayed in this state.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">However, also loading a configuration file is part of the startup. After this step all standard 'rules' (explained below) will be added if </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm#standard_panel_setup">Standard Panel setup</A></FONT><FONT FACE="Arial" SIZE="2"> is activated or no external rules are loaded. Therefore, after setup the panel rules list might contain a mixture of own rules and standard rules. All rules in the list by design have unique identification numbers (<I>id</I>'s). At startup, and also by pressing </FONT><FONT FACE="Courier New" SIZE="2">&lt;End&gt;</FONT><FONT FACE="Arial" SIZE="2">, a mapping of each rule <I>id</I> per location is displayed.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="emptypanel.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Panel rules list</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="panel_rules_list"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The <I>Panel rules list</I> drives the display of analysis results in the <I>Results panel</I>. Currently there are two colums of eight rows available.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">After analysis the complete list will be evualated. When a rule is found to be applicable (for instance scantype and modality) the configured result parameter will be displayed at the also configured panel position. Multiple rules can exist for the same position. Effectively the last applicable rule for each position will be visible.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Ordering of the list</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">New rules are always appended to the bottom of the list. When there exists another rule with the same <I>id</I> this rule will be removed.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Rules list in Simple Mode</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm#simple_mode">Simple Mode</A></FONT><FONT FACE="Arial" SIZE="2"> only a limited range of features is shown. This behavior can also be applied to the result panel. In the default setup this is not configured however. The condition "s" will introduce this for any rule. Make a copy of the rule and add "</FONT><FONT FACE="Consolas" SIZE="2">,cond:s</FONT><FONT FACE="Arial" SIZE="2">" to any rule. When, for example, only the Normalisation is to be hidden in Simple Mode, only this changed rule needs to be in the configuration file:</FONT><BR>
+<BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;[PanelElements]</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;when add-mode is off, at startup no default rules will be added.</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;with add-mode on, default rules will be added except for rules with the same ID.</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;add=</FONT><FONT FACE="Consolas" SIZE="2">1</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;a short overview of all components</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;doc=</FONT><FONT FACE="Consolas" SIZE="2">v#,id,curve,eval.type,gain,errorval,"label",deci,unit,col,row,mod,energy,scan[,cond:-][,annot:-][,color:-]</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;normalisation value</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;1=</FONT><FONT FACE="Consolas" SIZE="2">v597,1,-1,n,1,0,"Normalisation",2,,0,0,XEPO,0,A,annot:rcnS,cond:s</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;normalisation position</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;2=</FONT><FONT FACE="Consolas" SIZE="2">v597,2,-1,N,1,9e9,"Norm position",2,,0,1,XEPO,0,A,annot:rnS,cond:s</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Because a rule with a existing <I>id</I> is reïntroduced, this will override the existing rule.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><B>Setting up rules and avalailable evaluation types</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Getting the current setup</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A good starting point for making new rules is the standard available rule set. This can be acquired by saving either a configuration or a preset.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Comments are added for convenience. </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">This example might not be up-to-date.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;[Comments]</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;file=</FONT><FONT FACE="Consolas" SIZE="2">panelsetup!.ini</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;time=</FONT><FONT FACE="Consolas" SIZE="2">20-1-2018 11:59:13</FONT><BR>
+<BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;[PanelElements]</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;the separator is set to the already assumed value</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;sep=</FONT><FONT FACE="Consolas" SIZE="2">,</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;when add-mode is 0, at startup no default rules will be added.</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;with add-mode 1, default rules will be added except for rules with the same ID.</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;with add-mode -1, all rules are cleared.</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;add=</FONT><FONT FACE="Consolas" SIZE="2">0</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;a short overview of all components</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;doc=</FONT><FONT FACE="Consolas" SIZE="2">v#,id,curve,eval.type,gain,errorval,"label",deci,unit,col,row,mod,energy,scan[,cond:-][,annot:-][,color:-]</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;normalisation value</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;1=</FONT><FONT FACE="Consolas" SIZE="2">b597,1,-1,n,1,0,"Normalisation",2,,0,0,XEPO,0,A,annot:rcnS</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;normalisation position</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;2=</FONT><FONT FACE="Consolas" SIZE="2">b597,2,-1,N,1,9e9,"Norm position",2,,0,1,XEPO,0,A,annot:rnS</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;maximum value</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;3=</FONT><FONT FACE="Consolas" SIZE="2">b597,3,-1,m,1,-9e9,"Maximum",1,%,0,2,XEPO,0,A,annot:rnS</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;absolute flatness for conventional profiles</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;4=</FONT><FONT FACE="Consolas" SIZE="2">b597,4,-1,f,1,-1,"Abs. flatness",1,%,0,3,XEPO,0,H,annot:rzs,cond:-F,color:n</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;absolute flatness for FFF profiles</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;5=</FONT><FONT FACE="Consolas" SIZE="2">b597,5,-1,f,1,-1,"Abs. flatness",2,%/cm,0,3,XP,0,H,annot:rzs,cond:F,color:n</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;relative flatness</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;6=</FONT><FONT FACE="Consolas" SIZE="2">b597,6,2,d,1,-1,"Rel. flatness",1,%,0,4,XEPO,0,H,annot:rzs,cond:d</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;symmetry</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;7=</FONT><FONT FACE="Consolas" SIZE="2">b607,7,-1,s,1,0,"Symmetry",1,%,0,5,XEPO,0,H,annot:rzs,cond:-F</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;8=</FONT><FONT FACE="Consolas" SIZE="2">b607,8,-1,l,1,0,"Symmetry",1,%,0,5,XEPO,0,H,annot:rzs,cond:F</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;extended symmetry according to user's choices</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;9=b</FONT><FONT FACE="Consolas" SIZE="2">597,9,-1,S,1,9e9,"-",1,%,0,6,XP,0,H,annot:rzs</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;maximum within In-Field area</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;10=b</FONT><FONT FACE="Consolas" SIZE="2">597,10,-1,+F,1,0,"Max In-Field area",1,%,0,7,XEPO,0,H,annot:rnS</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;minimum within In-Field area</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;11=b</FONT><FONT FACE="Consolas" SIZE="2">597,11,-1,-F,1,0,"Min In-Field area",1,%,0,8,XEPO,0,H,annot:rnS</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;profile center (according to user's choices)</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;12=</FONT><FONT FACE="Consolas" SIZE="2">b597,12,-1,c,1,9e9,"Center",2,,1,0,XEPO,0,H,annot:!rzcCS</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;position of top of FFF profile (according to user's choices)</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;13=</FONT><FONT FACE="Consolas" SIZE="2">b597,13,-1,T,1,9e9,"Top",2,,1,1,XEPO,0,H,annot:!rzcST,cond:F</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;width of profile</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;14=</FONT><FONT FACE="Consolas" SIZE="2">b597,14,-1,w,1,0,"Width",2,,1,2,XEPO,0,H,annot:!urzecS</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;left edge of profile according to user's choices</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;15=</FONT><FONT FACE="Consolas" SIZE="2">b597,15,-1,-b,1,9e9,"Left",2,,1,3,XEPO,0,H,annot:!urzecS</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;right edge of profile according to user's choices</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;16=</FONT><FONT FACE="Consolas" SIZE="2">b597,16,-1,+b,1,9e9,"Right",2,,1,4,XEPO,0,H,annot:!urzecS</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;left penumbra width based on </FONT><FONT FACE="Consolas" SIZE="2"><A HREF="hs127.htm#penumbra_levels">configured penumbra levels</A></FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;17=</FONT><FONT FACE="Consolas" SIZE="2">b597,17,-1,-p,1,0,"L",2,,1,5,XEPO,0,H,annot:!rz,cond:-W</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;right penumbra width based on </FONT><FONT FACE="Consolas" SIZE="2"><A HREF="hs127.htm#penumbra_levels">configured penumbra levels</A></FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;18=</FONT><FONT FACE="Consolas" SIZE="2">b597,18,-1,+p,1,0,"R",2,,1,6,XEPO,0,H,annot:!rz,cond:-W</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;PDD maximum</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;19=</FONT><FONT FACE="Consolas" SIZE="2">b597,19,-1,M,1,-9e9,"dmax",2,,1,0,XPE,0,V,annot:!rfS</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;photon PDD10</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;20=</FONT><FONT FACE="Consolas" SIZE="2">b597,20,-1,P10,100,-1,"-",2,,1,1,XP,0,V,annot:!rfRS*,color:n&nbsp;</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;photon PDD20</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;21=</FONT><FONT FACE="Consolas" SIZE="2">b597,21,-1,P20,100,-1,"-",2,,1,2,XP,0,V,annot:!rfRS*,color:n</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;photon PDD20/10</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;22=</FONT><FONT FACE="Consolas" SIZE="2">b597,22,-1,P20/10,1,-1,"-",4,,1,3,XP,0,V,annot:!rfRS,color:n</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;electron D80</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;23=b</FONT><FONT FACE="Consolas" SIZE="2">597,23,-1,D80,1,-1,"-",2,,1,1,E,0,V,annot:!rfRS*,color:n</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;electron D50</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;24=</FONT><FONT FACE="Consolas" SIZE="2">b597,24,-1,D50,1,-1,"-",2,,1,2,E,0,V,annot:!rfRS*,color:n</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;confidence limit for gamma analysis</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;25=</FONT><FONT FACE="Consolas" SIZE="2">b597,25,2,G,1,0,"Conf.Limit",1,,1,8,XEPO,0,H,annot:rzs,cond:rg</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;31</FONT><FONT FACE="Consolas" COLOR="#C00080" SIZE="2"><B>=</B></FONT><FONT FACE="Consolas" SIZE="2">b698,31,-1,-R60,1,9e9,"pep",2,,0,9,XEPO,0,H,annot:!rzecS,color:c,size:&gt;35</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Some bonus examples</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;25=</FONT><FONT FACE="Consolas" SIZE="2">v597,25,-1,x+21,1,0,"-",2,%,1,7,XEPO,0,H,annot:rzs</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;26=</FONT><FONT FACE="Consolas" SIZE="2">v597,26,-1,X+21,1,0,"-",2,%,1,8,XEPO,0,H,annot:rzs</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;based on selftest02_real.txt</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;'x' absolute position</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;'X' relative to found center position</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;<IMG SRC="demo_H_rules.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;27=</FONT><FONT FACE="Consolas" SIZE="2">v597,27,-1,y+50,1,0,"-",2, cm,1,7,XEPO,0,V,annot:rzs</FONT><BR>
+<FONT FACE="Consolas" COLOR="#A050A0" SIZE="2">&nbsp;28=</FONT><FONT FACE="Consolas" SIZE="2">v597,28,-1,Y+50,1,0,"-",2, cm,1,8,XEPO,0,V,annot:rzs</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;based on selftest03_pdd.txt</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;'y' value with maximum scaled to 100</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;;'Y' value aplied to scaled curve as seen</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;<IMG SRC="demo_V_rules.gif" BORDER="0"></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Rule to Panel mapping</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">At startup, and also by pressing </FONT><FONT FACE="Courier New" SIZE="2">&lt;End&gt;</FONT><FONT FACE="Arial" SIZE="2">, a mapping of each rule <I>id</I> per location is displayed.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="emptypanel.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Rule list format</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Each rule consists of a series of values separated by a delimiter. The default delimiter is a comma ("</FONT><FONT FACE="Arial" SIZE="3"><B>,</B></FONT><FONT FACE="Arial" SIZE="2">"). This may be changed at any time and will be used for all following rules.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>;changing the delimiter</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="2">sep=,</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>;adding to existing rules (1), start from scratch (0) or clear all existing rules (-1)</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="2">add=1</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Therefore the general format is:</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">unique_ident_string=item{delimiter}item[{delimiter}item]</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">As ident for each rule is the <I>id</I>-number taken, but it can be any text except "sep", "add" and "doc".</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The current setup of a rule is given by the "doc" string.</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">doc=v{<I>build</I>},id,curve sel,eval.type,multiplier,errorval,"label",deci,unit,col,row,mod,energy,scan type[,cond:-][,annot:-][,color:-]</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">b{<I>build</I>}</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The build number is not checked at this moment, but might be used in future. A legal integer value must be given. The "b" is just for readability.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">id</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The identification number is a positive integer. When a rule with the same <I>id</I> is found in the list, that rule will be removed. A line having a negative <I>id</I> will remove all rules for that number. In this case the remaining part of the line may be omitted.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">curve selector</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The curve selector is an integer value. It decides which curve is used as source for the data.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">With a value of </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">-1</FONT><FONT FACE="Arial" SIZE="2"> the appropriate default is taken.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Other legal values are 0=dsMeasured, 1=dsMeasFiltered, 2=dsCalculated, 3=dsReference, 4=dsBuffer, 5=dsRefOrg, 6=dsUnrelated.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#800000" SIZE="2"><A NAME="evaluation_types"></A></FONT><FONT FACE="Courier" COLOR="#0000FF" SIZE="2">evaluation type</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The currently supported evaluation data types are listed below. These are used in both </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">Results panel rules</A></FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">special modes</A></FONT><FONT FACE="Arial" SIZE="2">. In the first route only a single parameter per position on the <I>Results panel</I> can be used. <I>Special modes</I> allow to combine these parameters. Each evaluation type is called with a case sensitive single letter.</FONT><BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp; EvaluationXtypes = ['a','b','c','C','d','D','e','F','f','G','i','I','L','l','M','m','N','n','p','P','q','r','R','s','S','T','u','U','w','X','x','Y','y',EmptyXtype];</FONT><BR>
+<BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">Parameters with the exclamation symbol (!) have a <I>left </I>and <I>right </I>result. Therefore the left result is obtained as "-{evaluation type}" and the right results as "+{evaluation type}". When no sign is given the result will be the average of left and right value.</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">Check latest implemention in code.</FONT><BR>
+<BR>
+<FONT FACE="Consolas" SIZE="2">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Area ratio based on user's choices for center position</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twSymAreaRatio</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Border position based on edges user choices</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twLevelPos[twUsedEdgeLevel].Penumbra[side].Calc;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Center position as defined by user's choices</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twCenterPosCm as defined by choices</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Curvature (quadratic parameter) of fit of Top, always in [cm^-2]</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twTopModel.Qquad</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Relative flatness</FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[dsCalculated].twFlatness*100</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! D [20|50|80|90]&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">The result is the depth for a pdd or the edge of a profile</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twLevelPos[dxx].Penumbra[side].Calc;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp; xx=20,50,80,90</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Derivative edge</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twLevelPos[dDerivative].Penumbra[side].Calc</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Relative Min | Max of In-Field area</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ifthen(Xsign&lt;0,wSource[Xsource].twRelMinFlattened,wSource[Xsource].twRelMaxFlattened);</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Absolute flatness</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twFlatness*100;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Gamma analysis within In-Field area</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GammaAnalysis(dsMeasured,dsReference,dsCalculated,True,NormAdjustNumEdit.Value/100);</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; g&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Gamma analysis over complete profile</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GammaAnalysis(dsMeasured,dsReference,dsCalculated,False,NormAdjustNumEdit.Value/100);</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Sigmoid edge</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SetLengthUnits(Units_in_numerator)*</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ifthen(twLevelPos[dInflection].Penumbra[side].Valid,twLevelPos[dInflection].Penumbra[side].Calc,0);</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Sigmoid based 50% level</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SetLengthUnits(Units_in_numerator)*</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ifthen(twLevelPos[dSigmoid50].Penumbra[side].Valid,twLevelPos[dSigmoid50].Penumbra[side].Calc,0);</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; L&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Linac error</FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100*wSource[Xsource].twSymLinacError</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Elevation</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100*wSource[Xsource].twLinSlope*</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (GetPosition(Xsource,twFlatArr[twcRight])-GetPosition(Xsource,twFlatArr[twcLeft]))/twAbsNormVal</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Max position</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twTopModel.Xtop</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Relative maximum</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100*wSource[Xsource].twTopModel.Ytop/max(1,wSource[Xsource].twAbsNormVal)</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Norm position</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twAbsNormPosCm</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Norm value</FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twAbsNormVal</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! p&nbsp; [|1|2]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Penumbra width according to standard definitions for conventional fields</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GetPenumbraWidth(XSource,side,ApplyDynamicWidth)</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp; 1: ApplyDynamicWidth:= False</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp; 2: ApplyDynamicWidth:= True</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; (nothing) or other: value according to Field Types tab</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Sigmoid slope for any field</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y[side]:= wSource[Xsource].twSigmoidFitData[side].twNMReport.BestVertex[sigmoid_Slope]/Ynorm&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; P [10|20|20/10]&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Percentage depth dose</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twPDD10,twPDD20,twPDD20/twPDD10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! r [nn]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Profile value at fraction nn% of border relative to center of field, the actual position presented is at SSD</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GetScaledQfValue((2*Ord(side)-1)*abs(n.mm)*edge,relative,scNormalised,Xsource)</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! R [nn]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Profile value at fraction nn% of border, with border and center rounded to steps of 5 mm for field sizes &lt; 5.5 cm, 1 cm above.</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Symmetry</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 100*wSource[Xsource].twSymmetry</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Extended symmetry according to menu choices</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Top position</FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twTopModel.Xtop</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Border at user value</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twLevelPos[dUser].Penumbra[side].Calc</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; ! U&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Berder at user value, using Sigmoid</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GetNormalisedRevLogistic(Side,Xsource,UserBorderDoseEdit_perc.Value)</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">Width according menu choices</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wSource[Xsource].twLevelPos[twUsedEdgeLevel]</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; X&nbsp; [[-|+]value]&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">y value at X</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2"><I>center based&nbsp;&nbsp;</I></FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2"> GetScaledQfValue((2*Ord(side)-1)*abs(X),relative,scNormalised,Xsource)</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; x&nbsp; [[-|+]value]&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">y value at x</FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2"><I>absolute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</I></FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp; GetScaledQfValue((2*Ord(side)-1)*abs(X),absolute,scNormalised,Xsource)</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; Y&nbsp; [[-|+]value]&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">x value at Y</FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (ScanType in twcVertScans) and (ConvStg='100') and (Selection='Y') then</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y[side]:= twPosCm[twMaxArr]</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2"><I>user scaling</I></FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y[side]:= GetPenumbraValue(Xsource,X,side);</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp; y&nbsp; [[-|+]value]&nbsp; </FONT><FONT FACE="Consolas" COLOR="#FF0000" SIZE="2">x value at y</FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (ScanType in twcVertScans) and (ConvStg='100') and (Selection='Y') then</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y[side]:= twPosCm[twMaxArr]</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Consolas" COLOR="#0000FF" SIZE="2"><I>standard scaling</I></FONT><FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp; Y[side]:= GetPenumbraValue(Xsource,X/twAbsNormVal,side);</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">For some types adding a sign will explicitely taken the "left" or "right" for minus and plus respectively. The sign may be placed either before or after the type letter.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The most evaluation types are limited certain modalities or scan types. This is regulated by other parameters.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Legal examples:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">m</FONT><FONT FACE="Arial" SIZE="2"> relative maximum value</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">M</FONT><FONT FACE="Arial" SIZE="2"> position of maximum</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">P10</FONT><FONT FACE="Arial" SIZE="2"> pdd at 10 cm</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">P20/10</FONT><FONT FACE="Arial" SIZE="2"> pdd ratio</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">-X10</FONT><FONT FACE="Arial" SIZE="2"> value at 10 cm left from center position</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">-x10</FONT><FONT FACE="Arial" SIZE="2"> value at -10 cm</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">x-10</FONT><FONT FACE="Arial" SIZE="2"> value at -10 cm</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">D50</FONT><FONT FACE="Arial" SIZE="2"> depth at 50% of normation point for depth dose</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; average of left and right border position at 50% for profile</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">D+50</FONT><FONT FACE="Arial" SIZE="2"> equals to +D50</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">+D50</FONT><FONT FACE="Arial" SIZE="2"> depth at 50% of normation point for depth dose</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; right border position at 50% for profile</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">-D50</FONT><FONT FACE="Arial" SIZE="2"> left border position at 50% for profile</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#800000" SIZE="2"><A NAME="Ymultiplier"></A></FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">multiplier</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The result can be multiplied with a non-zero value. The default is </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">1</FONT><FONT FACE="Arial" SIZE="2">. Note that automatic conversion of lengths and distances to mm through the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm#view_mm">View menu option</A></FONT><FONT FACE="Arial" SIZE="2"> will only work if the multiplier is the default value of 1. A value of 0 will be interpreted as 1 but without length conversion.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">error value</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The when the result equals the error value it is replaced by a minus sign "<B>-</B>".</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">"label"</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The label needs double quotes when there is a space in the text.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">decimals</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The number of decimals for the result.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">"unit string"</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Some text following the result. The unit string needs double quotes when there is a space in the text.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">column</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Position of label/result output. Legal values are </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">0</FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">1</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">row</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Position of label/result output. Legal values are </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">0</FONT><FONT FACE="Arial" SIZE="2"> to </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">12</FONT><FONT FACE="Arial" SIZE="2">. The Result panel height is adjusted as needed.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">modality selector</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The rule is only activated for designated modalites.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">It is at least one letter from the selection "XEPO".</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The P is preserved for protons. The Orthovolt radiation type was never found.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">energy selector</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the value is set to 0 any energy is accepted.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Any other value will be used to compare with the actual energy. Because comparing floating points may be 'risky' due to type conversions there always needs to be an uncertainty range. This is set to 0.01 MeV. Therefore the energy is converted to 'energy steps' as round(energy/uncertainty) to make the comparison fast and robust. Now it is also easy to introduce a simple range by allowing "&lt;" or "&gt;" as preceding character.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Legal examples:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">0</FONT><FONT FACE="Arial" SIZE="2"> any energy is acceptable</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;{</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>value</I>}</FONT><FONT FACE="Arial" SIZE="2"> the energy must equal the value in MeV</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&lt;{</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>value</I>}</FONT><FONT FACE="Arial" SIZE="2"> the energy must be smaller than the value in MeV</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&gt;{</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>value</I>}</FONT><FONT FACE="Arial" SIZE="2"> the energy must be larger than the value in MeV</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">scan type selector</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The scan type can be A (all), H (horizontal), V (vertical) or a series of ones and zero's (i.e. "100100")..</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The latter makes a select from the basic scan types:&nbsp;</FONT><BR>
+<FONT FACE="Consolas" COLOR="#008000" SIZE="2">(snGT,snAB,snPDD,snAngle,snGenericHorizontal,snFreescan,snGenericProfile,snFanLine,snHDFprofile,snPlane,snUndefined)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The maximum meaningful length is the number of scan types. When the string is shorter, a zero is assumed for the following scan types.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Special notes:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">Pyy</FONT><FONT FACE="Arial" SIZE="2"> The label will be filled automatically with "PDDyy" or "RDDyy"</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">Dyy</FONT><FONT FACE="Arial" SIZE="2"> The label will be filled automatically with "Dyy"</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">Xyy</FONT><FONT FACE="Arial" SIZE="2"> The label will be filled automatically with "Xyy"</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">xyy</FONT><FONT FACE="Arial" SIZE="2"> The label will be filled automatically with "xyy"</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">p</FONT><FONT FACE="Arial" SIZE="2"> The label will be filled with "Left" or "Right"</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">S</FONT><FONT FACE="Arial" SIZE="2"> The label will be filled with the parameter name as decided by user's choices</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">cond:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Extra conditions to be fullfilled. The conditions are all flags set for the data source or the user interface.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Each letter may be preceded by a minus as "not" statement. Multiple letters can be set in one condition string. Multiple condition statements for one rule are legal.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a condition is not mentioned, it is assumed to be fullfilled.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Therefore for each letter "X" there are three states: "", "X" and "-X".</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There is no prescribed ordering for conditions.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">F</FONT><FONT FACE="Arial" SIZE="2"> The curve has FFF properties (and therefore is also a profile)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">W</FONT><FONT FACE="Arial" SIZE="2"> The curve has wedge properties (and therefore is also a profile)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">V</FONT><FONT FACE="Arial" SIZE="2"> There is a valid reference loaded for the measurement.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">d</FONT><FONT FACE="Arial" SIZE="2"> The reference is used as divisor for the measurement.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">g</FONT><FONT FACE="Arial" SIZE="2"> The reference is used to calculate a Gamma curve.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">u</FONT><FONT FACE="Arial" SIZE="2"> There is no related action for the calculated curve.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">s</FONT><FONT FACE="Arial" SIZE="2"> This rule will not be active in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm#simple_mode">Simple Mode</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Legal examples:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">cond:V-Fd</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">cond:Fs</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">annot:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">BistroMath can show a lot of annotations with each label.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When an annotation rule is matched it also sets the color.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The annotation rules are executed in the order below, irrespective of the given order in the annotation string. The last triggered annotation will decide the color, possibly based on previous triggers.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There is no risk in adding not applicable annotations (i.e. R for a profile); they will just not be triggered. It is legal to have multiple annotation statements in one rule.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">r</FONT><FONT FACE="Arial" SIZE="2"> The curve is resampled.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">!</FONT><FONT FACE="Arial" SIZE="2"> The curve is synthetic made.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">F</FONT><FONT FACE="Arial" SIZE="2"> The curve has FFF properties.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">z</FONT><FONT FACE="Arial" SIZE="2"> The curve recalculated to another ssd.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">C</FONT><FONT FACE="Arial" SIZE="2"> The mathematical base of the center position.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; Display values are</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; </FONT><FONT FACE="Arial" COLOR="#808080" SIZE="2">b: conventional border (not displayed)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; e: derivative edge detection</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; i: sigmoid inflection point detection</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; s: sigmoid based 50% calculation</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; o: origin</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; m: maximum</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; T: FFF top with Top model</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; S: FFF top with slopes model</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; u: undefined</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">n</FONT><FONT FACE="Arial" SIZE="2"> The normalistion is not in the center of the field.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">e</FONT><FONT FACE="Arial" SIZE="2"> The result is based on edge detection.or the sigmoid model</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; Display values are</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; </FONT><FONT FACE="Arial" COLOR="#808080" SIZE="2">b: conventional border (not displayed)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; e: derivative edge detection</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; i: sigmoid inflection</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; s: sigmoid based 50% level</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; s<I>nn</I>: sigmoid based <I>nn</I>% level (needs also 'u')</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; </FONT><FONT FACE="Arial" COLOR="#C0C0C0" SIZE="2">o: origin</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; </FONT><FONT FACE="Arial" COLOR="#C0C0C0" SIZE="2">m: maximum</FONT><BR>
+<FONT FACE="Arial" COLOR="#C0C0C0" SIZE="2">&nbsp;&nbsp; T: FFF top with Top model</FONT><BR>
+<FONT FACE="Arial" COLOR="#C0C0C0" SIZE="2">&nbsp;&nbsp; S: FFF top with slopes model</FONT><BR>
+<FONT FACE="Arial" COLOR="#C0C0C0" SIZE="2">&nbsp;&nbsp; u: undefined</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">f</FONT><FONT FACE="Arial" SIZE="2"> The curve is the result of a pdd-fit.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">*</FONT><FONT FACE="Arial" SIZE="2"> The PDD curve is normalised to configured settings.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">T</FONT><FONT FACE="Arial" SIZE="2"> Top modeling (S/T).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; Display values are</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; S: based on Slopes model</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; T: based on&nbsp; Top model</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">S</FONT><FONT FACE="Arial" SIZE="2"> The curve is shifted.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">c</FONT><FONT FACE="Arial" SIZE="2"> The curve is centered.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">s</FONT><FONT FACE="Arial" SIZE="2"> The curve is made symmetric.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">u</FONT><FONT FACE="Arial" SIZE="2"> The result is based on borders at <I>users level</I>.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; The percentage level will be displayed.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">R</FONT><FONT FACE="Arial" SIZE="2"> The PDD curve is not normalised to the maximum, it therefore is a RDD curve.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;&nbsp; The label is changed from PDD to RDD.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Legal example:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">annot:!rzcST</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">color:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The color rule is basically an annotation rule with only the color effects. Color rules are handled along with the annotation rules. There is only a limited number of fixed, predefined colors. Only the application of these colors is regulated here. There is also a hierarchy in the application of colors depending on the combination of annotations and/or color definitions.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Legal example:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">color:n</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">size:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The size rule is way to set a limit on the fiels size. For Depth dose scans the set (given) field size in cm is used, when available with a default of 0. For profiles the measured field size in the scan direction, normalised to the default SSD, is taken. A lower limit and an upper limit can be set. A valid limit is any value preceded by "&lt;" or "&gt;".</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Legal examples:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">size:&gt;0</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">size:&lt;20</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">size:&gt;0&lt;30</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">size:&lt;30&gt;0</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Relevant items in the configuration</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The lines below state that the standard rules are <I>not</I> loaded. Two rules are given as a comma separated list.</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">[AnalyseForm]</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">ViewStandardPanelsetup=0</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">[PanelElements]</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">sep=,</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">doc=v(build),id,curve sel,eval.type,multiplier,errorval,"label",deci,unit,col,row,mod,energy,scan type[,cond:-][,annot:-][,color:-]</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">0=v596,0,"optional: this will clear all existing rules"</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">1=v596,1,-1,n,1,0,"Normalisation",1,%,0,0,XEPO,0,A,annot:rcn</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">2=v596,2,-1,N,1,9e9,"Norm position",2,,0,1,XEPO,0,A,annot:rnS</FONT><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">Results panel</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm#standard_panel_setup">View menu</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm#evaluation_types">Evaluation Types</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

@@ -1,0 +1,93 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Configuration files</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="bitstromath.ini;configuration;institute.ini;PDD;Problem solving;RDD;SpecialMode;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs930.htm">Previous</A>
+ - <A HREF="hs1000.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Configuration files</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">In the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">configuration topic</A></FONT><FONT FACE="Arial" SIZE="2"> a complete overview is given.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">A limited number of configurable settings can be accessed through the configuration tab:</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="configtab.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The most essential configuration for daily use is the reference depth and value for photon beams.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The reference depth is used to </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs8.htm">normalise depth dose scans</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">. </FONT><FONT FACE="Arial" SIZE="2">Thus all displayed analysis values are based on this normalisation&nbsp; ("</FONT><FONT FACE="Courier" SIZE="2">AbsDepth/AbsValue</FONT><FONT FACE="Arial" SIZE="2">"). The graphical display of the depth dose curve has its own normalisation ("</FONT><FONT FACE="Courier" SIZE="2">RelDepth/RelValue</FONT><FONT FACE="Arial" SIZE="2">"). When combined with a reference file calculated division will be normalised at the same depth. Although the shape of the division will not change drastically the found minimum and maximum will be different. When using generic beams or reference dosimetry at a specific depth this might be the optimal setup.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the dosimetrical system is based on a depth beyond dose maximum, all depth dose curves should be evaluated realative to this reference point. The text "PDD" is then changed to "RDD".</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">These values are joined with </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs40.htm">Dose Conversion parameters</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">.</FONT><FONT FACE="Arial" SIZE="2"> Because there can be different film types this may lead to multiple dose depth definitions for one energy. Starting with version 2.00 all definitions for one energy are kept uniform.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="bistromath_pdd.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="ini_only"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Settings without application interface</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="ini_only.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">BistroMath maintains a configuration file, bistromath.ini / institute.ini, which stores all settings from menu's and windows.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Also some extra data are read from this file.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The ZoomRange sets the scaling for zooming on profiles; a value of 1.03 will show the range from 97% to 103%.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">Special modes</A></FONT><FONT FACE="Arial" SIZE="2"> for information on the SpecialMode items.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">[AnalyseForm]</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">ZoomRange=1.03</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">BadPenumbra=3</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;the minimum size of data on the clipboard to be accepted as potential legal file format</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">MinClipBoardBytes=100</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;parameters for the Nelder-Mead optimisation engine</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;the ENR lower limit for global fit restart as discussed above&nbsp;</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">ENR=2.0</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;maximum calculation time per start</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">NMsec=2.0</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;maximum number of restarts</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">NMrestarts=6</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;number of significant digits in output</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">NMdigits=8</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;maximum number of cycles,</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">NMcycles=0</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The directory for the reference files (</FONT><FONT FACE="Courier" COLOR="#0000FF" SIZE="2">RefDir</FONT><FONT FACE="Arial" SIZE="2">) may be moved. The filterwidth (</FONT><FONT FACE="Courier" COLOR="#0000FF" SIZE="2">Filter</FONT><FONT FACE="Arial" SIZE="2">) is given in cm. The default oriëntation of the watertank is given in the I(inplane)C(rossline)D(epth) item. The number of&nbsp; points to calculate a dose in any curve using a second order fit (</FONT><FONT FACE="Courier" COLOR="#0000FF" SIZE="2">Dpt</FONT><FONT FACE="Arial" SIZE="2">) can be increased above the minimum of 3.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">[WellhoferObject]</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">RefDir=C:\ProgramData\BistroMath\references\</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">Filter=0.60</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">D20=0.200</FONT><FONT FACE="Courier" COLOR="#800000" SIZE="2"><A NAME="borders_config"></A></FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">D50=0.500</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">D80=0.800</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">D90=0.900</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">ICD=-YX-Z</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">Dpt=3</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">multiscan_nr=0</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">multiscan_max=0</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;the Derive function searches for the highest peak and the lowest valley, based on statistical analysis</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">DeriveMinMax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :twFloatType= 0.9;&nbsp; {allowed maximum value in first and last point for statistical analysis}</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">DeriveBinFraction&nbsp;&nbsp;&nbsp; :twFloatType= 0.25; {maximum of largest bin}</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">DeriveLookAhead&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :Integer&nbsp;&nbsp;&nbsp; = 3;&nbsp;&nbsp;&nbsp; {number of points to look ahead to decide on crossing bandlow and bandhigh}&nbsp;</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;parameters for Nelder-Mead fit</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">ENR=2.0</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">NMsec=2.0</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">NMrestarts=6</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">NMdigits=8</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">NMcycles=0</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">multiscan_list=STARCHECKMAXI</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">Save as Reference</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm">Filter width</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">Ignore Clipboard</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs14.htm">Institute defaults configuration</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs16.htm">Command line options</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs80.htm">Interpretation of depth doses</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs180.htm">Presets</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">Aliases</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+
+</BODY></HTML>

@@ -1,0 +1,96 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Results panel</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="alignment of fields;Annotations to results;Colors;Composite curves;curve selection;curves;edge detection;FFF;field center;flatness;flatness,relative flatness;flattened area;Gamma analysis;graphical elements;Normalisation;PDD;RDD;relative flatness;Results;Results,filtering, NCS, flatness, normalisation;Results panel;Slopes (FFF);symmetry;Top Model (FFF);">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs77.htm">Previous</A>
+ - <A HREF="hs3.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Results panel</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> configuration</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Starting with version 3.20 all results in this panel are completely configurable. The explanation below assumes a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm#standard_panel_setup">standard setup</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">v3.20 rule set</A></FONT><FONT FACE="Arial" SIZE="2"> has been carefully designed to reflect previous versions. All <I>values</I> are clickable: the result will be copied to the clipboard.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The results of the analysis are shown below the graph and depend on the type of profile:</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Inline/crossline profiles</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="results1.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The left and right positions values are presented for a filtered curve according to the chosen definition (50%, </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs44.htm">user set value</A></FONT><FONT FACE="Arial" SIZE="2">, derivative edge detection or sigmoid model). The exception here is the sigmoid model; because of its statistical nature it is based on the unfiltered measurement. For this purpose the main axis is chosen as reference point <I>if the main axis falls within the measuring range and the dose value is at least 95% of the maximum dose</I>. Otherwise first the left and right position are based on the dose maximum and the new normalisation point is chosen as the average of these preliminary positions. This </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#normalisation">normalisation point</A></FONT><FONT FACE="Arial" SIZE="2"> can also be set.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs5.htm">flatness</A></FONT><FONT FACE="Arial" SIZE="2"> is calculated as defined by NCS-8 within the central 80% of the 50% width. Also the maximum value within this area is given. </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">When a reference file is used to calculate a relative error <I>and</I> the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">calculated</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2"> curve is set to visible, also the <I>relative flatness</I> is given</FONT><FONT FACE="Arial" SIZE="2">.</FONT><FONT FACE="Arial" SIZE="2"> Alternatively, a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">Gamma analysis</A></FONT><FONT FACE="Arial" SIZE="2"> can be calculated. Then the <I>Confidence Limit</I> is given as <I>m</I>+1.5•<I>s</I> of the gamma curve (where <I>m</I> and <I>s</I> are the estimated mean and standard deviation).</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="fff_results.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the origin is chosen as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs128.htm">Center of Field</A></FONT><FONT FACE="Arial" SIZE="2"> <I>and</I> for FFF profiles the In-Field field CoF strategy is taken as default strategy, not the center will be reported but the position of the top. There are two different models available: the Top model and the Slopes model. Also, the penumbra values are replaced with the slope values (in %/cm) as found with the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">sigmoid model</A></FONT><FONT FACE="Arial" SIZE="2">. Note that the slope is much more sensitive to the quality of the fit and the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#edgedetectionlimit">chosen fit range</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="panel_colors"></A></FONT><FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs500.htm">colors are meaningful</A></FONT><FONT FACE="Arial" SIZE="2">:</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="results_colors1.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The color of the curve titles (i.e. equipment and date) corresponds with the curves in the graph.</FONT><BR>
+<FONT FACE="Arial" COLOR="#008000" SIZE="2">Green values and labels</FONT><FONT FACE="Arial" SIZE="2">: the curve shifted. The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">measurement may be shifted towards the center</A></FONT><FONT FACE="Arial" SIZE="2"> by the user. As standard behavior the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs134.htm">reference curve is aligned</A></FONT><FONT FACE="Arial" SIZE="2"> with the measurement. The needed shift for the reference profile is reported in the curve title.</FONT><BR>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="2">Blue values</FONT><FONT FACE="Arial" SIZE="2">: non-standard results on corrected curves (i.e. symmetry correction on measurement curve).</FONT><BR>
+<FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Red values</FONT><FONT FACE="Arial" SIZE="2">: </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs500.htm">non-standard analysis results</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Depth dose curves</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="results2.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The PDD is normalised on a reference depth if this is given. Otherwise the dose maximum is used. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><FONT FACE="Arial" SIZE="2"> for a detailed explanation with examples.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="annotations"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Annotations</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are several annotations for the center position, profile width and field borders:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(c): Based on the calculated center, the field is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">moved at the origin</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(b): Standard 50% border detection is used to calculate the field borders; not displayed for center position.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(e): </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detection</A></FONT><FONT FACE="Arial" SIZE="2"> is used to calculate the field borders.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(i): </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Inflection point</A></FONT><FONT FACE="Arial" SIZE="2"> with the sigmoid model is used to calculate the field borders.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(s)&nbsp; The 50% level is derived from the sigmoid model.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(</FONT><FONT FACE="Arial" SIZE="1"><I>nn</I></FONT><FONT FACE="Arial" SIZE="2">): The</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs44.htm"> user dose level</A></FONT><FONT FACE="Arial" SIZE="2"> at <I>nn</I>% is used for the field borders.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(T): The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#fff_center">Top model</A></FONT><FONT FACE="Arial" SIZE="2"> is used to find the top of a FFF field.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(S): The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#fff_center">Slopes</A></FONT><FONT FACE="Arial" SIZE="2"> are used the top of a FFF field.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For values dependent on the normalisation:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(n): The normalisation is different from the standard (Normalisation on center).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(*) A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm#Confiig_PDD">configured normalisation</A></FONT><FONT FACE="Arial" SIZE="2"> value and/or depth is applied for a depth dose curve.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are annotations for flatness and symmetry:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(s): The measurement is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs131.htm">corrected for symmetry</A></FONT><FONT FACE="Arial" SIZE="2"> (see also example below).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(F) A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF-profile</A></FONT><FONT FACE="Arial" SIZE="2"> is detected. The flatness is given the slope in percent per cm.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">General annotations:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(z) The SDD of a profile is changed.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(f) Fitted data are used for depth dose analysis.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(r) Data are resampled.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(~) The result is changed by a manual shift.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(!) The result is based on a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs74.htm">synthetic profile</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Possibly multiple annotations are combined as is shown in the extreme example below.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="results3.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Curve information</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Curves can be labeled as "<I>composite</I>" when it is not a straightforward (filtered) measurement anymore. This is true for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs72.htm">merged data</A></FONT><FONT FACE="Arial" SIZE="2">, derivative, gamma calculation and the ratio of two curves.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For the </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2"><I>Measurement</I></FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"><I>Reference</I></FONT><FONT FACE="Arial" SIZE="2"> curve a composite curve this shown as "Composite(<I>curve information</I>)".</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Filtering and symmetry correction are not denoted as composite results but have their ow explicit information added.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="curve_selection"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Curve selection</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the coloured name/date label is clicked, this will select the corresponding curve in the graph area will be selected.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Configuration</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The parameters to show are fully </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">configurable</A></FONT><FONT FACE="Arial" SIZE="2">. The input typse are shown in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm#evaluation_types">Evaluation types</A></FONT><FONT FACE="Arial" SIZE="2"> list.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Here an example used during the development of BistorMath v4.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="results5.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs500.htm">Why are my data values colored?</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs128.htm">Center of Field and Normalisation of profiles</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs8.htm">normalisation of depth dose curves</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs19.htm">Keyboard functions</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs6.htm">Profile analysis strategy</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1020.htm">Calculation details</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">Adding reference files</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs5.htm">Flatness, symmetry, Area ratio and Linac symmetry error</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs80.htm">Interpretation of depth doses</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">Results panel rules</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs22.htm">Sigmoid function</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

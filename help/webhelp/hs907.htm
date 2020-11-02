@@ -1,0 +1,80 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Data type identification</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Data type identification</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Due to the large variation in data types with sometimes multiple varieties the file type recognition is an important issue in BistroMath. The general strategy is try any known file type until succesful interpretation. When all options fail the last error is displayed in the statusbar while the history can be found in the <I>Messages</I> tab. When a data type is not recognised at all this is concluded at the first line mostly.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="parsing_messages.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">On this page the identification rules used by BistroMath are presented in the applied order.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>IBA binary rfb format</B> (as file from disk only)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with a P-type string of the version of the file. The string itself starts with "Version:". The first byte is the length of the string. In all investigated versions this was 14 ($0e). The next two bytes represent the integer type for the number of scangroups and, after a spacing of 6 bytes, the untyped string of 5 characters " CBEAM" should be detected for a valid header.</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">0E 56 65 72 73 69 6F 6E 3A 36 2E 36 2E 32 36</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">V&nbsp; e&nbsp; r&nbsp; s&nbsp; i&nbsp; o&nbsp; n&nbsp; :&nbsp;</FONT><FONT FACE="Courier New" COLOR="#008000" SIZE="1"> 6&nbsp; .&nbsp; 6&nbsp; .&nbsp; 2&nbsp; 6</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">01 00&nbsp;&nbsp; FF FF&nbsp;&nbsp; 01 00 05 00&nbsp; 43 42 65 61 6D</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">int(1) $FF$FF&nbsp;&nbsp; (?&nbsp; ?&nbsp; ?&nbsp; ?)&nbsp; </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">C&nbsp; B&nbsp; E&nbsp; A&nbsp; M</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>IBA Wellhöfer v6</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file should start with '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Clinic:</FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>IBA Wellhöfer v7</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with a date and time where both '-' and '/' are acceptable as separator in the date. When all digits are represented with <I>n</I>, the pattern</FONT><BR>
+<FONT FACE="Arial" SIZE="2">'</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">n/nnnn nn:nn:nn</FONT><FONT FACE="Arial" SIZE="2">' or '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">n/nnnn n:nn:nn</FONT><FONT FACE="Arial" SIZE="2">' should be found to start within the first five characters in the text. The AM/PM format is also supported here.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Sun Nuclear disk file</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Tab-Delimited Scan Output</FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Sun Nuclear clipboard format</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Delivery System</FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Sun Nuclear ICPROFILER export format</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Filename</FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>WMS binary</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with the binary representation of the file header size (588). The first integer in the header should be 6..</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">4C 02&nbsp;&nbsp;&nbsp;&nbsp; 06 00&nbsp;&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">int(</FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">588</FONT><FONT FACE="Courier New" COLOR="#008000" SIZE="1">)&nbsp; int(6)</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>WMS ascii</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with a double quoted file name with the extension '.wda' or '.wtx': '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">"<I>xxxxxxx</I>.wxx"</FONT><FONT FACE="Arial" SIZE="2">' or a double quoted date string '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">"<I>dd-mmm-yy</I>"</FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>RFA ascii</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">:SYS</FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>MCC ascii</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">BEGIN_SCAN_DATA</FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Elekta CMS ascii</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">00001090</FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>generic ascii</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must contain two colums of data values without any header, interpreted as position and dose.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Varian W2CAD ascii</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The string '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">$STOM</FONT><FONT FACE="Arial" SIZE="2">' must be found somewhere in beginning of the file. BistroMath reads a maximum of 255 bytes to validate this.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>HDF ascii</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2"># Track:</FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Pips ascii</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Type of Cross-Section:</FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Schuster ascii</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The file must start with '</FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Profile measured on </FONT><FONT FACE="Arial" SIZE="2">'.</FONT><BR>
+
+</BODY></HTML>

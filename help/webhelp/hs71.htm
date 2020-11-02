@@ -1,0 +1,42 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Set as Temporary reference</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs56.htm">Previous</A>
+ - <A HREF="hs112.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Set as Temporary reference</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> processing menu</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a measurement is loaded this may be used as temporary comparison to all next profiles as long as this item is checked. The scan is saved in memory. With this option the current data source (clipboard or file) is reread. All reference functionality is applied to this file. This option is not saved in the configuration file and defaults to "unchecked".</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The temporary reference can be unset with the <I>Clear Temporary Reference</I> item (</FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;+&lt;Shift&gt;+&lt;T&gt;</FONT><FONT FACE="Arial" SIZE="2">).</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Note that the temporary reference supersedes any automatically detected reference. The temporary reference is passed to the next element in the history list when you cycle through the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">history</A></FONT><FONT FACE="Arial" SIZE="2">. Whether or not a reference is 'acceptable' depends on the circumstances. The actual mechanism works through generating curve names which is influenced by an ignore list. In the current version of BistroMath there is no option to acces this list. In the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs300.htm">Messages tab</A></FONT><FONT FACE="Arial" SIZE="2"> more details can be found when a reference is not applied. Increasing the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">log level</A></FONT><FONT FACE="Arial" SIZE="2"> can give even more details.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">In principle only a reference which matches all parameters, including field size, scan depth, of the measurement will be applied. This can be </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">relieved</A></FONT><FONT FACE="Arial" SIZE="2"> by:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Ignoring the name of the Treatment Unit.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><I>Not</I> checking the Temporary Scan type at all. In this case anything goes, even comparing a profile with a depth dose.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Also an </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">alias</A></FONT><FONT FACE="Arial" SIZE="2"> can be set, notably for the Treatment Unit.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">A temporary reference can be:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Any single scan.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A structured multi-scan file for a 2D-array that is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">configured</A></FONT><FONT FACE="Arial" SIZE="2"> in BistroMath and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">Device specific Reference</A></FONT><FONT FACE="Arial" SIZE="2"> is activated.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Any unorganised bunch of scans when </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">Index multi reference</A></FONT><FONT FACE="Arial" SIZE="2"> is activated. In this case the first applicable scan from the generated index is taken. Building an index may take some time.&nbsp;</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="indexing.gif" BORDER="0"></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Processing menu</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs72.htm">Merging of scans</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">Reference menu</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">History list</A></FONT><FONT FACE="Arial" SIZE="2">.
+</FONT>
+</BODY></HTML>

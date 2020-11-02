@@ -1,0 +1,73 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Edge detection</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="double wedge profiles;edge detection;sigmoid analysis;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs143.htm">Previous</A>
+ - <A HREF="hs180.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Edge detection</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>settings tab&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>Parameters</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Activation and limit can be found in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm">Field Types tab</A></FONT><FONT FACE="Arial" SIZE="2">. In the current version of BistroMath there ara a <I>primary</I> and <I>fallback</I> method to find edges. The primary method might just fail on the data or differ too much from expected, for instance when the d50 is chosen as primary method. Edge detection as described below is now <I>always</I> done.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Function and application</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="edge_detected.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">As base rule the field border is found at 50% of the normalisation value. For wedged fields this gives an unacceptable result. This is solved by using a derivative function. The same can be done to detect non-flat beams like FFF beams and double-wedge profiles. When the difference is more than the given limit, the peak of the derivative is assumed to give the correct border. Center and border values are displayed in a teal color.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">In the example the 50% values clearly differ from the derivative peaks. The difference exceeds the (default) threshold of 2 mm and therefore the derivative method is used. For film data the difference limit is ignored and edge data are used when this option is checked.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Setting the difference limit to zero will force using edge detection for any profile.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Using a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs44.htm">user dose level</A></FONT><FONT FACE="Arial" SIZE="2"> will override any edge detection.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="mcc_doublewedge"></A></FONT><FONT FACE="Arial" SIZE="2">With double-wedge profiles the FWHM is obtained to relate it to the beam energy. In this case both FFF detection and edge detection is <I>not</I> wanted because it will not produce field borders at 50%. Either switch off edge detection or introduce a high threshold.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="doublewedge.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="edge_detection_theory"></A></FONT><FONT FACE="Arial" SIZE="2"><I>Derivative method</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For a standard field the derivative of the profile will produce a clear maximum and minimum which can be used to find the inflection points in the penumbra. For the most beam limiting devices this closely resembles the 50% values. But the field edge detection for non-trivial fields like wedged profiles or partial profiles, where it is much more needed also needs much more analysis of the derivative. Here statistical approaches are used.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">1 The profile is filtered (optionally) with a quadratic filter.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">2 The first derivative is calculated.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">3 The derivative again is cleaned with a quadratic filter. The result is the brown <I>Buffer</I> curve in the examples above.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">4 Then repeatedly a histogram is made until a reasonable number of bins is achieved.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">5 Now the largest bin is defined as "<I>dead band</I>".</FONT><BR>
+<FONT FACE="Arial" SIZE="2">6 The first and last crossing of the derivative through the <I>dead band</I> are detected.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">7 The minimum and maximum of the derivative within this area are searched. These are the nearest data points to the edges.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">This process works well for complete profiles, including wedged profiles but fails for incomplete profiles. Therefore additional analysis is needed.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">8 A profile is marked as "wedged" when the ratio of the profile data at the max and minimum of the derivative is larger than 4 (or smaller than 1/4).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">9a For non-wedged profiles the <I>dead band</I> should fall within the central 80% of bins. When the <I>dead band</I> is in the upper or lower 10% respectively the left edge or the right edge is declared invalid.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">9b For wedged profiles the histogram is made around the area of the left and right edge. Now the upper and lower limits are 3% of the total range in the subset. This works well for a 60° wedge. A more shallow wedge will produce a much more markedly penumbra and should be found without problems.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">10 For valid edges the exact position is calculated by applying a quadratic fit to the found (nearest points to the) edge positions.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Partial profiles will produce one valid edge which still can be used for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs134.htm">profile alignment</A></FONT><FONT FACE="Arial" SIZE="2">. When one edge is missing the center of the field is unknown and no shift to the origin can be calculated. Note also that no use is made of any accompanying information of the profile.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Sigmoid fit</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">After edge detection as described above, the area around the calculated edge will be used to fit a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs22.htm">sigmoid function</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This sigmoid can be initialised right away from the already known edge information and is optimised using a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">Nelder-Mead optimisation</A></FONT><FONT FACE="Arial" SIZE="2">. The cost function is the summed quadratic difference between model and data over the penumbra region.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">For noisy data sets or sparse data sets like the Starcheck Maxi the sigmoid fit possibly performs slightly better than the derivative based method because it uses all data in the penumbra region. For profiles with sufficient points the differences are small. In the example below the original data set (left) is resampled to a 3 mm grid (right). The inflection point of the sigmoid model is marked with "+". Both derivative approach and sigmoid model do not produce the 50% level. The Sigmoid model might also be used to </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#reverse_sigmoid">derive the 50% level</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The sigmoid results can be </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm#apply_sigmoid">applied on the Buffer curve</A></FONT><FONT FACE="Arial" SIZE="2">. Note that the inflection point still might become less reliable when applied on conventional profiles where the penumbra becomes an almost straight line.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="sigmoid_results_reduced.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">[Richards, F. J. (1959). "A Flexible Growth Function for Empirical Use". Journal of Experimental Botany 10 (2): 290-300. doi:10.1093/jxb/10.2.290.]</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">When also edge detection fails the two curves will be matched to find the best alignment. The user can </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">opt to always use this method</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">Results panel</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs44.htm">User dose level</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings Tabl</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">Advanced Settings Tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+
+</BODY></HTML>

@@ -1,0 +1,59 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Gamma analysis</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Gamma analysis;Renormalisation;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs135.htm">Previous</A>
+ - <A HREF="hs138.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Gamma analysis</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>settings tab&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="gamma_curve.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="gamma_histogram.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">With gamma analysis the differences between a measurement and its reference can be condensed to one number which combines dose errors, typically in the In-Field area and position errors in the penumbra region on a normalised vector base. This vector gives the smallest distance of combined dosimetric error and position error. The unit length is defined as a reference distance in mm (<I>Distance norm</I>) and dose difference in percent (<I>Dose norm</I>). A dose difference can be calculated in two ways: as percentage of the local dose or as percentage of the normalisation value of the profile. In an area around each measurement point the smallest vector is searched. Very fine steps (<I>Search Steps/mm</I>) with interpolation between points of the reference curve are needed to find a meaningful gamma value. Since the calculation is sensitive for noise a median filter is applied afterwards. The analysis of profiles is only done for relative values above a given threshold (<I>Cutoff Percentage</I>) and beyond the buildup region of depth dose curves (<I>Cutoff Depth</I>). Also, the search is stopped when no better point is found within the region limited to the initial distance to agreement mulitiplied by the <I>Search factor</I>. The result can be shown as calculated curve or histogram. The Confidence Limit, defined as the sum of the mean value of the gamma curve and the standard deviation multiplied with 1.5 of the same curve.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The vertical range of the Gamma curve in the graphical display is set with the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm#histogram_range">Histogram range</A></FONT><FONT FACE="Arial" SIZE="2"> in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">Advanced settings</A></FONT><FONT FACE="Arial" SIZE="2"> tab. Note that changing any settings will make the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs17.htm">Histogram tab</A></FONT><FONT FACE="Arial" SIZE="2"> temporarily invisible to force recalculation in the Analysis tab.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Any </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs112.htm">renormalisation</A></FONT><FONT FACE="Arial" SIZE="2"> will change the result markedly.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="gamma_settings.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Limit to 'In-Field area'</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked the analysis will be limited to the In-Field area. This area is also defined for FFF profiles although it is not flat. This setting is available for both classes of profiles.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Note that this setting is only relevant for the graph panel and the histogram. The confidence limit in the standard rule setup for the results panel is always limited to the In-Field area.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Dose norm</I>&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The equivalent dose difference to agreement in percent for gamma=1.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Local dose</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked the difference between measurement and reference is scaled to the local measurement value, otherwise the difference is scaled to the normalisation point.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Distance norm</I>&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The equivalent distance to agreement in mm for gamma=1.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Search steps per mm</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The number of steps on each mm from the calculation point at which the reference dose is calculated.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Cutoff percentage</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The lower limit for gamma analysis at which dose points are incorporated in the results.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Depth dose cutoff&nbsp; (mm)</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The lower depth limit in mm for gamma analysis at which dose points are incorporated in the results for depth dose curves.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Search factor</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A limiting value at which the search is aborted. The starting value is the dose difference in the evaluation point with a minimum of 1, multiplied with the Gamma Search factor. When lower Gamma values are found the limit decreases subsequently.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1025.htm#gamma">Calculation details</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

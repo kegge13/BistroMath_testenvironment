@@ -1,0 +1,64 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>File menu</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="clipboard;Fit of Depth dose;history,list of measurements;Ignore clipboard;Lock clipboard;Merging profiles;Nelder-Mead;PDD;PDD,fit;Reference;Reference,Save as reference;Save file,Save as reference;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs18.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>File menu</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> file menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="filemenu.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Open...</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This item selects a file and tests whether the data are in some supported binary format or ascii format. A binary file is loaded into memory and written to the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs3.htm">Editor</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2">; a text file is opened in the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs3.htm">Editor</A></I></FONT><FONT FACE="Arial" SIZE="2">. Thereafter the data is handled as any data put onto the clipboard.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Also the multiple-curve formats rfb, PTW-mcc and RFA300 are supported. With the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs19.htm">keyboard</A></FONT><FONT FACE="Arial" SIZE="2"> the appropriate curve may by selected. This number is stored when the preferences are saved.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">As alternative, a file may be dropped onto the graph area. Multiple files can be dropped or opened when the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">history list</A></FONT><FONT FACE="Arial" SIZE="2"> is activated.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Open Temporary Reference...</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This item selects a file and stores it into memory as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs71.htm">temporary reference</A></FONT><FONT FACE="Arial" SIZE="2">. This is the equivalent of opening a file (as measurement) and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Setting as Reference</A></FONT><FONT FACE="Arial" SIZE="2">.&nbsp; For unstructured multi reference files </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#ReferenceIndexing">reference indexing</A></FONT><FONT FACE="Arial" SIZE="2"> needs to be activated.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Load current data</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">With this option the current data source (clipboard or file) is reread from the editor window with complete data-processing.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="save_measurement_as"></A></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Save Measurement as...</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="filesaveas.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs3.htm">editor tab</A></FONT><FONT FACE="Arial" SIZE="2"> is selected these data will be stored as plain text, otherwise t</FONT><FONT FACE="Arial" SIZE="2">he </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2"><I>measurement</I></FONT><FONT FACE="Arial" SIZE="2"> curve can be stored to disk in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#OmniPro_v6">OmniPro_v6</A></FONT><FONT FACE="Arial" SIZE="2"> format (most complete), </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#mcc_ascii">PTW-mcc</A></FONT><FONT FACE="Arial" SIZE="2">, </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#wms_ascii">wms-ascii</A></FONT><FONT FACE="Arial" SIZE="2">, </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#wms_binary">wms-binary</A></FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#RFA300">RFA-300</A></FONT><FONT FACE="Arial" SIZE="2"> format.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Save Selected Curve as...</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm#curve_selection">coloured name/date label</A></FONT><FONT FACE="Arial" SIZE="2"> is clicked, this will select the corresponding curve in the graph area will be selected.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Then this curve can be stored as decribed above.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="ignore_clipboard"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Ignore Clipboard</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">As default the program hooks up to the chain of clipboard viewers in the windows system and checks all data that are placed on the clipboard. This behavior may be switched off. When switched off the program itself puts analysis information on the clipboard in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">Special mode 2</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Loading a binary file, which is not supported through the clipboard, will lock the clipboard; loading a text-based file will restore the last know state for the clipboard. The user can change the clipboard state at any time.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="save_reference"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Save as Reference</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="filemenu_unlocked.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The current file, as found in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs3.htm">editor window</A></FONT><FONT FACE="Arial" SIZE="2">, is saved as a reference under a specific name which is dependent on linac, energy, field size, wedge and type of scan. This generally covers all relevant parameters for a reference file as intended here.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This feature is disabled by default and is reset at program start.<B> To activate this item use </B></FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="2"><B>&lt;Ctrl&gt;+&lt;Alt&gt;+&lt;R&gt;</B></FONT><FONT FACE="Arial" SIZE="2"><B>.</B> </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs56.htm">Locking</A></FONT><FONT FACE="Arial" SIZE="2"> may be done again in the same way.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a muitiple curve file is read and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">Device specific Reference</A></FONT><FONT FACE="Arial" SIZE="2"> is not active a single curve OmniPro_v6 text file will be written.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Reference directory is set at installation time but </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs95.htm">can be changed</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Use History list</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked more data sets can be held in memory. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs90.htm">History topic</A></FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">settings</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#808080" SIZE="2"><I>The printing facility is kindly provided by Alan Chamberlan.</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Print Active page</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This will generate a pdf of the current tab. Note that the <I>fonts</I> directory must be installed.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Print Selected tabs</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This will generate a pdf of all selected tabs. Note that the <I>fonts</I> directory must be installed.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs56.htm">Unlock/Lock critical options</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">,
+</FONT>
+</BODY></HTML>

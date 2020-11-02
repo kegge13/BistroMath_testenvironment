@@ -1,0 +1,1033 @@
+
+{22/07/2015.
+  Internal counter (ScanNr) starts at 0 for rfb.
+  Global counter (wMultiScanNr) has base 1.
+  This blocked stepping back to first profile. Now Scan[Pred(wMultiScanNr)] is taken.
+  wMultiScanMax is reported as maximum number instead of ScanMax that here has also base 0.}
+{15/12/2015 wMultiScanNr copied to twScanNr}
+
+(*
+function TWellhoferData.ReadRfb(AFileName:String): Boolean;
+var b_data  : array of Byte;
+    b_size,n: Integer;
+    f       : File;
+
+  procedure ScanData(AScanNr:Integer);
+  const m_ordering: array[1..3] of twMeasAxis=(Crossplane,Inplane,Beam);
+  var b_index,i,j,Version,
+      n_ScanGroups,ScanGroup     : Integer;
+      c                          : Char;
+      t                          : twTankAxis;
+      ma                         : twMeasAxis;
+      mc                         : twChannels;
+      Stg,meas_type              : String;
+      Read_SubHeader,AbsoluteDose: Boolean;
+      ICD_offset                 : twCoordinate;
+      ScanHex                    : Byte;
+
+    function to_String(pre_incr:integer=0): string;
+    var res_ptr: ^ShortString;
+    begin
+    inc(b_index,pre_incr);
+    try
+      res_ptr:= @(b_data[b_index]);
+      inc(b_index,Succ(Length(res_ptr^)));
+      Result:= StrReplace(AsciiCR,'',StrReplace(AsciiLF,', ',Trim(res_ptr^)));
+     except
+      Result := '';
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_String2(pre_incr:integer=0): string;
+    var res_ptr: ^ShortString;
+        n      : integer;
+    begin
+    inc(b_index,pre_incr);
+    n      := b_data[b_index];
+    try
+      res_ptr:= @(b_data[b_index+1]);
+      SetLength(res_ptr^,n);
+      inc(b_index,n+2);
+      Result:= Trim(res_ptr^);
+     except
+      Result := '';
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_int(pre_incr:integer=0): smallint;
+    var res_ptr: ^smallint;
+    begin
+    inc(b_index,pre_incr);
+    try
+      res_ptr:= @(b_data[b_index]);
+      inc(b_index,Sizeof(Result));
+      Result:= res_ptr^;
+     except
+      Result := 0;
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_word(pre_incr:integer=0): word;
+    var res_ptr: ^longword;
+    begin
+    inc(b_index,pre_incr);
+    try
+      res_ptr:= @(b_data[b_index]);
+      inc(b_index,Sizeof(Result));
+      Result:= res_ptr^;
+     except
+      Result := 0;
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_longword(pre_incr:integer=0): LongWord;
+    var res_ptr: ^longword;
+    begin
+    inc(b_index,pre_incr);
+    try
+      res_ptr:= @(b_data[b_index]);
+      inc(b_index,Sizeof(Result));
+      Result:= res_ptr^;
+     except
+      Result := 0;
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_double(pre_incr:integer=0;
+                       scaling :Double =1;
+                       default :Double =0): Double;
+    var res_ptr: ^double;
+    begin
+    inc(b_index,pre_incr);
+    try
+      res_ptr:= @(b_data[b_index]);
+      inc(b_index,Sizeof(Result));
+      Result:= scaling*res_ptr^;
+      if abs(Result)<1e-10     then Result:= 0
+      else if abs(Result)>1e10 then Result:= Default;
+     except
+      Result := 0;
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_CIB_double(Scaling:Double=0.1): twCoordinate;
+    var i: SmallInt;
+    begin
+    for i:= 1 to 3 do Result.m[m_ordering[i]]:= to_double(0,Scaling);
+    end;
+
+    procedure to_Meas_point(MeasIndex:Integer);
+    var ma: twMeasAxis;
+    begin
+    with wSource[Measured] do
+      begin
+      twPosCm[MeasIndex]:= to_double(0,0.1);
+      twData[MeasIndex] := to_double;
+      for ma:= InPlane to Beam do
+         twCoordinates[MeasIndex].m[ma]:= ICD_offset.m[ma]+twPosCm[MeasIndex]*Abs(twVector_ICD_cm[Stop ].m[ma]-twVector_ICD_cm[Start].m[ma])/twScanLength;
+      end;
+    end;
+
+  begin
+  AbinStream.Seek(0,soFromBeginning);
+  ScanNr      := AScanNr;
+  ScanNrOk    := 0;
+  b_index     := 0;
+  Version     := 0;
+  n_ScanGroups:= 0;
+  ScanGroup   := 0;
+  if FParseOk then
+    begin
+    Stg    := to_string;                                       {Version:6.3.14}
+    Version:= StrToInt(Stg[9]+Stg[11]);
+    end;
+  if FParseOk then
+    begin
+    n_ScanGroups:= to_int;                                       {70}
+    ScanMax     := n_ScanGroups;                                 {there are at least n_Scangroups scans}
+    while (b_data[b_index]<>$FF) or (b_data[b_index+1]<>$FF) do inc(b_index);
+    inc(b_index,4);
+    Stg    := to_string2;                                             {CBeam}
+    FParseOk:= Stg='CBeam';
+    if not FParseOk then FParser.ErrorString:= 'no rfb-format';
+    end;
+  if FParseOk then with wBeamInfo do
+    begin
+    Read_SubHeader:= True;
+    repeat // until ScanGroup=n_ScanGroups
+      Inc(ScanGroup);
+      Linac                     := to_string;                         {U02: Elekta SL25-15}
+      wSource[Measured].twDevice:= Linac;
+      twBEnergy                 := to_double(2);                      {10 [M(e)V]}
+      case to_int of                                                  {Photon=0,Electron=1,Proton=2,Neutron=3,Cobalt=4,Isotope=5}
+        0: twBModality:= 'X';
+        1: twBModality:= 'E';
+        2: twBModality:= 'P';
+        3: twBModality:= 'N';
+        4: twBModality:= 'C';
+        5: twBModality:= 'I';
+       end; {case}
+      if Version<60 then
+        begin
+        twBFieldHi[fInplane   ]:= to_double(2,0.1);                   {200 [*0.1 mm]}
+        twBFieldHi[fCrossplane]:= to_double(2,0.1);                   {200 [*0.1 mm]}
+        end;
+      case to_int of                                                  {0}
+        0:  twBWedgeType:= 'Hard';
+        1:  twBWedgeType:= 'Dynamic';
+        2:  twBWedgeType:= 'Enhanced';
+        3:  twBWedgeType:= 'Virtual';
+        4:  twBWedgeType:= 'Soft';
+       else twBWedgeType:= '';
+       end;
+      twBWedge                  := to_int(2);                         {0 [degrees]}
+      twBGantry                 := to_int(2);                         {0 [degrees]}
+      twBCollimator             := to_int(2);                         {0 [degrees]}
+      wSource[Measured].twSSD_cm:= to_double(2,0.1,twcDefaultSSDcm);  {1000 [mm]}
+      twBSAD_cm                 := to_double(2,0.1,100);              {1000 [mm]}
+      twBApplicator             := to_string;                         {Undefined}
+      if FParseOk and ((Length(twBApplicator)=0) or (twBApplicator[1]<>#0)) then
+        begin//if Version > 50 then begin
+        if (twBApplicator='No Applicator') or (twBApplicator='Undefined') then twBApplicator:= '';
+        case to_int of                                                {1}
+          0:  twBMedium:= 'air';
+          1:  twBMedium:= 'water';
+          2:  twBMedium:= 'film'
+         else twBMedium:= 'unknown';
+         end; {case}
+        end {> v50}
+      else {<= v50}
+        twBApplicator:= '';
+      if FParseOk and (Version>53) then with wGeneralInfo do
+        begin
+        twClinic               := to_string;                          {Radiotherapie}
+        twAddress              := to_string;                          {UMC}
+        twTelephone            := to_string;                          {}
+        twEmail                := to_string;                          {}
+        twBFieldLo[fInplane   ]:= to_double(2,0.1);                   {-200 [*0.1 mm]}
+        twBFieldHi[fInplane   ]:= to_double(2,0.1);                   {200 [*0.1 mm]}
+        twBFieldLo[fCrossplane]:= to_double(2,0.1);                   {-200 [*0.1 mm]}
+        twBFieldHi[fCrossplane]:= to_double(2,0.1);                   {200 [*0.1 mm]}
+        twBGantryScale         := twGantrySetup(to_int);              {0}
+        end; {> v53}
+      //--- begin binnenloop
+      repeat
+        if Read_SubHeader and FParseOk then
+          begin
+          while (b_data[b_index]<>$80) and ((b_data[b_index]<>$FF) or (b_data[b_index+1]<>$FF)) and (b_index<length(b_data)) do inc(b_index);
+          FParseOk:= b_index<b_size;
+          if FParseOk then
+            begin
+            if b_data[b_index]=$80 then Inc(b_index)
+            else
+              begin
+              meas_type:= to_string2(4);
+              FParseOk  := meas_type<>'CSinglePointCurve';
+              if not FParseOk then FParser.ErrorString:= 'single point curves are not supported';
+              end; {b_data[b_index]<>#128}
+            end; {FParseOk}
+          end; {sub_header}
+        if FParseOk then with wCurveInfo,wDetectorInfo,wSource[Measured] do
+          begin
+          Inc(ScanNrOk);
+          twMeasDateTime  := unixtodatetime(max(8*3600,to_longword)-8*3600);       // date, why 7 or 8 hours subtracted??
+          twMeasTime      := FormatDateTime('dd-mmm-yyyy hh:nn',twMeasDateTime);
+          twDesModDateTime:= unixtodatetime(max(8*3600,to_longword)-8*3600);       // date, why 7 or 8 hours subtracted??
+          twDesModTime    := FormatDateTime('dd-mmm-yyyy hh:nn',twDesModDateTime);
+          case b_data[b_index] of
+            1:  twDetQuantity:= 'Relative optical density';
+            2:  twDetQuantity:= 'Relative dose';
+            3:  twDetQuantity:= 'Relative ionisation';
+            4:  twDetQuantity:= 'Absolute dose';
+            5:  twDetQuantity:= 'Charge'
+           else twDetQuantity:= 'Unknown';
+           end; {case}
+          AbsoluteDose:= (b_data[b_index]=4) or (meas_type='CSinglePointCurve');
+          Inc(b_index);
+          if Version>50 then
+            begin
+            twDetRadius_cm:= to_double;
+            try
+              while twDetRadius_cm>1 do twDetRadius_cm:= twDetRadius_cm/10;
+             except
+              twDetRadius_cm:= 0.5;
+             end;
+            twCalFactor:= to_double;
+            if Version>51 then
+              begin
+              twTemperature_C:= to_double;
+              twPressure_hPa := to_double;
+              Stg            := to_string;                         {cal date}
+              to_double;                                           {unknown}
+              end; {versie>51}
+            end
+          else
+            Inc(b_index,16); {versie<=50}
+          twDetName       := to_string;
+          case to_int of
+            1:  twDetType := 'Single diode';
+            2:  twDetType := 'LDA-11';
+            3:  twDetType := 'LDA-25';
+            4:  twDetType := 'Ion chamber (cylindrical)';
+            5:  twDetType := 'Ion chamber (plane parallel)';
+            6:  twDetType := 'Stereotaxie';
+            7:  twDetType := 'Film';
+            8:  twDetType := 'CA24';
+            9:  twDetType := 'BIS-2G';
+           else twDetType :=  '';
+           end; {case}
+          twDesOperator   := to_string;
+          twDesMeasComment:= trim(to_String);
+          if AbsoluteDose then
+            begin
+            inc(b_index,6);
+            i:= to_int;
+            CheckSize(Measured,i);
+            inc(b_index,2);
+            if Version>60 then inc(b_index,291);
+            // voor absdose y,x,z,refy,refx,refz
+            twVector_ICD_cm[Start]:= to_CIB_double;
+            twVector_ICD_cm[Stop ].m[CrossPlane  ]                 := to_double(0,0.1);
+            twVector_ICD_cm[Stop ].m[InPlane     ]                 := to_double(0,0.1);
+            if Version>60 then twVector_ICD_cm[Stop ].m[InPlane]   := to_double(0,0.1); // -y
+            twVector_ICD_cm[Stop ].m[Beam        ]                 := to_double(0,0.1);
+            if Version>60 then twVector_ICD_cm[Stop ].m[CrossPlane]:= to_double(0,0.1); // -x
+            twTemperature_C                              := to_double;
+            twPressure_hPa                               := to_double;
+            with wSource[Measured] do
+              while i>0 do
+                begin
+                Dec(i);
+                twPosCm[i]:= 0;
+                twData[i] := to_double;
+                end;
+            i:= b_data[b_index];
+            if i>0 then inc(b_index,2)
+            else        FParseOk:= False;
+            end;
+          end; {FParseOk}
+          if (Version>53) then with wServoInfo,wMeterInfo,wCurveInfo do
+            begin
+            for i:= 1 to 3 do if FParseOk then {axismapping: cross|inline|depth: z_neg=-3, y_neg=-2, x_neg=-1, x_pos=1, y_pos=2, z_pos=3}
+              begin
+              j                                   := to_int;
+              if not InRange(Abs(j),1,3) then
+                FParseOk                           := False
+              else
+                try
+                  c                               := Char(Ord('X')+Pred(Abs(j)));
+                  twServoMappingICD[m_ordering[i]]:= c;
+                  twServoDirXYZ[c]                := Sign(j);
+                 except
+                  FParseOk                         := False;
+                 end;
+              end;
+            if FParseOk then
+              begin
+              twElSamples      := to_int;
+              twServoSpeed_mm_s:= to_double(2);
+              inc(b_index,4);                                      {13; 6 ??}
+              for t:= X to Z do twServoOriginXYZ_cm.t[t]:= to_int/100-24;    {x=2438; y=2425; z=3620 from bottom tank corner *0.1 [mm]}
+              twServoIsocICD_cm:= to_CIB_double;
+              twServoNormICD_cm:= to_CIB_double;
+              for mc:= FieldCh to RefCh do twElChannels[mc].twNorm       := to_double;
+              for mc:= FieldCh to RefCh do twElChannels[mc].twDarkCurrent:= to_double;
+              for mc:= FieldCh to RefCh do twElChannels[mc].twHV         := to_double;
+              for mc:= FieldCh to RefCh do twElChannels[mc].twGain       := to_int;
+              for mc:= FieldCh to RefCh do twElChannels[mc].twRange      := to_string;
+              twServoWaterSurface_cm                                     := to_double;
+              inc(b_index,4); //??
+              twElRefMin:= Round(to_double);
+              twElRefMax:= Round(to_double);
+              twElRefAvg:= Round(to_double);
+              inc(b_index,10);                                     {double(-1), int(4)}
+              twDesNormalise:= to_double;
+              inc(b_index,8); {curve offset, equal to detector offset}
+              twDesMeasComment := to_string;
+              inc(b_index,2);                                      {0}
+              for c:= 'A' to 'D' do twServoRefPosition_cm[c]:= to_CIB_double(0.1);
+              inc(b_index,10); //??
+              end;
+            end
+          else {versie<=53}
+            if Version<52 then inc(b_index,8)
+            else               inc(b_index,10);
+          if FParseOk then with wSource[Measured] do
+            begin
+            twVector_ICD_cm[Start]:= to_CIB_double;
+            twVector_ICD_cm[Stop ]:= to_CIB_double;
+            twScanLength := GetDistance(twVector_ICD_cm[Start],twVector_ICD_cm[Stop ]);
+            ICD_offset   := twVector_ICD_cm[Start];
+            ScanHex      := 0;
+            for ma:= Inplane to Beam do if Abs(twVector_ICD_cm[Start].m[ma]-twVector_ICD_cm[Stop].m[ma])>0.5 then
+              begin
+              Inc(Scanhex,1 shl Ord(ma));
+              ICD_offset.m[ma]:= 0;
+              end;
+            case ScanHex of
+              1:  Stg:= 'inline';
+              2:  Stg:= 'crossline';
+              3:  Stg:= 'diagonal';
+              4:  Stg:= 'pdd';
+             else Stg:= 'freescan';
+             end;
+            if ScanHex<4 then Stg:= Stg+Format(' d=%0.1f cm',[ICD_offset.m[Beam]]);
+            SetNumPoints(Measured,to_int);
+            for i:= 0 to Pred(twPoints) do to_Meas_point(i);
+            if (ScanNr=0) or (ScanNr=ScanNrOk) then
+              StatusMessage(Format('s%2.2d/%3.3d, %s, %s%0.*f, %0.*fx%0.*f, %s',
+                                   [ScanGroup,ScanNrOk,
+                                    twMeasTime,
+                                    twBModality,ifthen(twBEnergy<1,3,0),ifthen(twBEnergy<1,1000,1)*twbEnergy,
+                                    ifthen(FieldGT_cm-Trunc(FieldGT_cm)>0.05,1,0),FieldGT_cm,ifthen(FieldAB_cm-Trunc(FieldAB_cm)>0.05,1,0),FieldAB_cm,
+                                    Stg]) );
+          end; {FParseOk}
+        i:= b_data[b_index];
+        Inc(ScanMax);
+        if i=0 then
+          begin
+          Read_SubHeader:= True;
+          if (Version>50) and (b_index<b_size) then
+            begin
+            inc(b_index,4);
+            i:= b_data[b_index];
+            if (i>0) and (Version>63) and (meas_type='CTMRCurve') then Read_SubHeader:= False;
+            end;
+          end
+        else {i>0}
+          begin
+          while FParseOk and (b_data[b_index]<>$80) and ((b_data[b_index]<>$FF) or (b_data[b_index+1]<>$FF)) and (b_index<b_size-2) do Inc(b_index);
+          Read_SubHeader:= (b_data[b_index]=$FF);
+          if not Read_SubHeader then Inc(b_index);
+          end; {i>0}
+      until (not FParseOk) or (i=0) or (ScanNrOk=ScanNr) or (b_index>=b_size-2);
+      //---eind binnenloop
+      if ScanNrOk=ScanNr then ScanGroup:= n_ScanGroups;
+      if ScanGroup<n_ScanGroups then
+        begin
+        while b_data[b_index]<>$80 do inc(b_index);
+        Inc(b_index);
+      end;
+      Dec(ScanMax);                                               {started with count of n_ScanGroups}
+    until (ScanGroup=n_ScanGroups) or (b_index>=b_size-2) or (not FParseOk);
+    FParseOk:= (ScanNr=0) or (ScanNrOk=ScanNr);
+    end; {FParseOk}
+  end;
+
+begin
+Result:= ResetData(f,AFileName,tofRead,1);
+if Result then
+  begin
+  b_size    := FileSize(f);
+  SetLength(b_data,b_size);
+  BlockRead(f,b_data[0],b_size,n);
+  CloseFile(f);
+  FParseOk:= (n=b_size) and (b_data[0]<n);
+  if FParseOk then
+    begin
+    FIdentity := 'omnipro_rfb';
+    FileFormat:= twWellhoferRfb;
+    if AFileName<>FLastMultiFile then
+      begin
+      wMultiScanMax := 0;
+      ScanData(0);
+      wMultiScanMax := ScanMax;
+      FLastMultiFile:= AFileName;
+      end;
+    wMultiScanNr:= EnsureRange(wMultiScanNr,1,wMultiScanMax);
+    if FParseOk then
+      begin
+      ScanData(wMultiScanNr);
+      ScanMax:= wMultiScanMax; {repair scanmax}
+      end;
+    Finalize(b_data);
+    wSource[Measured].twOriginalFormat:= twWellhoferRfb;
+    wSource[Measured].twScanNr        := ScanNr;
+    wCurveInfo       .twDesScanType   := Undefined;
+    Result:= ReadResults;
+    end
+  else
+    Result:= False
+  end;
+end;  {~readrfb}
+*)
+
+
+{20/07/2016 test version, reading both from stream and byte array}
+function TWellhoferData.ReadRfb(AFileName:String): Boolean;
+var b_data    : array of Byte;
+    b_size,n  : Integer;
+    f         : File;
+    FbinStream: TMemoryStream;
+
+  procedure ScanData(AScanNr:Integer);
+  const m_ordering: array[1..3] of twMeasAxis=(Crossplane,Inplane,Beam);
+  var b_index,i,j,Version,
+      n_ScanGroups,ScanGroup     : Integer;
+      c                          : Char;
+      t                          : twTankAxis;
+      ma                         : twMeasAxis;
+      mc                         : twChannels;
+      Stg,meas_type              : String;
+      Read_SubHeader,AbsoluteDose: Boolean;
+      ICD_offset                 : twCoordinate;
+      ScanHex,b                  : Byte;
+ok:boolean;
+
+    function byte_at_pointer: byte;
+    begin
+    try
+      FbinStream.Read(Result,1);
+      FbinStream.Seek(-1,soFromCurrent);
+ok:= ok and (Result=b_data[b_index]);
+     except
+      Result  := 0;
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_String(pre_incr:integer=0): string;
+    var res_ptr: ^ShortString;
+        s      : ShortString;
+        m      : Byte;
+    begin
+    FbinStream.Seek(pre_incr,soFromCurrent); {<length>[data]}
+    inc(b_index,pre_incr);
+    try
+      res_ptr:= @(b_data[b_index]);
+      inc(b_index,Succ(Length(res_ptr^)));
+      Result:= StrReplace(AsciiCR,'',StrReplace(AsciiLF,', ',Trim(res_ptr^)));
+      FbinStream.Read(m,1);
+      FbinStream.Seek(-1,soFromCurrent);
+      FbinStream.Read(s,m+1);
+Ok:= Ok and (Result=StrReplace(AsciiCR,'',StrReplace(AsciiLF,', ',Trim(s)))) and (b_index=FbinStream.Position);
+      Result:= StrReplace(AsciiCR,'',StrReplace(AsciiLF,', ',Trim(s)));
+     except
+      Result  := '';
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_String2(pre_incr:integer=0): string;
+    var res_ptr: ^ShortString;
+        s      : ShortString;
+        m      : Byte;
+    begin
+    FbinStream.Seek(pre_incr,soFromCurrent); {<length>#0[data]}
+    inc(b_index,pre_incr);
+    m      := b_data[b_index];
+    FbinStream.Read(m,1);
+    try
+      res_ptr:= @(b_data[b_index+1]);
+      SetLength(res_ptr^,m);  {repair length}
+      inc(b_index,m+2);
+      Result:= Trim(res_ptr^);
+      FbinStream.Read(s,m+1);
+      SetLength(s,m);         {repair length}
+Ok:= Ok and (Result=Trim(s)) and (b_index=FbinStream.Position);
+      Result:= Trim(s);
+     except
+      Result := '';
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_int(pre_incr:integer=0): smallint;
+    var res_ptr: ^smallint;
+    begin
+//    FbinStream.Seek(b_index,soFromBeginning);
+    FbinStream.Seek(pre_incr,soFromCurrent); {<length>#0[data]}
+    inc(b_index,pre_incr);
+    try
+      res_ptr:= @(b_data[b_index]);
+      inc(b_index,Sizeof(Result));
+      Result:= res_ptr^;
+      FbinStream.Read(Result,Sizeof(Result));
+Ok:= Ok and (Result=res_ptr^) and (b_index=FbinStream.Position);
+     except
+      Result := 0;
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_word(pre_incr:integer=0): word;
+    var res_ptr: ^longword;
+    begin
+    FbinStream.Seek(pre_incr,soFromCurrent); {<length>#0[data]}
+    inc(b_index,pre_incr);
+    try
+      res_ptr:= @(b_data[b_index]);
+      inc(b_index,Sizeof(Result));
+      Result:= res_ptr^;
+      FbinStream.Read(Result,Sizeof(Result));
+Ok:= Ok and (Result=res_ptr^) and (b_index=FbinStream.Position);
+     except
+      Result := 0;
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_longword(pre_incr:integer=0): LongWord;
+    var res_ptr: ^longword;
+    begin
+    FbinStream.Seek(b_index,soFromBeginning);
+    FbinStream.Seek(pre_incr,soFromCurrent); {<length>#0[data]}
+    inc(b_index,pre_incr);
+    try
+      res_ptr:= @(b_data[b_index]);
+      inc(b_index,Sizeof(Result));
+      Result:= res_ptr^;
+      FbinStream.Read(Result,Sizeof(Result));
+Ok:= Ok and (Result=res_ptr^) and (b_index=FbinStream.Position);
+     except
+      Result := 0;
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_double(pre_incr:integer=0;
+                       scaling :Double =1;
+                       default :Double =0): Double;
+    var res_ptr: ^double;
+    begin
+    FbinStream.Seek(pre_incr,soFromCurrent); {<length>#0[data]}
+    inc(b_index,pre_incr);
+    try
+      res_ptr:= @(b_data[b_index]);
+      inc(b_index,Sizeof(Result));
+      Result:= scaling*res_ptr^;
+      FbinStream.Read(Result,Sizeof(Result));
+Ok:= Ok  and (Result=res_ptr^) and (b_index=FbinStream.Position);
+      Result:= Result*Scaling;
+      if abs(Result)<1e-10     then Result:= 0
+      else if abs(Result)>1e10 then Result:= Default;
+     except
+      Result := 0;
+      FParseOk:= False;
+     end;
+    end;
+
+    function to_CIB_double(Scaling:Double=0.1): twCoordinate;
+    var i: SmallInt;
+    begin
+    for i:= 1 to 3 do Result.m[m_ordering[i]]:= to_double(0,Scaling);
+    end;
+
+    procedure to_Meas_point(MeasIndex:Integer);
+    var ma: twMeasAxis;
+    begin
+    with wSource[Measured] do
+      begin
+      twPosCm[MeasIndex]:= to_double(0,0.1);
+      twData[MeasIndex] := to_double;
+      for ma:= InPlane to Beam do
+         twCoordinates[MeasIndex].m[ma]:= ICD_offset.m[ma]+twPosCm[MeasIndex]*Abs(twVector_ICD_cm[Stop ].m[ma]-twVector_ICD_cm[Start].m[ma])/twScanLength;
+      end;
+    end;
+
+  begin
+ok:= true;
+  ScanNr      := AScanNr;
+  ScanNrOk    := 0;
+  b_index     := 0;
+  FbinStream.Seek(0,soFromBeginning);
+  Version     := 0;
+  n_ScanGroups:= 0;
+  ScanGroup   := 0;
+  if FParseOk then
+    begin
+    Stg    := to_string;                                       {Version:6.3.14}
+    Version:= StrToInt(Stg[9]+Stg[11]);
+    end;
+  if FParseOk then
+    begin
+    n_ScanGroups:= to_int;                                       {70}
+    ScanMax     := n_ScanGroups;                                 {there are at least n_Scangroups scans}
+    repeat
+      FbinStream.Read(b,1);
+      if b<>$FF then
+        begin
+        FbinStream.Read(b,1);
+        FbinStream.Seek(-1,soFromCurrent);
+        end
+      else
+        FbinStream.Seek(-1,soFromCurrent);
+    until b=$FF;
+    while (b_data[b_index]<>$FF) or (b_data[b_index+1]<>$FF) do inc(b_index);
+    FbinStream.Seek(4,soFromCurrent);
+    inc(b_index,4);
+    Stg    := to_string2;                                             {CBeam}
+    FParseOk:= Stg='CBeam';
+    if not FParseOk then FParser.ErrorString:= 'no rfb-format';
+    end;
+  if FParseOk then with wBeamInfo do
+    begin
+    Read_SubHeader:= True;
+    repeat // until ScanGroup=n_ScanGroups
+      Inc(ScanGroup);
+      Linac                     := to_string;                         {U02: Elekta SL25-15}
+      wSource[Measured].twDevice:= Linac;
+      twBEnergy                 := to_double(2);                      {10 [M(e)V]}
+      case to_int of                                                  {Photon=0,Electron=1,Proton=2,Neutron=3,Cobalt=4,Isotope=5}
+        0: twBModality:= 'X';
+        1: twBModality:= 'E';
+        2: twBModality:= 'P';
+        3: twBModality:= 'N';
+        4: twBModality:= 'C';
+        5: twBModality:= 'I';
+       end; {case}
+      if Version<60 then
+        begin
+        twBFieldHi[fInplane   ]:= to_double(2,0.1);                   {200 [*0.1 mm]}
+        twBFieldHi[fCrossplane]:= to_double(2,0.1);                   {200 [*0.1 mm]}
+        end;
+      case to_int of                                                  {0}
+        0:  twBWedgeType:= 'Hard';
+        1:  twBWedgeType:= 'Dynamic';
+        2:  twBWedgeType:= 'Enhanced';
+        3:  twBWedgeType:= 'Virtual';
+        4:  twBWedgeType:= 'Soft';
+       else twBWedgeType:= '';
+       end;
+      twBWedge                  := to_int(2);                         {0 [degrees]}
+      twBGantry                 := to_int(2);                         {0 [degrees]}
+      twBCollimator             := to_int(2);                         {0 [degrees]}
+      wSource[Measured].twSSD_cm:= to_double(2,0.1,twcDefaultSSDcm);  {1000 [mm]}
+      twBSAD_cm                 := to_double(2,0.1,100);              {1000 [mm]}
+      twBApplicator             := to_string;                         {Undefined}
+      if FParseOk and ((Length(twBApplicator)=0) or (twBApplicator[1]<>#0)) then
+        begin//if Version > 50 then begin
+        if (twBApplicator='No Applicator') or (twBApplicator='Undefined') then twBApplicator:= '';
+        case to_int of                                                {1}
+          0:  twBMedium:= 'air';
+          1:  twBMedium:= 'water';
+          2:  twBMedium:= 'film'
+         else twBMedium:= 'unknown';
+         end; {case}
+        end {> v50}
+      else {<= v50}
+        twBApplicator:= '';
+      if FParseOk and (Version>53) then with wGeneralInfo do
+        begin
+        twClinic               := to_string;                          {Radiotherapie}
+        twAddress              := to_string;                          {UMC}
+        twTelephone            := to_string;                          {}
+        twEmail                := to_string;                          {}
+        twBFieldLo[fInplane   ]:= to_double(2,0.1);                   {-200 [*0.1 mm]}
+        twBFieldHi[fInplane   ]:= to_double(2,0.1);                   {200 [*0.1 mm]}
+        twBFieldLo[fCrossplane]:= to_double(2,0.1);                   {-200 [*0.1 mm]}
+        twBFieldHi[fCrossplane]:= to_double(2,0.1);                   {200 [*0.1 mm]}
+        twBGantryScale         := twGantrySetup(to_int);              {0}
+        end; {> v53}
+      //--- begin binnenloop (scangroup)
+      repeat
+        if Read_SubHeader and FParseOk then
+          begin
+          while (b_data[b_index]<>$80) and ((b_data[b_index]<>$FF) or (b_data[b_index+1]<>$FF)) and (b_index<length(b_data)) do inc(b_index);
+          FParseOk:= b_index<b_size;
+          repeat
+            FbinStream.Read(b,1);
+            if b=$80 then b:= $FF;
+            if b<>$FF then
+              begin
+              FbinStream.Read(b,1);
+              FbinStream.Seek(-1,soFromCurrent);
+              end
+            else
+              FbinStream.Seek(-1,soFromCurrent);
+          until b=$FF;
+          FParseOk:= FbinStream.Position<FbinStream.Size;
+          if FParseOk then
+            begin
+            b:= byte_at_pointer;
+            if (b_data[b_index]=$80) or (b=$80) then begin Inc(b_index); FbinStream.Position:= FbinStream.Position+1; end
+            else
+              begin
+              meas_type:= to_string2(4);
+              FParseOk  := meas_type<>'CSinglePointCurve';
+              if not FParseOk then FParser.ErrorString:= 'single point curves are not supported';
+              end; {b_data[b_index]<>#128}
+            end; {FParseOk}
+          end; {sub_header}
+        // -------- start of scan ---------
+        if FParseOk then with wCurveInfo,wDetectorInfo,wSource[Measured] do
+          begin     
+          Inc(ScanNrOk);
+          twMeasDateTime  := unixtodatetime(max(8*3600,to_longword)-8*3600);       // date, why 7 or 8 hours subtracted??
+          twMeasTime      := FormatDateTime('dd-mmm-yyyy hh:nn',twMeasDateTime);
+          twDesModDateTime:= unixtodatetime(max(8*3600,to_longword)-8*3600);       // date, why 7 or 8 hours subtracted??
+          twDesModTime    := FormatDateTime('dd-mmm-yyyy hh:nn',twDesModDateTime);
+          case b_data[b_index] of
+            1:  twDetQuantity:= 'Relative optical density';
+            2:  twDetQuantity:= 'Relative dose';
+            3:  twDetQuantity:= 'Relative ionisation';
+            4:  twDetQuantity:= 'Absolute dose';
+            5:  twDetQuantity:= 'Charge'
+           else twDetQuantity:= 'Unknown';
+           end; {case}
+          b:= byte_at_pointer;
+          case b of
+            1:  twDetQuantity:= 'Relative optical density';
+            2:  twDetQuantity:= 'Relative dose';
+            3:  twDetQuantity:= 'Relative ionisation';
+            4:  twDetQuantity:= 'Absolute dose';
+            5:  twDetQuantity:= 'Charge'
+           else twDetQuantity:= 'Unknown';
+           end; {case}
+          AbsoluteDose:= (b=4) or (meas_type='CSinglePointCurve');
+          Inc(b_index);
+          FbinStream.Position:= FbinStream.Position+1;
+          if Version>50 then
+            begin
+            twDetRadius_cm:= to_double;
+            try
+              while twDetRadius_cm>1 do twDetRadius_cm:= twDetRadius_cm/10;
+             except
+              twDetRadius_cm:= 0.5;
+             end;
+            twCalFactor:= to_double;
+            if Version>51 then
+              begin
+              twTemperature_C:= to_double;
+              twPressure_hPa := to_double;
+              Stg            := to_string;                         {cal date}
+              to_double;                                           {unknown}
+              end; {versie>51}
+            end
+          else
+            begin
+            Inc(b_index,16); {versie<=50}
+            FbinStream.Position:= FbinStream.Position+16;
+            end;
+          twDetName       := to_string;
+          case to_int of
+            1:  twDetType := 'Single diode';
+            2:  twDetType := 'LDA-11';
+            3:  twDetType := 'LDA-25';
+            4:  twDetType := 'Ion chamber (cylindrical)';
+            5:  twDetType := 'Ion chamber (plane parallel)';
+            6:  twDetType := 'Stereotaxie';
+            7:  twDetType := 'Film';
+            8:  twDetType := 'CA24';
+            9:  twDetType := 'BIS-2G';
+           else twDetType :=  '';
+           end; {case}
+          twDesOperator   := to_string;
+          twDesMeasComment:= trim(to_String);
+          if AbsoluteDose then
+            begin
+            inc(b_index,6);
+            FbinStream.Position:= FbinStream.Position+6;
+            i:= to_int;
+            CheckSize(Measured,i);
+            inc(b_index,2);
+            FbinStream.Position:= FbinStream.Position+2;
+            if Version>60 then Inc(b_index,291);
+            if Version>60 then FbinStream.Position:= FbinStream.Position+291;
+            // voor absdose y,x,z,refy,refx,refz
+            twVector_ICD_cm[Start]:= to_CIB_double;
+            twVector_ICD_cm[Stop ].m[CrossPlane  ]                 := to_double(0,0.1);
+            twVector_ICD_cm[Stop ].m[InPlane     ]                 := to_double(0,0.1);
+            if Version>60 then twVector_ICD_cm[Stop ].m[InPlane]   := to_double(0,0.1); // -y
+            twVector_ICD_cm[Stop ].m[Beam        ]                 := to_double(0,0.1);
+            if Version>60 then twVector_ICD_cm[Stop ].m[CrossPlane]:= to_double(0,0.1); // -x
+            twTemperature_C                              := to_double;
+            twPressure_hPa                               := to_double;
+            with wSource[Measured] do
+              while i>0 do
+                begin
+                Dec(i);
+                twPosCm[i]:= 0;
+                twData[i] := to_double;
+                end;
+            if b_data[b_index]>0 then inc(b_index,2)
+            else        FParseOk:= False;
+            if byte_at_pointer>0 then FbinStream.Position:= FbinStream.Position+2
+            else                      FParseOk:= False;
+            end;
+          end; {FParseOk}
+          if (Version>53) then with wServoInfo,wMeterInfo,wCurveInfo do
+            begin
+            for i:= 1 to 3 do if FParseOk then {axismapping: cross|inline|depth: z_neg=-3, y_neg=-2, x_neg=-1, x_pos=1, y_pos=2, z_pos=3}
+              begin
+              j:= to_int;
+              if not InRange(Abs(j),1,3) then
+                FParseOk:= False
+              else
+                try
+                  c                               := Char(Ord('X')+Pred(Abs(j)));
+                  twServoMappingICD[m_ordering[i]]:= c;
+                  twServoDirXYZ[c]                := Sign(j);
+                 except
+                  FParseOk:= False;
+                 end;
+              end;
+            if FParseOk then
+              begin
+              twElSamples      := to_int;
+              twServoSpeed_mm_s:= to_double(2);
+              Inc(b_index,4);                                      {13; 6 ??}
+              FbinStream.Position:= FbinStream.Position+4;         {13; 6 ??}
+              for t:= X to Z do twServoOriginXYZ_cm.t[t]:= to_int/100-24;    {x=2438; y=2425; z=3620 from bottom tank corner *0.1 [mm]}
+              twServoIsocICD_cm:= to_CIB_double;
+              twServoNormICD_cm:= to_CIB_double;
+              for mc:= FieldCh to RefCh do twElChannels[mc].twNorm       := to_double;
+              for mc:= FieldCh to RefCh do twElChannels[mc].twDarkCurrent:= to_double;
+              for mc:= FieldCh to RefCh do twElChannels[mc].twHV         := to_double;
+              for mc:= FieldCh to RefCh do twElChannels[mc].twGain       := to_int;
+              for mc:= FieldCh to RefCh do twElChannels[mc].twRange      := to_string;
+              twServoWaterSurface_cm                                     := to_double;
+              Inc(b_index,4); //??
+              FbinStream.Position:= FbinStream.Position+4;  {??}
+              twElRefMin:= Round(to_double);
+              twElRefMax:= Round(to_double);
+              twElRefAvg:= Round(to_double);
+              Inc(b_index,10);                                     {double(-1), int(4)}
+              FbinStream.Position:= FbinStream.Position+10;        {double(-1), int(4)}
+              twDesNormalise:= to_double;
+              inc(b_index,8); {curve offset, equal to detector offset}
+              FbinStream.Position:= FbinStream.Position+8;
+              twDesMeasComment := to_string;
+              inc(b_index,2);                                      {0}
+              FbinStream.Position:= FbinStream.Position+2;         {0}
+              for c:= 'A' to 'D' do twServoRefPosition_cm[c]:= to_CIB_double(0.1);
+              inc(b_index,10); //??
+              FbinStream.Position:= FbinStream.Position+10;        {??}
+              end;
+            end
+          else {versie<=53}
+            begin
+            i:= ifthen(Version<52,8,10);
+            Inc(b_index,i);
+            FbinStream.Position:= FbinStream.Position+i;
+            end;
+          if FParseOk then with wSource[Measured] do
+            begin
+            twVector_ICD_cm[Start]:= to_CIB_double;
+            twVector_ICD_cm[Stop ]:= to_CIB_double;
+            twScanLength := GetDistance(twVector_ICD_cm[Start],twVector_ICD_cm[Stop ]);
+            ICD_offset   := twVector_ICD_cm[Start];
+            ScanHex      := 0;
+            for ma:= Inplane to Beam do if Abs(twVector_ICD_cm[Start].m[ma]-twVector_ICD_cm[Stop].m[ma])>0.5 then
+              begin
+              Inc(Scanhex,1 shl Ord(ma));
+              ICD_offset.m[ma]:= 0;
+              end;
+            case ScanHex of
+              1:  Stg:= 'inline';
+              2:  Stg:= 'crossline';
+              3:  Stg:= 'diagonal';
+              4:  Stg:= 'pdd';
+             else Stg:= 'freescan';
+             end;
+            if ScanHex<4 then Stg:= Stg+Format(' d=%0.1f cm',[ICD_offset.m[Beam]]);
+            SetNumPoints(Measured,to_int);
+            for i:= 0 to Pred(twPoints) do to_Meas_point(i);              {read datapoints}
+            if (ScanNr=0) or (ScanNr=ScanNrOk) then
+              StatusMessage(Format('s%2.2d/%3.3d, %s, %s%0.*f, %0.*fx%0.*f, %s',
+                                   [ScanGroup,ScanNrOk,
+                                    twMeasTime,
+                                    twBModality,ifthen(twBEnergy<1,3,0),ifthen(twBEnergy<1,1000,1)*twbEnergy,
+                                    ifthen(FieldGT_cm-Trunc(FieldGT_cm)>0.05,1,0),FieldGT_cm,ifthen(FieldAB_cm-Trunc(FieldAB_cm)>0.05,1,0),FieldAB_cm,
+                                    Stg]) );
+          end; {FParseOk}
+        //------ end of scan ------
+        ScanHex:= b_data[b_index];       {------ scan repeat signal: more scans follow when ScanHex>0 ------}
+ok:= ok and (scanhex=byte_at_pointer);            
+        ScanHex:= byte_at_pointer;       {------ scan repeat signal: more scans follow when ScanHex>0 ------}
+        Inc(ScanMax);
+        if ScanHex=0 then  {prepare for next subgroup}
+          begin
+          Read_SubHeader:= True;
+          if (Version>50) and (b_index<b_size) then
+            begin
+            inc(b_index,4);
+            FbinStream.Position:= FbinStream.Position+4;
+            ScanHex:= b_data[b_index];
+ok:= ok and (scanhex=byte_at_pointer);
+            ScanHex:= byte_at_pointer;
+            if (ScanHex>0) and (Version>63) and (meas_type='CTMRCurve') then Read_SubHeader:= False;
+            end;
+          end
+        else {scanhex>0, more scans in same scangroup}
+          begin
+          while FParseOk and (b_data[b_index]<>$80) and ((b_data[b_index]<>$FF) or (b_data[b_index+1]<>$FF)) and (b_index<b_size-2) do Inc(b_index);
+          if FParseOk then
+            repeat
+              FbinStream.Read(b,1);
+              if b=$80 then b:= $FF;
+              if b<>$FF then
+                begin
+                FbinStream.Read(b,1);
+                FbinStream.Seek(-1,soFromCurrent);
+                end
+              else
+                FbinStream.Seek(-1,soFromCurrent);
+            until (b=$FF) or (FbinStream.Size-FbinStream.Position<2);
+          Read_SubHeader:= (b_data[b_index]=$FF);
+ok:= ok and (Read_SubHeader=(byte_at_pointer=$ff));
+          Read_SubHeader:= (byte_at_pointer=$FF);
+          if not Read_SubHeader then Inc(b_index);
+          if not Read_SubHeader then FbinStream.Position:= FbinStream.Position+1;
+          end; {scanhex>0}
+      until (not FParseOk) or (ScanHex=0) or (ScanNrOk=ScanNr) or (b_index>=b_size-2) or (FbinStream.Size-FbinStream.Position<2);
+      //---eind binnenloop (scangroup)
+      if ScanNrOk=ScanNr then ScanGroup:= n_ScanGroups;
+      if ScanGroup<n_ScanGroups then
+        begin
+        while b_data[b_index]<>$80 do inc(b_index);
+        Inc(b_index);
+        FbinStream.Read(b,1);
+        while b<>$80 do FbinStream.Read(b,1);
+        end;
+      Dec(ScanMax);                                               {started with count of n_ScanGroups}
+    until (ScanGroup=n_ScanGroups) or (b_index>=b_size-2) or (not FParseOk);
+    FParseOk:= (ScanNr=0) or (ScanNrOk=ScanNr);
+    end; {FParseOk}
+  end;
+
+begin
+FbinStream:= TMemoryStream.Create;
+FbinStream.LoadFromFile(AFileName);
+Result:= ResetData(f,AFileName,tofRead,1);
+if Result then
+  begin
+  b_size    := FileSize(f);
+  SetLength(b_data,b_size);
+  BlockRead(f,b_data[0],b_size,n);
+  CloseFile(f);
+  FParseOk:= (n=b_size) and (b_data[0]<n);
+  if FParseOk then
+    begin
+    FIdentity := 'omnipro_rfb';
+    FileFormat:= twWellhoferRfb;
+    if AFileName<>FLastMultiFile then
+      begin
+      wMultiScanMax := 0;
+      ScanData(0);
+      wMultiScanMax := ScanMax;
+      FLastMultiFile:= AFileName;
+      end;
+    wMultiScanNr:= EnsureRange(wMultiScanNr,1,wMultiScanMax);
+    if FParseOk then
+      begin
+      ScanData(wMultiScanNr);
+      ScanMax:= wMultiScanMax; {repair scanmax}
+      end;
+    Finalize(b_data);
+    wSource[Measured].twOriginalFormat:= twWellhoferRfb;
+    wSource[Measured].twScanNr        := ScanNr;
+    wCurveInfo       .twDesScanType   := Undefined;
+    Result:= ReadResults;
+    end
+  else
+    Result:= False
+  end;
+FbinStream.Free;
+end;  {~readrfb}

@@ -1,0 +1,50 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Synthetic (virtual) profiles</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Composite curves;FFF;Fit of Depth dose;IPEM report;Mayneord;Merging profiles;Nelder-Mead;PDD;PDD,fit;Reference;synthetic profiles;virtual profiles;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs18.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Synthetic (virtual) profiles</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> processing menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="3"><B>IPEM topical report 1: guidance on implementing flattening filter free (FFF) radiotherapy</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In 2016 a comprehensive British report with guidances for FFF beams was published [G. Budgell <I>et al</I>: IPEM topical report 1: guidance on implementing flattening filter free (FFF) radiotherapy; Phys. Med. Biol. 61 (2016) 8360-8394]. One of the methods they propose, escpecially for field size evaluation is the the division of a small(er) field with a large field profile. The resultant profile assembles closely a conventional profile. In the report this is called a <I>virtual</I> profile.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">An alternative method is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detection</A></FONT><FONT FACE="Arial" SIZE="2"> with a sigmoid model.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="synthetic_profile.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Implementation</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Although this is just the already available division of two data sets, <I>measurement</I> and <I>reference</I>, there are some differences.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The calculated output is in terms of Bistromath a real profile, not a relative curve.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">All standard analysis results are derived from the calculated, synthetic profile. Therefore nearly all measurment results get an exclamation sign as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm#annotations">annotation</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Where, for an standard comparison all parameters should be equal, now the field size and diagonal detection are ignored.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The field size of the divisior (<I>reference</I>) should be larger then the divident (<I>measurement</I>).</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The calculation area is limited on each side to the minimum of the edge of the <I>divident profile</I> + 2 cm and the edge of the <I>divisor profile</I> - 2 cm.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><A HREF="hs131.htm">Symmetry correction</A></FONT><FONT FACE="Arial" SIZE="2"> of the divisor (reference) is disabled, except when it is also applied to the measurement.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#automatic_load_reference">Automatic load of references</A></FONT><FONT FACE="Arial" SIZE="2"> is disabled, because it contradicts with using multiple data files.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The image is unzoomed.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">This feature is a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">processing menu</A></FONT><FONT FACE="Arial" SIZE="2"> function that can be activated at any time.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The graphical analysis is done such that the shoulder match with the profile of the large field.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Limitations</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are no known special limitations other than already in place for curve comparison.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Testing it yourself</B></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Load </FONT><FONT FACE="Courier New" SIZE="2">selftest32_x7c40.txt</FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Set this profile as <I>Temporary reference</I> (&lt;Ctrl+T&gt;).</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Load </FONT><FONT FACE="Courier New" SIZE="2">selftest32_x7c15.txt</FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Activate <I>Synthetic profile</I> in the Processing menu (&lt;Ctrl+F&gt;).</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Processing menu</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">Profile matching</A></FONT><FONT FACE="Arial" SIZE="2">.&nbsp;
+</FONT>
+</BODY></HTML>

@@ -1,0 +1,50 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>History list</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="bitstromath.ini;history;history,list of measurements;institute.ini;PDD;RDD;SpecialMode;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs3.htm">Previous</A>
+ - <A HREF="hs15.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>History list</B></FONT><BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> general description</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="history_list.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#history_list">activated</A></FONT><FONT FACE="Arial" SIZE="2"> in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">File menu</A></FONT><FONT FACE="Arial" SIZE="2"> or the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">Advanced Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">, BistroMath will keep then multiple data sets in memory. These data sets, multiscan files included, are complete data engines with all related parameters. When opening a new file always the actual settings from the user interface are taken.&nbsp;</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="history_next.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The History list is a linear list but behaves circular, </FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;+&lt;PageUp&gt;</FONT><FONT FACE="Arial" SIZE="2"> will move to the previous data; </FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;+&lt;PageDown&gt;</FONT><FONT FACE="Arial" SIZE="2"> will move to a later (or the oldest) data. When a data set from the history is presented (i.e. not the last loaded) then in the window title the 'historic position' and actual list size are shown as </FONT><FONT FACE="Courier New" SIZE="2">--<I>i/n</I>--</FONT><FONT FACE="Arial" SIZE="2">. When frozen (see below) a asterisk is added. When data have to be pushed out because new data sets are added, the earliest opened will be replaced.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This cycling feature is designed to be completely equivalent to using a single data set: also all buffers and the editor are restored to guarantee all functionality. When a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs71.htm">temporary reference</A></FONT><FONT FACE="Arial" SIZE="2"> is set this will be transferred to the next data set upon cycling. This also works for multi-scan data sets. Whether or not such passed refference data will be used depends on the receiving data set and the settings in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm#check_tempref_type">Processing menu</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Use history list</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked BistroMath will maintain a list of data sets. The first data set in the list will be displayed. All data will be set to (un)frozen when the state is changed to (un)checked. See below for explanation.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>length</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This sets the length of the history list whether it is used or not. A value of 1 will uncheck <I>Use history list</I> and disable <I>No recalculations on history data</I>. When the displayed data set is removed from the history list by reducing the list lenght, the first data set in the list will be displayed.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Temporary reference</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a tem</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Put history data in frozen state</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="unfreeze"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked the data sets are not compressed but stay in a "frozen" state. No synchronisation is done between user interface and a frozen data set. Note that loading new data will always unfreeze the current data set. Using </FONT><FONT FACE="Courier New" SIZE="2">&lt;PageUp&gt;</FONT><FONT FACE="Arial" SIZE="2"> or </FONT><FONT FACE="Courier New" SIZE="2">&lt;PageDown&gt;</FONT><FONT FACE="Arial" SIZE="2"> without </FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;</FONT><FONT FACE="Arial" SIZE="2"> to step through multiscan data will also unfreeze that data set. With unfrozen data the reference is loaded again and all necessary calculations must be done again. Also a manual applied shift is lost.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">In all cases, when data are unfrozen, the current settings from the user interface will be taken and differences with the state before might occur.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are both advantages and disadvantages to using the frozen state:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Freezing takes much more memory.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Frozen data are loaded much faster as no recalculations will be done.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Frozen data might not reflect the current settings in the user interface which might also be exploited by loading the same data with different settings.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A temporary reference is not passed to a frozen data set.</FONT><BR>
+<BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs19.htm">Keyboard functions</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#history_list">Advanced Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">.
+</FONT>
+</BODY></HTML>

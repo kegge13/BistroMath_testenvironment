@@ -1,0 +1,127 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Settings tab</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="background;Depth dose fit;flatness;Gamma analysis;language;Linac Symmetry error;Merging profiles;Nelder-Mead;Normalisation;PDD,fit;pips pixel size;Resampling;Rescaling,to default SSD;settings;symmetry;user dose level;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs128.htm">Previous</A>
+ - <A HREF="hs129.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Settings tab</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> settings tab&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="SettingsTab.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">General settings can be found here.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Filter width</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="filterwidth"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Noise reduction is archived by application of a moving second degree polynomial function. The filtering witdth can be set through this option (see </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1030.htm#filtering">Calculation details</A></FONT><FONT FACE="Arial" SIZE="2"> ). The width in mm can be set for all filtering actions with a default value of 6 mm.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Calculation width</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="calculationwidth"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The width in mm can be set for the used number of points for normalisation. At least two points are used, to accommodate for interpolation. This width is also used for the calculation of dose levels (d90, d80, d50, d20). See also the notes on </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1015.htm#extracting_data">extracting data</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Resample grid</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a fixed data point spacing is needed, this can be set here. It is only used when the <I>Resample data</I> item in the <I>Measurement</I> menu is checked.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The spacing is set in mm; a value of zero is interpreted as resampling with the average sample width.&nbsp;</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Normalisation level</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The standard normalisation level may be adjusted to any convenient level. </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">This feature produces results outside the scope of the current conventions in radiotherapy </FONT><FONT FACE="Arial" SIZE="2">and is neither stored or read in the configuration.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>User Dose Level</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A dose level defined by the user may be used to calculate the width and penumbra positions of a profile. A value of 0 switches off this behavior.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>X / E penumbra h/l levels</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="penumbra_levels"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The high and low level for the profile penumbra width can be defined here for photons (X) en electrons (E). Defaults are 80% - 20% and 90% - 50% respectively.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Default beam energy [MV / MeV]</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When no information on the energy is found in the data, this energy will be assumed.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="histogram_range"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Histogram range</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For a division of measurement and reference the results within the In-Field area are sorted to bins from [-range;+range]. For gamma analysis all available results are sorted in bins from [0;+range].</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Assign origin to all 2D array lines</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="insert_origin"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Specific implementation for the StarCheckMaxi 2D-array. The measurement point in the origin is only assigned to the TG line. With this setting it can be inserted into the other lines.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This will be allowed only when the device is in DOSE mode, not in DOSERATE mode (</FONT><FONT FACE="Courier New" SIZE="2">TASK_NAME=DOSE</FONT><FONT FACE="Arial" SIZE="2">).</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="default_SSD"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Default SSD [mm]</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When no information on the SSD is found in the data, this value will be assumed.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Shift Settings: Inplane/Crossplane/Beam-offset</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A profile may be given a fixed offset manually for user specific reasons. This value is not stored and is always reset to 0 at program start, but will be applied to every&nbsp; or depth dose profile. This can be practical for devices which cannot set the origin easily.&nbsp; Note that these values are introduced in the preprocessing stage immediately after the axis mapping. The old PDD shift was set as a postprocessing shift.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Shift Settings: Shift step</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">With the keys "&lt;" and "&gt;" the profile or pdd may be shifted to the left or right in steps. The step size can be set here and is stored in the configuration. The same step size is used to move the cursor.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="linacsymsettings"></A></I></FONT><FONT FACE="Arial" SIZE="2"><I>Linac symmetry error</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement menu</A></FONT><FONT FACE="Arial" SIZE="2"> the option <I>Linac symmetry error</I> is checked, the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs5.htm">Linac symmetry error</A></FONT><FONT FACE="Arial" SIZE="2"> is calculated within a ring shaped area of the beam. The inner and outer radius (as defined at 100 cm) can be set here. The result sign can be inverted by checking the relevant <I>Invert sign</I> checkbox.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><I><A NAME="merge_settings"></A></I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>Merge settings: Profile Shift (cm)</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Prior to the actual merging of two profiles, the profile to be merged can be shifted.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Merge settings: PDD Shift (cm)</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Prior to the actual merging of two depth does, the lower part can be shifted.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Merge settings: Use matching (cm)</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Prior to the actual merging of two profiles, the profile to be merged can be shifted by a matching procedure. The shape of the profile should be sufficient non-flat to work reliably. On the start of the match process the best result from either no shifting or preset shift is the goal to be improved.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Merge settings: Scale overlap area.</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Possible differences in normalisation at measurement time can be corrected. The ratio all summed values in the overlap area (after shifting and/or matching) is used to rescale the scan to be merged.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Gamma analysis settings: Dose norm</I>&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The equivalent dose difference to agreement in percent for gamma=1.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Gamma analysis settings: Distance norm</I>&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The equivalent distance to agreement in mm for gamma=1.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Gamma analysis settings: Cutoff Depth (mm)</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The lower depth limit in mm for gamma analysis at which dose points are incorporated in the results for depth dose curves.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Gamma analysis settings: Cutoff Percentage</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The lower limit for gamma analysis at which dose points are incorporated in the results.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Gamma analysis settings: Search Steps per mm</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The number of steps on each mm from the calculation point at which the reference dose is calculated.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Gamma analysis settings: Search factor</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A limiting value at which the search is aborted. The starting value is the dose difference in the evaluation point with a minimum of 1, multiplied with the Gamma Search factor. When lower Gamma values are found the limit decreases subsequently.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Mayneord settings: D</I></FONT><FONT FACE="Arial" SIZE="1"><I>max</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Any negative value for <I>D</I></FONT><FONT FACE="Arial" SIZE="1"><I>max</I></FONT><FONT FACE="Arial" SIZE="2"> will override the value as found from the beam analysis.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Mayneord settings: SSD org</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Any non-zero value for <I>SSD org</I> will override the value for the original SSD as found with the beam data.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Mayneord settings: SSD new</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Any non-zero value for <I>SSD new</I> will be taken instead of the <I>Default SSD</I>. This value will be set to the configured default SSD at program startup when no value is found in the configuration file.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs124.htm">Background correction item</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">Matching profiles</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">Gamma analysis</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">Advanced Settings</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">Fit of pdd with the Adaptive Nelder-Mead method</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

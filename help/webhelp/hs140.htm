@@ -1,0 +1,48 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Options menu</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Advanced mode;Simple mode;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs139.htm">Previous</A>
+ - <A HREF="hs143.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Options menu</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> options menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="optionsmenu.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Advanced mode</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="advanced_mode"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">To assure an uncomplicated standard mode almost all settings and menu's are locked and can be unlocked by checking <I>Advanced Mode</I>. However, loading presets can and will set all items regardless the state of <I>Advanced Mode</I>. The <I>Advanced Mode</I> state itself is not configurable. When advanced mode is preferred at startup this should be set in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#advanced_startup">Advanced Settings tab</A></FONT><FONT FACE="Arial" SIZE="2"> and stored in a configuration file.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">On returning to standard mode the last known configuration and preset will be restored from disk, ignoring the stored <I>Advanced Mode</I> preference.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Note that </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">depth dose curve fitting</A></FONT><FONT FACE="Arial" SIZE="2"> will only be done when </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm#advanced_mode">Advanded Mode</A></FONT><FONT FACE="Arial" SIZE="2"> is checked.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode</A></FONT><FONT FACE="Arial" SIZE="2"> options in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Processing</A></FONT><FONT FACE="Arial" SIZE="2"> menu are only visible in Advanced Mode.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Simple Mode</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="simple_mode"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When this mode is checked, less items will be visible. This behavior can be extended to the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">results panel</A></FONT><FONT FACE="Arial" SIZE="2"> through the configuration file.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Note that Simple Mode might hide wrongly configured settings. Therefore, BistroMath should be configured with Advanced Mode switched <I>on</I> and Simple Mode <I>off</I>. Then save this configuration (mostly as </FONT><FONT FACE="Courier New" SIZE="2">institute.ini</FONT><FONT FACE="Arial" SIZE="2">) with optionally Advanced Mode <I>off</I> and/or Simple Mode <I>on</I>.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="simplemode.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Filter width...</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Noise reduction is archived by application of a moving second degree polynomial function. The filtering width can be set through this option (see </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1030.htm#filtering">Calculation details</A></FONT><FONT FACE="Arial" SIZE="2"> ). The default value is 6 mm.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For a large step size combined with a large gradient changes a second order filter might produce unwanted results. These can be found with statistical methods. When found there are two levels of fallback: a linear fit and taking the original value.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Normalisation width</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This links to the <I>Calculation width</I> item in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">. To avoid noise of normalisation to a single data point, a range in <I>mm </I>can be given.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Load/Save config</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">configuration</A></FONT><FONT FACE="Arial" SIZE="2"> for details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs14.htm">Institute defaults</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

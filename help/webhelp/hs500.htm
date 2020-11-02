@@ -1,0 +1,41 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Why are measurement results red, green or blue?</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Colors;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs400.htm">Previous</A>
+ - <A HREF="hs510.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Why are measurement results </B></FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="5"><B><I>red</I></B></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>, </B></FONT><FONT FACE="Arial" COLOR="#008000" SIZE="5"><B><I>green</I></B></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>,</B></FONT><FONT FACE="Arial" COLOR="#008000" SIZE="5"><B> </B></FONT><FONT FACE="Arial" COLOR="#008080" SIZE="5"><B><I>teal</I></B></FONT><FONT FACE="Arial" COLOR="#008000" SIZE="5"><B> </B></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>or <I>blue</I>?</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Colored measurement results should be used with care.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are two classes of reasons that lead to red colored results:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Missing information on one of the parameters in the calculation, leading to assumptions or estimations for that parameter.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Analysis parameters that conflict with the definitions in the Dutch NCS-8 protocol (and probably with most international standards for QA).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">In most cases the related labels are denoted with a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm#annotations">bracketed character</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Missing information or changed information</B></FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Flatness and symmetry</FONT><FONT FACE="Arial" SIZE="2">: When one or both penumbra's are missing the field size is undefined. Therefore the In-Field area cannot be determined. Flatness and symmetry can not be calculated. With the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement option</A></FONT><FONT FACE="Arial" SIZE="2"> <I>Accept missing penumbra's</I> the field size is estimated, using extra information from the derivative.&nbsp;</FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">Data labels at horizontal axis</FONT><FONT FACE="Arial" SIZE="2">: The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement option</A></FONT><FONT FACE="Arial" SIZE="2"> "Invert axis" is chosen for that scan direction. Left and right are exchanged. The sign of the center of field will change.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Non standard analysis</B></FONT>
+<LI><FONT FACE="Arial" SIZE="2">normalisation value, flatness and symmetry </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">in red</FONT><FONT FACE="Arial" SIZE="2">: The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement option</A></FONT><FONT FACE="Arial" SIZE="2"> <I>Normalise on average of In-Field area</I> is activated for the measurement and/or the reference. According to protocols one single point should be used form normalisation.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Depth doses </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">in red</FONT><FONT FACE="Arial" SIZE="2">: The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement option</A></FONT><FONT FACE="Arial" SIZE="2"> "Use PDD-fit results" and the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Setting</A></FONT><FONT FACE="Arial" SIZE="2"> "</FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs129.htm#neldermead_settings">PDDfit to buffer</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2">" are activated.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Flatness and symmetry</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"> in blue</FONT><FONT FACE="Arial" SIZE="2">: The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement option</A></FONT><FONT FACE="Arial" SIZE="2"> <I>Symmetry correction</I> is used. See shifted and symmetry corrected example below.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Center and borders</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"> in green</FONT><FONT FACE="Arial" SIZE="2">: The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement option</A></FONT><FONT FACE="Arial" SIZE="2"> <I>Move Profiles to origin</I> is activated. See shifted and symmetry corrected example below.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="profile_moved.gif" BORDER="0"></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Center and borders</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"> </FONT><FONT FACE="Arial" COLOR="#008080" SIZE="2">in teal</FONT><FONT FACE="Arial" SIZE="2">: The profile analysis is fallen back to <I>Edge detection</I> (Advanced Settings Tab). The reason is mostly a wedged profile. However highly assymmetric fields might also lead to this situation when the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement option</A></FONT><FONT FACE="Arial" SIZE="2"> <I>normalisation field center</I> is not activated. This may go unnoticed when the <I>Buffer</I> curve </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm">is made invisible</A></FONT><FONT FACE="Arial" SIZE="2"> as in the example below.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="edge_detected.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Change it yourself</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">All annotations are </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">configurable</A></FONT><FONT FACE="Arial" SIZE="2"> by making a copy of the standard rules.
+</FONT>
+</BODY></HTML>

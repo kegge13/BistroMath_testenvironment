@@ -1,0 +1,76 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Reference menu</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="2D-arrays;Device specific Reference;PTW;Reference;relative flatness;Rescaling,to default SSD;symmetry,symmetry correction;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+function popuplink(url) {
+  window.open(url, 'hspopup', 'width=500,height=400,resizable,scrollbars');
+}
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs134.htm">Previous</A>
+ - <A HREF="hs137.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Reference menu</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> reference menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="reference_menu.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The reference menu regulates the core features of Bistromath. All items in this menu can be (un)checked or to (in)activate the option. For most options the current profile is automatically reloaded to reflect the changes.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="automatic_load_reference"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Automatic load of Reference</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When checked the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs132.htm">relevant reference profile is loaded</A></FONT><FONT FACE="Arial" SIZE="2"> and presented as the Reference curve.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="DeviceSpecificReference"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Device specific Reference</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This option is intended for selected </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">2D-arrays</A></FONT><FONT FACE="Arial" SIZE="2"> with multiple curves with a fixed order in one single file. When applicable a reference may be stored in the original file format. The appropriate curve will always be taken from the reference file.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">At this moment only the PTW Starcheck Maxi and Sun Nulear IC PROFILER are supported. Other devices may be added on request. This option needs specific information in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">configuration file</A></FONT><FONT FACE="Arial" SIZE="2"> to work properly. When this information is missing, this menu item will be disabled.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="GenericBeams"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Reference from Generic Beam List</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">With this option switched <I>on</I>, <I>Generic Beam list</I> becomes available in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm">Confiuration tab</A></FONT><FONT FACE="Arial" SIZE="2">. Both this setting and the list can be stored in any configuration file.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="ReferenceIndexing"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Index multi reference</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">With this option switched <I>on</I>, much more possibilities are opened by making an index of all the scans in a reference file. Of course, this may take sisgnificant time as all these scans have to be analysed. Now different file formats for the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">PTW Starcheck</A></FONT><FONT FACE="Arial" SIZE="2"> can be mixed and unsorted multi reference files can be opened as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs71.htm">temporarary reference</A></FONT><FONT FACE="Arial" SIZE="2">. Note that any entry in a multiple scan file that cannot be analysed as qualified scan is simply ignored. Indexing large files might take considerable time however. When multiple scans qualify as reference, the first one will be taken.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="RefAtDefaultSSD"></A></B></FONT><FONT FACE="Arial" SIZE="2"><B>Reference at default SSD</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a measurement at some SSD is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#Meas2defaultSSD">rescaled to the default SSD</A></FONT><FONT FACE="Arial" SIZE="2">, this option allows to take automatically the appropriate reference at the default SSD. Note that this option is deactivated (grayed out) when the measurement is not rescaled.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Background correction</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="javascript:popuplink('hs124.htm')">Background correction item</A></FONT><FONT FACE="Arial" SIZE="2"> for details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Symmetry correction of Reference</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="javascript:popuplink('hs131.htm')">Symmetry correction item</A></FONT><FONT FACE="Arial" SIZE="2"> for details. For the reference it might be used as standard behavior.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Align with measurement</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">If this item is checked the reference is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs134.htm">shifted towards the measurement</A></FONT><FONT FACE="Arial" SIZE="2">, based on the difference in center position. As (mostly) there are small errors in the setup of the watertank, the standard choice is to activate this option. When unchecked also differences in block/leaf calibration are much more relevant.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Align on Top for FFF</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="RefAlignTop"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">If this item is checked (and enabled) the reference is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs134.htm">shifted towards the measurement</A></FONT><FONT FACE="Arial" SIZE="2">, based on the difference in position of the <I>top</I> for a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF profile</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2">using the choosen model to calculate the top.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Normalise reference</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="normalise_reference"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">With this setting normalisation of the reference curve is forced. Under most circumstances this will have little effects as the file comparison mode uses specific strategies to optimise the graphical overlay of the reference and the division itself will be normalised anyway. With </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs137.htm">the addition of the reference to the measurement</A></FONT><FONT FACE="Arial" SIZE="2"> this might be a matter of choice.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Calculation is ...</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The result of comparing the measurement with the reference can be</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;- a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs133.htm">division</A></FONT><FONT FACE="Arial" SIZE="2"> of measurement and reference,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;- a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">gamma analysis</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;- </FONT><FONT FACE="Arial" SIZE="2">the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs137.htm">addition of measurement and reference</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;- none of the choices above.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs128.htm">Center of Field and Normalisation of profiles</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs133.htm">Compare with reference</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs137.htm">Add reference to measurement</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs132.htm">Automatic load of reference</A></FONT><FONT FACE="Arial" SIZE="2">,</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">Profile matching</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+
+</BODY></HTML>

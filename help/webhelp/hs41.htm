@@ -1,0 +1,67 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Profile analysis and finding field borders</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="settings;user dose level;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs31.htm">Previous</A>
+ - <A HREF="hs40.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Profile analysis and finding field borders</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="1"><I><A HREF="hs1.htm"><IMG SRC="bm_micro.gif" BORDER="0"></A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="1"><I> settings tab, advanced settings tab &amp; measurement menu&nbsp;</I></FONT><BR>
+<FONT FACE="Arial" SIZE="3"><B>Introduction</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In the classic radiotherapy the field border is defined as the full width half maximum (FWHM). Each part of this concept has its problems, even for standard flattened beams:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The maximum might be on a position far outside the field center (for instance wedged beams).</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The field center might not coincide with the origin of the measurement system.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The assumption that the FWHM gives the best connection with adjacent fields may be wrong.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The field border clearly is not the FWHM for wegded beams and FFF profiles.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Methods may become problematic with sparse data points like 2D-array data sets.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Simple interpolation between two points is unreliable to find a border level.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">There is also noise to deal with.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="3"><B>Profile analysis</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="3"><B><A NAME="profile_analysis"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The strategy of profile analysis in BistroMath has an elaborate design to get it as stable as possible. Flaws in the data which might lead to illegal mathematical operations are dealt with in the code by exception handlers. The data might be the raw data or a filtered version. When the data are a derivative or a division only relevant parameters are evaluated. The tasks related to analysis of a single profile can be divided into field border detection, center of field detectection, normalisation level calculation and final </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs5.htm">analysis results</A></FONT><FONT FACE="Arial" SIZE="2"> based on the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1022.htm#flattenedarea">In-Field area</A></FONT><FONT FACE="Arial" SIZE="2"> and penumbra region.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">If the user has chosen to move the center of the profile to the origin (see </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Move profile to origin</A></FONT><FONT FACE="Arial" SIZE="2">), this is done first. The preliminary status of the 50% positions has a neglegible effect. Related curves (Calculated, Reference, Buffer) are moved over the same distance.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">A lot of options can be applied to the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">measurement data</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Preliminary analysis</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In the first stage the data are scanned to find the maximum and minimum value. Further actions depend on a correct registration of the data (profile or depth dose curve).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The maximum is used as a base for determination of 50% and 90% dose level positions. When these positions are highly asymmetrical it is concluded that the data describe a wedged profile. See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs41.htm#wedged_profiles_strategy">wedged profiles</A></FONT><FONT FACE="Arial" SIZE="2"> below. The centre of the field is defined as the average of the 50% positions.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Field border detection</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">BistroMath detects the border at several levels: 20%, 50%, 80%, 90%, <I>high</I>, <I>low</I>, <I>edge, sigmoid inflection</I>, <I>sigmoid model based level</I> and </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs44.htm">user dose level</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2">. For each level and side the position is stored when succesful or noted as failure otherwise. The edge detection is based on the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm#edge_detection_theory">first derivative and statistical analysis</A></FONT><FONT FACE="Arial" SIZE="2"> and can be used as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">fallback</A></FONT><FONT FACE="Arial" SIZE="2"> when the 50% level detection fails or </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#edgedetectionlimit">differs too much</A></FONT><FONT FACE="Arial" SIZE="2"> from the 50% position (</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs44.htm">user dose level</A></FONT><FONT FACE="Arial" SIZE="2"> may be used alternatively as "50%"). The <I>high</I> and <I>low</I> dose position are also </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">user defined</A></FONT><FONT FACE="Arial" SIZE="2"> to comply with any protocol and used for the penumbra width calculation.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Ultimately any border detection depends on the defined "100%" level an can be used with different reference levels. In first instance the reference level is chosen at maximum of the profile. The provisional borders are used to define the center of field which <I>can</I> be used to define the normalisation level. Dependent on </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#normalisation">user settings</A></FONT><FONT FACE="Arial" SIZE="2"> the final normalisation is used to calculate all borders again.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">To avoid misdetection all levels above 65% are searched inwards, all other positions outwards from the center of field. The final position is found by interpolation on a second order fit.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The fixed levels 20%..90% do have a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs940.htm#borders_config">backdoor</A></FONT><FONT FACE="Arial" SIZE="2"> in the configuration file.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">More details can be found in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detection</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Center of field</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In standard software the center of field is limited to (the defined position of) the main axis. This works fine for standard symmetrical fields, but completely fails when the field does not cross the main axis as measured for jaw position calibration. Therefore a more general defintion is needed: the average of the two field borders at 50% or alternatively at a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs44.htm">user defined level</A></FONT><FONT FACE="Arial" SIZE="2">. See also the detailed discussion the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs128.htm">Center of Field and Normalisation</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> topic.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Normalisation</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">To reduce the sensitivity for noise in the normalisation level calculation some averaging is done. This range is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#normalisation">configurable</A></FONT><FONT FACE="Arial" SIZE="2">. See also the detailed discussion the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs128.htm">Center of Field and Normalisation</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> topic.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Final analysis: flatness, symmetry and linac error</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The penumbra width is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">user-defined</A></FONT><FONT FACE="Arial" SIZE="2"> as the distance between the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">predefined levels</A></FONT><FONT FACE="Arial" SIZE="2"> <I>high </I>and <I>low</I>. The levels can be different for photon beams and electron beams. The definition is displayed as text with the penumbra values (for example: "L80-20").</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Flatness and symmetry are defined in the In-Field area and calculated on the filtered curve. The In-Field area is defined here according to NCS as 80% of the 50%-width for the major axis and 70% of the 50%-width on the diagonals for fields larger than 10x10 cm and 1 cm for smaller fields. This is more complicated for fields smaller than 3 cm and fields with a missing penumbra. If there is no penumbra detected and this situation is acceptable by the user, the field limits are taken at a higher level which is guaranteed to be available at both the left and right side of the profile.See </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs5.htm">flatness, symmetry Area Ratio, Elevation and Linac symmetry error</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="wedged_profiles_strategy"></A></B></FONT><FONT FACE="Arial" SIZE="2"><I>Wedged profiles</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For wedged profiles the field borders (normally defined as the 50% level positions) are presented as the position of the two peaks in the derivative. In this case the figures will be displayed in a deviant color. The derivative is displayed in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm">buffer curve</A></FONT><FONT FACE="Arial" SIZE="2">. The peak values are calculated by interpolation with a second order fit. </FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="FFFcalculations"></A></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>FFF profiles</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF-beams</A></FONT><FONT FACE="Arial" SIZE="2"> are detected and presented with alternative analysis results. The average of the (absolute) slope is presented in percent per cm. The symmetry is the normalised summed (positive and negative) slope multiplied by the width of the full analysis range ("In-Field area").</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement menu</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><STRIKE></STRIKE></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">Edge detection</A></FONT><FONT FACE="Arial" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">Advanced settings tab</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs23.htm">Field types</A></FONT><BR>
+
+</BODY></HTML>

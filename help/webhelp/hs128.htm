@@ -1,0 +1,72 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Center of Field and Normalisation</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Local Peak Analysis;Top Model (FFF);">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs124.htm">Previous</A>
+ - <A HREF="hs130.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Center of Field and Normalisation</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>measurement menu&nbsp;</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Design goals of BistroMath</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Virtually all commercial available software assumes that the center of the field is in the origin. When both penumbras of the profile are on the same side of the origin, this field cannot be analysed. These fields are part of a jaw calibration procedure and therefore should be processed in BistroMath as design goal. This design goal was met by defing the <I>center of field</I> (CoF) is the average of left and right penumbra positions. As further expansion of this design setup this point should also be taken as <I>normalisation</I> point.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Taking the origin as CoF imposes the need for a careful setup of your data collection system. Water phantom scanning software offers a CAX-procedure to accomplish this. However this is also prone to analysis challenges and residual errors. With a symmetric field the CoF can be taken as alternative for the origin, offering the option to skip the CAX-procedure. Any reference profile can be easily moved to the same CoF position as the reference. Therefore a twofold uncertainty in the CAX-procedure can be avoided. Of course, any deviation in the jaws/leaves will also introduce small errors in the correct CoF. For very small fields <I>always</I> the CoF (=maximum) should be taken as unertainties in jaw/leaf-posiitons becomes dominant and the origin clearly is not the correct choice. The design goals of BistroMath overcome all these difficulties.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="profile_normalisation.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Calculation of normalisation value</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>These settings are found on the </I></FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"><I>Field Types tab</I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Normalisation of noisy data at a position possibly without data is non-trivial. Poor vertical alignment results in visualy exaggerated differences. Also the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">Gamma analysis</A></FONT><FONT FACE="Arial" SIZE="2"> will degrade. For the division of measurement and reference this is not a problem as this curve is rescaled after median filtering anyway.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The standard approach of Bistromath is to calculate an avarage over a small area, the user configurable setting </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm#calculationwidth">Calculation width</A></FONT><FONT FACE="Arial" SIZE="2">. This gives mostly a reliable result.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For comparison across different linacs there might be more pronounced differences. Also the exchange of a gun filament may introduce unexpected differences. In the classical approach all differences are shown in relation to the central normalisation point.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">To evaluate what is "acceptable" alternative normalisation points can be used. In the example above both measurement are normalised to the average over their In-Field area. Now both curves are not set 100% at the normalisation point as can be readily seen. The measurement normalisation may also be multiplied by the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">normalisation Level</A></FONT><FONT FACE="Arial" SIZE="2"> to shift it to any level. These actions influence the results for normalisation value, maximum, and minimum and maximum over the In-Field area. Therefore these values are displayed in </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">red</FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Alternative setups</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">For both CoF and normalisation can be chosen separate strategies. By making different choices these points can be coupled or decoupled.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Center of Field</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">There are three options for setting the CoF</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Border/Edge (design goal of BistroMath)</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Origin (default for most software)</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Maximum (a meaningful alternative)</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Normalisation</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Center of Field</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Origin</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Maximum</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Average of In-Field area</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Effect on FFF profiles</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="measmenu_fff_top.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">A FFF profile can only be detected after primary analysis of a profile, including determination of CoF and normalisation. But when a FFF field actualy is detected there are more </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#fff_center">meaningful options</A></FONT><FONT FACE="Arial" SIZE="2"> for the Center of Field:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Default/Top (follow strategy for flattened fields, report with Top model)</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Default/Slopes (follow strategy for flattened fields)</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Top (use the central dome)</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Slopes (the intersection fitted lines to the area outside of the central dome)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The background for the alternative definitions is documented in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF-profiles</A></FONT><FONT FACE="Arial" SIZE="2"> topic.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="results_fff.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the CoF is set to the origin <I>and</I> a FFF profile is detected <I>and</I> one of the default options above is selected, the top will be reported according to one of the models.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Consequences for moving profiles to the Origin</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#move_to_origin">Moving profiles to the origin</A></FONT><FONT FACE="Arial" SIZE="2"> can only be done after basic analysis. As alternative definitions become active during analysis, previous derived results might not be entirely adequate. Therefore the complete analysis is repeated when necessary.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement options</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs149.htm">FFF-profiles</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

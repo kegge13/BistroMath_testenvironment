@@ -1,0 +1,288 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Fit of pdd curve and sigmoid penumbra with Adaptive Nelder-Mead method</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Depth dose fit;Fit of Depth dose;Nelder-Mead;PDD;PDD,fit;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs300.htm">Previous</A>
+ - <A HREF="hs500.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Fit of pdd curve and sigmoid penumbra with Adaptive Nelder-Mead method</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#NMintroduction">Introduction</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#JWmodel">Models</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#NMimplementation">Implementation</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#NMactivate">Activation</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#NMoutput">Output</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#fittestresults">Test results</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#NMconfig">Configuration</A></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="NMintroduction"></A></FONT><FONT FACE="Arial" SIZE="2"><B>Introduction</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">BistroMath contains excellent </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#JWmodel">models</A></FONT><FONT FACE="Arial" SIZE="2"> to fit depth dose curves. The values for the model parameters are optimised in a cycle through minimalisation of a cumulative error over all data points. Such a cost function is by definition <I>user defined</I> and ultimately compares the data to be fitted in some way with the model for a given set of parameter values. A widely used strategy to find improved parameter values in each cycle is the Nelder-Mead fit procedure. Decisions to quit the cycle can be based on any combination of the number of cycles, calculation time, cost function value and decline of the cost funtion result with each cycle. In BistroMath also an estimate of the fit error to measurement noise (ENR) can be used.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Nelder-Mead optimisation engine is also used for the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm">sigmoid penumbra fit</A></FONT><FONT FACE="Arial" SIZE="2">. This model needs only </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#Enrico_Fermi">four parameters</A></FONT><FONT FACE="Arial" SIZE="2"> which can be initialised from measurment data and is stable by design. Therefore this optimisation needs few cycles. The pdd models have a lot of parameters, are unstable by design and therefore need careful initialisation. The data are normalised to dose maximum for better agreement with the initial model settings.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">A good introduction can be found on </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method">Wikipedia</A></FONT><FONT FACE="Arial" SIZE="2"> </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#NMwiki">[1]</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Nelder-Mead method or amoeba method is a simplex method wich does a direct search on the target function without using derivatives. The simplex character is based on the usage of multiple target function values for finding a better estimate. For a <I>n</I>-parameter ("dimensions") function <I>n</I>+1 combinations of parameters ("vertices") are used.</FONT><BR>
+<FONT FACE="Arial" COLOR="#008000" SIZE="2"><IMG SRC="Nelder_Mead1.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>(example taken from </I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I><A HREF="https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method">Wikipedia</A></I></FONT><FONT FACE="Arial" SIZE="2"><I>)&nbsp;</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The Nelder-Mead technique was proposed by John Nelder &amp; Roger Mead (1965) [2]:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">"A method is described for the minimization of a function of <I>n</I> variables, which depends on the comparison of function values at the (<I>n</I>+1) vertices of a general simplex, followed by the replacement of the vertex with the highest value by another point. The simplex adapts itself to the local landscape, and contracts on to the final minimum. The method is shown to be effective and computationally compact."</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The six-steps cycle as described on </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#NMwiki">Wikipedia</A></FONT><FONT FACE="Arial" SIZE="2"> is implemented in BistroMath as a general optimisation model (http://bistromath.kegge13.nl/Nelder-Mead.7z) with a user defined target function. However, the parameters for reflection, expansion, contraction and shrinkage are <I>adaptive</I> in the sense that these values are based on the number of dimensions as published by Gao and Han [3] and not on the characteristics of the target function.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">From the initial starting point for the model <I>n</I> extra variants are made. In BistroMath each of the dimensions is changed randomly over a ±70% range of the original value to create a <I>n</I>+1 simplex. The initial starting point may be critical. By using a scaling factor always a normalised model can be used. The exact scaling can be done by evaluating the maximum in the resultant function.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When a initial parameter is exactly zero, it will not change in this implementation of the Nelder-Mead algoritm. This behavior can be exploited for switching off higher order components in the model, thus making it more stable.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The target function used here is a cost function that compares the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#JWmodel">model</A></FONT><FONT FACE="Arial" SIZE="2"> with the actual measurement summed over all depths. This cost function is minimised by the Nelder-Mead algorithm. With using just one initial parameter set for photons and another one for electrons the model is stable enough to produce good results in one single run. The Nelder-Mead algorithm has no stopping criteria by design. Usually the number of cycles, used calculation time and decline of cost function are observed. Restarting the algorithm several times may improve the results markedly. Starting with version 3.08 the code is started in multiple threads in parallel on different cores. After completion of all threads the best result is selected. On subsequent restarts this best result is distributed over all threads. Therefore evolution is now introduced in the concept. See the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#NMimplementation">implementation below</A></FONT><FONT FACE="Arial" SIZE="2"> for more details.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">The Nelder-Mead algorithm is as open source Delphi application made available: NelderMead <a href="http://bistromath.kegge13.nl/NelderMead.exe">demo</a> and <a href="http://bistromath.kegge13.nl/Nelder-Mead.7z">code</a>.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="JWmodel"></A></FONT><FONT FACE="Arial" SIZE="2"><B>Models</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The models are original work of J. Welleweerd and amended by Theo van Soest.</FONT><BR>
+
+<LI><FONT FACE="Arial" SIZE="2">Photons (full model):</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">pdd = I</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">1</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">*exp((-</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">1</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">+(</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">2</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">+(</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">3</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">+</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">4</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">*z)*z)*z)*z) - I</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">b</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">*exp(-mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">b</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">*z^</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">mub_power</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">)</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This model consists of a fourth-grade attenuation part from which a buildup term is subtracted. The power term here is not part of the optimisation and introduced to make its effect less interchangeable with the primary attenuation term.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Before <U>version 2.86</U> this power term was effectively 1. Sometimes this resulted in an oscillation over all depths. A value slightly above 1 effectively dampens this effect. Values towards 2 will weaken the buildup too much. A default is set to 1.15. It can be changed in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#neldermead_settings">Settings Tab</A></FONT><FONT FACE="Arial" SIZE="2"> while it used value is reported in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs220.htm">Fit Results tab</A></FONT><FONT FACE="Arial" SIZE="2">. Also the Error to Noise Ratio can be added to the cost function of the model.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">To return to the original setup the ENR box should be <I>un</I>checked and the build up power factor should be set to a fixed value of 1.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;<IMG SRC="Pddfit_power100.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>pdd = I</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>1</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*exp((-</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>1</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>+(</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>2</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>+(</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>3</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>+</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>4</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*z)*z)*z)*z) - I</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>b</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*exp(-mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>b</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*z)</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;<IMG SRC="Pddfit_power115.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>pdd = I</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>1</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*exp((-</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>1</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>+(</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>2</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>+(</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>3</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>+</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>4</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*z)*z)*z)*z) - I</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>b</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*exp(-mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>b</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*z^</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>1.15</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>)</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;<IMG SRC="Pddfit_power_opt.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>pdd = I</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>1</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*exp((-</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>1</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>+(</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>2</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>+(</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>3</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>+</I></FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><I>mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>4</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*z)*z)*z)*z) - I</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>b</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*exp(-mu</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>b</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>*z^</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I>1.nnn</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2"><I>) </I></FONT><FONT FACE="Lucida Console" COLOR="#008000" SIZE="1"><I>[1.nnn optimised]</I></FONT><BR>
+<BR>
+<BR>
+
+<LI><FONT FACE="Arial" SIZE="2">Extrapolation photons (simplified model for extrapolation purposes beyond d50 only):</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">pdd = I</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">1</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">*exp(-</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">mu</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1">1</FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">*z) + c</FONT><BR>
+<FONT FACE="Arial" SIZE="2">where</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;z= depth in [m].</FONT><BR>
+<BR>
+
+<LI><FONT FACE="Arial" SIZE="2">Electron model:</FONT><BR>
+<FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">&nbsp;pdd = I0/( 1 + I1*Exp((-mu1+(mu2+(mu3+mu4*(z-d0))*(z-d0))*(z-d0))*(z-d0)) + Ib*Exp(-mub*z) ) +</FONT><BR>
+<FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="2">&nbsp; Ix*exp((-mx1+mx2*z/100)*z/100)</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">where</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;z= depth in [cm].</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>note: fitting with 'z-d</I></FONT><FONT FACE="Arial" SIZE="1"><I>0</I></FONT><FONT FACE="Arial" SIZE="2"><I>' proves to be more stable then with 'z+d</I></FONT><FONT FACE="Arial" SIZE="1"><I>0</I></FONT><FONT FACE="Arial" SIZE="2"><I>'</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="NMefit.gif" BORDER="0"></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="NMimplementation"></A></FONT><FONT FACE="Arial" SIZE="2"><B>Implementation</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The models are unstable by design and need a good initial value. The experience shows that a one-size-fits-all initial value seems to be good enough. The fit is scaled with a correction factor to the dose maximum in the data. This ensures that the fit model always produces approximately 100% in the dose maximum and thus giving a more stable fit.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The Nelder-Mead algoritm does not have an end point nor a warranty to end around the absolute minimum. Dependent on the model a restart with the best result will possibly find a much better solution. Therefore a generalised model uses a mixture of calculation time, number of cycles, change of best score and number of restarts as limits. The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs940.htm#ini_only">defaults may be changed</A></FONT><FONT FACE="Arial" SIZE="2">. In BistroMath an extra (external) limit is intoduced: the Error to Noise Ratio (ENR). The slowly changing model will give net error related to the local average of a series of points where the noise on the same points (SNR) can be easily calculated. For a good fit the model error should be smaller than the noise. When the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#NMenr">ENR exceeds a configurable limit</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"> the</FONT><FONT FACE="Arial" SIZE="2"> complete process will be started with a reduced number of restarts until the number of restarts reaches zero. The difference between model and data is plotted as small black dots and is essentially pure noise in the photon PDD as shown above. For electrons there are some small errors in the X-ray tail. The strange skewed lines of the error show the limited digital resolution of the measurement system. Here the model decreases continuously while the data take discrete steps. Also the photon data produce some strange patterns due to this phenomena.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The SNR and ENR calculation are given below:</FONT><BR>
+<BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp; twSNR:= </FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">0</FONT><FONT FACE="Courier New" SIZE="1">;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp; n&nbsp;&nbsp;&nbsp; := </FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">0</FONT><FONT FACE="Courier New" SIZE="1">;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>if</B></FONT><FONT FACE="Courier New" SIZE="1"> twFilterPoints&gt;</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">2</FONT><FONT FACE="Courier New" SIZE="1"> </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>then</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>begin</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>while</B></FONT><FONT FACE="Courier New" SIZE="1"> Pc&lt;twDataLast </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>do</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>try</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; StepFilter;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>if</B></FONT><FONT FACE="Courier New" SIZE="1"> Pc&gt;=</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">0</FONT><FONT FACE="Courier New" SIZE="1"> </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>then</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>begin</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; twData[Pc]:= Q.FitQuad(twPosCm[Pc],Check);</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inc(n);</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; twSNR:= twSNR+Sqr(twSource[ASource].twData[pc]-twData[pc]);</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>end</B></FONT><FONT FACE="Courier New" SIZE="1">;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>except</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; twData[Pc]:= </FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">100</FONT><FONT FACE="Courier New" SIZE="1">;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>end</B></FONT><FONT FACE="Courier New" SIZE="1">;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>if</B></FONT><FONT FACE="Courier New" SIZE="1"> n&gt;</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">0</FONT><FONT FACE="Courier New" SIZE="1"> </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>then</B></FONT><FONT FACE="Courier New" SIZE="1"> twSNR:= SqRt(twSNR/n)/twMaxVal;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>&nbsp; for</B></FONT><FONT FACE="Courier New" SIZE="1"> i:= FNMPddFirst </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>to</B></FONT><FONT FACE="Courier New" SIZE="1"> FNMPddLast </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>do</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp; twData[i]:= TvSpddFunction(BestVertex,twPosCm[i])*FNMPddScaling; </FONT><FONT FACE="Courier New" COLOR="#008000" SIZE="1"><I>{vullen wSource[FNMsource].twdata met fitwaarde}</I></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp; e_sum:= </FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">0</FONT><FONT FACE="Courier New" SIZE="1">;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>if</B></FONT><FONT FACE="Courier New" SIZE="1"> twSNR&gt;</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">0</FONT><FONT FACE="Courier New" SIZE="1"> </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>then</B></FONT><FONT FACE="Courier New" SIZE="1"> </FONT><FONT FACE="Courier New" COLOR="#008000" SIZE="1"><I>{twSNR is calculated in QuadFilter}</I></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>begin</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp; k:= Max(</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">2</FONT><FONT FACE="Courier New" SIZE="1">,twPoints </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>div</B></FONT><FONT FACE="Courier New" SIZE="1"> (</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">2</FONT><FONT FACE="Courier New" SIZE="1">*twcDefENRblocks));</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>for</B></FONT><FONT FACE="Courier New" SIZE="1"> i:= FNMPddFirst+k </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>to</B></FONT><FONT FACE="Courier New" SIZE="1"> FNMPddLast-k </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>do</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>begin</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e:= </FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">0</FONT><FONT FACE="Courier New" SIZE="1">;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>for</B></FONT><FONT FACE="Courier New" SIZE="1"> j:= i-k </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>to</B></FONT><FONT FACE="Courier New" SIZE="1"> i+k </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>do</B></FONT><FONT FACE="Courier New" SIZE="1"> e:= e+(twData[j]-wSource[ASource].twData[j]);</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e_sum:= e_sum+Sqr(e)/(</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">2</FONT><FONT FACE="Courier New" SIZE="1">*k+</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">1</FONT><FONT FACE="Courier New" SIZE="1">);</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>end</B></FONT><FONT FACE="Courier New" SIZE="1">;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>try</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e_sum:= SqRT(e_sum/(FNMPddLast-FNMPddFirst-</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">2</FONT><FONT FACE="Courier New" SIZE="1">*k+</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">1</FONT><FONT FACE="Courier New" SIZE="1">))/(twTopModel.Ytop*twSNR);</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>except</B></FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e_sum:= SqRT(e_sum/(FNMPddLast-FNMPddFirst-</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">2</FONT><FONT FACE="Courier New" SIZE="1">*k+</FONT><FONT FACE="Courier New" COLOR="#0000FF" SIZE="1">1</FONT><FONT FACE="Courier New" SIZE="1">));</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>end</B></FONT><FONT FACE="Courier New" SIZE="1">;</FONT><BR>
+<FONT FACE="Courier New" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT FACE="Courier New" COLOR="#000080" SIZE="1"><B>end</B></FONT><FONT FACE="Courier New" SIZE="1">; </FONT><FONT FACE="Courier New" COLOR="#008000" SIZE="1"><I>{twsnr&gt;0}</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">In most cases the outcome will be sufficient. The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Processing menu</A></FONT><FONT FACE="Arial" SIZE="2"> gives the option to start again with the current best solution (</FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;+&lt;P&gt;</FONT><FONT FACE="Arial" SIZE="2">) or the initial default values (</FONT><FONT FACE="Courier New" SIZE="2">&lt;Ctrl&gt;+&lt;Z&gt;</FONT><FONT FACE="Arial" SIZE="2">).</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="NMactivate"></A></FONT><FONT FACE="Arial" SIZE="2"><B>Activation of the Nelder-Mead fit in Bistromath</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Because of the cpu-intensive nature of this fit it is switched off by default. Activation is done by checking this option in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#neldermead_settings">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">. A second choice is whether to use or not use the fitted curve for the analysis results. Usage of the fit results for analysis is accessed as menu option in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm">Measurement menu</A></FONT><FONT FACE="Arial" SIZE="2"> and option in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#neldermead_settings">Settings Tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The parameters <I>mu3</I>, <I>mu4</I>, and <I>mx2</I> can be switched off by unchecking them in the Settings Tab.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Note that fitting will only be done when </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm#advanced_mode">Advanded Mode</A></FONT><FONT FACE="Arial" SIZE="2"> is checked.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm"><IMG SRC="NMsettings.gif" BORDER="0"></A></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="NMoutput"></A></FONT><FONT FACE="Arial" SIZE="2"><B>Output</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Both electron and photon fit are scaled to dose maximum. Any other scaling can be applied on the output by the user. For graphical presentation within Bistromath onto the screen </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs8.htm">the standard scaling strategy</A></FONT><FONT FACE="Arial" SIZE="2"> is used. The simplified photon model can be used for extrapolation when limited data are available. The latter model is scaled to the full photon fit around the 50% level.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When the PDD-fit is activated and results are available the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs220.htm">Fit Results tab</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> will become visible. With clicking on the table, data are put on the clipboard in a text format that is compatible with a spreadsheet for pasting purposes. This also happens immediately after the calculation, using the last known options and selection.&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">I1 108.3761077</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">mu1 4.128276595</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">mu2 -8.462979663</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">mu3 23.50478120</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">mu4 -22.20914730</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Ib 71.11381785</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">mub 249.4882955</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">dmax 1.49 </FONT><FONT FACE="Courier New" COLOR="#FF0000" SIZE="1">[not part of the model, needed for rescaling I1 and Ib]</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="NMmessages.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Also the messages tab gives the actual fit values for the best solution. The presented parameters are normalised to produce 100% in at the chosen normalisation depth. The reported dose maximum is not yet normalised.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">This information is also added to the OmniPro-v6 .txt, Scanditronix .wtx and PTW .mcc format. An example is given below,</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Clinic:&nbsp; Radiotherapie</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Address:&nbsp; Academisch Ziekenhuis Utrecht</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Telephone:&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Email:&nbsp;&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Beam Description:</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Radiation device selftest</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Energy 6 MV Photon</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Wedge: 0 °</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gantry 0 °(0°up, CW)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Collimator 90 °</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">SSD, SAD [cm]:&nbsp; 100.00 100.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Applicator:&nbsp; Undefined</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field size [cm x cm]: 10.00 x 10.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field position inline (min, max) [cm]:&nbsp; -5.00 5.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Field position crossline (min, max) [cm]:&nbsp; -5.00 5.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Medium:&nbsp; Water</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">CurveType:&nbsp; Depth Dose</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Curve Description:</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement Time:&nbsp; 1999-01-26 11:26:06</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Modification Time:&nbsp; 2005-08-25 17:25:36</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Operator:&nbsp; RM, TvS, NR</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement comment:&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Setup comment:&nbsp;&nbsp;</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Renormalise factor:&nbsp; 1.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Curve offset [cm]:&nbsp; 0.00</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Quantity:&nbsp; Relative Dose</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Detector Type: IC15&nbsp; Ion Chamber (Cylindrical) IC15&nbsp; Ion Chamber (Cylindrical)&nbsp; Offset to P eff [cm]: -0.18 Radius: 0.00 cm</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Can be used for CA24 calibration: No</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electrometer</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Electrometer type:&nbsp; CU500E</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurement mode:&nbsp; Continuous</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference division: -</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Reference (avg, min, max):&nbsp; 0 0 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Measurements per point:&nbsp; 1</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Sampling time [ms]:&nbsp; 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">HV type:&nbsp; Floated</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Normalisation value, field and reference:&nbsp; 96 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Dark current, field and reference:&nbsp; 0 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">High voltage, field and reference [V]:&nbsp; 300 300</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Gain, field and reference:&nbsp; 26 33</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Range, field and reference: HIGH&nbsp;&nbsp; HIGH</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Servo</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Servo type:&nbsp; : Acryl 48 48 48</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Speed [mm/s]:&nbsp; 7.30</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Water surface correction [cm]:&nbsp; 10.50</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Water offset correction [cm]:&nbsp; 0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Origin [X, Y, Z]:&nbsp; 0.12 0.46 18.06</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Servo axis [I, C, D]:&nbsp; X&nbsp; Y -Z</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Isocentre [I, C, D] [cm]:&nbsp; 0.00 0.00 -0.18</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Normalisation [I, C, D] [cm]:&nbsp; -0.01 0.01 1.60</FONT><BR>
+<BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position A [I, C, D] [cm]:&nbsp; 0.00 0.00 0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position B [I, C, D] [cm]:&nbsp; 0.00 0.00 0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position C [I, C, D] [cm]:&nbsp; 0.00 0.00 0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Position D [I, C, D] [cm]:&nbsp; 0.00 0.00 0.00</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Number Of Points:&nbsp; 1300</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Start Point [I,C,D] [cm]:&nbsp; 0.00 0.00 -0.03</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">End Point [I,C,D] [cm]:&nbsp; 0.00 0.00 39.04</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Points [cm]: Inline Crossline Depth Relative Dose</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; -0.030&nbsp;&nbsp;&nbsp; 0.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.030&nbsp;&nbsp; 51.900</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.060&nbsp;&nbsp; 54.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; 15.610&nbsp;&nbsp; 49.700</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; 15.640&nbsp;&nbsp; 49.700</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; 15.670&nbsp;&nbsp; 49.600</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; 26.950&nbsp;&nbsp; 27.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; 26.980&nbsp;&nbsp; 27.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; 27.010&nbsp;&nbsp; 27.000</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">(...)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; 38.980&nbsp;&nbsp; 14.500</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; 39.010&nbsp;&nbsp; 14.500</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">&nbsp;&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp;&nbsp; 0.000&nbsp;&nbsp; 39.040&nbsp;&nbsp; 14.400</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1">Scan Angle:&nbsp; 0</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># pdd = I1*exp((-mu1+(mu2+(mu3+mu4*m)*m)*m)*m) - Ib*exp(-mub*m)</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># I1=160.926022; mu1..4=4.13228759, -8.41675950, 23.3123243, -21.9500133; Ib=105.515742; mub=249.294770</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># pdd = I1*exp((-mu1*m)+c</FONT><BR>
+<FONT FACE="Courier New" COLOR="#008000" SIZE="1"># I1=172.810937; mu1=5.56710330; c=1.18497058 for depths &gt; 15.6cm</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Test results</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="fittestresults"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">As test the 400 last data points (from 27 to 39 cm) of </FONT><FONT FACE="Courier New" SIZE="2">selftest03_pdd.txt</FONT><FONT FACE="Arial" SIZE="2"> could be ignored in the fit procedure, which made it possible to explore the behavior of both the full model and the extrapolation model against real data. The dots show the error between model and real data. Over the whole data range artifacts of the limited digital resolution in the data is visible.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Using all data</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="fit_fullmodel_graph.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When all data are used the full model will give superb results for the complete profile. Essentially a noise free depth dose curve of the original data can be produced wih higher accuracy than the noise level in the original data.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="fit_extrapolation_test2_graph.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When all data are used also the limited extrapolation model wil perform excellent beyond the <I>d</I></FONT><FONT FACE="Arial" SIZE="1">50</FONT><FONT FACE="Arial" SIZE="2"> point.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Using limited data</I></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="fit_extrapolation_fullmodel_graph.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">When extrapolating the unused data deeper than 27 cm the full model will deviate because of its inherent instability...</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="fit_extrapolation_test1_graph.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">where the extrapolation model stays easily within a relative error of 1%.</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="fit_electrons_graph.gif" BORDER="0"></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The electron model has some small deviations at the depth of maximum electron range.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Configuration</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="NMconfig"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Most settings can be faound in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#neldermead_settings">Advanced Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">There is still one value without interface in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs940.htm#ini_only">ini file</A></FONT><FONT FACE="Arial" SIZE="2">:</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">[WellhoferObject]</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">NMdigits=8</FONT><BR>
+<BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Four parameters (or more) parameters</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B><A NAME="Enrico_Fermi"></A></B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">From </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://www.nature.com/articles/427297a">A meeting with Enrico Fermi</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Freeman Dyson: <B>"</B>In desperation I asked Fermi whether he was not impressed by the agreement between our calculated numbers and his measured numbers. He replied, "How many arbitrary parameters did you use for your calculations?" I thought for a moment about our cut-off procedures and said, "Four." He said, "I remember my friend Johnny von Neumann used to say, with four parameters I can fit an elephant, and with five I can make him wiggle his trunk." With that, the conversation was over. I thanked Fermi for his time and trouble, and sadly took the next bus back to Ithaca to tell the bad news to the students. Because it was important for the students to have their names on a published paper, we did not abandon our calculations immediately. We finished them and wrote a long paper that was duly published in the Physical Review with all our names on it. Then we dispersed to find other lines of work. I escaped to Berkeley, California, to start a new career in condensed-matter physics.<B>"</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://www.nature.com/articles/427297a">https://www.nature.com/articles/427297a</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://publications.mpi-cbg.de/Mayer_2010_4314.pdf">https://publications.mpi-cbg.de/Mayer_2010_4314.pdf</A></FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">[1] </FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="NMwiki"></A></FONT><FONT FACE="Arial" SIZE="2">http://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method</FONT><BR>
+<FONT FACE="Arial" SIZE="2">[2] </FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="NM1965"></A></FONT><FONT FACE="Arial" SIZE="2">Nelder, John A.; R. Mead (1965). "A simplex method for function minimization". Computer Journal 7: 308-313.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">[3] </FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><A NAME="NM2010"></A></FONT><FONT FACE="Arial" SIZE="2">Fuchang Gao;Lixing Han. (2012) "Implementing the Nelder-Mead simplex algorithm with adaptive parameters,"</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;Computational Optimization and Applications, Springer, vol. 51(1), pages 259-277, January.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;(http://www.webpages.uidaho.edu/~fuchang/res/ANMS.pdf)
+</FONT>
+</BODY></HTML>

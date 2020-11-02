@@ -1,0 +1,152 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>Special modes</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="Elevation;flatness;Linac Symmetry error;SpecialMode;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs902.htm">Previous</A>
+ - <A HREF="hs915.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>Special modes</B></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="1"><I>910</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Mainly as specific expansions on standard applications, "speical modes" are available. The number of configurable parameters will be expanded as needed in coming versions. To start BistroMath with a specific mode add one or more "-SpecialMode{number}" strings to the command line by changing the shortcut:</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">C:\Program Files\BistroMath\bistromath.exe -SpecialMode1</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Starting with version 2.96 these modes are also available in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm">Processing menu</A></FONT><FONT FACE="Arial" SIZE="2">, but only visible in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs140.htm#advanced_mode">Advanced mode</A></FONT><FONT FACE="Arial" SIZE="2">.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Further behavior of a special mode must be set in a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">configuration file</A></FONT><FONT FACE="Arial" SIZE="2">, like <B>bistromath.ini</B> or <B>institute.ini</B> (noted below in </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">blue</FONT><FONT FACE="Arial" SIZE="2">). Note also that </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm#overloading">configuration file overloading</A></FONT><FONT FACE="Arial" SIZE="2"> is a solid method to combine SpecialMode settings with a reliable basic setup. To create such a file use a plain text editor like NotePad and save the file with a '.ini' extension.&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Starting with version 3.23 the SpecialMode-strings as decribed below <I>can</I> be placed into a separate </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">[SpecialModes]</FONT><FONT FACE="Arial" SIZE="2"> section. The section reading order is [AnalyseForm], [SpecialModes]. On writing a config file the data as found in the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">[SpecialModes]</FONT><FONT FACE="Arial" SIZE="2"> section will be written back into the file. Strings in the </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">[AnalyseForm]</FONT><FONT FACE="Arial" SIZE="2"> section are lost. Also strings commented out will be lost. Advised is to preserve settings into a separate file with only a </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">[SpecialModes]</FONT><FONT FACE="Arial" SIZE="2"> section; a combined ini-file is more convenient however.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Special Mode 1</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This mode can load any measurement at startup. There is one mandatory string parameter, the file to load:</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">[AnalyseForm]</FONT><FONT FACE="Arial" SIZE="2"> (or </FONT><FONT FACE="Courier" COLOR="#0000FF" SIZE="2">[SpecialModes]</FONT><FONT FACE="Arial" SIZE="2">)</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[1]String[1]=C:\Program Files\Bistromath\U04X10i40.txt</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Special Mode 2</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Special mode 2 displays extra information on the statusbar, to the clipboard, and also writes it to the data window which is saved to a file.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="specialmode2.gif" BORDER="0"></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">There are four mandatory </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">strings</FONT><FONT FACE="Arial" SIZE="2"> for respectively:&nbsp;</FONT>
+<LI><FONT FACE="Arial" SIZE="2">profiles [1],&nbsp;</FONT>
+<LI><FONT FACE="Arial" SIZE="2">wedge profiles [2], with float[2] for wedge detection as lower limit for the symmetry of a wedge field</FONT>
+<LI><FONT FACE="Arial" SIZE="2">FFF profiles [3],</FONT>
+<LI><FONT FACE="Arial" SIZE="2">depth dose curves [4].&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">And optional parameters:</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Float 1 positive values are rounded to the nearest integer number of decimals to display the results.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Float 3 positive values put the resulting line on the clipboard.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Float 5 positive values start the export scheme as explained below.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">String 5 is the path name to a directory or a file. When the path is an existing directory this path is used to write the measurement, otherwise the file is used to add the data as described above.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">If set, string 6 holds the extension (and therefore file type) of the measurement file. The measurement will be stored on the configured path with the set extension.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">If set, float 6 selects the curve to be exported:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp; 0=Measured, 1=Reference, 2=MeasFiltered, 3=RefFiltered, 4=Calculated, 5=Buffer, 6=RefOrg, 7=Unrelated, 8=Default</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Each </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">string</FONT><FONT FACE="Arial" SIZE="2"> consists of </FONT><FONT FACE="Arial" COLOR="#FF0000" SIZE="2">code expressions</FONT><FONT FACE="Arial" SIZE="2">, separated by ",". Parts within brackets are [optional].</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="3">[-|+]{</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="3"><I>parameter</I></FONT><FONT FACE="Arial" SIZE="3">}[</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="3"><I>curve selector</I></FONT><FONT FACE="Arial" SIZE="3">] [ [-|+]{value} ] [ {</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="3"><I>operator</I></FONT><FONT FACE="Arial" SIZE="3">} [-|+]{</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="3"><I>parameter</I></FONT><FONT FACE="Arial" SIZE="3">}[</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="3"><I>curve selector</I></FONT><FONT FACE="Arial" SIZE="3">] [[-|+]{</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="3">value</FONT><FONT FACE="Arial" SIZE="3">}] ]</FONT><BR>
+<BR>
+<FONT FACE="Arial" COLOR="#008000" SIZE="2">parameters</FONT><FONT FACE="Arial" SIZE="2">:&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><B>Supported parameters can be found in the </B></FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2"><B>Evaluation Type</B></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><B></B></FONT><FONT FACE="Arial" SIZE="2"><B> section.</B></FONT>
+<LI><FONT FACE="Arial" SIZE="2">For the evaluation "u" which calls for the border postiton at <I>users</I> value, there is an added bonus: it be extended with any numeric value like "u<I>nn</I>" where <I>nn</I> will be replaced with the used dose level.</FONT><BR>
+<FONT FACE="Arial" COLOR="#008000" SIZE="2">curve selector</FONT><FONT FACE="Arial" SIZE="2">:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The curve selector is optional: F (dsMeasured, default), M (dsMeasured), C (dsCalculated), R (deReference), B (dsBuffer).</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Moreover, the curve selector might be overruled when muptiple curves are involved in the calculation.</FONT><BR>
+<FONT FACE="Arial" COLOR="#008000" SIZE="2">operator</FONT><FONT FACE="Arial" SIZE="2">:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Valid operators are, </FONT><FONT FACE="Arial" SIZE="3"><B>-</B></FONT><FONT FACE="Arial" SIZE="2">, </FONT><FONT FACE="Arial" SIZE="3"><B>+</B></FONT><FONT FACE="Arial" SIZE="2"> , </FONT><FONT FACE="Arial" SIZE="3"><B>*</B></FONT><FONT FACE="Arial" SIZE="2">, </FONT><FONT FACE="Arial" SIZE="3"><B>/</B></FONT><FONT FACE="Arial" SIZE="2"> and </FONT><FONT FACE="Arial" SIZE="3"><B>&amp;</B></FONT><FONT FACE="Arial" SIZE="2"> for average.</FONT><BR>
+<FONT FACE="Arial" COLOR="#008000" SIZE="2">value</FONT><FONT FACE="Arial" SIZE="2">:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The result for a value results in the average for left and right when no sign is found.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">A minus sign (-{<I>value</I>}) and plus sign construct (+{<I>value</I>}) evaluate to left and right results respectively.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Examples</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;"xR+{<I>position</I>}" gives the value of the curve at +{position} on the Reference curve.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;"y{<I>value</I>}" gives the average of left and right positions at {<I>value</I>} for profiles and right position for pdd's.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2">The construct "y{value1}-y{value2}" is supported and will produce the average of the (absolute) distances at left and right side when no sign is given. For non-wedge profiles "x{position}" gives the average for symmetrical positions around the center position.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Small wedged fields without indication of that state might fail to be detected as such. Therefore a threshold value (Float[2]) may be introduced for the symmetry. When the actual symmetry is above this level, a open field will be handled as wedge field. Note that meaningful values are in the range of 1.0 to 1.5. Values smaller than 1 will ignore this threshold.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Examples:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When left and right y90 values are -8 and +9 respectively and y50 values -9 and +11 for a electron profile then</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;y90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; 8.5</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;D90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; 8.5</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;y-90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = -8.0</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;y+90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; 9.0</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;y-50+y+50 = 20.0</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;y90-y50&nbsp;&nbsp; =&nbsp; 1.5</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; 1.5</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;y-90-y-50 =&nbsp; 1.0</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;p-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; 1.0</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;y+90-y+50 =&nbsp; 2.0</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp; 0.5</FONT><BR>
+<FONT FACE="Courier" SIZE="2">&nbsp;i-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = -8</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Likewise x5 will produce the average y at x=-5 and x=+5 for open field profiles wher x-5 and x+5 will return only the value at the denoted position.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">When activated, PDD-fit parameters are also written to the data window.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">[AnalyseForm]</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;number of decimals</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[2]Float[1]=4</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;profiles, non-wedged</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[2]String[1]=b,c,-b,+b,-i,+i,d,f,s,L,a,w,-p,+p</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;wedge detection symmetry value</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[2]Float[2]=1.1</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;wedged profiles</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[2]String[2]=b,c,-b,+b,-E,+E,d,w,</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;FFF</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[2]String[3]=a,x0,-i,+i,i,T</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;PDD</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[2]String[4]=M,m,P20/10,P10,D80,D50</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[2]String[5]=c:\temp\results.txt</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;put result on clipboard</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[2]Float[5]=1</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;SpecialMode[2]Float[6]=0</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">;SpecialMode[2]String[6]=*.wtx</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Note: files with multiple scans may be looped automatically after opening by using &lt;Ctrl-PageDown&gt;.</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">Example in messages:</FONT><BR>
+<FONT FACE="Arial" COLOR="#008000" SIZE="2">stored: c:\temp\selftestx6c40_ssd100_d050m.wtx (Filtered)</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Special Mode 3</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Special mode 3 clears the editor window, puts a set of filtered data points in this window and saves the resulting file to a predefined file name. Also, the measurement curve is saved with a predefined name in the directory defined by String[1]. The data format is taken from the last saved profile or configuration (see [FileSaveDialog]DefaultExt, with legal values of .txt, .asc, .mcc, .wda, .wtx), whichever is most recent. It can also be set with String[2] at startup, but the last chosen output format after startup of BistroMath is leading. For profiles the range of points is chosen as the In-Field area, rounded up to the step size. Depth dose curves start at 1 cm. The stepsize is defined by Float[2]. The data source to write to file is set with Float[3].</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Float[1]: the filter width in cm. A value of zero or lower will use the default value defined in the configuration.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Float[2]: the step size in cm</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Float[3]: 0=write original measured data, 1=write filtered version of measurement.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Float[4]: 1=write resampled data in editor to text file.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Float[5]: AutoCenter: 0=menu setting, 1=always AutoCenter, 2=no AutoCenter</FONT><BR>
+<FONT FACE="Arial" SIZE="2">String[1]: the destination directory for output.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">String[2]: the output file type as defined by the extension: *.wtx / *.wda / *.asc / *.txt / *.mcc.</FONT><BR>
+<BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">[AnalyseForm]</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[3]Float[1]=0.0</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[3]Float[2]=0.5</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[3]Float[3]=0</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[3]String[1]=c:\temp</FONT><BR>
+<FONT FACE="Courier" COLOR="#0000FF" SIZE="2">SpecialMode[3]String[2]=*.wtx</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">When activated, PDD-fit parameters are also written into the saved file </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm#NMoutput">for selected formats</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">Note that multi-file formats are supported. Going to the next/previous scan with &lt;PageUp&gt;/&lt;PageDown&gt; will execute the SpecialMode3 routine for that scan.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>Note: files with multiple scans may be looped automatically after opening by using &lt;Ctrl-PageDown&gt;.</I></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><B>Special Mode 4</B></FONT><BR>
+<FONT FACE="Arial" SIZE="2">This mode starts the selftest.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm">Ignore clipboard</A></FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm#evaluation_types">Evaluation Types</A></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2">
+</FONT>
+</BODY></HTML>

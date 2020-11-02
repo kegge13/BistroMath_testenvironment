@@ -1,0 +1,320 @@
+<HTML><HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1252">
+	<TITLE>History v3.00 - v3.25</TITLE>
+	<META NAME="VIEWPORT" CONTENT="width=device-width">
+	<META NAME="KEYWORDS" CONTENT="history,program evolution;">
+	<META NAME="AUTHOR" CONTENT="Theo van Soest">
+	<META NAME="GENERATOR" CONTENT="HelpScribble 8.3.0">
+	<STYLE> span { display: inline-block; }</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<P><FONT FACE="Arial" SIZE="2">
+<A HREF="manual.htm">Contents</A>
+ - <A HREF="idx.htm">Index</A>
+ - <A HREF="hs940.htm">Previous</A>
+ - <A HREF="hs1100.htm">Next</A>
+</FONT><HR></P>
+<FONT FACE="Arial" COLOR="#0000FF" SIZE="5"><B>History v3.00 - v3.25</B></FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.25, 23/11/2018</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 641</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">X/Y/Z/dose data lines without any known header are not yet supported but did introduce problems. For now these data sets are safely ignored. Implementation is put on the wish list.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A new </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#generic2pdd">Generic to Electron</A></FONT><FONT FACE="Arial" SIZE="2"> item is introduced in the measurment menu.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The ill-chosen name "linearity" as alternative measure for symmetry is now replaced with "elevation". No further substantial changes.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">For the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">Gamma Analysis</A></FONT><FONT FACE="Arial" SIZE="2"> the default number of search steps per mm is increased to 5. The install will also set this value.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug repair: in (initialisation part of) match procedure could in seldom cases go in to endless loop.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Introduction of <I>Smart scale electron PDD</I> option in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm">View menu</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.24, 30/09/2018</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 633</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">A bug was found in the Gamma Analysis which could lead to out of data range operations.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Now the last directory is kept when storing a file.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">When the position of reference profile is matched to the measured profile the normalisation position and its strategy on whicht is is derived are taken from measured profile.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.23, 27/09/2018</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 632</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs112.htm">measurement renormalisation mode</A></FONT><FONT FACE="Arial" SIZE="2"> is introduced.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bugfix: In the histogram for a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">Gamma Analysis</A></FONT><FONT FACE="Arial" SIZE="2"> were also invalid points (with a value of zero) included. This influenced the confidence limit, based on the histogram. Also, now both the histogram based value and the "raw data" value are shown. The limitation to the In-Field area is clarified in the help item.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The default display rule for the confidence limit is now expanded to alle scan types.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The file save dialog path was unintentionally reset to the startup directory. Now it keeps the chosen path.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode</A></FONT><FONT FACE="Arial" SIZE="2">-strings can now (optionally) be placed into a separate <I>[SpecialMode]</I> section of the ini-file. Previous versions did not preserve these values at all. SpecialMode-strings in the <I>[Analyseform]</I> section still will not be preserved. Note that comments will not be preserved.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.22, 14/09/2018</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 620</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bugfix: </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#edgedetectionlimit">Edge detection fallback</A></FONT><FONT FACE="Arial" SIZE="2"> failed to trigger during analysis because underlying data were made invalid during filtering in derivative calculation. The underlying code was introduced in version 3.21. This filter behavior is switched off now for the derivative calculation.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bugfix: The interpretation of the scanangle is changed: the diagonal TAGB is swapped with TBGA. Also this bug was introduced during code revisions in version 3.21.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 628, 11/10/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Show units of horizontal axis (cm or mm).</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bugfix: Sometimes analysis failed due to out of boundary error in left-over non-functional code. Code removed.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Number of decimals (in default setup) for PDD20/10 reduced from 4 to 3.</FONT>
+<LI><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#generic2pdd">Assumptions of being a depth dose or a profile</A></FONT><FONT FACE="Arial" SIZE="2"> for poorly defined data are now explicitely stated in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs300.htm">messages tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Number of decimals for penumbra width in default panel setup increased to 2.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The speed of the sigmoid fit was severely limited by the reporting on the messagebar. Now the reporting is limited to loglevel 2 and higher for the measurement data only.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor display bug: the error points for a pdd fit were always displayed on a cm scale.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">"Add" mode introduced in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">Panel setup</A></FONT><FONT FACE="Arial" SIZE="2">. Also, introducing a rule with a negative ID will remove any rule with that number.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bugfix: Ability for comparison of unrelated profiles was lost.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.21, 03/06/2018</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 611</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">To avoid confusion for a pdd with a non-maximum normalisation also the values at the cursor position are annotated.</FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2"><IMG SRC="results4.gif" BORDER="0"></FONT>
+<LI><FONT FACE="Arial" SIZE="2">New feature: the possibility to </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">assign the origin value</A></FONT><FONT FACE="Arial" SIZE="2"> from the StarCheck 2D-array GT line to the other lines as extra point.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Limit to In-Field area option made available for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">Gamma Analysis</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Avoid needless sigmoid fits.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: merge settings were hidden behind other groupbox in </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm">Settings tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 611, 11/06/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">New option to normalise the source data in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#meassignalcorrection">Signal correction sub menu</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug found in presented values after shift in a depth dose. Related to not updated version of filtered version of the measurement.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Display error: "RDD" and "PDD" were swapped.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 615, 13/07/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Improved implementation for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode2</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 616, 23/07/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs20.htm">alias list</A></FONT><FONT FACE="Arial" SIZE="2"> is now also applied to the measurement device name. This opens new possibilities for multiple devices with a shared reference but different name. This is the case the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">StarcheckMaxi</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 617, 21/08/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug found in scan angle definition for <I>some</I> diagonal scans due to wrong ordering of instructions in code in version 3.09 after an attempt to cover also 90 degrees scan angles. In these cases the scan angle was set to 90 degrees for these scans. This should be 45 or 135 degrees for true diagonal scans. Also, BistroMath now relies on its own calculation of the scanangle and overrides any scan angle information in a data file. Due to this switch in strategy there might be a mixup in the reference files: possibly files with '045' have to be renamed to 135 and vice versa.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 618, 04/09/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Too many decimals given for values smaller than 0.1. This might lead to too long strings for the available space.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.20, 01/02/2018</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 600</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Version 3.20 offers a fully configurable </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">Results panel</A></FONT><FONT FACE="Arial" SIZE="2"> with <I>panel rules</I>. The old rather complicated display procedure for showing the panel results under all circumstances is now replaced by a large set of tests that is applied to every item on the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs18.htm">Results panel rule list</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2">. All configuration issues are presented in a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">setup page</A></FONT><FONT FACE="Arial" SIZE="2">. The standard setup resembles previous versions. This should accommodate for most wishes at local sites. There is a speed penalty when a division is calculated. This is now done separately for the results panel and for the graphical presentation. This takes some 65 ms extra.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The Results panel height is now adjusted automatically with a minimum of 5 lines and a maximum 13 lines.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">All lengths and positions can be </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm#view_mm">displayed in mm</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Improved </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs300.htm#no_2D_ref">failure reporting</A></FONT><FONT FACE="Arial" SIZE="2"> when </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs2.htm#reference_logics">loading reference files</A></FONT><FONT FACE="Arial" SIZE="2"> for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs61.htm">2D arrays</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Some subtle inconsistencies were found with the normalisation in the analysis engine and the transfer to the <I>Results panel</I> display procedure. This might give small differences with previous versions.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A new </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm#annotations">annotation</A></FONT><FONT FACE="Arial" SIZE="2">:&nbsp; (<B>*</B>) for applied normalisation data from the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm#Confiig_PDD">configuration data</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A preview of the keyboard buffer to avoid needless updates of the user interface.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">FFF detection explicitely limited to photon data.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The measurement menu has been slightly reorganised. Less used items are moved to submenu's.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Introduction of <I>Clear Merge source</I> item in the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs70.htm">Processing</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> menu.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The '<I>Penumbra too wide message</I>' is now limited to conventional profiles.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug fix: after using </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs72.htm">Merge</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> an internal activity counter was not decreased, effectively disabling the acceptance of new data. Now a message is shown in such cases ('<I>Analysis object reports busy state.</I>').</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug fix in shift procedure: When a profile is shifted (horizontally) <I>and</I> the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#normalisation">normalisation position</A></FONT><FONT FACE="Arial" SIZE="2"> is set the the origin, the normalisation position should be kept at the origin and the normalisation value should be recalculated. This had <I>only an effect on the Gamma calculation</I> where dose differences are relevant. In all other there has been no effect at all of this bug.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 601, 10/02/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">For mcc files crossline offset was linked to inline positions and vice versa in june 2016. This swap is reversed now.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Added a "trim" instruction when reading lines of a mcc file to remove illegal spaces in the data of home-made files.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 602, 14/02/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor display only bug fix: In the results panel lables that indicated a negative position (i.e. "X-12.0") were displayed with two negative signs: "X--12.0".</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 603, 19/02/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">The displayed text in the messages tab for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">electron pdd fits</A></FONT><FONT FACE="Arial" SIZE="2"> was different from the actually used model. It should be "</FONT><FONT FACE="Consolas" SIZE="2">pdd = I0/( 1 + I1*Exp((-mu1+(mu2+(mu3+mu4*(cm-d0))*(cm-d0))*(cm-d0))*(cm-d0)) + Ib*Exp(-mub*cm) ) + Ix*exp((-mx1+mx2*cm/100)*cm/100)</FONT><FONT FACE="Arial" SIZE="2">".</FONT>
+<LI><FONT FACE="Arial" SIZE="2">For the pdd fits, the threads are now spread evenly over the available cpu's. Windows chooses other strategies by default.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 604, 22/02/2018</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In the Varian </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#w2CAD">w2CAD</A></FONT><FONT FACE="Arial" SIZE="2"> format no field is defined for the Linac name. BistroMath therefore takes the comment field in a desparate attempt to get anything at all. In files generated by Eclipse the comment "(Open)" was found. Because of the brackets the complete string was discarded as Linac name. With no linac name at all comparison would fail with this file set as temporary reference (and <I>Ignore Treatment Unit name</I> checked). Only unchecking <I>Check Temporary Scan Type</I> would allow a comparison. Now only assumed illegal characters are stripped from the Linac name, in the example above leading to "Open". With this name the comparison is working again.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 605, 26/02/2018</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">As correction on built 604 still the Linac name is clipped at the first space to be consistent with previous BistroMath versions.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 606, 16/03/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">When clicking on a <I>Fit results </I>table column, Bistromath returns to the primary <I>Analysis tab</I>.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Improved file reading for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#OmniPro_rfb">rfb</A></FONT><FONT FACE="Arial" SIZE="2"> files. Finally the bytes representing the number of files in a subgroup were identified. Previous versions of BistroMath mysteriously failed to find all scans in some of these files.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 607, 20/03/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Clarification for symmetry of FFF profiles: not the classic NCS symmetry definition but the Elevation (former: Linearity) is displayed in the standard rule set. In previous builds of version 3.20 this was hard coded. Now it is implemented as a rule in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs18.htm">standard rule set</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 608, 30/03/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">In the division of two curves clipped data could lead to an invalid result and the whole curve would be discarded. Now the data range is limited to unclipped data only.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 609, 03/04/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Diagonal detection is limited to fields larger than 2 cm as smaller fields widen because of penumbra effects.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 610, 12/04/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Patch on build 600: the depth of a PDD-level xx, Dxx, was only available for predefined values (90%, 80%, 50% and 20%). Now a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">panel rule</A></FONT><FONT FACE="Arial" SIZE="2"> can be made for any level.</FONT><BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.10, 28/11/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 584</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Introduction of the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs5.htm">Area ratio</A></FONT><FONT FACE="Arial" SIZE="2"> as alternative measure for the symmetry.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">SpecialMode2 support for area ratio.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: SpecialMode2 might have been defunctional since version 3.00. No complaints received however.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 585, 05/12/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">In the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">advanced settings tab</A></FONT><FONT FACE="Arial" SIZE="2"> the application of edge detection can now be forced, the application of the sigmoid model can be set separately for conventional and FFF profiles.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 587, 06/12/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs124.htm">background subtraction</A></FONT><FONT FACE="Arial" SIZE="2"> worked on both measurement and reference. This is not logical. Therefore in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">reference menu</A></FONT><FONT FACE="Arial" SIZE="2"> a <I>Background correction</I> switch is introduced. It is off by default.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 589, 15/12/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Linearity added to </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode2</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Files with multiple scans may be </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs19.htm">looped automatically</A></FONT><FONT FACE="Arial" SIZE="2"> after opening by using &lt;Ctrl-PageDown&gt;.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Either Linac Error, Area Ratio or Linearity can be desplayed as an </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#extsym">extended symmetry parameter</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 593, 27/12/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Curve selector added and execution efficiency improved for </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs910.htm">SpecialMode2</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">General execution efficiency improved by keeping more data in memory.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 595, 15/01/2018</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: Values at User dose level were not generated.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug: Effects of symmetry correction invisible on screen.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Gamma analysis limited to In-Field area. In coming version 3.20 both options will be available.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.09, 08/11/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 581</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Depending on the source format the diagonal scans could be presented as TA-GB instead of the intended GA-TB direction. In tracing back the origin of this phenomenon no errors were found in the interpretation file formats except for diagonals in the PTW StarCheck mcc format. In the central data preparation procedure the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs901.htm">scan angle definition</A></FONT><FONT FACE="Arial" SIZE="2"> was erroneous due to the user mapping constraints. Note that the scan angle is always derived from the GTABUD axis conventions.</FONT><BR>
+<FONT FACE="Arial" SIZE="2">For the StarCheck all data have been checked from and to the mcc format with absorbers put on selected positions.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.08, 30/07/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 574</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">The Mayneord transform was limited to SSD's larger then 50 cm in the code, making it non-functional for some orthovolt data. This limit is now set to 5 cm. When the Dmax for this transform was set negative or zero the actual Dmax of the measurement was taken. However, for orthovolt data a value of zero is meaningful here. Therefore now only a negative Dmax will be set to the actual Dmax.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The Mayneord item is moved from the <I>Processing</I> menu to the <I>Measurement</I> menu. As processing item it could be applied multiple times to one data set. In the new setup it can be included in the main analysis stream.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The Mayneord transform can now only be applied once to a measurement. Its application is now stored with the curve data as a separate flag.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The power function in the photon fit model is problematic for negative z values. In this case the power function is now replaced with the z value itself (effective setting the power value to 1).</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The Mayneord transform state is now explicitely shown instead of the more generic "composite" state for the measurement in the Results panel.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The high order nature of the photon model leads to "resonances" of the model around the measured curve. Therefore the "error to noise ratio" (ENR) was introduced in version 2.86. For the orthovolt energies this leaves not enough weight to model the start of the curve. This can be overcome by switching off the ENR or giving the low z range a higher weight. The latter is now </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#neldermead_settings">introduced</A></FONT><FONT FACE="Arial" SIZE="2">. The user should experiment with optimal settings here.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A parameter limiting mechanism is added to the Nelder-Mead code. Now the parameter </FONT><FONT FACE="Lucida Console" SIZE="2"><I>I</I></FONT><FONT FACE="Lucida Console" SIZE="1"><I>1</I></FONT><FONT FACE="Lucida Console" COLOR="#0000FF" SIZE="1"><I> </I></FONT><FONT FACE="Arial" SIZE="2">is limited to a positive range.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">Nelder-Mead optimisation code</A></FONT><FONT FACE="Arial" SIZE="2"> was reviewed in a twofold manner. With some small reorganisations the code is made much faster without any functional changes. Afterwards this loop has been made thread-save and can now be started mutiple times in parallel on different cores. When all threads have completed, the best result is selected and redistributed on a possible restart of all threads. Therefore an evolution characteristic is now added to the original concept which improves the effectiveness significantly.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">There is now an overview of all relevant parameters for the fit of </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#neldermead_settings">PDD curves</A></FONT><FONT FACE="Arial" SIZE="2">. The Settings tab and Advanced settings tab have been sligthly reorganised to accommodate the overview.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">When there is still some analysis active, no new data are accepted to avoid multithreading conflicts.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug detected: with a multiple scan reference (i.e. a 2D array) the internal buffers were only partly cleared when the <I>Settings</I> tab was opened. On return to analys this made the reference effectively non-functional. This state could only be resolved by loading a scan with a single scan reference. Now these buffers are completely cleared, forcing the reload of a multiple scan reference.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 575, 04/08/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">While testing the pdd fit on more data and different circumstances, it was observed that the initial data could produce an illegal starting point for the optimalisation. Now the initial data have been slightly changed. Also the assignment of the initial data is placed in a loop where, if needed, the initial values are changed with an increasing random fraction several times to find a legal starting point.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 576, 09/08/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">The Mayneord transformation is now only applied if meaningful (the new SSD differs from the original) and when applied the reference pdd is reloaded again from either a now matching source or the temporary set reference.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 577, 12/09/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Stability precautions in the presentation layer by using the buffer only with valid (fit) data.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 578, 14/09/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">In the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm">Configuration tab</A></FONT><FONT FACE="Arial" SIZE="2"> the modality format (e.g. 'X10.0') is now set to two decimals to accommodate low energy x-rays like 'X0.05'. Note that all data found in a configuration file are now always forced to this new format.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 579, 28/09/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">In the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs95.htm">Files tab</A></FONT><FONT FACE="Arial" SIZE="2"> the data grid is made gray during file search and sorting as "busy" signal. Because the search process is handled in a separate thread the moment of finishing is unclear for the user otherwise. When finished it is set to the standard color again.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug fix: for diagonal scans the linac name and ennergy were lost in the reference file name; therefore references could not be found.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">In the LoadReference routine a message is added that shows the standard name as derived from the measurment.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.07, 26/06/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 570</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs400.htm">pdd-fit</A></FONT><FONT FACE="Arial" SIZE="2"> is adapted for low and medium photon beams. The model itself is not changed but now the data up to the water surface are included when the found position of the dose maximum is smaller than 3 mm or available data stop withn 3 mm of the dose maximum. There were some stablity issues with the standard photon model for the low energy photon beams. Extra precautions have been taken to keep the model parameters within reasonable limits. Both the <I>Reprocessing</I> option (&lt;Ctrl-P&gt;) and <I>Reset fit</I> option (&lt;Ctrl-Z&gt;) can be used repeatedly to find better fits. Due to both the nature of the Nelder-Mead fit optimisation and the type of model, extreme values can occur. The Nelder-Mead code has been reviewed to handle multiple illegal error function outcomes in a better way.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Both the maximum of the <I>Top model</I> or the intersection of&nbsp; the slopes (<I>Slopes model</I>) can be used to define the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#fff_center">center of the field</A></FONT><FONT FACE="Arial" SIZE="2">. Now this result can also be used as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#RefAlignTop">alignment criterium</A></FONT><FONT FACE="Arial" SIZE="2"> without choosing this as center definition.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">At startup already available data on the clipboard are ignored.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.06, 25/05/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 567</I></FONT>
+<LI><FONT FACE="Arial" COLOR="#FF0000" SIZE="2"><B>Severe bug fix</B></FONT><FONT FACE="Arial" SIZE="2">: Due to a procedure call with wrong default assumptions the results of the sigmoid calculation were (partially) plotted outside of the assigned memory borders. This may give unpredictable random errors. All users are therefore advised to update to this version. No more memory conflicts have been detected.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Major bug fix: the configuration tables in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm">Configuration Tab</A></FONT><FONT FACE="Arial" SIZE="2"> were messed up when edited. Effectively only direct editing of the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">configuration file</A></FONT><FONT FACE="Arial" SIZE="2">&nbsp; would set the correct information.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Major bug fix: editing the configuration tables in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm">Configuration Tab</A></FONT><FONT FACE="Arial" SIZE="2"> was nearly impossible as most non-numeric key input was intercepted by the menu system. Now this is disabled.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug fix: the activation of </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs2.htm#intro_BeamLists">Generic Beam lists</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> was not transferred from the user interface to the beam evaluation unit effectively making this feature only available if set in the configuration file. It now works as intended.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 568, 06/06/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Due to a mixup in build 567 the keyboard-only shortcuts were made available exlusively for the <I>Configuration</I> tab instead of all other tabs.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bug fix: the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm#mirroring">mirror</A></FONT><FONT FACE="Arial" SIZE="2">-function was </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs73.htm">reviewed</A></FONT><FONT FACE="Arial" SIZE="2"> for its effect with different profiles and centering options. It was concluded that the current practice, mirroring around the Center of Field (CoF) will suit for all scenarios. However the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs73.htm">implementation</A></FONT><FONT FACE="Arial" SIZE="2"> effectively mirrored around <I>half</I> of the CoF value. This is corrected.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 569, 08/06/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">For 2D-datasets the dataset was kept as reference <I>after</I> the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm#mirroring">mirror</A></FONT><FONT FACE="Arial" SIZE="2">-function was stopped. Now all reference-buffers are fully cleared on unsetting this mode.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The SHA-256 checksum of BistroMath is now put in the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs300.htm">Messages</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> tab. This can be checked online, see for instance </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2"><A HREF="https://defuse.ca/checksums.htm#checksums">https://defuse.ca/checksums.htm#checksums</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.05, 13/04/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 564</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Review of centering and normalisation choices in the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs120.htm">Measurement menu</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2">: for FFF there can now be made a completely independent choice.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A more general approach for applying offsets in any direction to any profile is now offfered in the </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs127.htm">Settinsg tab</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2">. This can be practical for devices like 2D-arrays, which cannot set the origin easily. Note that these values are introduced in the preprocessing stage immediately after the axis mapping. The old PDD shift was set as a postprocessing shift.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">FFF detection is limited to scans crossing the isocenter or pararallel to the main axes: the<I> AB</I>, <I>GT</I> and <I>Angle</I> type. A diagonal scan with a shifted measuring device will become a "free scan" when the origin is not crossed within 0.5 cm.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">For SNC ICprofiler clipboard data additional frame data after the array data will be ignored. Multtiframe data (*.prm files) are not yet supported. This will be availabe in the near future.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 565</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Bugfix: The appropriate choice for centering a FFF field was after application overwritten with the choice for a conventional field. All subsequent results were set with the "conventional" choice.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bugfix: the <I>FFF Center</I> submenu in the <I>Measurement</I> menu would toggle the checked status each time the submenu was entered. This status is never used in the code but confusing for the user.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 566, 05/05/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bugfix: in extreme examples found for the ICPROFILER the sigmoid calculation would fail. The validity of the result was not checked however in the results presentation, leading to a program error. This is now handled.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.04, 19/01/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 551</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Several problems with failing sigmoid fits were found and resolved. One single unacceptable data point (position=0) would invalidate the whole fit. Also the acceptable average fit error was set to an absolute value, which would fail for data sets with very high values. Now this limit is made relative.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">When the</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs144.htm"> sigmoid model</A></FONT><FONT FACE="Arial" SIZE="2"> is used, the result for the unfileterd measurement are presented, because the model itself uses already a lot of points.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">On initial preparation of read data the values ara rescaled when the maximum is larger than 1000 or smaller than 0.1.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The relative error is only displayed when then </FONT><FONT FACE="Arial" COLOR="#0000FF" SIZE="2">Calculated</FONT><FONT FACE="Arial" SIZE="2"> curve is also </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs110.htm">visible</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Merged pdd's ended up in the wrong (invisible) destination when they had different ssd's <I>and</I> were loaded in the "wrong" order. Now this ordering sensitivity is resolved.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">For curves with multiple peaks (stripe like field setup) for levels above 65% the wrong position was found without </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs126.htm">local peak analysis</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">FFF detection failed for the very steep penumbra's of the MRLinac.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs70.htm#mirroring">mirroring</A></FONT><FONT FACE="Arial" SIZE="2"> is now done around the chosen/calculated </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs128.htm">center of field</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs139.htm">profile matching</A></FONT><FONT FACE="Arial" SIZE="2"> is improved to be stable for profiles without penumbra. A new inclusion criterium was introduced here.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Several minor issues were resolved.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 552, 24/01/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">On export of MCC inplane profiles now always the TARGET_GUN direction is enforced. In previous versions the internal default GUN_TARGET was used, resulting in both axis direction reversal and sign inversion for the scan positions. Although correct, this deviates from the PTW standard.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A remaining issue with scan axis offset for MCC-export was resolved.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Resolved an issue with superfluous lines from the original file on overwriting an existing file.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 554, 05/02/2017</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">For FFF profiles the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs120.htm#fff_center">general choice for center of field</A></FONT><FONT FACE="Arial" SIZE="2"> to <I>origin</I> was ignored. Effectively the edge based center was set and (correctly) as such reported.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The option </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs120.htm#fff_center">Detect FFF</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"> in the <I>Measurement</I> menu was not stored in any configuration or preset. This is now written as a preset (and therefore also in a configuration).</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Also the optional choice to use the top of the FFF profile was ignored when the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs130.htm#CoF">general choice for the center</A></FONT><FONT FACE="Arial" SIZE="2"> was set to <I>origin</I>.&nbsp;</FONT>
+<LI><FONT FACE="Arial" SIZE="2">All items related to edge detection and sigmoid analysis are now part of a preset.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Unnessesary use of the sigmoid fit is avoided.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A textual clarification in the results panel: for FFF profiles there is, in general, not a meaningful 80-20 penumbra distance. As alternative the normalised slope of the sigmoid fit is presented.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 555, 09/02/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Serious issues with matching introduced in build 551 were found. The problems originated from attempts to limit the search range for matching because a wide search range could lead to improper results. Now another strategy is followed.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">When a profile was matched with itself the program would go into an infinite loop. This situation would occur when a temporary profile was loaded and </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm">matching was chosen as alignment</A></FONT><FONT FACE="Arial" SIZE="2"> method.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">For FFF fields with missing penumbras the attempted strategy led to a far too large initial shift with improper results. Merging of such profiles with </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs72.htm">profile matching as merge parameter</A></FONT><FONT FACE="Arial" SIZE="2">&nbsp; would lead to garbish.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 556, 12/02/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Reviewed missing penumbra strategy for analysis of FFF profiles. In these cases the missing penubra is ignored. The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs138.htm">derivative edge</A></FONT><FONT FACE="Arial" SIZE="2"> is set to the scan limit when this represents the highest found penumbra gradient. In this case the found edge position is assumed valid. The FFF slopes are always guaranteed to be centered around the top.&nbsp;</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 557, 15/02/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Minor bugfix: when first a multiscan file from a 2D array was read including the according reference, then a watertank scan for the same machine would find the reference acceptable.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 558, 20/02/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Bugfix: An extra test in the analysis introduced a division by zero error for pdd's.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 560, 21/03/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Further input checking and range checking added. No functional changes.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 561, 27/03/2017</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2">Minor bugfix: for the status of the <I>FFF center</I> the checked and unchecked state in the user interface were mixed up. All analysis and reporting in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm">Results panel</A></FONT><FONT FACE="Arial" SIZE="2"> were consistent with the transferred information to the analysis module but not with the expectancies of the user.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.03, 08/12/2016</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 534</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Recently a British report was published on FFF beams. They propose a virtual profile, made as the division of small(er) profile with a large profile, as means of analysis. The resultant virtual profile resembles pretty close a conventional profile. This is implemented here as a </FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">synthetic profile</FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">To make this work an ignorance mechanism was introduced to handle differences in parameters that usually should be equal for a comparison.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The coded names of the items in reference menu are changed. Please use the </FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">update option of the install program</FONT><FONT FACE="Arial" SIZE="2"> to make the ini files consistent. Note that this feature can be applied to any data directory.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1.htm#privacy">privacy statement</A></FONT><FONT FACE="Arial" SIZE="2"> has been added to the help file.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 535, 18/12/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><I><A HREF="hs74.htm">divide</A></I></FONT><FONT FACE="Arial" COLOR="#800000" SIZE="2"><I></I></FONT><FONT FACE="Arial" SIZE="2"><I> </I>function offers a median filter as post-processing. This was and is intended for "shapeless" output. For </FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">synthetic (i.e. virtual) profiles</FONT><FONT FACE="Arial" SIZE="2">. the post-processing is now switched off and a quadratic filter is applied instead.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs1.htm#privacy">privacy statement</A></FONT><FONT FACE="Arial" SIZE="2"> and checksum are added to this help file. The privacy statement is also added to the install file.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 536, 20/12/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Systematic search for leftover possibilities for division by zero in the code.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 537, 22/12/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Minor bug fix: going to the <I>Settings</I> tab or <I>Advanced settings </I>tab would make the in-memory version of an automatically loaded reference invalid but still block reloading it again. No reference was used or displayed until another reference file was taken.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Clarification in the help file: the vertical range of the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">gamma plot</A></FONT><FONT FACE="Arial" SIZE="2"> is controlled by the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm#histogram_range">Histogram range</A></FONT><FONT FACE="Arial" SIZE="2">.&nbsp; [</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">based on user input, thank you</FONT><FONT FACE="Arial" SIZE="2">!]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The&nbsp; </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm#histogram_range">Histogram range</A></FONT><FONT FACE="Arial" SIZE="2"> can now also be changed with </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs19.htm">&lt;arrow-Up&gt;/&lt;arrow-Down&gt;</A></FONT><FONT FACE="Arial" SIZE="2"> key when a histogram is shown or a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">gamma plot</A></FONT><FONT FACE="Arial" SIZE="2"> is shown. [</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">based on user input, thank you</FONT><FONT FACE="Arial" SIZE="2">!]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs127.htm#histogram_range">histogram</A></FONT><FONT FACE="Arial" SIZE="2"> horizontal range and gamma plot vertical range increment steps are now controlled explicitely to produce nice steps. Previous versions could produce identical numbers on the scale because of the chosen number of digits in the lables.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 538, 27/12/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">After detection of the first FFF profile, only once the help file is opened on the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs15.htm">getting started with FFF topic</A></FONT><FONT FACE="Arial" SIZE="2">. This action is stored in the used configuration file.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">At last the context sensitive help for html-help type help files sorted out. Checked all pages for the correct context.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs17.htm">Histogram help topic</A></FONT><FONT FACE="Arial" SIZE="2"> is added.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">For reading the files in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs95.htm">Files tab</A></FONT><FONT FACE="Arial" SIZE="2"> now a separate analysis engine is used, avoiding any interference with possible data in shown in the <I>Analysis</I> tab.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 541, 30/12/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Warning for the first detected FFF profile only if </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs129.htm#show_warnings">Show warnings</A></FONT><FONT FACE="Arial" SIZE="2"> is checked.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Now the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs2.htm#relative_flatness">Flatness results</A></FONT><FONT FACE="Arial" SIZE="2"> are given separately as an <I>Absolute flatness</I> and a <I>Relative flatness</I>.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">When a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs136.htm">gamma calculation</A></FONT><FONT FACE="Arial" SIZE="2"> is made, the Relative flatness is replaced by the Confidence Limit.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.02, 21/11/2016</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 532</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">No functional changes, but the actual applied rules for calculation of center and borders are now consistently stored in history data with the profile. Therefore the reporting is no longer based on the information in the front end. The reporting detail is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs11.htm#annotations">expanded</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">When comparison to a temporary reference fails, information about conflicts is added to the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs300.htm">Messages tab</A></FONT><FONT FACE="Arial" SIZE="2">. This may be very interesting for a lot of users.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 533, 22/11/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Conflict reporting is now also added for merging.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The <I>Diagonal detected</I> status is added to the conflict reporting.</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.01, 09/11/2016</I></FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 530, 09/11/2016, alpha release</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Review of configuration data. Due to historical reasons configuration data for film dose conversion and dept dose normalisation were combined on single lines. These are split in different sections. The </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs240.htm">configuration tab</A></FONT><FONT FACE="Arial" SIZE="2"> now presents these data in separate lists. Note that this code change is backward compatible: all found combined data will be split automatically and written in different section when a configuration is saved.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A new list of generic beams is </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs2.htm#intro_BeamLists">introduced</A></FONT><FONT FACE="Arial" SIZE="2">. This list links a modality to a linac and is intended cross-referencing with automated reference loading. This behavior can be set in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm">reference menu</A></FONT><FONT FACE="Arial" SIZE="2">. [</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">extension based on user input, thank you</FONT><FONT FACE="Arial" SIZE="2">!]</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Complete review of the logistics for film to dose conversion. The relation with the data file type has been removed. Nothing is changed on how these values are applied. The selection of available configuration data is now done in a </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs230.htm">separate tab</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 531, 10/11/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">No changes, out of alpha state</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2"><I>version 3.00, 13/10/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">This version extends widely the possibilities for multiple references in a single file. Where in previous versions this feature was limited to files with a fixed structure, now any file can be used by creating an </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#ReferenceIndexing">index to the file</A></FONT><FONT FACE="Arial" SIZE="2">. Note that, by definition, these files cannot be loaded automatically. Also all supported binary files now are accepted as reference file. In previous versions only one singe scan from a binary file was taken. Please read the new </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs2.htm">overview topic</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">All data file access was reviewed. Now always the data are placed in a memory stream immediately, which is more efficient for repeatedly opening the same data. In the alpha release one bug appeared here: when changing to another multi-reference file the stream was appended to the existing stream in stead of replaced.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">Now any supported file including binary types can be used as reference. This opens the opportunity to open an unstructured </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#OmniPro_rfb">rfb</A></FONT><FONT FACE="Arial" SIZE="2"> or </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs900.htm#mcc_ascii">mcc</A></FONT><FONT FACE="Arial" SIZE="2"> file as </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#ReferenceIndexing">reference</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">The alpha state of this version only is related to data reading and reference selection strategy. When new bugs are introduced they are only related to failed reading of data or not using the correct reference in exotic circumstances. The analysis as such has not been changed.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 517, 22/08/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">PTW has updated the application BeamAdjust (we have now version 1.9.2.16). In previous versions the scan depth was set at a fixed value of 0.00 mm. In the new version you can set it to the actual depth. This might make old references invalid as they are still set to a depth of 0. The most sensible solution is to mass edit all reference and/or measurement files. I found <B>fnr.exe</B> (https://findandreplace.codeplex.com). This works straightforward. Search for mcc files (*.mcc) and do a find/replace for "SCAN_DEPTH=0.00" with "SCAN_DEPTH=50.00". There is no need to rename the reference files.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">When an alias is added any existing </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs135.htm#ReferenceIndexing">index</A></FONT><FONT FACE="Arial" SIZE="2"> for the reference file will be rebuild.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">File recognition for binary file types might fail in build 516 due to introduction of streams for thease file types. The file pointer was not set to the start on file load.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 519, 23/08/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Loading a binary file, which is not supported through the clipboard, will </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs50.htm#ignore_clipboard">lock the clipboard</A></FONT><FONT FACE="Arial" SIZE="2">; loading a text-based file will restore the last known state for the clipboard. The user can change the clipboard state at any time.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 523, 27/09/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Standard non-alpha release. One serious flaw was found. There was possible loss of reference files due to the usage of multi-scan references. The origin of this bug was the backward compatibility for the naming convention of reference files. Older files were renamed to the latest convention.</FONT>
+<LI><FONT FACE="Arial" SIZE="2">A number of tests for various combinations of measurements and refererence is described in the </FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs2.htm#comparison_tests">Comparison overview topic</A></FONT><FONT FACE="Arial" SIZE="2">.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 525, 29/09/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Repeatedly reloading the same file failed to take the in-memory reference.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 526, 07/10/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Extra safety catches on disk file related operations.</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 527, 13/10/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Merging of profiles with different setup parameters (i.e. scan direction, field size, depth, collimator) was and is not allowed. Now there is a message displayed in the status bar in these cases. [</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">improvement based on user input, thank you</FONT><FONT FACE="Arial" SIZE="2">!]</FONT><BR>
+<FONT FACE="Arial" SIZE="2"><I>build 528, 29/10/2016</I></FONT>
+<LI><FONT FACE="Arial" SIZE="2">Tab character added before dose value in data line of exported RFA300 file. [</FONT><FONT FACE="Arial" COLOR="#008000" SIZE="2">user input, thank you</FONT><FONT FACE="Arial" SIZE="2">!]</FONT><BR>
+<BR>
+<BR>
+<FONT FACE="Arial" SIZE="2">See also:</FONT><BR>
+<FONT FACE="Arial" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs4.htm">Configuration</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs990.htm">History v1.00 - v1.99</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs991.htm">History v2.00 - v2.69</A></FONT><BR>
+<FONT FACE="Arial" COLOR="#800000" SIZE="2">&nbsp;</FONT><FONT FACE="Arial" SIZE="2"><A HREF="hs992.htm">History v2.70 - v2.98</A></FONT><BR>
+
+</BODY></HTML>
